@@ -98,6 +98,17 @@ CREATE TABLE tblNotificationRecipient (
 	CONSTRAINT FK_NOTIFICATION_RECIPIENT_USER FOREIGN KEY (User_ID) REFERENCES tblUser(User_ID)
 );
 
+CREATE TABLE tblGroupMessage (
+	Message_ID INT IDENTITY(1,1) PRIMARY KEY,
+	Sender_ID INT NOT NULL,
+	Group_ID INT NOT NULL,
+	Message_Text VARCHAR(1000) NOT NULL,
+	Created_At DATETIME2 DEFAULT SYSUTCDATETIME(),
+
+	CONSTRAINT FK_SENDER_GROUP_MESSAGE FOREIGN KEY (Sender_ID) REFERENCES tblUser(User_ID),
+	CONSTRAINT FK_GROUP_MESSAGE_GROUP FOREIGN KEY (Group_ID) REFERENCES tblGroup(Group_ID)
+);
+
 -- Indexes to speed up queries
 -- tblGroup: index on Creator (FK)
 CREATE NONCLUSTERED INDEX IDX_tblGroup_Creator
@@ -155,3 +166,14 @@ ON tblNotificationRecipient (User_ID, Is_Read);
 
 CREATE NONCLUSTERED INDEX IDX_tblRating_RateeID_RatedAt
 ON tblRating (Ratee_ID, Rated_At DESC);
+
+-- Indexes for the message table
+CREATE NONCLUSTERED INDEX IX_MESSAGE_GroupID_CreatedAT 
+ON tblGroupMessage(Group_ID, Created_At DESC);
+
+CREATE NONCLUSTERED INDEX IX_MESSAGE_SENDER_ID_CREATED_AT
+ON tblGroupMessage(Sender_ID, Created_At DESC);
+
+CREATE FULLTEXT CATALOG ftCatalog AS DEFAULT;
+CREATE FULLTEXT INDEX ON tblGroupMessage(Message_Text)
+KEY INDEX PK_tblGroup_Message;

@@ -1,0 +1,13 @@
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe.config
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.pdb
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\SATAUiFramework.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.AssemblyReference.cache
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMain.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.Properties.Resources.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.GenerateResource.cache
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CoreCompileInputs.cache
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboR.D812CFD4.Up2Date
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config

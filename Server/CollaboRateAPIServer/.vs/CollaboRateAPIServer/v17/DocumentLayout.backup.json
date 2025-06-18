@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwCQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T23:10:16.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\UsersController.cs",
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\UsersController.cs",
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAADwv2EAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T21:15:40.971Z",
               "EditorCaption": ""

@@ -11,3 +11,44 @@ C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\App
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmProjectGroups.resources
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe.config
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.pdb
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\SATAUiFramework.dll
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.AssemblyReference.cache
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMain.resources
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmProjectGroups.resources
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.Properties.Resources.resources
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.GenerateResource.cache
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CoreCompileInputs.cache
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboR.D812CFD4.Up2Date
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
+E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe.config
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.pdb
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\SATAUiFramework.dll
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.AssemblyReference.cache
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMain.resources
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmProjectGroups.resources
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.Properties.Resources.resources
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.GenerateResource.cache
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CoreCompileInputs.cache
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CopyComplete
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
+\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe.config
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.pdb
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\SATAUiFramework.dll
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.AssemblyReference.cache
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMain.resources
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmProjectGroups.resources
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.Properties.Resources.resources
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.GenerateResource.cache
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CoreCompileInputs.cache
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CopyComplete
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
+\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb

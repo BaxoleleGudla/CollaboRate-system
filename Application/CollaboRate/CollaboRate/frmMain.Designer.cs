@@ -29,34 +29,39 @@
         private void InitializeComponent()
         {
             this.pnlSidemenu = new System.Windows.Forms.Panel();
-            this.pnlLogo = new System.Windows.Forms.Panel();
-            this.pbxLogo = new System.Windows.Forms.PictureBox();
-            this.lblName = new System.Windows.Forms.Label();
             this.pnlCurrentGroup = new System.Windows.Forms.Panel();
             this.lblCurrentGroup = new System.Windows.Forms.Label();
             this.sataComboBox1 = new SATAComboBox();
-            this.btnHome = new FrameworkTest.SATAButton();
-            this.btnProjectGroups = new FrameworkTest.SATAButton();
-            this.sataButton2 = new FrameworkTest.SATAButton();
-            this.sataButton3 = new FrameworkTest.SATAButton();
-            this.sataButton4 = new FrameworkTest.SATAButton();
-            this.sataButton5 = new FrameworkTest.SATAButton();
-            this.sataButton6 = new FrameworkTest.SATAButton();
+            this.pnlLogo = new System.Windows.Forms.Panel();
+            this.lblName = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnClose = new FrameworkTest.SATAButton();
+            this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnMaximize = new FrameworkTest.SATAButton();
+            this.btnMinimize = new FrameworkTest.SATAButton();
+            this.btnSettings = new FrameworkTest.SATAButton();
+            this.btnGroupChats = new FrameworkTest.SATAButton();
+            this.btnGroupMeetings = new FrameworkTest.SATAButton();
+            this.btnGroupTasks = new FrameworkTest.SATAButton();
+            this.btnMemberEvaluations = new FrameworkTest.SATAButton();
+            this.btnProjectGroups = new FrameworkTest.SATAButton();
+            this.btnHome = new FrameworkTest.SATAButton();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.pnlSidemenu.SuspendLayout();
-            this.pnlLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.pnlCurrentGroup.SuspendLayout();
+            this.pnlLogo.SuspendLayout();
+            this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSidemenu
             // 
             this.pnlSidemenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.pnlSidemenu.Controls.Add(this.sataButton6);
-            this.pnlSidemenu.Controls.Add(this.sataButton5);
-            this.pnlSidemenu.Controls.Add(this.sataButton4);
-            this.pnlSidemenu.Controls.Add(this.sataButton3);
-            this.pnlSidemenu.Controls.Add(this.sataButton2);
+            this.pnlSidemenu.Controls.Add(this.btnSettings);
+            this.pnlSidemenu.Controls.Add(this.btnGroupChats);
+            this.pnlSidemenu.Controls.Add(this.btnGroupMeetings);
+            this.pnlSidemenu.Controls.Add(this.btnGroupTasks);
+            this.pnlSidemenu.Controls.Add(this.btnMemberEvaluations);
             this.pnlSidemenu.Controls.Add(this.btnProjectGroups);
             this.pnlSidemenu.Controls.Add(this.btnHome);
             this.pnlSidemenu.Controls.Add(this.pnlCurrentGroup);
@@ -66,35 +71,6 @@
             this.pnlSidemenu.Name = "pnlSidemenu";
             this.pnlSidemenu.Size = new System.Drawing.Size(235, 661);
             this.pnlSidemenu.TabIndex = 0;
-            // 
-            // pnlLogo
-            // 
-            this.pnlLogo.Controls.Add(this.lblName);
-            this.pnlLogo.Controls.Add(this.pbxLogo);
-            this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlLogo.Location = new System.Drawing.Point(0, 0);
-            this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(235, 77);
-            this.pnlLogo.TabIndex = 1;
-            // 
-            // pbxLogo
-            // 
-            this.pbxLogo.Location = new System.Drawing.Point(14, 12);
-            this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(52, 51);
-            this.pbxLogo.TabIndex = 0;
-            this.pbxLogo.TabStop = false;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(73, 24);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(152, 27);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "CollaboRate";
             // 
             // pnlCurrentGroup
             // 
@@ -121,7 +97,7 @@
             // 
             this.sataComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
             this.sataComboBox1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.sataComboBox1.BorderColor = System.Drawing.Color.LightGray;
+            this.sataComboBox1.BorderColor = System.Drawing.Color.Gray;
             this.sataComboBox1.BorderThickness = 1;
             this.sataComboBox1.CornerRadius = 1;
             this.sataComboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -135,6 +111,403 @@
             this.sataComboBox1.Text = "sataComboBox1";
             this.sataComboBox1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.sataComboBox1.TextOffset = new System.Windows.Forms.Padding(0);
+            // 
+            // pnlLogo
+            // 
+            this.pnlLogo.Controls.Add(this.lblName);
+            this.pnlLogo.Controls.Add(this.pbxLogo);
+            this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlLogo.Location = new System.Drawing.Point(0, 0);
+            this.pnlLogo.Name = "pnlLogo";
+            this.pnlLogo.Size = new System.Drawing.Size(235, 77);
+            this.pnlLogo.TabIndex = 1;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(73, 24);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(152, 27);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "CollaboRate";
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.Controls.Add(this.btnMinimize);
+            this.pnlTop.Controls.Add(this.btnMaximize);
+            this.pnlTop.Controls.Add(this.btnClose);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(235, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(810, 34);
+            this.pnlTop.TabIndex = 1;
+            // 
+            // btnClose
+            // 
+            this.btnClose.ButtonText = "";
+            this.btnClose.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnClose.CheckedForeColor = System.Drawing.Color.White;
+            this.btnClose.CheckedImageTint = System.Drawing.Color.White;
+            this.btnClose.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnClose.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClose.HoverBackground = System.Drawing.Color.Red;
+            this.btnClose.HoverForeColor = System.Drawing.Color.White;
+            this.btnClose.HoverImage = null;
+            this.btnClose.HoverImageTint = System.Drawing.Color.White;
+            this.btnClose.HoverOutline = System.Drawing.Color.Empty;
+            this.btnClose.Image = null;
+            this.btnClose.ImageAutoCenter = true;
+            this.btnClose.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnClose.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnClose.ImageTint = System.Drawing.Color.White;
+            this.btnClose.IsToggleButton = false;
+            this.btnClose.IsToggled = false;
+            this.btnClose.Location = new System.Drawing.Point(765, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.NormalBackground = System.Drawing.SystemColors.ControlDark;
+            this.btnClose.NormalForeColor = System.Drawing.Color.White;
+            this.btnClose.NormalOutline = System.Drawing.Color.Empty;
+            this.btnClose.OutlineThickness = 0F;
+            this.btnClose.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnClose.PressedForeColor = System.Drawing.Color.White;
+            this.btnClose.PressedImageTint = System.Drawing.Color.White;
+            this.btnClose.PressedOutline = System.Drawing.Color.Empty;
+            this.btnClose.Rounding = new System.Windows.Forms.Padding(0);
+            this.btnClose.Size = new System.Drawing.Size(45, 34);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.TextAutoCenter = true;
+            this.btnClose.TextOffset = new System.Drawing.Point(0, 0);
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(235, 34);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(810, 627);
+            this.pnlMain.TabIndex = 2;
+            // 
+            // btnMaximize
+            // 
+            this.btnMaximize.ButtonText = "";
+            this.btnMaximize.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnMaximize.CheckedForeColor = System.Drawing.Color.White;
+            this.btnMaximize.CheckedImageTint = System.Drawing.Color.White;
+            this.btnMaximize.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnMaximize.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMaximize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMaximize.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMaximize.HoverBackground = System.Drawing.Color.Red;
+            this.btnMaximize.HoverForeColor = System.Drawing.Color.White;
+            this.btnMaximize.HoverImage = null;
+            this.btnMaximize.HoverImageTint = System.Drawing.Color.White;
+            this.btnMaximize.HoverOutline = System.Drawing.Color.Empty;
+            this.btnMaximize.Image = null;
+            this.btnMaximize.ImageAutoCenter = true;
+            this.btnMaximize.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnMaximize.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnMaximize.ImageTint = System.Drawing.Color.White;
+            this.btnMaximize.IsToggleButton = false;
+            this.btnMaximize.IsToggled = false;
+            this.btnMaximize.Location = new System.Drawing.Point(720, 0);
+            this.btnMaximize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.NormalBackground = System.Drawing.SystemColors.ControlDark;
+            this.btnMaximize.NormalForeColor = System.Drawing.Color.White;
+            this.btnMaximize.NormalOutline = System.Drawing.Color.Empty;
+            this.btnMaximize.OutlineThickness = 0F;
+            this.btnMaximize.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnMaximize.PressedForeColor = System.Drawing.Color.White;
+            this.btnMaximize.PressedImageTint = System.Drawing.Color.White;
+            this.btnMaximize.PressedOutline = System.Drawing.Color.Empty;
+            this.btnMaximize.Rounding = new System.Windows.Forms.Padding(0);
+            this.btnMaximize.Size = new System.Drawing.Size(45, 34);
+            this.btnMaximize.TabIndex = 1;
+            this.btnMaximize.TextAutoCenter = true;
+            this.btnMaximize.TextOffset = new System.Drawing.Point(0, 0);
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.ButtonText = "";
+            this.btnMinimize.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnMinimize.CheckedForeColor = System.Drawing.Color.White;
+            this.btnMinimize.CheckedImageTint = System.Drawing.Color.White;
+            this.btnMinimize.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnMinimize.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMinimize.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMinimize.HoverBackground = System.Drawing.Color.Red;
+            this.btnMinimize.HoverForeColor = System.Drawing.Color.White;
+            this.btnMinimize.HoverImage = null;
+            this.btnMinimize.HoverImageTint = System.Drawing.Color.White;
+            this.btnMinimize.HoverOutline = System.Drawing.Color.Empty;
+            this.btnMinimize.Image = null;
+            this.btnMinimize.ImageAutoCenter = true;
+            this.btnMinimize.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnMinimize.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnMinimize.ImageTint = System.Drawing.Color.White;
+            this.btnMinimize.IsToggleButton = false;
+            this.btnMinimize.IsToggled = false;
+            this.btnMinimize.Location = new System.Drawing.Point(675, 0);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.NormalBackground = System.Drawing.SystemColors.ControlDark;
+            this.btnMinimize.NormalForeColor = System.Drawing.Color.White;
+            this.btnMinimize.NormalOutline = System.Drawing.Color.Empty;
+            this.btnMinimize.OutlineThickness = 0F;
+            this.btnMinimize.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnMinimize.PressedForeColor = System.Drawing.Color.White;
+            this.btnMinimize.PressedImageTint = System.Drawing.Color.White;
+            this.btnMinimize.PressedOutline = System.Drawing.Color.Empty;
+            this.btnMinimize.Rounding = new System.Windows.Forms.Padding(0);
+            this.btnMinimize.Size = new System.Drawing.Size(45, 34);
+            this.btnMinimize.TabIndex = 2;
+            this.btnMinimize.TextAutoCenter = true;
+            this.btnMinimize.TextOffset = new System.Drawing.Point(0, 0);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.ButtonText = "Settings";
+            this.btnSettings.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnSettings.CheckedForeColor = System.Drawing.Color.White;
+            this.btnSettings.CheckedImageTint = System.Drawing.Color.White;
+            this.btnSettings.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnSettings.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSettings.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnSettings.HoverForeColor = System.Drawing.Color.White;
+            this.btnSettings.HoverImage = null;
+            this.btnSettings.HoverImageTint = System.Drawing.Color.White;
+            this.btnSettings.HoverOutline = System.Drawing.Color.Empty;
+            this.btnSettings.Image = global::CollaboRate.Properties.Resources.home;
+            this.btnSettings.ImageAutoCenter = false;
+            this.btnSettings.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnSettings.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnSettings.ImageTint = System.Drawing.Color.White;
+            this.btnSettings.IsToggleButton = false;
+            this.btnSettings.IsToggled = false;
+            this.btnSettings.Location = new System.Drawing.Point(0, 359);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnSettings.NormalForeColor = System.Drawing.Color.White;
+            this.btnSettings.NormalOutline = System.Drawing.Color.Empty;
+            this.btnSettings.OutlineThickness = 2F;
+            this.btnSettings.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnSettings.PressedForeColor = System.Drawing.Color.White;
+            this.btnSettings.PressedImageTint = System.Drawing.Color.White;
+            this.btnSettings.PressedOutline = System.Drawing.Color.Empty;
+            this.btnSettings.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnSettings.Size = new System.Drawing.Size(235, 35);
+            this.btnSettings.TabIndex = 9;
+            this.btnSettings.TextAutoCenter = false;
+            this.btnSettings.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // btnGroupChats
+            // 
+            this.btnGroupChats.ButtonText = "Chats";
+            this.btnGroupChats.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnGroupChats.CheckedForeColor = System.Drawing.Color.White;
+            this.btnGroupChats.CheckedImageTint = System.Drawing.Color.White;
+            this.btnGroupChats.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnGroupChats.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGroupChats.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGroupChats.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGroupChats.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnGroupChats.HoverForeColor = System.Drawing.Color.White;
+            this.btnGroupChats.HoverImage = null;
+            this.btnGroupChats.HoverImageTint = System.Drawing.Color.White;
+            this.btnGroupChats.HoverOutline = System.Drawing.Color.Empty;
+            this.btnGroupChats.Image = global::CollaboRate.Properties.Resources.home;
+            this.btnGroupChats.ImageAutoCenter = false;
+            this.btnGroupChats.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnGroupChats.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnGroupChats.ImageTint = System.Drawing.Color.White;
+            this.btnGroupChats.IsToggleButton = false;
+            this.btnGroupChats.IsToggled = false;
+            this.btnGroupChats.Location = new System.Drawing.Point(0, 324);
+            this.btnGroupChats.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnGroupChats.Name = "btnGroupChats";
+            this.btnGroupChats.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnGroupChats.NormalForeColor = System.Drawing.Color.White;
+            this.btnGroupChats.NormalOutline = System.Drawing.Color.Empty;
+            this.btnGroupChats.OutlineThickness = 2F;
+            this.btnGroupChats.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnGroupChats.PressedForeColor = System.Drawing.Color.White;
+            this.btnGroupChats.PressedImageTint = System.Drawing.Color.White;
+            this.btnGroupChats.PressedOutline = System.Drawing.Color.Empty;
+            this.btnGroupChats.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnGroupChats.Size = new System.Drawing.Size(235, 35);
+            this.btnGroupChats.TabIndex = 8;
+            this.btnGroupChats.TextAutoCenter = false;
+            this.btnGroupChats.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnGroupChats.Click += new System.EventHandler(this.btnGroupChats_Click);
+            // 
+            // btnGroupMeetings
+            // 
+            this.btnGroupMeetings.ButtonText = "Group Meetings";
+            this.btnGroupMeetings.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnGroupMeetings.CheckedForeColor = System.Drawing.Color.White;
+            this.btnGroupMeetings.CheckedImageTint = System.Drawing.Color.White;
+            this.btnGroupMeetings.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnGroupMeetings.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGroupMeetings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGroupMeetings.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGroupMeetings.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnGroupMeetings.HoverForeColor = System.Drawing.Color.White;
+            this.btnGroupMeetings.HoverImage = null;
+            this.btnGroupMeetings.HoverImageTint = System.Drawing.Color.White;
+            this.btnGroupMeetings.HoverOutline = System.Drawing.Color.Empty;
+            this.btnGroupMeetings.Image = global::CollaboRate.Properties.Resources.home;
+            this.btnGroupMeetings.ImageAutoCenter = false;
+            this.btnGroupMeetings.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnGroupMeetings.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnGroupMeetings.ImageTint = System.Drawing.Color.White;
+            this.btnGroupMeetings.IsToggleButton = false;
+            this.btnGroupMeetings.IsToggled = false;
+            this.btnGroupMeetings.Location = new System.Drawing.Point(0, 289);
+            this.btnGroupMeetings.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnGroupMeetings.Name = "btnGroupMeetings";
+            this.btnGroupMeetings.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnGroupMeetings.NormalForeColor = System.Drawing.Color.White;
+            this.btnGroupMeetings.NormalOutline = System.Drawing.Color.Empty;
+            this.btnGroupMeetings.OutlineThickness = 2F;
+            this.btnGroupMeetings.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnGroupMeetings.PressedForeColor = System.Drawing.Color.White;
+            this.btnGroupMeetings.PressedImageTint = System.Drawing.Color.White;
+            this.btnGroupMeetings.PressedOutline = System.Drawing.Color.Empty;
+            this.btnGroupMeetings.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnGroupMeetings.Size = new System.Drawing.Size(235, 35);
+            this.btnGroupMeetings.TabIndex = 7;
+            this.btnGroupMeetings.TextAutoCenter = false;
+            this.btnGroupMeetings.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnGroupMeetings.Click += new System.EventHandler(this.btnGroupMeetings_Click);
+            // 
+            // btnGroupTasks
+            // 
+            this.btnGroupTasks.ButtonText = "Group Tasks";
+            this.btnGroupTasks.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnGroupTasks.CheckedForeColor = System.Drawing.Color.White;
+            this.btnGroupTasks.CheckedImageTint = System.Drawing.Color.White;
+            this.btnGroupTasks.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnGroupTasks.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGroupTasks.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGroupTasks.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGroupTasks.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnGroupTasks.HoverForeColor = System.Drawing.Color.White;
+            this.btnGroupTasks.HoverImage = null;
+            this.btnGroupTasks.HoverImageTint = System.Drawing.Color.White;
+            this.btnGroupTasks.HoverOutline = System.Drawing.Color.Empty;
+            this.btnGroupTasks.Image = global::CollaboRate.Properties.Resources.home;
+            this.btnGroupTasks.ImageAutoCenter = false;
+            this.btnGroupTasks.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnGroupTasks.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnGroupTasks.ImageTint = System.Drawing.Color.White;
+            this.btnGroupTasks.IsToggleButton = false;
+            this.btnGroupTasks.IsToggled = false;
+            this.btnGroupTasks.Location = new System.Drawing.Point(0, 254);
+            this.btnGroupTasks.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnGroupTasks.Name = "btnGroupTasks";
+            this.btnGroupTasks.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnGroupTasks.NormalForeColor = System.Drawing.Color.White;
+            this.btnGroupTasks.NormalOutline = System.Drawing.Color.Empty;
+            this.btnGroupTasks.OutlineThickness = 2F;
+            this.btnGroupTasks.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnGroupTasks.PressedForeColor = System.Drawing.Color.White;
+            this.btnGroupTasks.PressedImageTint = System.Drawing.Color.White;
+            this.btnGroupTasks.PressedOutline = System.Drawing.Color.Empty;
+            this.btnGroupTasks.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnGroupTasks.Size = new System.Drawing.Size(235, 35);
+            this.btnGroupTasks.TabIndex = 6;
+            this.btnGroupTasks.TextAutoCenter = false;
+            this.btnGroupTasks.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnGroupTasks.Click += new System.EventHandler(this.btnGroupTasks_Click);
+            // 
+            // btnMemberEvaluations
+            // 
+            this.btnMemberEvaluations.ButtonText = "Member Evaluations";
+            this.btnMemberEvaluations.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnMemberEvaluations.CheckedForeColor = System.Drawing.Color.White;
+            this.btnMemberEvaluations.CheckedImageTint = System.Drawing.Color.White;
+            this.btnMemberEvaluations.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnMemberEvaluations.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMemberEvaluations.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMemberEvaluations.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMemberEvaluations.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnMemberEvaluations.HoverForeColor = System.Drawing.Color.White;
+            this.btnMemberEvaluations.HoverImage = null;
+            this.btnMemberEvaluations.HoverImageTint = System.Drawing.Color.White;
+            this.btnMemberEvaluations.HoverOutline = System.Drawing.Color.Empty;
+            this.btnMemberEvaluations.Image = global::CollaboRate.Properties.Resources.home;
+            this.btnMemberEvaluations.ImageAutoCenter = false;
+            this.btnMemberEvaluations.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnMemberEvaluations.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnMemberEvaluations.ImageTint = System.Drawing.Color.White;
+            this.btnMemberEvaluations.IsToggleButton = false;
+            this.btnMemberEvaluations.IsToggled = false;
+            this.btnMemberEvaluations.Location = new System.Drawing.Point(0, 219);
+            this.btnMemberEvaluations.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnMemberEvaluations.Name = "btnMemberEvaluations";
+            this.btnMemberEvaluations.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnMemberEvaluations.NormalForeColor = System.Drawing.Color.White;
+            this.btnMemberEvaluations.NormalOutline = System.Drawing.Color.Empty;
+            this.btnMemberEvaluations.OutlineThickness = 2F;
+            this.btnMemberEvaluations.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnMemberEvaluations.PressedForeColor = System.Drawing.Color.White;
+            this.btnMemberEvaluations.PressedImageTint = System.Drawing.Color.White;
+            this.btnMemberEvaluations.PressedOutline = System.Drawing.Color.Empty;
+            this.btnMemberEvaluations.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnMemberEvaluations.Size = new System.Drawing.Size(235, 35);
+            this.btnMemberEvaluations.TabIndex = 5;
+            this.btnMemberEvaluations.TextAutoCenter = false;
+            this.btnMemberEvaluations.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnMemberEvaluations.Click += new System.EventHandler(this.btnMemberEvaluations_Click);
+            // 
+            // btnProjectGroups
+            // 
+            this.btnProjectGroups.ButtonText = "Project Groups";
+            this.btnProjectGroups.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnProjectGroups.CheckedForeColor = System.Drawing.Color.White;
+            this.btnProjectGroups.CheckedImageTint = System.Drawing.Color.White;
+            this.btnProjectGroups.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnProjectGroups.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnProjectGroups.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProjectGroups.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProjectGroups.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnProjectGroups.HoverForeColor = System.Drawing.Color.White;
+            this.btnProjectGroups.HoverImage = null;
+            this.btnProjectGroups.HoverImageTint = System.Drawing.Color.White;
+            this.btnProjectGroups.HoverOutline = System.Drawing.Color.Empty;
+            this.btnProjectGroups.Image = global::CollaboRate.Properties.Resources.home;
+            this.btnProjectGroups.ImageAutoCenter = false;
+            this.btnProjectGroups.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnProjectGroups.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnProjectGroups.ImageTint = System.Drawing.Color.White;
+            this.btnProjectGroups.IsToggleButton = false;
+            this.btnProjectGroups.IsToggled = false;
+            this.btnProjectGroups.Location = new System.Drawing.Point(0, 184);
+            this.btnProjectGroups.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnProjectGroups.Name = "btnProjectGroups";
+            this.btnProjectGroups.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnProjectGroups.NormalForeColor = System.Drawing.Color.White;
+            this.btnProjectGroups.NormalOutline = System.Drawing.Color.Empty;
+            this.btnProjectGroups.OutlineThickness = 2F;
+            this.btnProjectGroups.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnProjectGroups.PressedForeColor = System.Drawing.Color.White;
+            this.btnProjectGroups.PressedImageTint = System.Drawing.Color.White;
+            this.btnProjectGroups.PressedOutline = System.Drawing.Color.Empty;
+            this.btnProjectGroups.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnProjectGroups.Size = new System.Drawing.Size(235, 35);
+            this.btnProjectGroups.TabIndex = 4;
+            this.btnProjectGroups.TextAutoCenter = false;
+            this.btnProjectGroups.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnProjectGroups.Click += new System.EventHandler(this.btnProjectGroups_Click);
             // 
             // btnHome
             // 
@@ -170,272 +543,41 @@
             this.btnHome.PressedImageTint = System.Drawing.Color.White;
             this.btnHome.PressedOutline = System.Drawing.Color.Empty;
             this.btnHome.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnHome.Size = new System.Drawing.Size(235, 33);
+            this.btnHome.Size = new System.Drawing.Size(235, 35);
             this.btnHome.TabIndex = 3;
             this.btnHome.TextAutoCenter = false;
             this.btnHome.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // btnProjectGroups
+            // pbxLogo
             // 
-            this.btnProjectGroups.ButtonText = "Project Groups";
-            this.btnProjectGroups.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.btnProjectGroups.CheckedForeColor = System.Drawing.Color.White;
-            this.btnProjectGroups.CheckedImageTint = System.Drawing.Color.White;
-            this.btnProjectGroups.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnProjectGroups.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnProjectGroups.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProjectGroups.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProjectGroups.HoverBackground = System.Drawing.Color.RoyalBlue;
-            this.btnProjectGroups.HoverForeColor = System.Drawing.Color.White;
-            this.btnProjectGroups.HoverImage = null;
-            this.btnProjectGroups.HoverImageTint = System.Drawing.Color.White;
-            this.btnProjectGroups.HoverOutline = System.Drawing.Color.Empty;
-            this.btnProjectGroups.Image = global::CollaboRate.Properties.Resources.home;
-            this.btnProjectGroups.ImageAutoCenter = false;
-            this.btnProjectGroups.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnProjectGroups.ImageOffset = new System.Drawing.Point(17, 0);
-            this.btnProjectGroups.ImageTint = System.Drawing.Color.White;
-            this.btnProjectGroups.IsToggleButton = false;
-            this.btnProjectGroups.IsToggled = false;
-            this.btnProjectGroups.Location = new System.Drawing.Point(0, 182);
-            this.btnProjectGroups.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnProjectGroups.Name = "btnProjectGroups";
-            this.btnProjectGroups.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.btnProjectGroups.NormalForeColor = System.Drawing.Color.White;
-            this.btnProjectGroups.NormalOutline = System.Drawing.Color.Empty;
-            this.btnProjectGroups.OutlineThickness = 2F;
-            this.btnProjectGroups.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.btnProjectGroups.PressedForeColor = System.Drawing.Color.White;
-            this.btnProjectGroups.PressedImageTint = System.Drawing.Color.White;
-            this.btnProjectGroups.PressedOutline = System.Drawing.Color.Empty;
-            this.btnProjectGroups.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnProjectGroups.Size = new System.Drawing.Size(235, 33);
-            this.btnProjectGroups.TabIndex = 4;
-            this.btnProjectGroups.TextAutoCenter = false;
-            this.btnProjectGroups.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // sataButton2
-            // 
-            this.sataButton2.ButtonText = "Member Evaluations";
-            this.sataButton2.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.sataButton2.CheckedForeColor = System.Drawing.Color.White;
-            this.sataButton2.CheckedImageTint = System.Drawing.Color.White;
-            this.sataButton2.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.sataButton2.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.sataButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sataButton2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sataButton2.HoverBackground = System.Drawing.Color.RoyalBlue;
-            this.sataButton2.HoverForeColor = System.Drawing.Color.White;
-            this.sataButton2.HoverImage = null;
-            this.sataButton2.HoverImageTint = System.Drawing.Color.White;
-            this.sataButton2.HoverOutline = System.Drawing.Color.Empty;
-            this.sataButton2.Image = global::CollaboRate.Properties.Resources.home;
-            this.sataButton2.ImageAutoCenter = false;
-            this.sataButton2.ImageExpand = new System.Drawing.Point(0, 0);
-            this.sataButton2.ImageOffset = new System.Drawing.Point(17, 0);
-            this.sataButton2.ImageTint = System.Drawing.Color.White;
-            this.sataButton2.IsToggleButton = false;
-            this.sataButton2.IsToggled = false;
-            this.sataButton2.Location = new System.Drawing.Point(0, 215);
-            this.sataButton2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.sataButton2.Name = "sataButton2";
-            this.sataButton2.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.sataButton2.NormalForeColor = System.Drawing.Color.White;
-            this.sataButton2.NormalOutline = System.Drawing.Color.Empty;
-            this.sataButton2.OutlineThickness = 2F;
-            this.sataButton2.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.sataButton2.PressedForeColor = System.Drawing.Color.White;
-            this.sataButton2.PressedImageTint = System.Drawing.Color.White;
-            this.sataButton2.PressedOutline = System.Drawing.Color.Empty;
-            this.sataButton2.Rounding = new System.Windows.Forms.Padding(5);
-            this.sataButton2.Size = new System.Drawing.Size(235, 33);
-            this.sataButton2.TabIndex = 5;
-            this.sataButton2.TextAutoCenter = false;
-            this.sataButton2.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // sataButton3
-            // 
-            this.sataButton3.ButtonText = "Group Tasks";
-            this.sataButton3.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.sataButton3.CheckedForeColor = System.Drawing.Color.White;
-            this.sataButton3.CheckedImageTint = System.Drawing.Color.White;
-            this.sataButton3.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.sataButton3.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.sataButton3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sataButton3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sataButton3.HoverBackground = System.Drawing.Color.RoyalBlue;
-            this.sataButton3.HoverForeColor = System.Drawing.Color.White;
-            this.sataButton3.HoverImage = null;
-            this.sataButton3.HoverImageTint = System.Drawing.Color.White;
-            this.sataButton3.HoverOutline = System.Drawing.Color.Empty;
-            this.sataButton3.Image = global::CollaboRate.Properties.Resources.home;
-            this.sataButton3.ImageAutoCenter = false;
-            this.sataButton3.ImageExpand = new System.Drawing.Point(0, 0);
-            this.sataButton3.ImageOffset = new System.Drawing.Point(17, 0);
-            this.sataButton3.ImageTint = System.Drawing.Color.White;
-            this.sataButton3.IsToggleButton = false;
-            this.sataButton3.IsToggled = false;
-            this.sataButton3.Location = new System.Drawing.Point(0, 248);
-            this.sataButton3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.sataButton3.Name = "sataButton3";
-            this.sataButton3.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.sataButton3.NormalForeColor = System.Drawing.Color.White;
-            this.sataButton3.NormalOutline = System.Drawing.Color.Empty;
-            this.sataButton3.OutlineThickness = 2F;
-            this.sataButton3.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.sataButton3.PressedForeColor = System.Drawing.Color.White;
-            this.sataButton3.PressedImageTint = System.Drawing.Color.White;
-            this.sataButton3.PressedOutline = System.Drawing.Color.Empty;
-            this.sataButton3.Rounding = new System.Windows.Forms.Padding(5);
-            this.sataButton3.Size = new System.Drawing.Size(235, 33);
-            this.sataButton3.TabIndex = 6;
-            this.sataButton3.TextAutoCenter = false;
-            this.sataButton3.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // sataButton4
-            // 
-            this.sataButton4.ButtonText = "Group Meetings";
-            this.sataButton4.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.sataButton4.CheckedForeColor = System.Drawing.Color.White;
-            this.sataButton4.CheckedImageTint = System.Drawing.Color.White;
-            this.sataButton4.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.sataButton4.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.sataButton4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sataButton4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sataButton4.HoverBackground = System.Drawing.Color.RoyalBlue;
-            this.sataButton4.HoverForeColor = System.Drawing.Color.White;
-            this.sataButton4.HoverImage = null;
-            this.sataButton4.HoverImageTint = System.Drawing.Color.White;
-            this.sataButton4.HoverOutline = System.Drawing.Color.Empty;
-            this.sataButton4.Image = global::CollaboRate.Properties.Resources.home;
-            this.sataButton4.ImageAutoCenter = false;
-            this.sataButton4.ImageExpand = new System.Drawing.Point(0, 0);
-            this.sataButton4.ImageOffset = new System.Drawing.Point(17, 0);
-            this.sataButton4.ImageTint = System.Drawing.Color.White;
-            this.sataButton4.IsToggleButton = false;
-            this.sataButton4.IsToggled = false;
-            this.sataButton4.Location = new System.Drawing.Point(0, 281);
-            this.sataButton4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.sataButton4.Name = "sataButton4";
-            this.sataButton4.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.sataButton4.NormalForeColor = System.Drawing.Color.White;
-            this.sataButton4.NormalOutline = System.Drawing.Color.Empty;
-            this.sataButton4.OutlineThickness = 2F;
-            this.sataButton4.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.sataButton4.PressedForeColor = System.Drawing.Color.White;
-            this.sataButton4.PressedImageTint = System.Drawing.Color.White;
-            this.sataButton4.PressedOutline = System.Drawing.Color.Empty;
-            this.sataButton4.Rounding = new System.Windows.Forms.Padding(5);
-            this.sataButton4.Size = new System.Drawing.Size(235, 33);
-            this.sataButton4.TabIndex = 7;
-            this.sataButton4.TextAutoCenter = false;
-            this.sataButton4.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // sataButton5
-            // 
-            this.sataButton5.ButtonText = "Chat";
-            this.sataButton5.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.sataButton5.CheckedForeColor = System.Drawing.Color.White;
-            this.sataButton5.CheckedImageTint = System.Drawing.Color.White;
-            this.sataButton5.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.sataButton5.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.sataButton5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sataButton5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sataButton5.HoverBackground = System.Drawing.Color.RoyalBlue;
-            this.sataButton5.HoverForeColor = System.Drawing.Color.White;
-            this.sataButton5.HoverImage = null;
-            this.sataButton5.HoverImageTint = System.Drawing.Color.White;
-            this.sataButton5.HoverOutline = System.Drawing.Color.Empty;
-            this.sataButton5.Image = global::CollaboRate.Properties.Resources.home;
-            this.sataButton5.ImageAutoCenter = false;
-            this.sataButton5.ImageExpand = new System.Drawing.Point(0, 0);
-            this.sataButton5.ImageOffset = new System.Drawing.Point(17, 0);
-            this.sataButton5.ImageTint = System.Drawing.Color.White;
-            this.sataButton5.IsToggleButton = false;
-            this.sataButton5.IsToggled = false;
-            this.sataButton5.Location = new System.Drawing.Point(0, 314);
-            this.sataButton5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.sataButton5.Name = "sataButton5";
-            this.sataButton5.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.sataButton5.NormalForeColor = System.Drawing.Color.White;
-            this.sataButton5.NormalOutline = System.Drawing.Color.Empty;
-            this.sataButton5.OutlineThickness = 2F;
-            this.sataButton5.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.sataButton5.PressedForeColor = System.Drawing.Color.White;
-            this.sataButton5.PressedImageTint = System.Drawing.Color.White;
-            this.sataButton5.PressedOutline = System.Drawing.Color.Empty;
-            this.sataButton5.Rounding = new System.Windows.Forms.Padding(5);
-            this.sataButton5.Size = new System.Drawing.Size(235, 33);
-            this.sataButton5.TabIndex = 8;
-            this.sataButton5.TextAutoCenter = false;
-            this.sataButton5.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // sataButton6
-            // 
-            this.sataButton6.ButtonText = "Settings";
-            this.sataButton6.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.sataButton6.CheckedForeColor = System.Drawing.Color.White;
-            this.sataButton6.CheckedImageTint = System.Drawing.Color.White;
-            this.sataButton6.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.sataButton6.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.sataButton6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sataButton6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sataButton6.HoverBackground = System.Drawing.Color.RoyalBlue;
-            this.sataButton6.HoverForeColor = System.Drawing.Color.White;
-            this.sataButton6.HoverImage = null;
-            this.sataButton6.HoverImageTint = System.Drawing.Color.White;
-            this.sataButton6.HoverOutline = System.Drawing.Color.Empty;
-            this.sataButton6.Image = global::CollaboRate.Properties.Resources.home;
-            this.sataButton6.ImageAutoCenter = false;
-            this.sataButton6.ImageExpand = new System.Drawing.Point(0, 0);
-            this.sataButton6.ImageOffset = new System.Drawing.Point(17, 0);
-            this.sataButton6.ImageTint = System.Drawing.Color.White;
-            this.sataButton6.IsToggleButton = false;
-            this.sataButton6.IsToggled = false;
-            this.sataButton6.Location = new System.Drawing.Point(0, 347);
-            this.sataButton6.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.sataButton6.Name = "sataButton6";
-            this.sataButton6.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.sataButton6.NormalForeColor = System.Drawing.Color.White;
-            this.sataButton6.NormalOutline = System.Drawing.Color.Empty;
-            this.sataButton6.OutlineThickness = 2F;
-            this.sataButton6.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.sataButton6.PressedForeColor = System.Drawing.Color.White;
-            this.sataButton6.PressedImageTint = System.Drawing.Color.White;
-            this.sataButton6.PressedOutline = System.Drawing.Color.Empty;
-            this.sataButton6.Rounding = new System.Windows.Forms.Padding(5);
-            this.sataButton6.Size = new System.Drawing.Size(235, 33);
-            this.sataButton6.TabIndex = 9;
-            this.sataButton6.TextAutoCenter = false;
-            this.sataButton6.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // pnlTop
-            // 
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(235, 0);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(810, 48);
-            this.pnlTop.TabIndex = 1;
+            this.pbxLogo.Location = new System.Drawing.Point(14, 12);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(52, 51);
+            this.pbxLogo.TabIndex = 0;
+            this.pbxLogo.TabStop = false;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 661);
+            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.pnlSidemenu);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.pnlSidemenu.ResumeLayout(false);
-            this.pnlLogo.ResumeLayout(false);
-            this.pnlLogo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.pnlCurrentGroup.ResumeLayout(false);
             this.pnlCurrentGroup.PerformLayout();
+            this.pnlLogo.ResumeLayout(false);
+            this.pnlLogo.PerformLayout();
+            this.pnlTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -450,13 +592,17 @@
         private System.Windows.Forms.Label lblCurrentGroup;
         private SATAComboBox sataComboBox1;
         private FrameworkTest.SATAButton btnHome;
-        private FrameworkTest.SATAButton sataButton6;
-        private FrameworkTest.SATAButton sataButton5;
-        private FrameworkTest.SATAButton sataButton4;
-        private FrameworkTest.SATAButton sataButton3;
-        private FrameworkTest.SATAButton sataButton2;
+        private FrameworkTest.SATAButton btnSettings;
+        private FrameworkTest.SATAButton btnGroupChats;
+        private FrameworkTest.SATAButton btnGroupMeetings;
+        private FrameworkTest.SATAButton btnGroupTasks;
+        private FrameworkTest.SATAButton btnMemberEvaluations;
         private FrameworkTest.SATAButton btnProjectGroups;
         private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.Panel pnlMain;
+        private FrameworkTest.SATAButton btnClose;
+        private FrameworkTest.SATAButton btnMinimize;
+        private FrameworkTest.SATAButton btnMaximize;
     }
 }
 

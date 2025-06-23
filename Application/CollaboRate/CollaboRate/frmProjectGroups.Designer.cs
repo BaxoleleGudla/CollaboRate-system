@@ -31,14 +31,14 @@
             SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.lblCurrentProjectGroup = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlCurrentGroup = new SATAUiFramework.SATAPanel();
             this.lblNumOfMembers = new System.Windows.Forms.Label();
             this.pbxNumOfMembers = new System.Windows.Forms.PictureBox();
@@ -47,30 +47,30 @@
             this.lblGroupDescription = new System.Windows.Forms.Label();
             this.lblGroupName = new System.Windows.Forms.Label();
             this.pbxGroupNameIcon = new System.Windows.Forms.PictureBox();
-            this.btnProjectGroups = new FrameworkTest.SATAButton();
+            this.btnCreateNewGroup = new FrameworkTest.SATAButton();
             this.lblHeading = new System.Windows.Forms.Label();
             this.pnlMiddle = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlBottom = new System.Windows.Forms.Panel();
             this.dgViewJoinRequests = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dgViewProjectGroups = new System.Windows.Forms.DataGridView();
             this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcceptRequest = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Control_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RejectRequest = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pnlBottom = new System.Windows.Forms.Panel();
+            this.txtSearchGroup = new SATATextBox();
+            this.dgViewProjectGroups = new System.Windows.Forms.DataGridView();
             this.Group_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Group_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequestCancelJoin = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             this.pnlCurrentGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNumOfMembers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGroupNameIcon)).BeginInit();
             this.pnlMiddle.SuspendLayout();
-            this.pnlBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewJoinRequests)).BeginInit();
+            this.pnlBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewProjectGroups)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +79,7 @@
             this.pnlTop.Controls.Add(this.lblCurrentProjectGroup);
             this.pnlTop.Controls.Add(this.button1);
             this.pnlTop.Controls.Add(this.pnlCurrentGroup);
-            this.pnlTop.Controls.Add(this.btnProjectGroups);
+            this.pnlTop.Controls.Add(this.btnCreateNewGroup);
             this.pnlTop.Controls.Add(this.lblHeading);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
@@ -96,6 +96,16 @@
             this.lblCurrentProjectGroup.Size = new System.Drawing.Size(184, 19);
             this.lblCurrentProjectGroup.TabIndex = 11;
             this.lblCurrentProjectGroup.Text = "Current Project Group";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(419, 27);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pnlCurrentGroup
             // 
@@ -141,7 +151,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(2, 119);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(770, 1);
@@ -155,10 +164,9 @@
             this.btnEditGroup.CheckedImageTint = System.Drawing.Color.White;
             this.btnEditGroup.CheckedOutline = System.Drawing.Color.DodgerBlue;
             this.btnEditGroup.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEditGroup.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnEditGroup.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditGroup.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnEditGroup.HoverForeColor = System.Drawing.Color.White;
+            this.btnEditGroup.HoverBackground = System.Drawing.Color.Gainsboro;
+            this.btnEditGroup.HoverForeColor = System.Drawing.Color.Black;
             this.btnEditGroup.HoverImage = null;
             this.btnEditGroup.HoverImageTint = System.Drawing.Color.White;
             this.btnEditGroup.HoverOutline = System.Drawing.Color.Empty;
@@ -169,8 +177,8 @@
             this.btnEditGroup.ImageTint = System.Drawing.Color.White;
             this.btnEditGroup.IsToggleButton = false;
             this.btnEditGroup.IsToggled = false;
-            this.btnEditGroup.Location = new System.Drawing.Point(2, 120);
-            this.btnEditGroup.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.btnEditGroup.Location = new System.Drawing.Point(2, 118);
+            this.btnEditGroup.Margin = new System.Windows.Forms.Padding(0);
             this.btnEditGroup.Name = "btnEditGroup";
             this.btnEditGroup.NormalBackground = System.Drawing.Color.White;
             this.btnEditGroup.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
@@ -180,7 +188,7 @@
             this.btnEditGroup.PressedForeColor = System.Drawing.Color.White;
             this.btnEditGroup.PressedImageTint = System.Drawing.Color.White;
             this.btnEditGroup.PressedOutline = System.Drawing.Color.Empty;
-            this.btnEditGroup.Rounding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.btnEditGroup.Rounding = new System.Windows.Forms.Padding(0, 0, 5, 5);
             this.btnEditGroup.Size = new System.Drawing.Size(770, 29);
             this.btnEditGroup.TabIndex = 3;
             this.btnEditGroup.TextAutoCenter = true;
@@ -213,43 +221,43 @@
             this.pbxGroupNameIcon.TabIndex = 0;
             this.pbxGroupNameIcon.TabStop = false;
             // 
-            // btnProjectGroups
+            // btnCreateNewGroup
             // 
-            this.btnProjectGroups.ButtonText = "Project Groups";
-            this.btnProjectGroups.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.btnProjectGroups.CheckedForeColor = System.Drawing.Color.White;
-            this.btnProjectGroups.CheckedImageTint = System.Drawing.Color.White;
-            this.btnProjectGroups.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnProjectGroups.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnProjectGroups.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProjectGroups.HoverBackground = System.Drawing.Color.RoyalBlue;
-            this.btnProjectGroups.HoverForeColor = System.Drawing.Color.White;
-            this.btnProjectGroups.HoverImage = null;
-            this.btnProjectGroups.HoverImageTint = System.Drawing.Color.White;
-            this.btnProjectGroups.HoverOutline = System.Drawing.Color.Empty;
-            this.btnProjectGroups.Image = global::CollaboRate.Properties.Resources.home;
-            this.btnProjectGroups.ImageAutoCenter = false;
-            this.btnProjectGroups.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnProjectGroups.ImageOffset = new System.Drawing.Point(17, 0);
-            this.btnProjectGroups.ImageTint = System.Drawing.Color.White;
-            this.btnProjectGroups.IsToggleButton = false;
-            this.btnProjectGroups.IsToggled = false;
-            this.btnProjectGroups.Location = new System.Drawing.Point(557, 27);
-            this.btnProjectGroups.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnProjectGroups.Name = "btnProjectGroups";
-            this.btnProjectGroups.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.btnProjectGroups.NormalForeColor = System.Drawing.Color.White;
-            this.btnProjectGroups.NormalOutline = System.Drawing.Color.Empty;
-            this.btnProjectGroups.OutlineThickness = 2F;
-            this.btnProjectGroups.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.btnProjectGroups.PressedForeColor = System.Drawing.Color.White;
-            this.btnProjectGroups.PressedImageTint = System.Drawing.Color.White;
-            this.btnProjectGroups.PressedOutline = System.Drawing.Color.Empty;
-            this.btnProjectGroups.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnProjectGroups.Size = new System.Drawing.Size(235, 35);
-            this.btnProjectGroups.TabIndex = 9;
-            this.btnProjectGroups.TextAutoCenter = false;
-            this.btnProjectGroups.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnCreateNewGroup.ButtonText = "Create New Group";
+            this.btnCreateNewGroup.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnCreateNewGroup.CheckedForeColor = System.Drawing.Color.White;
+            this.btnCreateNewGroup.CheckedImageTint = System.Drawing.Color.White;
+            this.btnCreateNewGroup.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnCreateNewGroup.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCreateNewGroup.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateNewGroup.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnCreateNewGroup.HoverForeColor = System.Drawing.Color.White;
+            this.btnCreateNewGroup.HoverImage = null;
+            this.btnCreateNewGroup.HoverImageTint = System.Drawing.Color.White;
+            this.btnCreateNewGroup.HoverOutline = System.Drawing.Color.Empty;
+            this.btnCreateNewGroup.Image = global::CollaboRate.Properties.Resources.home;
+            this.btnCreateNewGroup.ImageAutoCenter = false;
+            this.btnCreateNewGroup.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnCreateNewGroup.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnCreateNewGroup.ImageTint = System.Drawing.Color.White;
+            this.btnCreateNewGroup.IsToggleButton = false;
+            this.btnCreateNewGroup.IsToggled = false;
+            this.btnCreateNewGroup.Location = new System.Drawing.Point(557, 27);
+            this.btnCreateNewGroup.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnCreateNewGroup.Name = "btnCreateNewGroup";
+            this.btnCreateNewGroup.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnCreateNewGroup.NormalForeColor = System.Drawing.Color.White;
+            this.btnCreateNewGroup.NormalOutline = System.Drawing.Color.Empty;
+            this.btnCreateNewGroup.OutlineThickness = 2F;
+            this.btnCreateNewGroup.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnCreateNewGroup.PressedForeColor = System.Drawing.Color.White;
+            this.btnCreateNewGroup.PressedImageTint = System.Drawing.Color.White;
+            this.btnCreateNewGroup.PressedOutline = System.Drawing.Color.Empty;
+            this.btnCreateNewGroup.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnCreateNewGroup.Size = new System.Drawing.Size(235, 35);
+            this.btnCreateNewGroup.TabIndex = 9;
+            this.btnCreateNewGroup.TextAutoCenter = false;
+            this.btnCreateNewGroup.TextOffset = new System.Drawing.Point(0, 0);
             // 
             // lblHeading
             // 
@@ -257,9 +265,9 @@
             this.lblHeading.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeading.Location = new System.Drawing.Point(10, 31);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(288, 27);
+            this.lblHeading.Size = new System.Drawing.Size(325, 27);
             this.lblHeading.TabIndex = 8;
-            this.lblHeading.Text = "Project Group Managent";
+            this.lblHeading.Text = "Project Group Management";
             // 
             // pnlMiddle
             // 
@@ -281,20 +289,12 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Pending Membership Requests";
             // 
-            // pnlBottom
-            // 
-            this.pnlBottom.Controls.Add(this.dgViewProjectGroups);
-            this.pnlBottom.Controls.Add(this.label2);
-            this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBottom.Location = new System.Drawing.Point(0, 402);
-            this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(810, 225);
-            this.pnlBottom.TabIndex = 2;
-            // 
             // dgViewJoinRequests
             // 
             this.dgViewJoinRequests.AllowUserToAddRows = false;
             this.dgViewJoinRequests.AllowUserToDeleteRows = false;
+            this.dgViewJoinRequests.AllowUserToResizeColumns = false;
+            this.dgViewJoinRequests.AllowUserToResizeRows = false;
             this.dgViewJoinRequests.BackgroundColor = System.Drawing.Color.White;
             this.dgViewJoinRequests.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewJoinRequests.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -315,86 +315,20 @@
             this.AcceptRequest,
             this.Control_Column,
             this.RejectRequest});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgViewJoinRequests.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgViewJoinRequests.EnableHeadersVisualStyles = false;
             this.dgViewJoinRequests.GridColor = System.Drawing.SystemColors.Control;
-            this.dgViewJoinRequests.Location = new System.Drawing.Point(18, 33);
+            this.dgViewJoinRequests.Location = new System.Drawing.Point(18, 26);
             this.dgViewJoinRequests.Name = "dgViewJoinRequests";
             this.dgViewJoinRequests.ReadOnly = true;
             this.dgViewJoinRequests.RowHeadersVisible = false;
             this.dgViewJoinRequests.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewJoinRequests.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgViewJoinRequests.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewJoinRequests.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgViewJoinRequests.RowTemplate.DividerHeight = 5;
             this.dgViewJoinRequests.RowTemplate.Height = 35;
-            this.dgViewJoinRequests.Size = new System.Drawing.Size(774, 86);
+            this.dgViewJoinRequests.Size = new System.Drawing.Size(774, 93);
             this.dgViewJoinRequests.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(419, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(234, 19);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Search && Join Other Groups";
-            // 
-            // dgViewProjectGroups
-            // 
-            this.dgViewProjectGroups.AllowUserToAddRows = false;
-            this.dgViewProjectGroups.AllowUserToDeleteRows = false;
-            this.dgViewProjectGroups.BackgroundColor = System.Drawing.Color.White;
-            this.dgViewProjectGroups.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgViewProjectGroups.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewProjectGroups.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgViewProjectGroups.ColumnHeadersHeight = 35;
-            this.dgViewProjectGroups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgViewProjectGroups.ColumnHeadersVisible = false;
-            this.dgViewProjectGroups.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Group_ID,
-            this.Group_Name,
-            this.RequestCancelJoin});
-            this.dgViewProjectGroups.EnableHeadersVisualStyles = false;
-            this.dgViewProjectGroups.GridColor = System.Drawing.SystemColors.Control;
-            this.dgViewProjectGroups.Location = new System.Drawing.Point(20, 85);
-            this.dgViewProjectGroups.Name = "dgViewProjectGroups";
-            this.dgViewProjectGroups.ReadOnly = true;
-            this.dgViewProjectGroups.RowHeadersVisible = false;
-            this.dgViewProjectGroups.RowHeadersWidth = 51;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewProjectGroups.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgViewProjectGroups.RowTemplate.DividerHeight = 5;
-            this.dgViewProjectGroups.RowTemplate.Height = 35;
-            this.dgViewProjectGroups.Size = new System.Drawing.Size(772, 86);
-            this.dgViewProjectGroups.TabIndex = 13;
             // 
             // User_ID
             // 
@@ -454,6 +388,76 @@
             this.RejectRequest.UseColumnTextForButtonValue = true;
             this.RejectRequest.Width = 114;
             // 
+            // pnlBottom
+            // 
+            this.pnlBottom.Controls.Add(this.txtSearchGroup);
+            this.pnlBottom.Controls.Add(this.dgViewProjectGroups);
+            this.pnlBottom.Controls.Add(this.label2);
+            this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBottom.Location = new System.Drawing.Point(0, 402);
+            this.pnlBottom.Name = "pnlBottom";
+            this.pnlBottom.Size = new System.Drawing.Size(810, 225);
+            this.pnlBottom.TabIndex = 2;
+            // 
+            // txtSearchGroup
+            // 
+            this.txtSearchGroup.BackColor = System.Drawing.Color.White;
+            this.txtSearchGroup.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.txtSearchGroup.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.txtSearchGroup.BorderRadius = 5;
+            this.txtSearchGroup.BorderSize = 1;
+            this.txtSearchGroup.Icon = null;
+            this.txtSearchGroup.IconSize = new System.Drawing.Size(20, 20);
+            this.txtSearchGroup.Location = new System.Drawing.Point(20, 45);
+            this.txtSearchGroup.Multiline = false;
+            this.txtSearchGroup.Name = "txtSearchGroup";
+            this.txtSearchGroup.PasswordChar = false;
+            this.txtSearchGroup.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txtSearchGroup.PlaceholderText = "Search project group";
+            this.txtSearchGroup.Size = new System.Drawing.Size(770, 39);
+            this.txtSearchGroup.TabIndex = 14;
+            this.txtSearchGroup.Texts = "";
+            this.txtSearchGroup.UnderlinedStyle = false;
+            // 
+            // dgViewProjectGroups
+            // 
+            this.dgViewProjectGroups.AllowUserToAddRows = false;
+            this.dgViewProjectGroups.AllowUserToDeleteRows = false;
+            this.dgViewProjectGroups.AllowUserToResizeColumns = false;
+            this.dgViewProjectGroups.AllowUserToResizeRows = false;
+            this.dgViewProjectGroups.BackgroundColor = System.Drawing.Color.White;
+            this.dgViewProjectGroups.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgViewProjectGroups.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewProjectGroups.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgViewProjectGroups.ColumnHeadersHeight = 35;
+            this.dgViewProjectGroups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgViewProjectGroups.ColumnHeadersVisible = false;
+            this.dgViewProjectGroups.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Group_ID,
+            this.Group_Name,
+            this.RequestCancelJoin});
+            this.dgViewProjectGroups.EnableHeadersVisualStyles = false;
+            this.dgViewProjectGroups.GridColor = System.Drawing.SystemColors.Control;
+            this.dgViewProjectGroups.Location = new System.Drawing.Point(20, 95);
+            this.dgViewProjectGroups.Name = "dgViewProjectGroups";
+            this.dgViewProjectGroups.ReadOnly = true;
+            this.dgViewProjectGroups.RowHeadersVisible = false;
+            this.dgViewProjectGroups.RowHeadersWidth = 51;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewProjectGroups.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgViewProjectGroups.RowTemplate.DividerHeight = 5;
+            this.dgViewProjectGroups.RowTemplate.Height = 35;
+            this.dgViewProjectGroups.Size = new System.Drawing.Size(772, 118);
+            this.dgViewProjectGroups.TabIndex = 13;
+            // 
             // Group_ID
             // 
             this.Group_ID.HeaderText = "Group ID";
@@ -473,20 +477,30 @@
             // 
             // RequestCancelJoin
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.RequestCancelJoin.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.RequestCancelJoin.DefaultCellStyle = dataGridViewCellStyle6;
             this.RequestCancelJoin.FillWeight = 75F;
             this.RequestCancelJoin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RequestCancelJoin.HeaderText = "Accept";
+            this.RequestCancelJoin.HeaderText = "Action";
             this.RequestCancelJoin.MinimumWidth = 6;
             this.RequestCancelJoin.Name = "RequestCancelJoin";
             this.RequestCancelJoin.ReadOnly = true;
             this.RequestCancelJoin.Text = "Request To Join";
             this.RequestCancelJoin.UseColumnTextForButtonValue = true;
             this.RequestCancelJoin.Width = 235;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(16, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(234, 19);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Search && Join Other Groups";
             // 
             // frmProjectGroups
             // 
@@ -510,9 +524,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxGroupNameIcon)).EndInit();
             this.pnlMiddle.ResumeLayout(false);
             this.pnlMiddle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgViewJoinRequests)).EndInit();
             this.pnlBottom.ResumeLayout(false);
             this.pnlBottom.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgViewJoinRequests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewProjectGroups)).EndInit();
             this.ResumeLayout(false);
 
@@ -523,7 +537,7 @@
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Label lblCurrentProjectGroup;
         private SATAUiFramework.SATAPanel pnlCurrentGroup;
-        private FrameworkTest.SATAButton btnProjectGroups;
+        private FrameworkTest.SATAButton btnCreateNewGroup;
         private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.Panel pnlMiddle;
         private System.Windows.Forms.Panel pnlBottom;
@@ -544,6 +558,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn AcceptRequest;
         private System.Windows.Forms.DataGridViewTextBoxColumn Control_Column;
         private System.Windows.Forms.DataGridViewButtonColumn RejectRequest;
+        private SATATextBox txtSearchGroup;
         private System.Windows.Forms.DataGridViewTextBoxColumn Group_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Group_Name;
         private System.Windows.Forms.DataGridViewButtonColumn RequestCancelJoin;

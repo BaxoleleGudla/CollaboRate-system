@@ -49,11 +49,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmGroupChats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGroupChats.Designer.cs">
+      <DependentUpon>frmGroupChats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGroupMeetings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGroupMeetings.Designer.cs">
+      <DependentUpon>frmGroupMeetings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGroupTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGroupTasks.Designer.cs">
+      <DependentUpon>frmGroupTasks.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMemberEvaluations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMemberEvaluations.Designer.cs">
+      <DependentUpon>frmMemberEvaluations.cs</DependentUpon>
     </Compile>
     <Compile Include="frmProjectGroups.cs">
       <SubType>Form</SubType>
@@ -63,8 +87,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmGroupChats.resx">
+      <DependentUpon>frmGroupChats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGroupMeetings.resx">
+      <DependentUpon>frmGroupMeetings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGroupTasks.resx">
+      <DependentUpon>frmGroupTasks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMemberEvaluations.resx">
+      <DependentUpon>frmMemberEvaluations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProjectGroups.resx">
       <DependentUpon>frmProjectGroups.cs</DependentUpon>

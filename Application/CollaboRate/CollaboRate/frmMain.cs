@@ -60,22 +60,22 @@ namespace CollaboRate
 
         private void btnMemberEvaluations_Click(object sender, EventArgs e)
         {
-            //openChildForm(new frmMemberEvaluations());
+            openChildForm(new frmMemberEvaluations());
         }
 
         private void btnGroupTasks_Click(object sender, EventArgs e)
         {
-            //openChildForm(new frmGroupTasks());
+            openChildForm(new frmGroupTasks());
         }
 
         private void btnGroupMeetings_Click(object sender, EventArgs e)
         {
-            //openChildForm(new frmGroupMeetings());
+            openChildForm(new frmGroupMeetings());
         }
 
         private void btnGroupChats_Click(object sender, EventArgs e)
         {
-            //openChildForm(new frmGroupChats());
+            openChildForm(new frmGroupChats());
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

@@ -35,6 +35,7 @@
             this.btnSendMessage = new FrameworkTest.SATAButton();
             this.txtMessage = new SATATextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.pnlDivider = new System.Windows.Forms.Panel();
             this.pnlBottom.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,13 +135,15 @@
             this.txtMessage.BorderFocusColor = System.Drawing.Color.WhiteSmoke;
             this.txtMessage.BorderRadius = 5;
             this.txtMessage.BorderSize = 1;
+            this.txtMessage.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMessage.Icon = null;
             this.txtMessage.IconSize = new System.Drawing.Size(20, 20);
             this.txtMessage.Location = new System.Drawing.Point(1, 4);
             this.txtMessage.Multiline = false;
             this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.txtMessage.PasswordChar = false;
-            this.txtMessage.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txtMessage.PlaceholderColor = System.Drawing.Color.DimGray;
             this.txtMessage.PlaceholderText = "Type a message";
             this.txtMessage.Size = new System.Drawing.Size(722, 39);
             this.txtMessage.TabIndex = 32;
@@ -157,12 +160,21 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // pnlDivider
+            // 
+            this.pnlDivider.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlDivider.Location = new System.Drawing.Point(0, 89);
+            this.pnlDivider.Name = "pnlDivider";
+            this.pnlDivider.Size = new System.Drawing.Size(810, 1);
+            this.pnlDivider.TabIndex = 33;
+            // 
             // frmGroupChats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(810, 627);
+            this.Controls.Add(this.pnlDivider);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlBottom);
             this.Controls.Add(this.lstChats);
@@ -188,5 +200,6 @@
         private SATATextBox txtMessage;
         private FrameworkTest.SATAButton btnSendMessage;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel pnlDivider;
     }
 }

@@ -19,7 +19,15 @@ namespace CollaboRate
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dgViewMemberEvaluations.Rows.Add("Mia", "5", "20", "Yes");
+            //dgViewMemberEvaluations.Rows.Add("Mia", "5", "20", "Yes");
+            frmUpdateMemberEvaluation updateMemberEvaluationForm = new frmUpdateMemberEvaluation();
+            updateMemberEvaluationForm.ShowDialog();
+        }
+
+        private void btnEvaluateAllMembers_Click(object sender, EventArgs e)
+        {
+            frmEvaluateAllMembers evaluateAllMembersForm = new frmEvaluateAllMembers();
+            evaluateAllMembersForm.ShowDialog();
         }
     }
 }

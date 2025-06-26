@@ -212,6 +212,7 @@
             this.btnEvaluateAllMembers.TabIndex = 16;
             this.btnEvaluateAllMembers.TextAutoCenter = false;
             this.btnEvaluateAllMembers.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnEvaluateAllMembers.Click += new System.EventHandler(this.btnEvaluateAllMembers_Click);
             // 
             // frmMemberEvaluations
             // 

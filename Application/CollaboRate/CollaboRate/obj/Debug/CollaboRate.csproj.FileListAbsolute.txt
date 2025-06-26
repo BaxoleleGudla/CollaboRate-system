@@ -56,3 +56,8 @@ C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\App
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupTasks.resources
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupMeetings.resources
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupChats.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmCreateNewGroup.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmEditGroup.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmAddNewMembers.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmEvaluateAllMembers.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmUpdateMemberEvaluation.resources

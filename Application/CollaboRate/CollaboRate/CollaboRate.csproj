@@ -49,6 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddNewMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddNewMembers.Designer.cs">
+      <DependentUpon>frmAddNewMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCreateNewGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateNewGroup.Designer.cs">
+      <DependentUpon>frmCreateNewGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEvaluateAllMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEvaluateAllMembers.Designer.cs">
+      <DependentUpon>frmEvaluateAllMembers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGroupChats.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +91,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageProjectGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageProjectGroup.Designer.cs">
+      <DependentUpon>frmManageProjectGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMemberEvaluations.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,8 +109,23 @@
     <Compile Include="frmProjectGroups.Designer.cs">
       <DependentUpon>frmProjectGroups.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUpdateMemberEvaluation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateMemberEvaluation.Designer.cs">
+      <DependentUpon>frmUpdateMemberEvaluation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAddNewMembers.resx">
+      <DependentUpon>frmAddNewMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateNewGroup.resx">
+      <DependentUpon>frmCreateNewGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEvaluateAllMembers.resx">
+      <DependentUpon>frmEvaluateAllMembers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGroupChats.resx">
       <DependentUpon>frmGroupChats.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,11 +138,17 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmManageProjectGroup.resx">
+      <DependentUpon>frmManageProjectGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMemberEvaluations.resx">
       <DependentUpon>frmMemberEvaluations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProjectGroups.resx">
       <DependentUpon>frmProjectGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateMemberEvaluation.resx">
+      <DependentUpon>frmUpdateMemberEvaluation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

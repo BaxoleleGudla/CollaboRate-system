@@ -193,6 +193,7 @@
             this.btnEditGroup.TabIndex = 3;
             this.btnEditGroup.TextAutoCenter = true;
             this.btnEditGroup.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnEditGroup.Click += new System.EventHandler(this.btnEditGroup_Click);
             // 
             // lblGroupDescription
             // 
@@ -258,6 +259,7 @@
             this.btnCreateNewGroup.TabIndex = 9;
             this.btnCreateNewGroup.TextAutoCenter = false;
             this.btnCreateNewGroup.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnCreateNewGroup.Click += new System.EventHandler(this.btnCreateNewGroup_Click);
             // 
             // lblHeading
             // 

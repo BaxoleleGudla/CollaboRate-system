@@ -21,5 +21,11 @@ namespace CollaboRate
         {
             dgViewTasks.Rows.Add("", "Document", "Create documentation", "2025 June 5", "Mia", "In progress");
         }
+
+        private void btnCreateNewTask_Click(object sender, EventArgs e)
+        {
+            frmCreateUpdateTask createTaskForm = new frmCreateUpdateTask();
+            createTaskForm.ShowDialog();
+        }
     }
 }

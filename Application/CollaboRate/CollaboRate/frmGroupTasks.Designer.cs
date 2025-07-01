@@ -83,6 +83,7 @@
             this.btnCreateNewTask.TabIndex = 20;
             this.btnCreateNewTask.TextAutoCenter = false;
             this.btnCreateNewTask.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnCreateNewTask.Click += new System.EventHandler(this.btnCreateNewTask_Click);
             // 
             // lblHeading
             // 

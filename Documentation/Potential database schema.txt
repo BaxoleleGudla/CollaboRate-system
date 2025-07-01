@@ -1,0 +1,116 @@
+-- Users table
+CREATE TABLE Users (
+    user_id INT IDENTITY(1,1) PRIMARY KEY,
+    username NVARCHAR(50) NOT NULL UNIQUE,
+    email NVARCHAR(100) NOT NULL UNIQUE,
+    password_hash NVARCHAR(255) NOT NULL,
+    created_at DATETIME2 DEFAULT SYSUTCDATETIME()
+);
+
+-- Groups table
+CREATE TABLE Groups (
+    group_id INT IDENTITY(1,1) PRIMARY KEY,
+    group_name NVARCHAR(100) NOT NULL,
+    description NVARCHAR(MAX) NULL,
+    created_by INT NOT NULL,
+    created_at DATETIME2 DEFAULT SYSUTCDATETIME(),
+    CONSTRAINT FK_Groups_Users FOREIGN KEY (created_by) REFERENCES Users(user_id)
+);
+
+-- GroupMembers table
+CREATE TABLE GroupMembers (
+    group_member_id INT IDENTITY(1,1) PRIMARY KEY,
+    group_id INT NOT NULL,
+    user_id INT NOT NULL,
+    role NVARCHAR(10) NOT NULL CHECK (role IN ('Leader', 'Member')),
+    status NVARCHAR(10) NOT NULL CHECK (status IN ('Pending', 'Accepted')),
+    joined_at DATETIME2 NULL,
+    CONSTRAINT FK_GroupMembers_Groups FOREIGN KEY (group_id) REFERENCES Groups(group_id),
+    CONSTRAINT FK_GroupMembers_Users FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    CONSTRAINT UQ_GroupMembers_GroupUser UNIQUE (group_id, user_id)
+);
+
+-- Ratings table
+CREATE TABLE Ratings (
+    rating_id INT IDENTITY(1,1) PRIMARY KEY,
+    group_id INT NOT NULL,
+    rater_id INT NOT NULL,
+    ratee_id INT NOT NULL,
+    score TINYINT NOT NULL CHECK (score BETWEEN 1 AND 5),
+    rated_at DATETIME2 DEFAULT SYSUTCDATETIME(),
+    CONSTRAINT FK_Ratings_Groups FOREIGN KEY (group_id) REFERENCES Groups(group_id),
+    CONSTRAINT FK_Ratings_Rater FOREIGN KEY (rater_id) REFERENCES Users(user_id),
+    CONSTRAINT FK_Ratings_Ratee FOREIGN KEY (ratee_id) REFERENCES Users(user_id),
+    CONSTRAINT UQ_Ratings_GroupRaterRatee UNIQUE (group_id, rater_id, ratee_id)
+);
+
+-- Meetings table
+CREATE TABLE Meetings (
+    meeting_id INT IDENTITY(1,1) PRIMARY KEY,
+    group_id INT NOT NULL,
+    meeting_title NVARCHAR(200) NOT NULL,
+    meeting_description NVARCHAR(MAX) NULL,
+    scheduled_at DATETIME2 NOT NULL,
+    created_at DATETIME2 DEFAULT SYSUTCDATETIME(),
+    CONSTRAINT FK_Meetings_Groups FOREIGN KEY (group_id) REFERENCES Groups(group_id)
+);
+
+-- Tasks table
+CREATE TABLE Tasks (
+    task_id INT IDENTITY(1,1) PRIMARY KEY,
+    group_id INT NOT NULL,
+    task_title NVARCHAR(200) NOT NULL,
+    task_description NVARCHAR(MAX) NULL,
+    deadline DATETIME2 NOT NULL,
+    created_at DATETIME2 DEFAULT SYSUTCDATETIME(),
+    CONSTRAINT FK_Tasks_Groups FOREIGN KEY (group_id) REFERENCES Groups(group_id)
+);
+
+-- TaskAssignments table
+CREATE TABLE TaskAssignments (
+    task_assignment_id INT IDENTITY(1,1) PRIMARY KEY,
+    task_id INT NOT NULL,
+    user_id INT NOT NULL,
+    is_completed BIT NOT NULL DEFAULT 0,
+    completed_at DATETIME2 NULL,
+    note NVARCHAR(MAX) NULL,
+    CONSTRAINT FK_TaskAssignments_Tasks FOREIGN KEY (task_id) REFERENCES Tasks(task_id),
+    CONSTRAINT FK_TaskAssignments_Users FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    CONSTRAINT UQ_TaskAssignments_TaskUser UNIQUE (task_id, user_id)
+);
+
+-- Notification table
+CREATE TABLE GroupNotifications (
+    group_notification_id INT IDENTITY(1,1) PRIMARY KEY,
+    group_id INT NOT NULL,
+    notification_type NVARCHAR(50) NULL,
+    message NVARCHAR(MAX) NULL,
+    created_at DATETIME2 DEFAULT SYSUTCDATETIME(),
+    CONSTRAINT FK_GroupNotifications_Groups FOREIGN KEY (group_id) REFERENCES Groups(group_id)
+);
+
+-- Table to map notifications to users
+CREATE TABLE NotificationRecipients (
+    notification_recipient_id INT IDENTITY(1,1) PRIMARY KEY,
+    group_notification_id INT NOT NULL,
+    user_id INT NOT NULL,
+    is_read BIT NOT NULL DEFAULT 0,
+    CONSTRAINT FK_NotificationRecipients_GroupNotifications FOREIGN KEY (group_notification_id) REFERENCES GroupNotifications(group_notification_id),
+    CONSTRAINT FK_NotificationRecipients_Users FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+-- Roles table (optional for extended role management)
+CREATE TABLE Roles (
+    role_id INT IDENTITY(1,1) PRIMARY KEY,
+    role_name NVARCHAR(50) NOT NULL UNIQUE
+);
+
+-- UserRoles table (optional)
+CREATE TABLE UserRoles (
+    user_role_id INT IDENTITY(1,1) PRIMARY KEY,
+    user_id INT NOT NULL,
+    role_id INT NOT NULL,
+    CONSTRAINT FK_UserRoles_Users FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    CONSTRAINT FK_UserRoles_Roles FOREIGN KEY (role_id) REFERENCES Roles(role_id),
+    CONSTRAINT UQ_UserRoles_UserRole UNIQUE (user_id, role_id)
+);

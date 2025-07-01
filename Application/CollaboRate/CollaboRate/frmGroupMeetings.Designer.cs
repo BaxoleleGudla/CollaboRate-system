@@ -223,6 +223,7 @@
             this.btnScheduleNewMeeting.TabIndex = 26;
             this.btnScheduleNewMeeting.TextAutoCenter = false;
             this.btnScheduleNewMeeting.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnScheduleNewMeeting.Click += new System.EventHandler(this.btnScheduleNewMeeting_Click);
             // 
             // frmGroupMeetings
             // 

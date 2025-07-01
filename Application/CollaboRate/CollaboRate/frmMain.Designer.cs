@@ -29,16 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlSidemenu = new System.Windows.Forms.Panel();
-            this.pnlCurrentGroup = new System.Windows.Forms.Panel();
-            this.lblCurrentGroup = new System.Windows.Forms.Label();
-            this.sataComboBox1 = new SATAComboBox();
-            this.pnlLogo = new System.Windows.Forms.Panel();
-            this.lblName = new System.Windows.Forms.Label();
-            this.pnlTop = new System.Windows.Forms.Panel();
-            this.btnClose = new FrameworkTest.SATAButton();
-            this.pnlMain = new System.Windows.Forms.Panel();
-            this.btnMaximize = new FrameworkTest.SATAButton();
-            this.btnMinimize = new FrameworkTest.SATAButton();
+            this.pnlTopDiveder = new System.Windows.Forms.Panel();
             this.btnSettings = new FrameworkTest.SATAButton();
             this.btnGroupChats = new FrameworkTest.SATAButton();
             this.btnGroupMeetings = new FrameworkTest.SATAButton();
@@ -46,17 +37,29 @@
             this.btnMemberEvaluations = new FrameworkTest.SATAButton();
             this.btnProjectGroups = new FrameworkTest.SATAButton();
             this.btnHome = new FrameworkTest.SATAButton();
+            this.pnlCurrentGroup = new System.Windows.Forms.Panel();
+            this.pnlBottomDivider = new System.Windows.Forms.Panel();
+            this.cmbxCurrentGroup = new System.Windows.Forms.ComboBox();
+            this.lblCurrentGroup = new System.Windows.Forms.Label();
+            this.pnlLogo = new System.Windows.Forms.Panel();
+            this.lblName = new System.Windows.Forms.Label();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnMinimize = new FrameworkTest.SATAButton();
+            this.btnMaximize = new FrameworkTest.SATAButton();
+            this.btnClose = new FrameworkTest.SATAButton();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlSidemenu.SuspendLayout();
             this.pnlCurrentGroup.SuspendLayout();
             this.pnlLogo.SuspendLayout();
-            this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
+            this.pnlTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSidemenu
             // 
             this.pnlSidemenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.pnlSidemenu.Controls.Add(this.pnlTopDiveder);
             this.pnlSidemenu.Controls.Add(this.btnSettings);
             this.pnlSidemenu.Controls.Add(this.btnGroupChats);
             this.pnlSidemenu.Controls.Add(this.btnGroupMeetings);
@@ -72,202 +75,13 @@
             this.pnlSidemenu.Size = new System.Drawing.Size(235, 661);
             this.pnlSidemenu.TabIndex = 0;
             // 
-            // pnlCurrentGroup
+            // pnlTopDiveder
             // 
-            this.pnlCurrentGroup.Controls.Add(this.lblCurrentGroup);
-            this.pnlCurrentGroup.Controls.Add(this.sataComboBox1);
-            this.pnlCurrentGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlCurrentGroup.Location = new System.Drawing.Point(0, 77);
-            this.pnlCurrentGroup.Name = "pnlCurrentGroup";
-            this.pnlCurrentGroup.Size = new System.Drawing.Size(235, 72);
-            this.pnlCurrentGroup.TabIndex = 2;
-            // 
-            // lblCurrentGroup
-            // 
-            this.lblCurrentGroup.AutoSize = true;
-            this.lblCurrentGroup.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentGroup.ForeColor = System.Drawing.Color.White;
-            this.lblCurrentGroup.Location = new System.Drawing.Point(2, 2);
-            this.lblCurrentGroup.Name = "lblCurrentGroup";
-            this.lblCurrentGroup.Size = new System.Drawing.Size(116, 20);
-            this.lblCurrentGroup.TabIndex = 2;
-            this.lblCurrentGroup.Text = "Current group:";
-            // 
-            // sataComboBox1
-            // 
-            this.sataComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.sataComboBox1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.sataComboBox1.BorderColor = System.Drawing.Color.Gray;
-            this.sataComboBox1.BorderThickness = 1;
-            this.sataComboBox1.CornerRadius = 1;
-            this.sataComboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sataComboBox1.Items = null;
-            this.sataComboBox1.Keys = null;
-            this.sataComboBox1.Location = new System.Drawing.Point(0, 0);
-            this.sataComboBox1.Name = "sataComboBox1";
-            this.sataComboBox1.SelectedIndex = -1;
-            this.sataComboBox1.Size = new System.Drawing.Size(235, 72);
-            this.sataComboBox1.TabIndex = 2;
-            this.sataComboBox1.Text = "sataComboBox1";
-            this.sataComboBox1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.sataComboBox1.TextOffset = new System.Windows.Forms.Padding(0);
-            // 
-            // pnlLogo
-            // 
-            this.pnlLogo.Controls.Add(this.lblName);
-            this.pnlLogo.Controls.Add(this.pbxLogo);
-            this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlLogo.Location = new System.Drawing.Point(0, 0);
-            this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(235, 77);
-            this.pnlLogo.TabIndex = 1;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(73, 24);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(152, 27);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "CollaboRate";
-            // 
-            // pnlTop
-            // 
-            this.pnlTop.Controls.Add(this.btnMinimize);
-            this.pnlTop.Controls.Add(this.btnMaximize);
-            this.pnlTop.Controls.Add(this.btnClose);
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(235, 0);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(810, 34);
-            this.pnlTop.TabIndex = 1;
-            // 
-            // btnClose
-            // 
-            this.btnClose.ButtonText = "";
-            this.btnClose.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.btnClose.CheckedForeColor = System.Drawing.Color.White;
-            this.btnClose.CheckedImageTint = System.Drawing.Color.White;
-            this.btnClose.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnClose.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnClose.HoverBackground = System.Drawing.Color.Red;
-            this.btnClose.HoverForeColor = System.Drawing.Color.White;
-            this.btnClose.HoverImage = null;
-            this.btnClose.HoverImageTint = System.Drawing.Color.White;
-            this.btnClose.HoverOutline = System.Drawing.Color.Empty;
-            this.btnClose.Image = null;
-            this.btnClose.ImageAutoCenter = true;
-            this.btnClose.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnClose.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnClose.ImageTint = System.Drawing.Color.White;
-            this.btnClose.IsToggleButton = false;
-            this.btnClose.IsToggled = false;
-            this.btnClose.Location = new System.Drawing.Point(765, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.NormalBackground = System.Drawing.SystemColors.ControlDark;
-            this.btnClose.NormalForeColor = System.Drawing.Color.White;
-            this.btnClose.NormalOutline = System.Drawing.Color.Empty;
-            this.btnClose.OutlineThickness = 0F;
-            this.btnClose.PressedBackground = System.Drawing.Color.RoyalBlue;
-            this.btnClose.PressedForeColor = System.Drawing.Color.White;
-            this.btnClose.PressedImageTint = System.Drawing.Color.White;
-            this.btnClose.PressedOutline = System.Drawing.Color.Empty;
-            this.btnClose.Rounding = new System.Windows.Forms.Padding(0);
-            this.btnClose.Size = new System.Drawing.Size(45, 34);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.TextAutoCenter = true;
-            this.btnClose.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // pnlMain
-            // 
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(235, 34);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(810, 627);
-            this.pnlMain.TabIndex = 2;
-            // 
-            // btnMaximize
-            // 
-            this.btnMaximize.ButtonText = "";
-            this.btnMaximize.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.btnMaximize.CheckedForeColor = System.Drawing.Color.White;
-            this.btnMaximize.CheckedImageTint = System.Drawing.Color.White;
-            this.btnMaximize.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnMaximize.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnMaximize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMaximize.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnMaximize.HoverBackground = System.Drawing.Color.Red;
-            this.btnMaximize.HoverForeColor = System.Drawing.Color.White;
-            this.btnMaximize.HoverImage = null;
-            this.btnMaximize.HoverImageTint = System.Drawing.Color.White;
-            this.btnMaximize.HoverOutline = System.Drawing.Color.Empty;
-            this.btnMaximize.Image = null;
-            this.btnMaximize.ImageAutoCenter = true;
-            this.btnMaximize.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnMaximize.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnMaximize.ImageTint = System.Drawing.Color.White;
-            this.btnMaximize.IsToggleButton = false;
-            this.btnMaximize.IsToggled = false;
-            this.btnMaximize.Location = new System.Drawing.Point(720, 0);
-            this.btnMaximize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.NormalBackground = System.Drawing.SystemColors.ControlDark;
-            this.btnMaximize.NormalForeColor = System.Drawing.Color.White;
-            this.btnMaximize.NormalOutline = System.Drawing.Color.Empty;
-            this.btnMaximize.OutlineThickness = 0F;
-            this.btnMaximize.PressedBackground = System.Drawing.Color.RoyalBlue;
-            this.btnMaximize.PressedForeColor = System.Drawing.Color.White;
-            this.btnMaximize.PressedImageTint = System.Drawing.Color.White;
-            this.btnMaximize.PressedOutline = System.Drawing.Color.Empty;
-            this.btnMaximize.Rounding = new System.Windows.Forms.Padding(0);
-            this.btnMaximize.Size = new System.Drawing.Size(45, 34);
-            this.btnMaximize.TabIndex = 1;
-            this.btnMaximize.TextAutoCenter = true;
-            this.btnMaximize.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // btnMinimize
-            // 
-            this.btnMinimize.ButtonText = "";
-            this.btnMinimize.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.btnMinimize.CheckedForeColor = System.Drawing.Color.White;
-            this.btnMinimize.CheckedImageTint = System.Drawing.Color.White;
-            this.btnMinimize.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnMinimize.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMinimize.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnMinimize.HoverBackground = System.Drawing.Color.Red;
-            this.btnMinimize.HoverForeColor = System.Drawing.Color.White;
-            this.btnMinimize.HoverImage = null;
-            this.btnMinimize.HoverImageTint = System.Drawing.Color.White;
-            this.btnMinimize.HoverOutline = System.Drawing.Color.Empty;
-            this.btnMinimize.Image = null;
-            this.btnMinimize.ImageAutoCenter = true;
-            this.btnMinimize.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnMinimize.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnMinimize.ImageTint = System.Drawing.Color.White;
-            this.btnMinimize.IsToggleButton = false;
-            this.btnMinimize.IsToggled = false;
-            this.btnMinimize.Location = new System.Drawing.Point(675, 0);
-            this.btnMinimize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.NormalBackground = System.Drawing.SystemColors.ControlDark;
-            this.btnMinimize.NormalForeColor = System.Drawing.Color.White;
-            this.btnMinimize.NormalOutline = System.Drawing.Color.Empty;
-            this.btnMinimize.OutlineThickness = 0F;
-            this.btnMinimize.PressedBackground = System.Drawing.Color.RoyalBlue;
-            this.btnMinimize.PressedForeColor = System.Drawing.Color.White;
-            this.btnMinimize.PressedImageTint = System.Drawing.Color.White;
-            this.btnMinimize.PressedOutline = System.Drawing.Color.Empty;
-            this.btnMinimize.Rounding = new System.Windows.Forms.Padding(0);
-            this.btnMinimize.Size = new System.Drawing.Size(45, 34);
-            this.btnMinimize.TabIndex = 2;
-            this.btnMinimize.TextAutoCenter = true;
-            this.btnMinimize.TextOffset = new System.Drawing.Point(0, 0);
+            this.pnlTopDiveder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(182)))), ((int)(((byte)(210)))));
+            this.pnlTopDiveder.Location = new System.Drawing.Point(0, 77);
+            this.pnlTopDiveder.Name = "pnlTopDiveder";
+            this.pnlTopDiveder.Size = new System.Drawing.Size(235, 1);
+            this.pnlTopDiveder.TabIndex = 10;
             // 
             // btnSettings
             // 
@@ -549,13 +363,213 @@
             this.btnHome.TextOffset = new System.Drawing.Point(0, 0);
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
+            // pnlCurrentGroup
+            // 
+            this.pnlCurrentGroup.Controls.Add(this.pnlBottomDivider);
+            this.pnlCurrentGroup.Controls.Add(this.cmbxCurrentGroup);
+            this.pnlCurrentGroup.Controls.Add(this.lblCurrentGroup);
+            this.pnlCurrentGroup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlCurrentGroup.Location = new System.Drawing.Point(0, 77);
+            this.pnlCurrentGroup.Name = "pnlCurrentGroup";
+            this.pnlCurrentGroup.Size = new System.Drawing.Size(235, 72);
+            this.pnlCurrentGroup.TabIndex = 2;
+            // 
+            // pnlBottomDivider
+            // 
+            this.pnlBottomDivider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(182)))), ((int)(((byte)(210)))));
+            this.pnlBottomDivider.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBottomDivider.Location = new System.Drawing.Point(0, 71);
+            this.pnlBottomDivider.Name = "pnlBottomDivider";
+            this.pnlBottomDivider.Size = new System.Drawing.Size(235, 1);
+            this.pnlBottomDivider.TabIndex = 11;
+            // 
+            // cmbxCurrentGroup
+            // 
+            this.cmbxCurrentGroup.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cmbxCurrentGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxCurrentGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbxCurrentGroup.FormattingEnabled = true;
+            this.cmbxCurrentGroup.Location = new System.Drawing.Point(1, 30);
+            this.cmbxCurrentGroup.Name = "cmbxCurrentGroup";
+            this.cmbxCurrentGroup.Size = new System.Drawing.Size(233, 29);
+            this.cmbxCurrentGroup.TabIndex = 10;
+            this.cmbxCurrentGroup.SelectedIndexChanged += new System.EventHandler(this.cmbxCurrentGroup_SelectedIndexChanged);
+            // 
+            // lblCurrentGroup
+            // 
+            this.lblCurrentGroup.AutoSize = true;
+            this.lblCurrentGroup.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentGroup.ForeColor = System.Drawing.Color.White;
+            this.lblCurrentGroup.Location = new System.Drawing.Point(-2, 3);
+            this.lblCurrentGroup.Name = "lblCurrentGroup";
+            this.lblCurrentGroup.Size = new System.Drawing.Size(131, 21);
+            this.lblCurrentGroup.TabIndex = 2;
+            this.lblCurrentGroup.Text = "Current group:";
+            // 
+            // pnlLogo
+            // 
+            this.pnlLogo.Controls.Add(this.lblName);
+            this.pnlLogo.Controls.Add(this.pbxLogo);
+            this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlLogo.Location = new System.Drawing.Point(0, 0);
+            this.pnlLogo.Name = "pnlLogo";
+            this.pnlLogo.Size = new System.Drawing.Size(235, 77);
+            this.pnlLogo.TabIndex = 1;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(73, 25);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(152, 27);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "CollaboRate";
+            // 
             // pbxLogo
             // 
             this.pbxLogo.Location = new System.Drawing.Point(14, 12);
             this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(52, 51);
+            this.pbxLogo.Size = new System.Drawing.Size(52, 52);
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.Controls.Add(this.btnMinimize);
+            this.pnlTop.Controls.Add(this.btnMaximize);
+            this.pnlTop.Controls.Add(this.btnClose);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(235, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(810, 34);
+            this.pnlTop.TabIndex = 1;
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.ButtonText = "";
+            this.btnMinimize.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnMinimize.CheckedForeColor = System.Drawing.Color.White;
+            this.btnMinimize.CheckedImageTint = System.Drawing.Color.White;
+            this.btnMinimize.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnMinimize.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMinimize.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMinimize.HoverBackground = System.Drawing.Color.Red;
+            this.btnMinimize.HoverForeColor = System.Drawing.Color.White;
+            this.btnMinimize.HoverImage = null;
+            this.btnMinimize.HoverImageTint = System.Drawing.Color.White;
+            this.btnMinimize.HoverOutline = System.Drawing.Color.Empty;
+            this.btnMinimize.Image = null;
+            this.btnMinimize.ImageAutoCenter = true;
+            this.btnMinimize.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnMinimize.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnMinimize.ImageTint = System.Drawing.Color.White;
+            this.btnMinimize.IsToggleButton = false;
+            this.btnMinimize.IsToggled = false;
+            this.btnMinimize.Location = new System.Drawing.Point(675, 0);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.NormalBackground = System.Drawing.SystemColors.ControlDark;
+            this.btnMinimize.NormalForeColor = System.Drawing.Color.White;
+            this.btnMinimize.NormalOutline = System.Drawing.Color.Empty;
+            this.btnMinimize.OutlineThickness = 0F;
+            this.btnMinimize.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnMinimize.PressedForeColor = System.Drawing.Color.White;
+            this.btnMinimize.PressedImageTint = System.Drawing.Color.White;
+            this.btnMinimize.PressedOutline = System.Drawing.Color.Empty;
+            this.btnMinimize.Rounding = new System.Windows.Forms.Padding(0);
+            this.btnMinimize.Size = new System.Drawing.Size(45, 34);
+            this.btnMinimize.TabIndex = 2;
+            this.btnMinimize.TextAutoCenter = true;
+            this.btnMinimize.TextOffset = new System.Drawing.Point(0, 0);
+            // 
+            // btnMaximize
+            // 
+            this.btnMaximize.ButtonText = "";
+            this.btnMaximize.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnMaximize.CheckedForeColor = System.Drawing.Color.White;
+            this.btnMaximize.CheckedImageTint = System.Drawing.Color.White;
+            this.btnMaximize.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnMaximize.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMaximize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMaximize.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMaximize.HoverBackground = System.Drawing.Color.Red;
+            this.btnMaximize.HoverForeColor = System.Drawing.Color.White;
+            this.btnMaximize.HoverImage = null;
+            this.btnMaximize.HoverImageTint = System.Drawing.Color.White;
+            this.btnMaximize.HoverOutline = System.Drawing.Color.Empty;
+            this.btnMaximize.Image = null;
+            this.btnMaximize.ImageAutoCenter = true;
+            this.btnMaximize.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnMaximize.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnMaximize.ImageTint = System.Drawing.Color.White;
+            this.btnMaximize.IsToggleButton = false;
+            this.btnMaximize.IsToggled = false;
+            this.btnMaximize.Location = new System.Drawing.Point(720, 0);
+            this.btnMaximize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.NormalBackground = System.Drawing.SystemColors.ControlDark;
+            this.btnMaximize.NormalForeColor = System.Drawing.Color.White;
+            this.btnMaximize.NormalOutline = System.Drawing.Color.Empty;
+            this.btnMaximize.OutlineThickness = 0F;
+            this.btnMaximize.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnMaximize.PressedForeColor = System.Drawing.Color.White;
+            this.btnMaximize.PressedImageTint = System.Drawing.Color.White;
+            this.btnMaximize.PressedOutline = System.Drawing.Color.Empty;
+            this.btnMaximize.Rounding = new System.Windows.Forms.Padding(0);
+            this.btnMaximize.Size = new System.Drawing.Size(45, 34);
+            this.btnMaximize.TabIndex = 1;
+            this.btnMaximize.TextAutoCenter = true;
+            this.btnMaximize.TextOffset = new System.Drawing.Point(0, 0);
+            // 
+            // btnClose
+            // 
+            this.btnClose.ButtonText = "";
+            this.btnClose.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnClose.CheckedForeColor = System.Drawing.Color.White;
+            this.btnClose.CheckedImageTint = System.Drawing.Color.White;
+            this.btnClose.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnClose.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClose.HoverBackground = System.Drawing.Color.Red;
+            this.btnClose.HoverForeColor = System.Drawing.Color.White;
+            this.btnClose.HoverImage = null;
+            this.btnClose.HoverImageTint = System.Drawing.Color.White;
+            this.btnClose.HoverOutline = System.Drawing.Color.Empty;
+            this.btnClose.Image = null;
+            this.btnClose.ImageAutoCenter = true;
+            this.btnClose.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnClose.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnClose.ImageTint = System.Drawing.Color.White;
+            this.btnClose.IsToggleButton = false;
+            this.btnClose.IsToggled = false;
+            this.btnClose.Location = new System.Drawing.Point(765, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.NormalBackground = System.Drawing.SystemColors.ControlDark;
+            this.btnClose.NormalForeColor = System.Drawing.Color.White;
+            this.btnClose.NormalOutline = System.Drawing.Color.Empty;
+            this.btnClose.OutlineThickness = 0F;
+            this.btnClose.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnClose.PressedForeColor = System.Drawing.Color.White;
+            this.btnClose.PressedImageTint = System.Drawing.Color.White;
+            this.btnClose.PressedOutline = System.Drawing.Color.Empty;
+            this.btnClose.Rounding = new System.Windows.Forms.Padding(0);
+            this.btnClose.Size = new System.Drawing.Size(45, 34);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.TextAutoCenter = true;
+            this.btnClose.TextOffset = new System.Drawing.Point(0, 0);
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(235, 34);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(810, 627);
+            this.pnlMain.TabIndex = 2;
             // 
             // frmMain
             // 
@@ -571,13 +585,14 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlSidemenu.ResumeLayout(false);
             this.pnlCurrentGroup.ResumeLayout(false);
             this.pnlCurrentGroup.PerformLayout();
             this.pnlLogo.ResumeLayout(false);
             this.pnlLogo.PerformLayout();
-            this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
+            this.pnlTop.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -590,7 +605,6 @@
         private System.Windows.Forms.PictureBox pbxLogo;
         private System.Windows.Forms.Panel pnlCurrentGroup;
         private System.Windows.Forms.Label lblCurrentGroup;
-        private SATAComboBox sataComboBox1;
         private FrameworkTest.SATAButton btnHome;
         private FrameworkTest.SATAButton btnSettings;
         private FrameworkTest.SATAButton btnGroupChats;
@@ -603,6 +617,9 @@
         private FrameworkTest.SATAButton btnClose;
         private FrameworkTest.SATAButton btnMinimize;
         private FrameworkTest.SATAButton btnMaximize;
+        private System.Windows.Forms.ComboBox cmbxCurrentGroup;
+        private System.Windows.Forms.Panel pnlTopDiveder;
+        private System.Windows.Forms.Panel pnlBottomDivider;
     }
 }
 

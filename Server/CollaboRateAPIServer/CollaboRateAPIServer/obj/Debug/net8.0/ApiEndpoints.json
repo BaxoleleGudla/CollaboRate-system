@@ -1,5 +1,57 @@
 [
   {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
+    "Method": "GetGroupsWithAcceptedUsers",
+    "RelativePath": "api/Groups/{groupId}/details-with-accepted-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CollaboRateAPIServer.Dtos.AcceptedGroupUsersDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
+    "Method": "GetGroupsForUser",
+    "RelativePath": "api/Groups/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CollaboRateAPIServer.Controllers.GroupDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "CollaboRateAPIServer.Controllers.UsersController",
     "Method": "GetUsers",
     "RelativePath": "api/Users",

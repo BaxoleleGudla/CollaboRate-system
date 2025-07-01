@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lblCurrentProjectGroup = new System.Windows.Forms.Label();
+            this.lblHeading = new System.Windows.Forms.Label();
             this.txtGroupName = new SATATextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,23 +40,23 @@
             this.lblGroupDescriptionError = new System.Windows.Forms.Label();
             this.txtSearchUsername = new SATATextBox();
             this.dgViewUsers = new System.Windows.Forms.DataGridView();
-            this.btnCreateGroup = new FrameworkTest.SATAButton();
-            this.label3 = new System.Windows.Forms.Label();
             this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnCreateGroup = new FrameworkTest.SATAButton();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblCurrentProjectGroup
+            // lblHeading
             // 
-            this.lblCurrentProjectGroup.AutoSize = true;
-            this.lblCurrentProjectGroup.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentProjectGroup.Location = new System.Drawing.Point(109, 3);
-            this.lblCurrentProjectGroup.Name = "lblCurrentProjectGroup";
-            this.lblCurrentProjectGroup.Size = new System.Drawing.Size(194, 23);
-            this.lblCurrentProjectGroup.TabIndex = 13;
-            this.lblCurrentProjectGroup.Text = "Create New Group";
+            this.lblHeading.AutoSize = true;
+            this.lblHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.Location = new System.Drawing.Point(109, 3);
+            this.lblHeading.Name = "lblHeading";
+            this.lblHeading.Size = new System.Drawing.Size(194, 23);
+            this.lblHeading.TabIndex = 13;
+            this.lblHeading.Text = "Create New Group";
             // 
             // txtGroupName
             // 
@@ -90,7 +90,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 151);
+            this.label2.Location = new System.Drawing.Point(32, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(161, 21);
             this.label2.TabIndex = 18;
@@ -105,7 +105,7 @@
             this.txtGroupDescription.BorderSize = 1;
             this.txtGroupDescription.Icon = null;
             this.txtGroupDescription.IconSize = new System.Drawing.Size(20, 20);
-            this.txtGroupDescription.Location = new System.Drawing.Point(34, 177);
+            this.txtGroupDescription.Location = new System.Drawing.Point(34, 168);
             this.txtGroupDescription.Multiline = true;
             this.txtGroupDescription.Name = "txtGroupDescription";
             this.txtGroupDescription.PasswordChar = false;
@@ -133,7 +133,7 @@
             this.lblGroupDescriptionError.AutoSize = true;
             this.lblGroupDescriptionError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGroupDescriptionError.ForeColor = System.Drawing.Color.Red;
-            this.lblGroupDescriptionError.Location = new System.Drawing.Point(33, 274);
+            this.lblGroupDescriptionError.Location = new System.Drawing.Point(33, 265);
             this.lblGroupDescriptionError.Name = "lblGroupDescriptionError";
             this.lblGroupDescriptionError.Size = new System.Drawing.Size(35, 16);
             this.lblGroupDescriptionError.TabIndex = 20;
@@ -149,7 +149,7 @@
             this.txtSearchUsername.BorderSize = 1;
             this.txtSearchUsername.Icon = null;
             this.txtSearchUsername.IconSize = new System.Drawing.Size(20, 20);
-            this.txtSearchUsername.Location = new System.Drawing.Point(34, 336);
+            this.txtSearchUsername.Location = new System.Drawing.Point(34, 310);
             this.txtSearchUsername.Multiline = false;
             this.txtSearchUsername.Name = "txtSearchUsername";
             this.txtSearchUsername.PasswordChar = false;
@@ -187,7 +187,7 @@
             this.Action});
             this.dgViewUsers.EnableHeadersVisualStyles = false;
             this.dgViewUsers.GridColor = System.Drawing.SystemColors.Control;
-            this.dgViewUsers.Location = new System.Drawing.Point(34, 387);
+            this.dgViewUsers.Location = new System.Drawing.Point(34, 361);
             this.dgViewUsers.Name = "dgViewUsers";
             this.dgViewUsers.ReadOnly = true;
             this.dgViewUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -203,6 +203,39 @@
             this.dgViewUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewUsers_CellClick);
             this.dgViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewUsers_CellContentClick);
             this.dgViewUsers.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgViewUsers_CurrentCellDirtyStateChanged);
+            // 
+            // User_ID
+            // 
+            this.User_ID.HeaderText = "User ID";
+            this.User_ID.MinimumWidth = 6;
+            this.User_ID.Name = "User_ID";
+            this.User_ID.ReadOnly = true;
+            this.User_ID.Visible = false;
+            this.User_ID.Width = 125;
+            // 
+            // User_Name
+            // 
+            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.User_Name.HeaderText = "Username";
+            this.User_Name.MinimumWidth = 6;
+            this.User_Name.Name = "User_Name";
+            this.User_Name.ReadOnly = true;
+            // 
+            // Action
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.NullValue = false;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Action.FillWeight = 75F;
+            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Action.HeaderText = "Action";
+            this.Action.MinimumWidth = 6;
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Action.Width = 50;
             // 
             // btnCreateGroup
             // 
@@ -247,44 +280,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 310);
+            this.label3.Location = new System.Drawing.Point(33, 284);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 19);
             this.label3.TabIndex = 24;
             this.label3.Text = "Add members";
-            // 
-            // User_ID
-            // 
-            this.User_ID.HeaderText = "User ID";
-            this.User_ID.MinimumWidth = 6;
-            this.User_ID.Name = "User_ID";
-            this.User_ID.ReadOnly = true;
-            this.User_ID.Visible = false;
-            this.User_ID.Width = 125;
-            // 
-            // User_Name
-            // 
-            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.User_Name.HeaderText = "Username";
-            this.User_Name.MinimumWidth = 6;
-            this.User_Name.Name = "User_Name";
-            this.User_Name.ReadOnly = true;
-            // 
-            // Action
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.NullValue = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Action.FillWeight = 75F;
-            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Action.HeaderText = "Action";
-            this.Action.MinimumWidth = 6;
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
-            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Action.Width = 50;
             // 
             // frmCreateNewGroup
             // 
@@ -301,7 +301,7 @@
             this.Controls.Add(this.txtGroupDescription);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtGroupName);
-            this.Controls.Add(this.lblCurrentProjectGroup);
+            this.Controls.Add(this.lblHeading);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -315,7 +315,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblCurrentProjectGroup;
+        private System.Windows.Forms.Label lblHeading;
         private SATATextBox txtGroupName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

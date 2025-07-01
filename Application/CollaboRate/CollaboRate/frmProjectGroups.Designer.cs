@@ -518,6 +518,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmProjectGroups";
             this.Text = "frmProjectGroups";
+            this.Load += new System.EventHandler(this.frmProjectGroups_Load);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.pnlCurrentGroup.ResumeLayout(false);

@@ -21,5 +21,11 @@ namespace CollaboRate
         {
             dgViewMeetings.Rows.Add("Meet1", "Assign tasks to members", "2025-06-18", "2025");
         }
+
+        private void btnScheduleNewMeeting_Click(object sender, EventArgs e)
+        {
+            frmScheduleUpdateMeeting scheduleMeetingForm = new frmScheduleUpdateMeeting();
+            scheduleMeetingForm.ShowDialog();
+        }
     }
 }

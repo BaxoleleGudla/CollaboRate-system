@@ -92,7 +92,7 @@ namespace CollaboRate
         }
 
         // Login method
-        public async Task login()
+        public async Task Login()
         {
             try
             {
@@ -142,8 +142,8 @@ namespace CollaboRate
 
                         MessageBox.Show("Login successful!" + "User ID: " + CurrentUser.User_ID + CurrentUser.Username + CurrentUser.Email, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmMain mainForm = new frmMain();
-                        mainForm.ShowDialog();
-                        this.Hide();
+                        mainForm.Show();
+                        this.Close();
                     }
                     else if (loginResult.StatusCode == System.Net.HttpStatusCode.Unauthorized)  // 401
                     {
@@ -192,7 +192,7 @@ namespace CollaboRate
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            await login();
+            await Login();
         }
 
         private void cbxShowPassword_CheckedChanged(object sender, EventArgs e)

@@ -55,6 +55,9 @@ namespace CollaboRate
 
                         // Re-subscribe to the event 
                         cmbxCurrentGroup.SelectedIndexChanged += cmbxCurrentGroup_SelectedIndexChanged;
+
+                        // Choose the first group
+                        cmbxCurrentGroup.SelectedIndex = 0;
                     }
                     else
                     {
@@ -141,8 +144,7 @@ namespace CollaboRate
 
         private async void frmMain_Load(object sender, EventArgs e)
         {
-            int userId = CurrentUser.User_ID;
-            await LoadUserGroupsAsync(userId);
+            await LoadUserGroupsAsync(CurrentUser.User_ID);
         }
 
         private void cmbxCurrentGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,6 +167,13 @@ namespace CollaboRate
             {
                 MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            frmLogin loginForm = new frmLogin();
+            loginForm.Show();
+            this.Close();
         }
     }
 }

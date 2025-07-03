@@ -83,6 +83,8 @@
     <Compile Include="CurrentGroup.cs" />
     <Compile Include="CurrentUser.cs" />
     <Compile Include="Dtos\GroupUserDto.cs" />
+    <Compile Include="Dtos\GroupWithRequestStatusDto.cs" />
+    <Compile Include="Dtos\PendingUserDto.cs" />
     <Compile Include="frmAddNewMembers.cs">
       <SubType>Form</SubType>
     </Compile>

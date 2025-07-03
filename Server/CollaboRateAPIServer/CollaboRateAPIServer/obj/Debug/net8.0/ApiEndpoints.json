@@ -27,6 +27,142 @@
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
+    "Method": "RequestToJoinGroup",
+    "RelativePath": "api/Groups/{groupId}/join-requests/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
+    "Method": "CancelJoinRequest",
+    "RelativePath": "api/Groups/{groupId}/join-requests/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
+    "Method": "AcceptUserToGroup",
+    "RelativePath": "api/Groups/{groupId}/members/{userId}/accept",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
+    "Method": "RejectUserFromGroup",
+    "RelativePath": "api/Groups/{groupId}/members/{userId}/reject",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
+    "Method": "GetPendingUsers",
+    "RelativePath": "api/Groups/{groupId}/pending-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CollaboRateAPIServer.Dtos.PendingUserDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
+    "Method": "GetAvailableGroupsForUser",
+    "RelativePath": "api/Groups/available-groups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CollaboRateAPIServer.Dtos.GroupWithRequestStatusDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
     "Method": "GetGroupsForUser",
     "RelativePath": "api/Groups/user/{userId}",
     "HttpMethod": "GET",
@@ -41,7 +177,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CollaboRateAPIServer.Controllers.GroupDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CollaboRateAPIServer.Dtos.GroupDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

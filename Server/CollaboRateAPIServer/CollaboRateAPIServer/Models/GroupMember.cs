@@ -19,6 +19,6 @@ namespace CollaboRateAPIServer.Models
 
         public string User_Role { get; set; }
         public string Join_Status { get; set; }
-        public DateTime Joined_At { get; set; }
+        public DateTime? Joined_At { get; set; }
     }
 }

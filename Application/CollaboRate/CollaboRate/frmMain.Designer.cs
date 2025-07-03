@@ -49,6 +49,8 @@
             this.btnMaximize = new FrameworkTest.SATAButton();
             this.btnClose = new FrameworkTest.SATAButton();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnLogout = new FrameworkTest.SATAButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSidemenu.SuspendLayout();
             this.pnlCurrentGroup.SuspendLayout();
             this.pnlLogo.SuspendLayout();
@@ -59,6 +61,8 @@
             // pnlSidemenu
             // 
             this.pnlSidemenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.pnlSidemenu.Controls.Add(this.panel1);
+            this.pnlSidemenu.Controls.Add(this.btnLogout);
             this.pnlSidemenu.Controls.Add(this.pnlTopDiveder);
             this.pnlSidemenu.Controls.Add(this.btnSettings);
             this.pnlSidemenu.Controls.Add(this.btnGroupChats);
@@ -571,6 +575,55 @@
             this.pnlMain.Size = new System.Drawing.Size(810, 627);
             this.pnlMain.TabIndex = 2;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.ButtonText = "Logout";
+            this.btnLogout.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnLogout.CheckedForeColor = System.Drawing.Color.White;
+            this.btnLogout.CheckedImageTint = System.Drawing.Color.White;
+            this.btnLogout.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnLogout.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnLogout.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnLogout.HoverForeColor = System.Drawing.Color.White;
+            this.btnLogout.HoverImage = null;
+            this.btnLogout.HoverImageTint = System.Drawing.Color.White;
+            this.btnLogout.HoverOutline = System.Drawing.Color.Empty;
+            this.btnLogout.Image = global::CollaboRate.Properties.Resources.home;
+            this.btnLogout.ImageAutoCenter = false;
+            this.btnLogout.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnLogout.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnLogout.ImageTint = System.Drawing.Color.White;
+            this.btnLogout.IsToggleButton = false;
+            this.btnLogout.IsToggled = false;
+            this.btnLogout.Location = new System.Drawing.Point(0, 626);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnLogout.NormalForeColor = System.Drawing.Color.White;
+            this.btnLogout.NormalOutline = System.Drawing.Color.Empty;
+            this.btnLogout.OutlineThickness = 2F;
+            this.btnLogout.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnLogout.PressedForeColor = System.Drawing.Color.White;
+            this.btnLogout.PressedImageTint = System.Drawing.Color.White;
+            this.btnLogout.PressedOutline = System.Drawing.Color.Empty;
+            this.btnLogout.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnLogout.Size = new System.Drawing.Size(235, 35);
+            this.btnLogout.TabIndex = 11;
+            this.btnLogout.TextAutoCenter = false;
+            this.btnLogout.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(182)))), ((int)(((byte)(210)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 625);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(235, 1);
+            this.panel1.TabIndex = 11;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -620,6 +673,8 @@
         private System.Windows.Forms.ComboBox cmbxCurrentGroup;
         private System.Windows.Forms.Panel pnlTopDiveder;
         private System.Windows.Forms.Panel pnlBottomDivider;
+        private System.Windows.Forms.Panel panel1;
+        private FrameworkTest.SATAButton btnLogout;
     }
 }
 

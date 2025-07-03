@@ -38,7 +38,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.lblCurrentProjectGroup = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlCurrentGroup = new SATAUiFramework.SATAPanel();
             this.lblNumOfMembers = new System.Windows.Forms.Label();
             this.pbxNumOfMembers = new System.Windows.Forms.PictureBox();
@@ -50,10 +49,11 @@
             this.btnCreateNewGroup = new FrameworkTest.SATAButton();
             this.lblHeading = new System.Windows.Forms.Label();
             this.pnlMiddle = new System.Windows.Forms.Panel();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgViewJoinRequests = new System.Windows.Forms.DataGridView();
             this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcceptRequest = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Control_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RejectRequest = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -62,13 +62,14 @@
             this.dgViewProjectGroups = new System.Windows.Forms.DataGridView();
             this.Group_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Group_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RequestCancelJoin = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             this.pnlCurrentGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNumOfMembers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGroupNameIcon)).BeginInit();
             this.pnlMiddle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewJoinRequests)).BeginInit();
             this.pnlBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewProjectGroups)).BeginInit();
@@ -77,7 +78,6 @@
             // pnlTop
             // 
             this.pnlTop.Controls.Add(this.lblCurrentProjectGroup);
-            this.pnlTop.Controls.Add(this.button1);
             this.pnlTop.Controls.Add(this.pnlCurrentGroup);
             this.pnlTop.Controls.Add(this.btnCreateNewGroup);
             this.pnlTop.Controls.Add(this.lblHeading);
@@ -96,16 +96,6 @@
             this.lblCurrentProjectGroup.Size = new System.Drawing.Size(184, 19);
             this.lblCurrentProjectGroup.TabIndex = 11;
             this.lblCurrentProjectGroup.Text = "Current Project Group";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(419, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pnlCurrentGroup
             // 
@@ -273,6 +263,7 @@
             // 
             // pnlMiddle
             // 
+            this.pnlMiddle.Controls.Add(this.pbLoadingSpinner);
             this.pnlMiddle.Controls.Add(this.label1);
             this.pnlMiddle.Controls.Add(this.dgViewJoinRequests);
             this.pnlMiddle.Dock = System.Windows.Forms.DockStyle.Top;
@@ -280,6 +271,17 @@
             this.pnlMiddle.Name = "pnlMiddle";
             this.pnlMiddle.Size = new System.Drawing.Size(810, 119);
             this.pnlMiddle.TabIndex = 1;
+            // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(385, 1);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 51;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
             // 
             // label1
             // 
@@ -313,7 +315,7 @@
             this.dgViewJoinRequests.ColumnHeadersVisible = false;
             this.dgViewJoinRequests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.User_ID,
-            this.User_Name,
+            this.Username,
             this.AcceptRequest,
             this.Control_Column,
             this.RejectRequest});
@@ -331,9 +333,11 @@
             this.dgViewJoinRequests.RowTemplate.Height = 35;
             this.dgViewJoinRequests.Size = new System.Drawing.Size(774, 93);
             this.dgViewJoinRequests.TabIndex = 0;
+            this.dgViewJoinRequests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewJoinRequests_CellContentClick);
             // 
             // User_ID
             // 
+            this.User_ID.DataPropertyName = "User_ID";
             this.User_ID.HeaderText = "User ID";
             this.User_ID.MinimumWidth = 6;
             this.User_ID.Name = "User_ID";
@@ -341,13 +345,14 @@
             this.User_ID.Visible = false;
             this.User_ID.Width = 125;
             // 
-            // User_Name
+            // Username
             // 
-            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.User_Name.HeaderText = "Username";
-            this.User_Name.MinimumWidth = 6;
-            this.User_Name.Name = "User_Name";
-            this.User_Name.ReadOnly = true;
+            this.Username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Username.DataPropertyName = "Username";
+            this.Username.HeaderText = "Username";
+            this.Username.MinimumWidth = 6;
+            this.Username.Name = "Username";
+            this.Username.ReadOnly = true;
             // 
             // AcceptRequest
             // 
@@ -404,8 +409,8 @@
             // txtSearchGroup
             // 
             this.txtSearchGroup.BackColor = System.Drawing.Color.White;
-            this.txtSearchGroup.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.txtSearchGroup.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.txtSearchGroup.BorderColor = System.Drawing.Color.DimGray;
+            this.txtSearchGroup.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
             this.txtSearchGroup.BorderRadius = 5;
             this.txtSearchGroup.BorderSize = 1;
             this.txtSearchGroup.Icon = null;
@@ -444,7 +449,7 @@
             this.dgViewProjectGroups.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Group_ID,
             this.Group_Name,
-            this.RequestCancelJoin});
+            this.Action});
             this.dgViewProjectGroups.EnableHeadersVisualStyles = false;
             this.dgViewProjectGroups.GridColor = System.Drawing.SystemColors.Control;
             this.dgViewProjectGroups.Location = new System.Drawing.Point(20, 95);
@@ -459,9 +464,12 @@
             this.dgViewProjectGroups.RowTemplate.Height = 35;
             this.dgViewProjectGroups.Size = new System.Drawing.Size(772, 118);
             this.dgViewProjectGroups.TabIndex = 13;
+            this.dgViewProjectGroups.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewProjectGroups_CellContentClick);
+            this.dgViewProjectGroups.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgViewProjectGroups_CellFormatting);
             // 
             // Group_ID
             // 
+            this.Group_ID.DataPropertyName = "Group_ID";
             this.Group_ID.HeaderText = "Group ID";
             this.Group_ID.MinimumWidth = 6;
             this.Group_ID.Name = "Group_ID";
@@ -472,27 +480,28 @@
             // Group_Name
             // 
             this.Group_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Group_Name.DataPropertyName = "Group_Name";
             this.Group_Name.HeaderText = "Group Name";
             this.Group_Name.MinimumWidth = 6;
             this.Group_Name.Name = "Group_Name";
             this.Group_Name.ReadOnly = true;
             // 
-            // RequestCancelJoin
+            // Action
             // 
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.RequestCancelJoin.DefaultCellStyle = dataGridViewCellStyle6;
-            this.RequestCancelJoin.FillWeight = 75F;
-            this.RequestCancelJoin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RequestCancelJoin.HeaderText = "Action";
-            this.RequestCancelJoin.MinimumWidth = 6;
-            this.RequestCancelJoin.Name = "RequestCancelJoin";
-            this.RequestCancelJoin.ReadOnly = true;
-            this.RequestCancelJoin.Text = "Request To Join";
-            this.RequestCancelJoin.UseColumnTextForButtonValue = true;
-            this.RequestCancelJoin.Width = 235;
+            this.Action.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Action.FillWeight = 75F;
+            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Action.HeaderText = "Action";
+            this.Action.MinimumWidth = 6;
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Text = "Request To Join";
+            this.Action.UseColumnTextForButtonValue = true;
+            this.Action.Width = 235;
             // 
             // label2
             // 
@@ -527,6 +536,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxGroupNameIcon)).EndInit();
             this.pnlMiddle.ResumeLayout(false);
             this.pnlMiddle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewJoinRequests)).EndInit();
             this.pnlBottom.ResumeLayout(false);
             this.pnlBottom.PerformLayout();
@@ -552,18 +562,18 @@
         private System.Windows.Forms.Label lblNumOfMembers;
         private System.Windows.Forms.PictureBox pbxNumOfMembers;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgViewJoinRequests;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgViewProjectGroups;
+        private SATATextBox txtSearchGroup;
         private System.Windows.Forms.DataGridViewTextBoxColumn User_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewButtonColumn AcceptRequest;
         private System.Windows.Forms.DataGridViewTextBoxColumn Control_Column;
         private System.Windows.Forms.DataGridViewButtonColumn RejectRequest;
-        private SATATextBox txtSearchGroup;
         private System.Windows.Forms.DataGridViewTextBoxColumn Group_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Group_Name;
-        private System.Windows.Forms.DataGridViewButtonColumn RequestCancelJoin;
+        private System.Windows.Forms.DataGridViewButtonColumn Action;
+        private System.Windows.Forms.PictureBox pbLoadingSpinner;
     }
 }

@@ -24,6 +24,7 @@ namespace CollaboRate
         };
         private BindingSource pendingUsersBindingSource = new BindingSource();
         private BindingSource groupsBindingSource = new BindingSource();
+        private AcceptedGroupUsersDto _currentGroupDetails;
 
         public frmProjectGroups()
         {
@@ -38,7 +39,7 @@ namespace CollaboRate
 
         private void btnEditGroup_Click(object sender, EventArgs e)
         {
-            frmEditGroup editGroupForm = new frmEditGroup();
+            var editGroupForm = new frmEditGroup(_currentGroupDetails);
             editGroupForm.ShowDialog();
         }
 
@@ -123,9 +124,9 @@ namespace CollaboRate
         }
 
         // Method to get groups
-        private async Task<List<GroupWithRequestStatusDto>> GetAvailableGroupsForUserAsync(int userId)
+        private async Task<List<GroupWithRequestStatusDto>> GetAvailableGroupsForUserAsync(int userId, string keyword = null)
         {
-            string apiUrl = $"https://localhost:7287/api/groups/available-groups?userId={userId}";
+            string apiUrl = $"https://localhost:7287/api/groups/available-groups?userId={userId}&keyword={keyword}";
 
             try
             {
@@ -158,27 +159,28 @@ namespace CollaboRate
         }
 
         // Method to display the group details
-        private async Task LoadGroupDetailsAsync()
+        public async Task LoadGroupDetailsAsync()
         {
             if (CurrentGroup.Group_ID >= 1)
             {
                 pbLoadingSpinner.Visible = true;
 
-                var groupDetailsTask = GetGroupDetailsAsync(CurrentGroup.Group_ID);
-
                 try
                 {
-                    var groupDetails = await groupDetailsTask;
+                    _currentGroupDetails = await GetGroupDetailsAsync(CurrentGroup.Group_ID);
 
-                    if (groupDetails != null)
+                    if (_currentGroupDetails != null)
                     {
-                        lblGroupName.Text = groupDetails.Group_Name;
-                        lblGroupDescription.Text = groupDetails.Group_Description;
-                        lblNumOfMembers.Text = groupDetails.Accepted_User_Count.ToString() + " Member(s)";
+                        lblGroupName.Text = _currentGroupDetails.Group_Name;
+                        lblNumOfMembers.Text = _currentGroupDetails.Accepted_User_Count.ToString() + " Member(s)";
 
-                        foreach (var user in groupDetails.Accepted_Users)
+                        if (string.IsNullOrEmpty(_currentGroupDetails.Group_Description) == true)
                         {
-                            //MessageBox.Show(user.User_ID + " " + user.Username + " " + user.User_Role);
+                            lblGroupDescription.Text = "No description.";
+                        }
+                        else
+                        {
+                            lblGroupDescription.Text = _currentGroupDetails.Group_Description;
                         }
                     }
                 }
@@ -230,14 +232,14 @@ namespace CollaboRate
         }
 
         // Method to display groups in a datagridview
-        private async Task LoadGroupsAsync(int userId)
+        private async Task LoadGroupsAsync(int userId, string keyword = null)
         {
             try
             {
                 pbLoadingSpinner.Visible = true;
                 dgViewProjectGroups.Enabled = false;
 
-                var groups = await GetAvailableGroupsForUserAsync(userId);
+                var groups = await GetAvailableGroupsForUserAsync(userId, keyword);
 
                 if (groups != null)
                 {
@@ -395,8 +397,9 @@ namespace CollaboRate
 
                     if (success)
                     {
-                        group.HasPendingRequest = false;
-                        dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
+                        //group.HasPendingRequest = false;
+                        //dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
+                        await LoadGroupsAsync(CurrentUser.User_ID);
                         MessageBox.Show("Request cancelled", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -406,8 +409,9 @@ namespace CollaboRate
 
                     if (success)
                     {
-                        group.HasPendingRequest = true;
-                        dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
+                        //group.HasPendingRequest = true;
+                        //dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
+                        await LoadGroupsAsync(CurrentUser.User_ID);
                         MessageBox.Show("Request sent", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -529,6 +533,11 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 dgViewJoinRequests.Enabled = true;
             }
+        }
+
+        private async void txtSearchGroup__TextChanged(object sender, EventArgs e)
+        {
+            await LoadGroupsAsync(CurrentUser.User_ID, txtSearchGroup.Texts);
         }
     }
 }

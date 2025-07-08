@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using CollaboRateAPIServer.Data;
 using CollaboRateAPIServer.Models;
+using CollaboRateAPIServer.Dtos;
 
 namespace CollaboRateAPIServer.Controllers
 {
@@ -18,10 +19,31 @@ namespace CollaboRateAPIServer.Controllers
 
         // GET: api/users
         // Get all users from the database
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        [HttpGet("users")]
+        public async Task<ActionResult<List<UserDto>>> GetUsers([FromQuery] int? currentUserId = null, [FromQuery] string? keyword = null)
         {
-            return await _context.tblUser.ToListAsync();
+            IQueryable<User> query = _context.tblUser;
+
+            if (currentUserId.HasValue)
+            {
+                query = query.Where(u => u.User_ID != currentUserId.Value);
+            }
+
+            if (string.IsNullOrWhiteSpace(keyword) == false)
+            {
+                string lowerKeyword = keyword.ToLower();
+                query = query.Where(u => u.Username.ToLower().Contains(lowerKeyword));
+            }
+
+            var users = await query
+                .Select(u => new UserDto
+                {
+                    User_ID = u.User_ID,
+                    Username = u.Username
+                })
+                .ToListAsync();
+
+            return Ok(users);
         }
 
         // GET: api/users/5

@@ -143,7 +143,7 @@ namespace CollaboRate
                         MessageBox.Show("Login successful!" + "User ID: " + CurrentUser.User_ID + CurrentUser.Username + CurrentUser.Email, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmMain mainForm = new frmMain();
                         mainForm.Show();
-                        this.Close();
+                        this.Hide();
                     }
                     else if (loginResult.StatusCode == System.Net.HttpStatusCode.Unauthorized)  // 401
                     {

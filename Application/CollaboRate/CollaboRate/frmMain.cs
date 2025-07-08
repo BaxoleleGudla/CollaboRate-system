@@ -40,9 +40,12 @@ namespace CollaboRate
                     {
                         PropertyNameCaseInsensitive = true
                     });
-
+                 
                     if (groups != null && groups.Count > 0)
                     {
+                        // Save the currently selected groups's ID (if any)
+                        var selectedGroupId = cmbxCurrentGroup.SelectedValue;
+
                         // Temporarily unsubscribe from the SelectedIndexChanged event
                         cmbxCurrentGroup.SelectedIndexChanged -= cmbxCurrentGroup_SelectedIndexChanged;
 
@@ -50,14 +53,18 @@ namespace CollaboRate
                         cmbxCurrentGroup.DisplayMember = "Group_Name";
                         cmbxCurrentGroup.ValueMember = "Group_ID";
 
-                        // Reset combobox selection
-                        cmbxCurrentGroup.SelectedIndex = -1;
+                        // Try to restore the previous selection
+                        if (selectedGroupId != null && groups.Any(g => g.Group_ID.Equals(selectedGroupId)))
+                        {
+                            cmbxCurrentGroup.SelectedValue = selectedGroupId;
+                        }
+                        else
+                        {
+                            cmbxCurrentGroup.SelectedIndex = -1;
+                        }
 
                         // Re-subscribe to the event 
                         cmbxCurrentGroup.SelectedIndexChanged += cmbxCurrentGroup_SelectedIndexChanged;
-
-                        // Choose the first group
-                        cmbxCurrentGroup.SelectedIndex = 0;
                     }
                     else
                     {
@@ -159,8 +166,6 @@ namespace CollaboRate
                 {
                     CurrentGroup.Group_ID = Convert.ToInt32(cmbxCurrentGroup.SelectedValue.ToString());
                     CurrentGroup.Group_Name = cmbxCurrentGroup.Text;
-
-                    MessageBox.Show("The static class: " + CurrentGroup.Group_ID + " " + CurrentGroup.Group_Name);
                 }
             }
             catch (Exception ex)
@@ -171,9 +176,12 @@ namespace CollaboRate
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            // Test this code
+            CurrentGroup.Group_ID = 0;
+            CurrentGroup.Group_Name = null;
             frmLogin loginForm = new frmLogin();
             loginForm.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

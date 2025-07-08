@@ -187,11 +187,10 @@
             // 
             // lblGroupDescription
             // 
-            this.lblGroupDescription.AutoSize = true;
             this.lblGroupDescription.ForeColor = System.Drawing.Color.DimGray;
             this.lblGroupDescription.Location = new System.Drawing.Point(10, 38);
             this.lblGroupDescription.Name = "lblGroupDescription";
-            this.lblGroupDescription.Size = new System.Drawing.Size(161, 21);
+            this.lblGroupDescription.Size = new System.Drawing.Size(748, 50);
             this.lblGroupDescription.TabIndex = 2;
             this.lblGroupDescription.Text = "Group Description";
             // 
@@ -425,6 +424,7 @@
             this.txtSearchGroup.TabIndex = 14;
             this.txtSearchGroup.Texts = "";
             this.txtSearchGroup.UnderlinedStyle = false;
+            this.txtSearchGroup._TextChanged += new System.EventHandler(this.txtSearchGroup__TextChanged);
             // 
             // dgViewProjectGroups
             // 

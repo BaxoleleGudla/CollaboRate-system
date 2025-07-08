@@ -32,6 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgViewUsers = new System.Windows.Forms.DataGridView();
+            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User_Role = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.txtSearchUsername = new SATATextBox();
             this.lblGroupDescriptionError = new System.Windows.Forms.Label();
             this.lblGroupNameError = new System.Windows.Forms.Label();
@@ -42,11 +45,10 @@
             this.lblHeading = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSaveChanges = new FrameworkTest.SATAButton();
-            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User_Role = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnAddNewMembers = new FrameworkTest.SATAButton();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
             // 
             // dgViewUsers
@@ -73,11 +75,11 @@
             this.User_ID,
             this.User_Name,
             this.User_Role});
+            this.dgViewUsers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgViewUsers.EnableHeadersVisualStyles = false;
             this.dgViewUsers.GridColor = System.Drawing.SystemColors.Control;
-            this.dgViewUsers.Location = new System.Drawing.Point(34, 387);
+            this.dgViewUsers.Location = new System.Drawing.Point(34, 365);
             this.dgViewUsers.Name = "dgViewUsers";
-            this.dgViewUsers.ReadOnly = true;
             this.dgViewUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgViewUsers.RowHeadersVisible = false;
             this.dgViewUsers.RowHeadersWidth = 51;
@@ -89,6 +91,41 @@
             this.dgViewUsers.Size = new System.Drawing.Size(344, 144);
             this.dgViewUsers.TabIndex = 33;
             // 
+            // User_ID
+            // 
+            this.User_ID.DataPropertyName = "User_ID";
+            this.User_ID.HeaderText = "User ID";
+            this.User_ID.MinimumWidth = 6;
+            this.User_ID.Name = "User_ID";
+            this.User_ID.Visible = false;
+            this.User_ID.Width = 125;
+            // 
+            // User_Name
+            // 
+            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.User_Name.DataPropertyName = "Username";
+            this.User_Name.HeaderText = "Username";
+            this.User_Name.MinimumWidth = 6;
+            this.User_Name.Name = "User_Name";
+            this.User_Name.ReadOnly = true;
+            // 
+            // User_Role
+            // 
+            this.User_Role.DataPropertyName = "User_Role";
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.User_Role.DefaultCellStyle = dataGridViewCellStyle5;
+            this.User_Role.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.User_Role.FillWeight = 75F;
+            this.User_Role.HeaderText = "Role";
+            this.User_Role.Items.AddRange(new object[] {
+            "Member",
+            "Admin"});
+            this.User_Role.MinimumWidth = 6;
+            this.User_Role.Name = "User_Role";
+            this.User_Role.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.User_Role.Width = 125;
+            // 
             // txtSearchUsername
             // 
             this.txtSearchUsername.BackColor = System.Drawing.Color.White;
@@ -98,7 +135,7 @@
             this.txtSearchUsername.BorderSize = 1;
             this.txtSearchUsername.Icon = null;
             this.txtSearchUsername.IconSize = new System.Drawing.Size(20, 20);
-            this.txtSearchUsername.Location = new System.Drawing.Point(34, 336);
+            this.txtSearchUsername.Location = new System.Drawing.Point(34, 314);
             this.txtSearchUsername.Multiline = false;
             this.txtSearchUsername.Name = "txtSearchUsername";
             this.txtSearchUsername.PasswordChar = false;
@@ -108,15 +145,16 @@
             this.txtSearchUsername.TabIndex = 32;
             this.txtSearchUsername.Texts = "";
             this.txtSearchUsername.UnderlinedStyle = false;
+            this.txtSearchUsername._TextChanged += new System.EventHandler(this.txtSearchUsername__TextChanged);
             // 
             // lblGroupDescriptionError
             // 
             this.lblGroupDescriptionError.AutoSize = true;
-            this.lblGroupDescriptionError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGroupDescriptionError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGroupDescriptionError.ForeColor = System.Drawing.Color.Red;
-            this.lblGroupDescriptionError.Location = new System.Drawing.Point(33, 274);
+            this.lblGroupDescriptionError.Location = new System.Drawing.Point(30, 268);
             this.lblGroupDescriptionError.Name = "lblGroupDescriptionError";
-            this.lblGroupDescriptionError.Size = new System.Drawing.Size(35, 16);
+            this.lblGroupDescriptionError.Size = new System.Drawing.Size(45, 21);
             this.lblGroupDescriptionError.TabIndex = 31;
             this.lblGroupDescriptionError.Text = "Error";
             this.lblGroupDescriptionError.Visible = false;
@@ -124,11 +162,11 @@
             // lblGroupNameError
             // 
             this.lblGroupNameError.AutoSize = true;
-            this.lblGroupNameError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGroupNameError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGroupNameError.ForeColor = System.Drawing.Color.Red;
-            this.lblGroupNameError.Location = new System.Drawing.Point(34, 125);
+            this.lblGroupNameError.Location = new System.Drawing.Point(30, 123);
             this.lblGroupNameError.Name = "lblGroupNameError";
-            this.lblGroupNameError.Size = new System.Drawing.Size(35, 16);
+            this.lblGroupNameError.Size = new System.Drawing.Size(45, 21);
             this.lblGroupNameError.TabIndex = 30;
             this.lblGroupNameError.Text = "Error";
             this.lblGroupNameError.Visible = false;
@@ -136,7 +174,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 151);
+            this.label2.Location = new System.Drawing.Point(30, 146);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(161, 21);
             this.label2.TabIndex = 29;
@@ -151,12 +189,12 @@
             this.txtGroupDescription.BorderSize = 1;
             this.txtGroupDescription.Icon = null;
             this.txtGroupDescription.IconSize = new System.Drawing.Size(20, 20);
-            this.txtGroupDescription.Location = new System.Drawing.Point(34, 177);
+            this.txtGroupDescription.Location = new System.Drawing.Point(34, 171);
             this.txtGroupDescription.Multiline = true;
             this.txtGroupDescription.Name = "txtGroupDescription";
             this.txtGroupDescription.PasswordChar = false;
             this.txtGroupDescription.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtGroupDescription.PlaceholderText = "Enter group description";
+            this.txtGroupDescription.PlaceholderText = "";
             this.txtGroupDescription.Size = new System.Drawing.Size(344, 94);
             this.txtGroupDescription.TabIndex = 28;
             this.txtGroupDescription.Texts = "";
@@ -165,7 +203,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 58);
+            this.label1.Location = new System.Drawing.Point(30, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 21);
             this.label1.TabIndex = 27;
@@ -178,6 +216,7 @@
             this.txtGroupName.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
             this.txtGroupName.BorderRadius = 5;
             this.txtGroupName.BorderSize = 1;
+            this.txtGroupName.ForeColor = System.Drawing.Color.Black;
             this.txtGroupName.Icon = null;
             this.txtGroupName.IconSize = new System.Drawing.Size(20, 20);
             this.txtGroupName.Location = new System.Drawing.Point(35, 84);
@@ -185,7 +224,7 @@
             this.txtGroupName.Name = "txtGroupName";
             this.txtGroupName.PasswordChar = false;
             this.txtGroupName.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtGroupName.PlaceholderText = "Enter group name";
+            this.txtGroupName.PlaceholderText = "";
             this.txtGroupName.Size = new System.Drawing.Size(344, 39);
             this.txtGroupName.TabIndex = 26;
             this.txtGroupName.Texts = "";
@@ -205,7 +244,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 310);
+            this.label3.Location = new System.Drawing.Point(30, 291);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(142, 19);
             this.label3.TabIndex = 35;
@@ -248,40 +287,7 @@
             this.btnSaveChanges.TabIndex = 34;
             this.btnSaveChanges.TextAutoCenter = true;
             this.btnSaveChanges.TextOffset = new System.Drawing.Point(0, 0);
-            this.btnSaveChanges.Click += new System.EventHandler(this.btnCreateGroup_Click);
-            // 
-            // User_ID
-            // 
-            this.User_ID.HeaderText = "User ID";
-            this.User_ID.MinimumWidth = 6;
-            this.User_ID.Name = "User_ID";
-            this.User_ID.ReadOnly = true;
-            this.User_ID.Visible = false;
-            this.User_ID.Width = 125;
-            // 
-            // User_Name
-            // 
-            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.User_Name.HeaderText = "Username";
-            this.User_Name.MinimumWidth = 6;
-            this.User_Name.Name = "User_Name";
-            this.User_Name.ReadOnly = true;
-            // 
-            // User_Role
-            // 
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.User_Role.DefaultCellStyle = dataGridViewCellStyle5;
-            this.User_Role.FillWeight = 75F;
-            this.User_Role.HeaderText = "Role";
-            this.User_Role.Items.AddRange(new object[] {
-            "Member",
-            "Admin"});
-            this.User_Role.MinimumWidth = 6;
-            this.User_Role.Name = "User_Role";
-            this.User_Role.ReadOnly = true;
-            this.User_Role.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.User_Role.Width = 125;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
             // btnAddNewMembers
             // 
@@ -322,11 +328,24 @@
             this.btnAddNewMembers.TextOffset = new System.Drawing.Point(0, 0);
             this.btnAddNewMembers.Click += new System.EventHandler(this.btnAddNewMembers_Click);
             // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(190, 276);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 53;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
+            // 
             // frmEditGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 611);
+            this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.btnAddNewMembers);
             this.Controls.Add(this.dgViewUsers);
             this.Controls.Add(this.txtSearchUsername);
@@ -341,10 +360,12 @@
             this.Controls.Add(this.btnSaveChanges);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmEditGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmEditGroup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -363,9 +384,10 @@
         private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.Label label3;
         private FrameworkTest.SATAButton btnSaveChanges;
+        private FrameworkTest.SATAButton btnAddNewMembers;
         private System.Windows.Forms.DataGridViewTextBoxColumn User_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn User_Name;
         private System.Windows.Forms.DataGridViewComboBoxColumn User_Role;
-        private FrameworkTest.SATAButton btnAddNewMembers;
+        private System.Windows.Forms.PictureBox pbLoadingSpinner;
     }
 }

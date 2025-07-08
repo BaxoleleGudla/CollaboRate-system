@@ -102,11 +102,22 @@ namespace CollaboRateAPIServer.Controllers
 
         // Method to get groups
         [HttpGet("available-groups")]
-        public async Task<ActionResult<List<GroupWithRequestStatusDto>>> GetAvailableGroupsForUser([FromQuery] int userId)
+        public async Task<ActionResult<List<GroupWithRequestStatusDto>>> GetAvailableGroupsForUser([FromQuery] int userId, [FromQuery] string keyword = null)
         {
-            var groups = await _context.tblGroup
+            // Base query: groups where user is not acceted
+            IQueryable<Group> query = _context.tblGroup
                 .Where(g => !_context.tblGroupMember
-                    .Any(gm => gm.Group_ID == g.Group_ID && gm.User_ID == userId && gm.Join_Status == "Accepted"))
+                    .Any(gm => gm.Group_ID == g.Group_ID && gm.User_ID == userId && gm.Join_Status == "Accepted"));
+
+            // Apply keywork filter if provided
+            if (string.IsNullOrWhiteSpace(keyword) == false)
+            {
+                string lowerKeyword = keyword.ToLower();
+                query = query.Where(g => g.Group_Name.ToLower().Contains(lowerKeyword));
+            }
+
+            // Project to DTO with pending request info
+            var groups = await query
                 .Select(g => new GroupWithRequestStatusDto
                 {
                     Group_ID = g.Group_ID,
@@ -283,6 +294,124 @@ namespace CollaboRateAPIServer.Controllers
             {
                 await transaction.RollbackAsync();
                 return StatusCode(500, "An error occurred while rejecting the user and sending notification.");
+            }
+        }
+
+        // Method to create a new group
+        [HttpPost("groups")]
+        public async Task<ActionResult<CreateGroupResponse>> CreateGroup([FromBody] CreateGroupRequest request)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                // Insert new group
+                var group = new Group
+                {
+                    Group_Name = request.Group_Name,
+                    Group_Description = request.Group_Description,
+                    Creator = request.Creator,
+                    Created_At = DateTime.UtcNow
+                };
+
+                _context.tblGroup.Add(group);
+                await _context.SaveChangesAsync();
+
+                // Add creator as Admin member
+                var creatorMember = new GroupMember
+                {
+                    Group_ID = group.Group_ID,
+                    User_ID = request.Creator,
+                    User_Role = "Admin",
+                    Join_Status = "Accepted",
+                    Joined_At = DateTime.UtcNow
+                };
+
+                _context.tblGroupMember.Add(creatorMember);
+
+                // Add other members
+                foreach (var userId in request.Member_User_IDs.Distinct())
+                {
+                    if (userId == request.Creator)
+                    {
+                        continue;
+                    }
+
+                    var member = new GroupMember
+                    {
+                        Group_ID = group.Group_ID,
+                        User_ID = userId,
+                        User_Role = "Member",
+                        Join_Status = "Accepted",
+                        Joined_At = DateTime.UtcNow
+                    };
+
+                    _context.tblGroupMember.Add(member);
+                }
+
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+
+                return Ok(new CreateGroupResponse { Group_ID = group.Group_ID });
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+
+                return StatusCode(500, "An error occurred while creating the group.");
+            }
+        }
+
+        // Method to update a group
+        [HttpPut("update-group")]
+        public async Task<IActionResult> UpdateGroup([FromBody] UpdateGroupRequest request)
+        {
+            if (request == null || request.Group_ID <= 0)
+            {
+                return BadRequest("Invalid group data.");
+            }
+
+            // Start a transaction for atomic update
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                // Fetch the group entity including menbers
+                var group = await _context.tblGroup
+                    .Include(g => g.GroupMembers)
+                    .FirstOrDefaultAsync(g => g.Group_ID == request.Group_ID);
+
+                if (group == null)
+                {
+                    return NotFound("Group with ID " + request.Group_ID + " not found.");
+                }
+
+                // Update group name and description
+                group.Group_Name = request.Group_Name;
+                group.Group_Description = request.Group_Description;
+
+                // Update member roles
+                foreach (var memberDto in request.Members)
+                {
+                    var memberEntity = group.GroupMembers.FirstOrDefault(m => m.User_ID == memberDto.User_ID);
+
+                    if (memberEntity != null)
+                    {
+                        memberEntity.User_Role = memberDto.User_Role;
+                    }
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return Ok(new { Message = "Group and member roles updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+
+                return StatusCode(500, "An error occourred while updating the group.");
             }
         }
     }

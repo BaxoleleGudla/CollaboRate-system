@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\meetingscontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\meetingscontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\dtos\\meetingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\dtos\\meetingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\groupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\groupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\dtos\\updategrouprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\dtos\\updategrouprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\models\\taskassignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\models\\taskassignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\dtos\\taskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\dtos\\taskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +38,96 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UpdateGroupRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UpdateGroupRequest.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Dtos\\UpdateGroupRequest.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UpdateGroupRequest.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\UpdateGroupRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "MeetingsContoller.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\MeetingsContoller.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\MeetingsContoller.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\MeetingsContoller.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\MeetingsContoller.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAowBoAAACEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-07T19:29:10.093Z"
+              "WhenOpened": "2025-07-11T14:24:28.334Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADIAAACnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T11:37:01.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MeetingDto.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\MeetingDto.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Dtos\\MeetingDto.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\MeetingDto.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\MeetingDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-11T14:23:10.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "GroupsController.cs",
               "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\GroupsController.cs",
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\GroupsController.cs",
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\GroupsController.cs",
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\GroupsController.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAmwKIBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-06T11:15:52.653Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TaskDto.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\TaskDto.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Dtos\\TaskDto.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\TaskDto.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\TaskDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T14:00:21.277Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TasksController.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\TasksController.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\TasksController.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\TasksController.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\TasksController.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T13:41:24.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TaskAssignment.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Models\\TaskAssignment.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Models\\TaskAssignment.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Models\\TaskAssignment.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Models\\TaskAssignment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T14:37:37.436Z"
             }
           ]
         }

@@ -11,5 +11,8 @@ namespace CollaboRateAPIServer.Models
         public string Task_Description { get; set; }
         public DateTime Deadline { get; set; }
         public DateTime Created_At { get; set; }
+
+        // Add this navigation property:
+        public ICollection<TaskAssignment> TaskAssignments { get; set; } = new List<TaskAssignment>();
     }
 }

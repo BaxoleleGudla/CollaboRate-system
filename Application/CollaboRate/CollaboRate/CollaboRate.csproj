@@ -82,10 +82,12 @@
   <ItemGroup>
     <Compile Include="CurrentGroup.cs" />
     <Compile Include="CurrentUser.cs" />
+    <Compile Include="Dtos\AddUsersToGroupRequest.cs" />
     <Compile Include="Dtos\CreateGroupRequest.cs" />
     <Compile Include="Dtos\CreateGroupResponse.cs" />
     <Compile Include="Dtos\GroupUserDto.cs" />
     <Compile Include="Dtos\GroupWithRequestStatusDto.cs" />
+    <Compile Include="Dtos\MeetingDto.cs" />
     <Compile Include="Dtos\PendingUserDto.cs" />
     <Compile Include="Dtos\UpdateGroupRequest.cs" />
     <Compile Include="Dtos\UserDto.cs" />

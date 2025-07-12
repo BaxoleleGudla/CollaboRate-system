@@ -46,7 +46,51 @@ namespace CollaboRateAPIServer.Controllers
             return Ok(users);
         }
 
-        // GET: api/users/5
+        // Get all users not in current group
+        [HttpGet("not-in-group/{currentGroupId}")]
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsersNotInGroup(int currentGroupId, [FromQuery] int currentUserId, [FromQuery] string? keyword = null)
+        {
+            if (currentUserId <= 0 || currentGroupId <= 0)
+            {
+                return BadRequest("User ID and Group ID must be positive values.");
+            }
+
+            try
+            {
+                // Get IDs of users already in the current group
+                var memberIdsInGroup = await _context.tblGroupMember
+                    .Where(gm => gm.Group_ID == currentGroupId)
+                    .Select(gm => gm.User_ID)
+                    .ToListAsync();
+
+                // Query for users not in the group
+                var query = _context.tblUser
+                    .Where(u => !memberIdsInGroup.Contains(u.User_ID) && u.User_ID != currentUserId);
+
+                // Apply search keyword filter if provided
+                if (string.IsNullOrWhiteSpace(keyword) == false)
+                {
+                    string lowerKeyword = keyword.ToLower();
+                    query = query.Where(u => u.Username.ToLower().Contains(lowerKeyword));
+                }
+
+                var users = await query
+                    .Select(u => new UserDto
+                    {
+                        User_ID = u.User_ID,
+                        Username = u.Username
+                    })
+                    .ToListAsync();
+
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while getting users.");
+            }
+        }
+
+        // GET: api/users/
         // Get a single user by ID
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
@@ -70,7 +114,7 @@ namespace CollaboRateAPIServer.Controllers
             return CreatedAtAction(nameof(GetUser), new { id = user.User_ID }, user);
         }
 
-        // PUT: api/users/5
+        // PUT: api/users/
         // Updates an existing user by ID
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, User user)
@@ -101,7 +145,7 @@ namespace CollaboRateAPIServer.Controllers
             return NoContent();
         }
 
-        // DELETE: api/users/5
+        // DELETE: api/users/
         // Delete a user by ID
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)

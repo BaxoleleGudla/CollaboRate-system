@@ -137,6 +137,22 @@
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
+    "Method": "AddUsersToGroup",
+    "RelativePath": "api/Groups/add-users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CollaboRateAPIServer.Dtos.AddUsersToGroupRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
     "Method": "GetAvailableGroupsForUser",
     "RelativePath": "api/Groups/available-groups",
     "HttpMethod": "GET",
@@ -235,6 +251,37 @@
     ]
   },
   {
+    "ContainingType": "CollaboRateAPIServer.Controllers.MeetingsController",
+    "Method": "GetMeetingsByGroup",
+    "RelativePath": "api/Meetings/group/{groupId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CollaboRateAPIServer.Dtos.MeetingDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "CollaboRateAPIServer.Controllers.UsersController",
     "Method": "CreateUser",
     "RelativePath": "api/Users",
@@ -322,6 +369,42 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.UsersController",
+    "Method": "GetUsersNotInGroup",
+    "RelativePath": "api/Users/not-in-group/{currentGroupId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "currentGroupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "currentUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CollaboRateAPIServer.Dtos.UserDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.UsersController",

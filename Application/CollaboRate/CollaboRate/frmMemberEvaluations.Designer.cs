@@ -57,8 +57,8 @@
             // txtSearchMemberName
             // 
             this.txtSearchMemberName.BackColor = System.Drawing.Color.White;
-            this.txtSearchMemberName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.txtSearchMemberName.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.txtSearchMemberName.BorderColor = System.Drawing.Color.DimGray;
+            this.txtSearchMemberName.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
             this.txtSearchMemberName.BorderRadius = 5;
             this.txtSearchMemberName.BorderSize = 1;
             this.txtSearchMemberName.Icon = null;
@@ -69,7 +69,7 @@
             this.txtSearchMemberName.PasswordChar = false;
             this.txtSearchMemberName.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtSearchMemberName.PlaceholderText = "Search nember name";
-            this.txtSearchMemberName.Size = new System.Drawing.Size(772, 39);
+            this.txtSearchMemberName.Size = new System.Drawing.Size(394, 39);
             this.txtSearchMemberName.TabIndex = 18;
             this.txtSearchMemberName.Texts = "";
             this.txtSearchMemberName.UnderlinedStyle = false;

@@ -7,6 +7,7 @@ using CollaboRateAPIServer.Data;
 using System.Runtime.Versioning;
 using CollaboRateAPIServer.Dtos;
 using CollaboRateAPIServer.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace CollaboRateAPIServer.Controllers
 {
@@ -412,6 +413,61 @@ namespace CollaboRateAPIServer.Controllers
                 await transaction.RollbackAsync();
 
                 return StatusCode(500, "An error occourred while updating the group.");
+            }
+        }
+
+        // Method to add additional members to the group
+        [HttpPost("add-users")]
+        public async Task<IActionResult> AddUsersToGroup([FromBody] AddUsersToGroupRequest request)
+        {
+            if (request == null || request.Group_ID <= 0 || request.User_IDs == null || !request.User_IDs.Any())
+            {
+                return BadRequest("Invalid group Id or user list.");
+            }
+
+            try
+            {
+                // Validate group exists
+                var groupExists = await _context.tblGroup.AnyAsync(g => g.Group_ID == request.Group_ID);
+
+                if (!groupExists)
+                {
+                    return NotFound("Group with ID " + request.Group_ID + " not found.");
+                }
+
+                // Get existing members in group to avoid duplicates
+                var existingUserIds = await _context.tblGroupMember
+                    .Where(gm => gm.Group_ID == request.Group_ID && request.User_IDs.Contains(gm.User_ID))
+                    .Select(gm => gm.User_ID)
+                    .ToListAsync();
+
+                // Filter out users already in the group
+                var newUserIds = request.User_IDs.Except(existingUserIds).ToList();
+
+                if (!newUserIds.Any())
+                {
+                    return Ok(new { Message = "No new users to add. All users are already members." });
+                }
+
+                // Create new group member entries
+                var newGroupMembers = newUserIds.Select(userId => new GroupMember
+                {
+                    Group_ID = request.Group_ID,
+                    User_ID = userId,
+                    User_Role = "Member",
+                    Join_Status = "Accepted",
+                    Joined_At = DateTime.UtcNow
+                }).ToList();
+
+                await _context.tblGroupMember.AddRangeAsync(newGroupMembers);
+
+                await _context.SaveChangesAsync();
+
+                return Ok(new { Message = newUserIds.Count + " user(s) added to the group successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while adding users to the group.");
             }
         }
     }

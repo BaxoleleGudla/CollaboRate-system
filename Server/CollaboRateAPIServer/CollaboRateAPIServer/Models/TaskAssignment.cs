@@ -11,5 +11,11 @@ namespace CollaboRateAPIServer.Models
         public bool Is_Completed { get; set; }
         public DateTime Created_At { get; set; }
         public string Note { get; set; }
+
+        // Navigation properties
+        public Task Task { get; set; }
+
+        // Add this navigation property to enable access to User
+        public User User { get; set; }
     }
 }

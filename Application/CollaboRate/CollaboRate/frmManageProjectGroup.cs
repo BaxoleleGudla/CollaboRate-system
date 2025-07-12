@@ -36,6 +36,7 @@ namespace CollaboRate
         {
             frmAddNewMembers addNewMembersForm = new frmAddNewMembers();
             addNewMembersForm.ShowDialog();
+            this.Hide();
         }
 
         private void BindUsersToGrid(List<GroupUserDto> users)

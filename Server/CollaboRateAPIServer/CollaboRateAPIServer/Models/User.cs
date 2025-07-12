@@ -10,5 +10,8 @@ namespace CollaboRateAPIServer.Models
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public DateTime Created_At { get; set; }
+
+        // Optionally navigation back to assignments
+        public ICollection<TaskAssignment> TaskAssignments { get; set; }
     }
 }

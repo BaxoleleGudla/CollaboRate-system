@@ -34,13 +34,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnAddMembers = new FrameworkTest.SATAButton();
             this.dgViewUsers = new System.Windows.Forms.DataGridView();
-            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtSearchUsername = new SATATextBox();
             this.lblHeading = new System.Windows.Forms.Label();
             this.btnBack = new FrameworkTest.SATAButton();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
+            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -136,39 +138,6 @@
             this.dgViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewUsers_CellContentClick);
             this.dgViewUsers.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgViewUsers_CurrentCellDirtyStateChanged);
             // 
-            // User_ID
-            // 
-            this.User_ID.HeaderText = "User ID";
-            this.User_ID.MinimumWidth = 6;
-            this.User_ID.Name = "User_ID";
-            this.User_ID.ReadOnly = true;
-            this.User_ID.Visible = false;
-            this.User_ID.Width = 125;
-            // 
-            // User_Name
-            // 
-            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.User_Name.HeaderText = "Username";
-            this.User_Name.MinimumWidth = 6;
-            this.User_Name.Name = "User_Name";
-            this.User_Name.ReadOnly = true;
-            // 
-            // Action
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.NullValue = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Action.FillWeight = 75F;
-            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Action.HeaderText = "Action";
-            this.Action.MinimumWidth = 6;
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
-            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Action.Width = 50;
-            // 
             // txtSearchUsername
             // 
             this.txtSearchUsername.BackColor = System.Drawing.Color.White;
@@ -188,6 +157,7 @@
             this.txtSearchUsername.TabIndex = 32;
             this.txtSearchUsername.Texts = "";
             this.txtSearchUsername.UnderlinedStyle = false;
+            this.txtSearchUsername._TextChanged += new System.EventHandler(this.txtSearchUsername__TextChanged);
             // 
             // lblHeading
             // 
@@ -236,12 +206,62 @@
             this.btnBack.TabIndex = 36;
             this.btnBack.TextAutoCenter = true;
             this.btnBack.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(190, 276);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 54;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
+            // 
+            // User_ID
+            // 
+            this.User_ID.DataPropertyName = "User_ID";
+            this.User_ID.HeaderText = "User ID";
+            this.User_ID.MinimumWidth = 6;
+            this.User_ID.Name = "User_ID";
+            this.User_ID.ReadOnly = true;
+            this.User_ID.Visible = false;
+            this.User_ID.Width = 125;
+            // 
+            // User_Name
+            // 
+            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.User_Name.DataPropertyName = "Username";
+            this.User_Name.HeaderText = "Username";
+            this.User_Name.MinimumWidth = 6;
+            this.User_Name.Name = "User_Name";
+            this.User_Name.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.DataPropertyName = "Action";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.NullValue = false;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Action.FillWeight = 75F;
+            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Action.HeaderText = "Action";
+            this.Action.MinimumWidth = 6;
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Action.Width = 50;
             // 
             // frmAddNewMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 611);
+            this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAddMembers);
@@ -250,10 +270,12 @@
             this.Controls.Add(this.lblHeading);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAddNewMembers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmAddNewMembers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,11 +286,12 @@
         private System.Windows.Forms.Label label3;
         private FrameworkTest.SATAButton btnAddMembers;
         private System.Windows.Forms.DataGridView dgViewUsers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User_Name;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Action;
         private SATATextBox txtSearchUsername;
         private System.Windows.Forms.Label lblHeading;
         private FrameworkTest.SATAButton btnBack;
+        private System.Windows.Forms.PictureBox pbLoadingSpinner;
+        private System.Windows.Forms.DataGridViewTextBoxColumn User_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn User_Name;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Action;
     }
 }

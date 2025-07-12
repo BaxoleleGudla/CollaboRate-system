@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgViewMeetings = new System.Windows.Forms.DataGridView();
-            this.Meeting_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Meeting_Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Meeting_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Meeting_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Created_At = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MarkAsCompleted = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.lblHeading = new System.Windows.Forms.Label();
             this.txtSearchMeeting = new SATATextBox();
             this.btnScheduleNewMeeting = new FrameworkTest.SATAButton();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
+            this.Meeting_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Meeting_Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Meeting_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Meeting_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MarkAsCompleted = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMeetings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
             // 
             // dgViewMeetings
@@ -55,14 +56,14 @@
             this.dgViewMeetings.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewMeetings.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgViewMeetings.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewMeetings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMeetings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgViewMeetings.ColumnHeadersHeight = 35;
             this.dgViewMeetings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewMeetings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -70,7 +71,6 @@
             this.Meeting_Title,
             this.Meeting_Description,
             this.Meeting_Date,
-            this.Created_At,
             this.MarkAsCompleted});
             this.dgViewMeetings.EnableHeadersVisualStyles = false;
             this.dgViewMeetings.GridColor = System.Drawing.SystemColors.Control;
@@ -80,71 +80,12 @@
             this.dgViewMeetings.ReadOnly = true;
             this.dgViewMeetings.RowHeadersVisible = false;
             this.dgViewMeetings.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewMeetings.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewMeetings.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgViewMeetings.RowTemplate.Height = 35;
             this.dgViewMeetings.Size = new System.Drawing.Size(772, 463);
             this.dgViewMeetings.TabIndex = 29;
-            // 
-            // Meeting_ID
-            // 
-            this.Meeting_ID.HeaderText = "Meeting ID";
-            this.Meeting_ID.MinimumWidth = 6;
-            this.Meeting_ID.Name = "Meeting_ID";
-            this.Meeting_ID.ReadOnly = true;
-            this.Meeting_ID.Visible = false;
-            this.Meeting_ID.Width = 155;
-            // 
-            // Meeting_Title
-            // 
-            this.Meeting_Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Meeting_Title.FillWeight = 70F;
-            this.Meeting_Title.HeaderText = "Meeting Title";
-            this.Meeting_Title.MinimumWidth = 6;
-            this.Meeting_Title.Name = "Meeting_Title";
-            this.Meeting_Title.ReadOnly = true;
-            // 
-            // Meeting_Description
-            // 
-            this.Meeting_Description.HeaderText = "Description";
-            this.Meeting_Description.MinimumWidth = 6;
-            this.Meeting_Description.Name = "Meeting_Description";
-            this.Meeting_Description.ReadOnly = true;
-            this.Meeting_Description.Width = 125;
-            // 
-            // Meeting_Date
-            // 
-            this.Meeting_Date.HeaderText = "Meeting Date";
-            this.Meeting_Date.MinimumWidth = 6;
-            this.Meeting_Date.Name = "Meeting_Date";
-            this.Meeting_Date.ReadOnly = true;
-            this.Meeting_Date.Width = 160;
-            // 
-            // Created_At
-            // 
-            this.Created_At.HeaderText = "Created At";
-            this.Created_At.MinimumWidth = 6;
-            this.Created_At.Name = "Created_At";
-            this.Created_At.ReadOnly = true;
-            this.Created_At.Width = 114;
-            // 
-            // MarkAsCompleted
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.MarkAsCompleted.DefaultCellStyle = dataGridViewCellStyle2;
-            this.MarkAsCompleted.FillWeight = 75F;
-            this.MarkAsCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MarkAsCompleted.HeaderText = "Action";
-            this.MarkAsCompleted.MinimumWidth = 6;
-            this.MarkAsCompleted.Name = "MarkAsCompleted";
-            this.MarkAsCompleted.ReadOnly = true;
-            this.MarkAsCompleted.Text = "Cancel Meeting";
-            this.MarkAsCompleted.UseColumnTextForButtonValue = true;
-            this.MarkAsCompleted.Width = 160;
             // 
             // button1
             // 
@@ -185,6 +126,7 @@
             this.txtSearchMeeting.TabIndex = 27;
             this.txtSearchMeeting.Texts = "";
             this.txtSearchMeeting.UnderlinedStyle = false;
+            this.txtSearchMeeting._TextChanged += new System.EventHandler(this.txtSearchMeeting__TextChanged);
             // 
             // btnScheduleNewMeeting
             // 
@@ -225,12 +167,80 @@
             this.btnScheduleNewMeeting.TextOffset = new System.Drawing.Point(0, 0);
             this.btnScheduleNewMeeting.Click += new System.EventHandler(this.btnScheduleNewMeeting_Click);
             // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(389, 300);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 53;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
+            // 
+            // Meeting_ID
+            // 
+            this.Meeting_ID.DataPropertyName = "Meeting_ID";
+            this.Meeting_ID.HeaderText = "Meeting ID";
+            this.Meeting_ID.MinimumWidth = 6;
+            this.Meeting_ID.Name = "Meeting_ID";
+            this.Meeting_ID.ReadOnly = true;
+            this.Meeting_ID.Visible = false;
+            this.Meeting_ID.Width = 155;
+            // 
+            // Meeting_Title
+            // 
+            this.Meeting_Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Meeting_Title.DataPropertyName = "Meeting_Title";
+            this.Meeting_Title.FillWeight = 70F;
+            this.Meeting_Title.HeaderText = "Meeting Title";
+            this.Meeting_Title.MinimumWidth = 6;
+            this.Meeting_Title.Name = "Meeting_Title";
+            this.Meeting_Title.ReadOnly = true;
+            // 
+            // Meeting_Description
+            // 
+            this.Meeting_Description.DataPropertyName = "Meeting_Description";
+            this.Meeting_Description.HeaderText = "Description";
+            this.Meeting_Description.MinimumWidth = 6;
+            this.Meeting_Description.Name = "Meeting_Description";
+            this.Meeting_Description.ReadOnly = true;
+            this.Meeting_Description.Width = 125;
+            // 
+            // Meeting_Date
+            // 
+            this.Meeting_Date.DataPropertyName = "Meeting_Date";
+            this.Meeting_Date.HeaderText = "Meeting Date";
+            this.Meeting_Date.MinimumWidth = 6;
+            this.Meeting_Date.Name = "Meeting_Date";
+            this.Meeting_Date.ReadOnly = true;
+            this.Meeting_Date.Width = 160;
+            // 
+            // MarkAsCompleted
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.MarkAsCompleted.DefaultCellStyle = dataGridViewCellStyle5;
+            this.MarkAsCompleted.FillWeight = 75F;
+            this.MarkAsCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MarkAsCompleted.HeaderText = "Action";
+            this.MarkAsCompleted.MinimumWidth = 6;
+            this.MarkAsCompleted.Name = "MarkAsCompleted";
+            this.MarkAsCompleted.ReadOnly = true;
+            this.MarkAsCompleted.Text = "Cancel Meeting";
+            this.MarkAsCompleted.UseColumnTextForButtonValue = true;
+            this.MarkAsCompleted.Width = 160;
+            // 
             // frmGroupMeetings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(810, 627);
+            this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.dgViewMeetings);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblHeading);
@@ -241,7 +251,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmGroupMeetings";
             this.Text = "frmGroupMeetings";
+            this.Load += new System.EventHandler(this.frmGroupMeetings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMeetings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,11 +266,11 @@
         private System.Windows.Forms.Label lblHeading;
         private SATATextBox txtSearchMeeting;
         private FrameworkTest.SATAButton btnScheduleNewMeeting;
+        private System.Windows.Forms.PictureBox pbLoadingSpinner;
         private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Created_At;
         private System.Windows.Forms.DataGridViewButtonColumn MarkAsCompleted;
     }
 }

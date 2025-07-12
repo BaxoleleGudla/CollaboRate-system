@@ -434,12 +434,163 @@
         }
       }
     },
+    "/api/Groups/add-users": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUsersToGroupRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUsersToGroupRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUsersToGroupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Meetings/group/{groupId}": {
+      "get": {
+        "tags": [
+          "Meetings"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MeetingDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MeetingDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MeetingDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Users/users": {
       "get": {
         "tags": [
           "Users"
         ],
         "parameters": [
+          {
+            "name": "currentUserId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/not-in-group/{currentGroupId}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "currentGroupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
           {
             "name": "currentUserId",
             "in": "query",
@@ -709,6 +860,24 @@
         },
         "additionalProperties": false
       },
+      "AddUsersToGroupRequest": {
+        "type": "object",
+        "properties": {
+          "group_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user_IDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateGroupRequest": {
         "type": "object",
         "properties": {
@@ -808,6 +977,28 @@
         },
         "additionalProperties": false
       },
+      "MeetingDto": {
+        "type": "object",
+        "properties": {
+          "meeting_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "meeting_Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "meeting_Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "meeting_Date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "PendingUserDto": {
         "type": "object",
         "properties": {
@@ -818,6 +1009,78 @@
           "username": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "task_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "group_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "task_Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "task_Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "deadline": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_At": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "taskAssignments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskAssignment"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TaskAssignment": {
+        "type": "object",
+        "properties": {
+          "task_Assignment_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "task_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_Completed": {
+            "type": "boolean"
+          },
+          "created_At": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          },
+          "task": {
+            "$ref": "#/components/schemas/Task"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
           }
         },
         "additionalProperties": false
@@ -883,6 +1146,13 @@
           "created_At": {
             "type": "string",
             "format": "date-time"
+          },
+          "taskAssignments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskAssignment"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

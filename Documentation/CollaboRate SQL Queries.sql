@@ -47,7 +47,7 @@ CREATE TABLE tblMeeting (
 	Meeting_ID INT IDENTITY(1,1) PRIMARY KEY,
 	Group_ID INT NOT NULL,
 	Meeting_Title VARCHAR(200) NOT NULL,
-	Meeting_Description	VARCHAR(700) NOT NULL,
+	Meeting_Description	VARCHAR(700) NULL,
 	Meeting_Date DATETIME2 NOT NULL,
 	Created_At	DATETIME2 DEFAULT SYSUTCDATETIME(),
 

@@ -252,6 +252,48 @@
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.MeetingsController",
+    "Method": "CreateMeeting",
+    "RelativePath": "api/Meetings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "meetingDto",
+        "Type": "CollaboRateAPIServer.Dtos.CreateMeetingDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.MeetingsController",
+    "Method": "GetMeetingById",
+    "RelativePath": "api/Meetings/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CollaboRateAPIServer.Models.Meeting",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.MeetingsController",
     "Method": "GetMeetingsByGroup",
     "RelativePath": "api/Meetings/group/{groupId}",
     "HttpMethod": "GET",

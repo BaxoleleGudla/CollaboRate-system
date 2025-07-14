@@ -64,5 +64,90 @@ namespace CollaboRateAPIServer.Controllers
                 return StatusCode(500, "An error occured while processing your request.");
             }
         }
+
+        // Method to create  a new meeting
+        [HttpPost]
+        public async Task<ActionResult> CreateMeeting([FromBody] CreateMeetingDto meetingDto)
+        {
+            // Use a transaction to ensure atomicity
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                // Add new meeting
+                var meeting = new Meeting
+                {
+                    Group_ID = meetingDto.Group_ID,
+                    Meeting_Title = meetingDto.Meeting_Title,
+                    Meeting_Description = meetingDto.Meeting_Description,
+                    Meeting_Date = meetingDto.Meeting_Date
+                };
+                _context.tblMeeting.Add(meeting);
+                await _context.SaveChangesAsync();
+
+                // Get the group name for notification message
+                var group = await _context.tblGroup
+                    .Where(g => g.Group_ID == meetingDto.Group_ID)
+                    .Select(g => new { g.Group_ID, g.Group_Name })
+                    .FirstOrDefaultAsync();
+
+                if (group == null)
+                {
+                    return BadRequest("Invalid Group ID.");
+                }
+
+                // Create the group notification
+                string notificationMessage = $"New meeting scheduled for group {group.Group_Name} on {meeting.Meeting_Date:dddd, MMMM d, yyyy HH:mm}.";
+
+                var groupNotification = new GroupNotification
+                {
+                    Group_ID = group.Group_ID,
+                    Notification_Type = "Meeting",
+                    Notification_Message = notificationMessage,
+                };
+                _context.tblGroupNotification.Add(groupNotification);
+                await _context.SaveChangesAsync();
+
+                // Get all users in the group to notify
+                var userIds = await _context.tblGroupMember
+                    .Where(gm => gm.Group_ID == meetingDto.Group_ID)
+                    .Select(gm => gm.User_ID)
+                    .ToListAsync();
+
+                // Create notification recipients for each user
+                var notificationRecipients = userIds.Select(userId => new NotificationRecipient
+                {
+                    Group_Notification_ID = groupNotification.Group_Notification_ID,
+                    User_ID = userId,
+                    Is_Read = false
+                }).ToList();
+
+                _context.tblNotificationRecipient.AddRange(notificationRecipients);
+                await _context.SaveChangesAsync();
+
+                // Commit transaction
+                await transaction.CommitAsync();
+
+                return CreatedAtAction(nameof(GetMeetingById), new { id = meeting.Meeting_ID }, meeting);
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+
+                return StatusCode(500, "An error occured while creating the meeting and notifications.");
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Meeting>> GetMeetingById(int id)
+        {
+            var meeting = await _context.tblMeeting.FindAsync();
+            if (meeting == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(meeting);
+        }
     }
 }

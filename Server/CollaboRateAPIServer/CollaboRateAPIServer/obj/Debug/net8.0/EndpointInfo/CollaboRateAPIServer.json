@@ -521,6 +521,77 @@
         }
       }
     },
+    "/api/Meetings": {
+      "post": {
+        "tags": [
+          "Meetings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMeetingDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMeetingDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMeetingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Meetings/{id}": {
+      "get": {
+        "tags": [
+          "Meetings"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Meeting"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Meeting"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Meeting"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Users/users": {
       "get": {
         "tags": [
@@ -914,6 +985,28 @@
         },
         "additionalProperties": false
       },
+      "CreateMeetingDto": {
+        "type": "object",
+        "properties": {
+          "group_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "meeting_Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "meeting_Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "meeting_Date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "GroupDto": {
         "type": "object",
         "properties": {
@@ -973,6 +1066,36 @@
           "password": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Meeting": {
+        "type": "object",
+        "properties": {
+          "meeting_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "group_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "meeting_Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "meeting_Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "meeting_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_At": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false

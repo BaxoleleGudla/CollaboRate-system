@@ -36,7 +36,7 @@
             this.txtMeetingTitle = new SATATextBox();
             this.lblHeading = new System.Windows.Forms.Label();
             this.btnScheduleUpdateMeeting = new FrameworkTest.SATAButton();
-            this.sataDateTimePicker1 = new SATAUiFramework.Controls.SATADateTimePicker();
+            this.dtpMeetingDate = new SATAUiFramework.Controls.SATADateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.lblMeetingDateError = new System.Windows.Forms.Label();
             this.btnCancelMeeting = new FrameworkTest.SATAButton();
@@ -45,11 +45,11 @@
             // lblMeetingDescriptionError
             // 
             this.lblMeetingDescriptionError.AutoSize = true;
-            this.lblMeetingDescriptionError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMeetingDescriptionError.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMeetingDescriptionError.ForeColor = System.Drawing.Color.Red;
-            this.lblMeetingDescriptionError.Location = new System.Drawing.Point(33, 265);
+            this.lblMeetingDescriptionError.Location = new System.Drawing.Point(31, 262);
             this.lblMeetingDescriptionError.Name = "lblMeetingDescriptionError";
-            this.lblMeetingDescriptionError.Size = new System.Drawing.Size(35, 16);
+            this.lblMeetingDescriptionError.Size = new System.Drawing.Size(42, 20);
             this.lblMeetingDescriptionError.TabIndex = 31;
             this.lblMeetingDescriptionError.Text = "Error";
             this.lblMeetingDescriptionError.Visible = false;
@@ -57,11 +57,11 @@
             // lblMeetingTitleError
             // 
             this.lblMeetingTitleError.AutoSize = true;
-            this.lblMeetingTitleError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMeetingTitleError.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMeetingTitleError.ForeColor = System.Drawing.Color.Red;
-            this.lblMeetingTitleError.Location = new System.Drawing.Point(34, 125);
+            this.lblMeetingTitleError.Location = new System.Drawing.Point(31, 120);
             this.lblMeetingTitleError.Name = "lblMeetingTitleError";
-            this.lblMeetingTitleError.Size = new System.Drawing.Size(35, 16);
+            this.lblMeetingTitleError.Size = new System.Drawing.Size(42, 20);
             this.lblMeetingTitleError.TabIndex = 30;
             this.lblMeetingTitleError.Text = "Error";
             this.lblMeetingTitleError.Visible = false;
@@ -98,7 +98,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 58);
+            this.label1.Location = new System.Drawing.Point(33, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 21);
             this.label1.TabIndex = 27;
@@ -113,7 +113,7 @@
             this.txtMeetingTitle.BorderSize = 1;
             this.txtMeetingTitle.Icon = null;
             this.txtMeetingTitle.IconSize = new System.Drawing.Size(20, 20);
-            this.txtMeetingTitle.Location = new System.Drawing.Point(35, 84);
+            this.txtMeetingTitle.Location = new System.Drawing.Point(35, 82);
             this.txtMeetingTitle.Multiline = false;
             this.txtMeetingTitle.Name = "txtMeetingTitle";
             this.txtMeetingTitle.PasswordChar = false;
@@ -171,18 +171,21 @@
             this.btnScheduleUpdateMeeting.TabIndex = 34;
             this.btnScheduleUpdateMeeting.TextAutoCenter = true;
             this.btnScheduleUpdateMeeting.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnScheduleUpdateMeeting.Click += new System.EventHandler(this.btnScheduleUpdateMeeting_Click);
             // 
-            // sataDateTimePicker1
+            // dtpMeetingDate
             // 
-            this.sataDateTimePicker1.BackColor = System.Drawing.Color.Transparent;
-            this.sataDateTimePicker1.BackgroundColor = System.Drawing.Color.White;
-            this.sataDateTimePicker1.BorderColor = System.Drawing.Color.LightGray;
-            this.sataDateTimePicker1.BorderThickness = 1;
-            this.sataDateTimePicker1.CornerRadius = 5;
-            this.sataDateTimePicker1.Location = new System.Drawing.Point(35, 311);
-            this.sataDateTimePicker1.Name = "sataDateTimePicker1";
-            this.sataDateTimePicker1.Size = new System.Drawing.Size(343, 28);
-            this.sataDateTimePicker1.TabIndex = 35;
+            this.dtpMeetingDate.BackColor = System.Drawing.Color.Transparent;
+            this.dtpMeetingDate.BackgroundColor = System.Drawing.Color.White;
+            this.dtpMeetingDate.BorderColor = System.Drawing.Color.LightGray;
+            this.dtpMeetingDate.BorderThickness = 1;
+            this.dtpMeetingDate.CornerRadius = 5;
+            this.dtpMeetingDate.CustomFormat = "dd/MMMM/yyyy HH:mm";
+            this.dtpMeetingDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMeetingDate.Location = new System.Drawing.Point(35, 311);
+            this.dtpMeetingDate.Name = "dtpMeetingDate";
+            this.dtpMeetingDate.Size = new System.Drawing.Size(343, 28);
+            this.dtpMeetingDate.TabIndex = 35;
             // 
             // label3
             // 
@@ -196,11 +199,11 @@
             // lblMeetingDateError
             // 
             this.lblMeetingDateError.AutoSize = true;
-            this.lblMeetingDateError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMeetingDateError.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMeetingDateError.ForeColor = System.Drawing.Color.Red;
-            this.lblMeetingDateError.Location = new System.Drawing.Point(34, 342);
+            this.lblMeetingDateError.Location = new System.Drawing.Point(31, 336);
             this.lblMeetingDateError.Name = "lblMeetingDateError";
-            this.lblMeetingDateError.Size = new System.Drawing.Size(35, 16);
+            this.lblMeetingDateError.Size = new System.Drawing.Size(42, 20);
             this.lblMeetingDateError.TabIndex = 37;
             this.lblMeetingDateError.Text = "Error";
             this.lblMeetingDateError.Visible = false;
@@ -251,7 +254,7 @@
             this.Controls.Add(this.btnCancelMeeting);
             this.Controls.Add(this.lblMeetingDateError);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.sataDateTimePicker1);
+            this.Controls.Add(this.dtpMeetingDate);
             this.Controls.Add(this.lblMeetingDescriptionError);
             this.Controls.Add(this.lblMeetingTitleError);
             this.Controls.Add(this.label2);
@@ -262,7 +265,7 @@
             this.Controls.Add(this.btnScheduleUpdateMeeting);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmScheduleUpdateMeeting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
@@ -278,10 +281,10 @@
         private System.Windows.Forms.Label label1;
         private SATATextBox txtMeetingTitle;
         private System.Windows.Forms.Label lblHeading;
-        private FrameworkTest.SATAButton btnScheduleUpdateMeeting;
-        private SATAUiFramework.Controls.SATADateTimePicker sataDateTimePicker1;
+        private SATAUiFramework.Controls.SATADateTimePicker dtpMeetingDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblMeetingDateError;
         private FrameworkTest.SATAButton btnCancelMeeting;
+        public FrameworkTest.SATAButton btnScheduleUpdateMeeting;
     }
 }

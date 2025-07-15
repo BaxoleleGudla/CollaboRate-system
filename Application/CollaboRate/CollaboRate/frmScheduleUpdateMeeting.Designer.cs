@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblMeetingDateError = new System.Windows.Forms.Label();
             this.btnCancelMeeting = new FrameworkTest.SATAButton();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMeetingDescriptionError
@@ -89,7 +91,7 @@
             this.txtMeetingDescription.Name = "txtMeetingDescription";
             this.txtMeetingDescription.PasswordChar = false;
             this.txtMeetingDescription.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtMeetingDescription.PlaceholderText = "Enter meeting description";
+            this.txtMeetingDescription.PlaceholderText = "";
             this.txtMeetingDescription.Size = new System.Drawing.Size(344, 94);
             this.txtMeetingDescription.TabIndex = 28;
             this.txtMeetingDescription.Texts = "";
@@ -118,7 +120,7 @@
             this.txtMeetingTitle.Name = "txtMeetingTitle";
             this.txtMeetingTitle.PasswordChar = false;
             this.txtMeetingTitle.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtMeetingTitle.PlaceholderText = "Enter meeting title";
+            this.txtMeetingTitle.PlaceholderText = "";
             this.txtMeetingTitle.Size = new System.Drawing.Size(344, 39);
             this.txtMeetingTitle.TabIndex = 26;
             this.txtMeetingTitle.Texts = "";
@@ -246,11 +248,24 @@
             this.btnCancelMeeting.TextAutoCenter = true;
             this.btnCancelMeeting.TextOffset = new System.Drawing.Point(0, 0);
             // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(189, 218);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 53;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
+            // 
             // frmScheduleUpdateMeeting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 463);
+            this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.btnCancelMeeting);
             this.Controls.Add(this.lblMeetingDateError);
             this.Controls.Add(this.label3);
@@ -268,6 +283,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmScheduleUpdateMeeting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,14 +293,15 @@
         private System.Windows.Forms.Label lblMeetingDescriptionError;
         private System.Windows.Forms.Label lblMeetingTitleError;
         private System.Windows.Forms.Label label2;
-        private SATATextBox txtMeetingDescription;
         private System.Windows.Forms.Label label1;
-        private SATATextBox txtMeetingTitle;
         private System.Windows.Forms.Label lblHeading;
-        private SATAUiFramework.Controls.SATADateTimePicker dtpMeetingDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblMeetingDateError;
-        private FrameworkTest.SATAButton btnCancelMeeting;
         public FrameworkTest.SATAButton btnScheduleUpdateMeeting;
+        private System.Windows.Forms.PictureBox pbLoadingSpinner;
+        public SATATextBox txtMeetingDescription;
+        public SATATextBox txtMeetingTitle;
+        public SATAUiFramework.Controls.SATADateTimePicker dtpMeetingDate;
+        public FrameworkTest.SATAButton btnCancelMeeting;
     }
 }

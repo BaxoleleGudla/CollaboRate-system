@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
@@ -30,7 +31,9 @@ namespace CollaboRate
         private void btnScheduleNewMeeting_Click(object sender, EventArgs e)
         {
             frmScheduleUpdateMeeting scheduleMeetingForm = new frmScheduleUpdateMeeting();
-            scheduleMeetingForm.btnScheduleUpdateMeeting.Text = "Schedule Meeting";
+            scheduleMeetingForm.btnScheduleUpdateMeeting.ButtonText = "Schedule Meeting";
+            scheduleMeetingForm.txtMeetingTitle.PlaceholderText = "Enter meeting title";
+            scheduleMeetingForm.txtMeetingDescription.PlaceholderText = "Enter meeting description";
             scheduleMeetingForm.ShowDialog();
         }
 
@@ -67,7 +70,7 @@ namespace CollaboRate
         }
 
         // Method to display meetings
-        private async Task DisplayMeetingsAsync(int groupId, string keyword = null)
+        public async Task DisplayMeetingsAsync(int groupId, string keyword = null)
         {
             try
             {
@@ -106,6 +109,35 @@ namespace CollaboRate
         private async void txtSearchMeeting__TextChanged(object sender, EventArgs e)
         {
             await DisplayMeetingsAsync(CurrentGroup.Group_ID, txtSearchMeeting.Texts);
+        }
+
+        private void dgViewMeetings_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                frmScheduleUpdateMeeting updateMeetingForm = new frmScheduleUpdateMeeting();
+
+                updateMeetingForm.btnScheduleUpdateMeeting.ButtonText = "Save Changes";
+
+
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dgViewMeetings.Rows[e.RowIndex];
+
+                    updateMeetingForm.meeting_ID = int.Parse(row.Cells["Meeting_ID"].Value.ToString());
+                    updateMeetingForm.txtMeetingTitle.Texts = (row.Cells["Meeting_Title"].Value).ToString();
+                    updateMeetingForm.txtMeetingDescription.Texts = (row.Cells["Meeting_Description"].Value.ToString());
+                    updateMeetingForm.dtpMeetingDate.Value = DateTime.Parse((row.Cells["Meeting_Date"].Value.ToString()));
+
+                    updateMeetingForm.btnCancelMeeting.Enabled = true;
+
+                    updateMeetingForm.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

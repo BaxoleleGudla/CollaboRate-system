@@ -590,6 +590,46 @@
             }
           }
         }
+      },
+      "put": {
+        "tags": [
+          "Meetings"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMeetingDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMeetingDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMeetingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/Users/users": {
@@ -1243,6 +1283,24 @@
               "$ref": "#/components/schemas/UpdateGroupMemberRoleDto"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateMeetingDto": {
+        "type": "object",
+        "properties": {
+          "meeting_Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "meeting_Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "meeting_Date": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false

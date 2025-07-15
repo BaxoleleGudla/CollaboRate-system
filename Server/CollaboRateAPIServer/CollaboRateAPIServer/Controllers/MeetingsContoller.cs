@@ -102,7 +102,7 @@ namespace CollaboRateAPIServer.Controllers
                 var groupNotification = new GroupNotification
                 {
                     Group_ID = group.Group_ID,
-                    Notification_Type = "Meeting",
+                    Notification_Type = "Meeting Scheduled",
                     Notification_Message = notificationMessage,
                 };
                 _context.tblGroupNotification.Add(groupNotification);
@@ -148,6 +148,78 @@ namespace CollaboRateAPIServer.Controllers
             }
 
             return Ok(meeting);
+        }
+
+        // Method to update a meeting
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateMeeting(int id, [FromBody] UpdateMeetingDto meetingDto)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                // Find existing meeting
+                var meeting = await _context.tblMeeting.FindAsync(id);
+                if (meeting == null)
+                {
+                    return NotFound("Meeting not found.");
+                }
+
+                // Update meeting properties
+                meeting.Meeting_Title = meetingDto.Meeting_Title;
+                meeting.Meeting_Description = meetingDto.Meeting_Description;
+                meeting.Meeting_Date = meetingDto.Meeting_Date;
+
+                await _context.SaveChangesAsync();
+
+                // Get the updated group info
+                var group = await _context.tblGroup
+                    .Where(g => g.Group_ID == meeting.Group_ID)
+                    .Select(g => new { g.Group_ID, g.Group_Name })
+                    .FirstOrDefaultAsync();
+
+                if (group == null)
+                {
+                    return BadRequest("Invalid Group ID associated with the meeting.");
+                }
+
+                // Create a notification about the update
+                string notificationMessage = $"Meeting for group {group.Group_Name}  has been updated and is now scheduled for {meeting.Meeting_Date:dddd, d MMMM, yyyy HH:mm}.";
+
+                var groupNotification = new GroupNotification
+                {
+                    Group_ID = group.Group_ID,
+                    Notification_Type = "Meeting Updated",
+                    Notification_Message = notificationMessage
+                };
+                _context.tblGroupNotification.Add(groupNotification);
+                await _context.SaveChangesAsync();
+
+                // Get all users in the group to notify them about the update
+                var userIds = await _context.tblGroupMember
+                    .Where(gm => gm.Group_ID == group.Group_ID)
+                    .Select(gm => gm.User_ID)
+                    .ToListAsync();
+
+                var notificationRecipients = userIds.Select(userId => new NotificationRecipient
+                {
+                    Group_Notification_ID = groupNotification.Group_Notification_ID,
+                    User_ID = userId,
+                    Is_Read = false
+                }).ToList();
+
+                _context.tblNotificationRecipient.AddRange(notificationRecipients);
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+
+                return Ok(meeting);
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, "An error occured while updating the meeting and notifications.");
+            }
         }
     }
 }

@@ -119,8 +119,17 @@ namespace CollaboRate
 
                 updateMeetingForm.btnScheduleUpdateMeeting.ButtonText = "Save Changes";
 
+                if (e.RowIndex < 0)
+                {
+                    return;
+                }
 
-                if (e.RowIndex >= 0)
+                // Check if the clicked column is a button column
+                if (dgViewMeetings.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+                {
+                    MessageBox.Show($"Button in row {e.RowIndex} clicked.");
+                }
+                else
                 {
                     DataGridViewRow row = this.dgViewMeetings.Rows[e.RowIndex];
 

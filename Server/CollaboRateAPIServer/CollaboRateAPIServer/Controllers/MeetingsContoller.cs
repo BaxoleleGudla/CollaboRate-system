@@ -221,5 +221,78 @@ namespace CollaboRateAPIServer.Controllers
                 return StatusCode(500, "An error occured while updating the meeting and notifications.");
             }
         }
+
+        // Method to cancel a meeting
+        [HttpDelete("cancel/{meetingId}")]
+        public async Task<ActionResult> CancelMeeting(int meetingId)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                // Find the meeting
+                var meeting = await _context.tblMeeting.FindAsync(meetingId);
+
+                if (meeting == null)
+                {
+                    return NotFound("Meeting not found.");
+                }
+
+                // Capture details before deleting for notification
+                int groupId = meeting.Group_ID;
+                DateTime meetingDate = meeting.Meeting_Date;
+
+                // Delete the meeting
+                _context.tblMeeting.Remove(meeting);
+                await _context.SaveChangesAsync();
+
+                // Get group info
+                var group = await _context.tblGroup
+                    .Where(g => g.Group_ID == groupId)
+                    .Select(g => new { g.Group_ID, g.Group_Name })
+                    .FirstOrDefaultAsync();
+
+                if (group == null)
+                {
+                    return BadRequest("Invalid Group ID associated with the meeting");
+                }
+
+                string notificationMessage = $"The meeting for group: {group.Group_Name} scheduled on {meetingDate:dddd, d MMMM, yyyy HH:mm} has been cancelled.";
+
+                var groupNotification = new GroupNotification
+                {
+                    Group_ID = group.Group_ID,
+                    Notification_Type = "Meeting Cancelled",
+                    Notification_Message = notificationMessage
+                };
+                _context.tblGroupNotification.Add(groupNotification);
+                await _context.SaveChangesAsync();
+
+                // Notify all group members
+                var userIds = await _context.tblGroupMember
+                    .Where(gm => gm.Group_ID == group.Group_ID)
+                    .Select(gm => gm.User_ID)
+                    .ToListAsync();
+
+                var notificationRecipients = userIds.Select(userId => new NotificationRecipient
+                {
+                    Group_Notification_ID = groupNotification.Group_Notification_ID,
+                    User_ID = userId,
+                    Is_Read = false
+                });
+
+                _context.tblNotificationRecipient.AddRange(notificationRecipients);
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+
+                return Ok(new { message = "Meeting cancelled successfully." });
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, "An error occurred while cancelling the meeting.");
+            }
+        }     
     }
 }

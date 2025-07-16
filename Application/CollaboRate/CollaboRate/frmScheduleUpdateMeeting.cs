@@ -174,11 +174,94 @@ namespace CollaboRate
             }
         }
 
+        // Method to update a meeting
+        private async Task UpdateMeetingAsync()
+        {
+            try
+            {
+                pbLoadingSpinner.Visible = true;
+                btnScheduleUpdateMeeting.Enabled = false;
+
+                if (InputValidation() == false)
+                {
+                    var updateMeetingRequest = new UpdateMeetingDto
+                    {
+                        Meeting_Title = txtMeetingTitle.Texts,
+                        Meeting_Description = txtMeetingDescription.Texts,
+                        Meeting_Date = dtpMeetingDate.Value
+                    };
+
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+
+                    string json = JsonSerializer.Serialize(updateMeetingRequest, options);
+
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    string url = $"https://localhost:7287/api/Meetings/{meeting_ID}";
+
+                    // Send put request
+                    HttpResponseMessage response = await client.PutAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        pbLoadingSpinner.Visible = false;
+                        btnScheduleUpdateMeeting.Enabled = true;
+
+                        MessageBox.Show("Meeting updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        var groupMeetingForm = Application.OpenForms.OfType<frmGroupMeetings>().FirstOrDefault();
+                        if (groupMeetingForm != null)
+                        {
+                            _ = groupMeetingForm.DisplayMeetingsAsync(CurrentUser.User_ID);
+                        }
+                    }
+                    else
+                    {
+                        pbLoadingSpinner.Visible = false;
+                        btnScheduleUpdateMeeting.Enabled = true;
+
+                        var error = await response.Content.ReadAsStringAsync();
+                        MessageBox.Show("Error: " + error, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (HttpRequestException httpEx)
+            {
+                pbLoadingSpinner.Visible = false;
+                btnScheduleUpdateMeeting.Enabled = true;
+
+                MessageBox.Show("Error: " + httpEx.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                pbLoadingSpinner.Visible = false;
+                btnScheduleUpdateMeeting.Enabled = true;
+
+                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                pbLoadingSpinner.Visible = false;
+                btnScheduleUpdateMeeting.Enabled = true;
+            }
+        }
+
         private async void btnScheduleUpdateMeeting_Click(object sender, EventArgs e)
         {
             if (btnScheduleUpdateMeeting.ButtonText.Contains("Schedule Meeting") == true)
             {
                 await CreateMeetingAsync();
+            }
+            else if (btnScheduleUpdateMeeting.ButtonText.Contains("Save Changes") == true)
+            {
+                await UpdateMeetingAsync();
+            }
+            else
+            {
+                MessageBox.Show("Could not create or update meeting", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

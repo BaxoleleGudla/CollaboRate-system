@@ -632,6 +632,29 @@
         }
       }
     },
+    "/api/Meetings/cancel/{meetingId}": {
+      "delete": {
+        "tags": [
+          "Meetings"
+        ],
+        "parameters": [
+          {
+            "name": "meetingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Users/users": {
       "get": {
         "tags": [

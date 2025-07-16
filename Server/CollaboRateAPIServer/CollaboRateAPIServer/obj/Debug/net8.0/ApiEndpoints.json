@@ -315,6 +315,22 @@
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.MeetingsController",
+    "Method": "CancelMeeting",
+    "RelativePath": "api/Meetings/cancel/{meetingId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "meetingId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.MeetingsController",
     "Method": "GetMeetingsByGroup",
     "RelativePath": "api/Meetings/group/{groupId}",
     "HttpMethod": "GET",

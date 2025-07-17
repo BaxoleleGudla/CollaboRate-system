@@ -247,6 +247,7 @@
             this.btnCancelMeeting.TabIndex = 38;
             this.btnCancelMeeting.TextAutoCenter = true;
             this.btnCancelMeeting.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnCancelMeeting.Click += new System.EventHandler(this.btnCancelMeeting_Click);
             // 
             // pbLoadingSpinner
             // 

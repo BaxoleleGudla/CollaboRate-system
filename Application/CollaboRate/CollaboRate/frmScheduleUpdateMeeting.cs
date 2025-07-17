@@ -264,5 +264,62 @@ namespace CollaboRate
                 MessageBox.Show("Could not create or update meeting", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        // Method to cancel a meeting
+        private async Task CancelMeetingAsync(int meetingId)
+        {
+            try
+            {
+                pbLoadingSpinner.Visible = true;
+                btnCancelMeeting.Enabled = false;
+
+                string url = $"https://localhost:7287/api/Meetings/cancel/{meetingId}";
+
+                // Send DELETE request
+                HttpResponseMessage response = await client.DeleteAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    pbLoadingSpinner.Visible = false;
+                    btnCancelMeeting.Enabled = true;
+
+                    MessageBox.Show("Meeting cancelled successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    pbLoadingSpinner.Visible = false;
+                    btnCancelMeeting.Enabled = true;
+
+                    string error = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show("Failed to cancel a meeting: " + error, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                pbLoadingSpinner.Visible = false;
+                btnCancelMeeting.Enabled = true;
+                MessageBox.Show("Could not cancel meeting: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                pbLoadingSpinner.Visible = false;
+                btnCancelMeeting.Enabled = true;
+            }
+        }
+
+        private async void btnCancelMeeting_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to cancel the meeting?", "Cancel Meeting", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                await CancelMeetingAsync(meeting_ID);
+
+                var groupMeetingForm = Application.OpenForms.OfType<frmGroupMeetings>().FirstOrDefault();
+                if (groupMeetingForm != null)
+                {
+                    _ = groupMeetingForm.DisplayMeetingsAsync(CurrentUser.User_ID);
+                }
+            }
+        }
     }
 }

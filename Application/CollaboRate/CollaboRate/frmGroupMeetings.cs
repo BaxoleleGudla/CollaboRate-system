@@ -111,7 +111,50 @@ namespace CollaboRate
             await DisplayMeetingsAsync(CurrentGroup.Group_ID, txtSearchMeeting.Texts);
         }
 
-        private void dgViewMeetings_CellClick(object sender, DataGridViewCellEventArgs e)
+        // Method to cancel a meeting
+        private async Task CancelMeetingAsync(int meetingId)
+        {
+            try
+            {
+                pbLoadingSpinner.Visible = true;
+                dgViewMeetings.Enabled = false;
+
+                string url = $"https://localhost:7287/api/Meetings/cancel/{meetingId}";
+
+                // Send DELETE request
+                HttpResponseMessage response = await client.DeleteAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    pbLoadingSpinner.Visible = false;
+                    dgViewMeetings.Enabled = true;
+
+                    MessageBox.Show("Meeting cancelled successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    pbLoadingSpinner.Visible = false;
+                    dgViewMeetings.Enabled = true;
+
+                    string error = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show("Failed to cancel a meeting: " + error, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                    
+            }
+            catch (Exception ex)
+            {
+                pbLoadingSpinner.Visible = false;
+                dgViewMeetings.Enabled = true;
+                MessageBox.Show("Could not cancel meeting: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                pbLoadingSpinner.Visible = false;
+                dgViewMeetings.Enabled = true;
+            }
+        }
+
+        private async void dgViewMeetings_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -127,7 +170,15 @@ namespace CollaboRate
                 // Check if the clicked column is a button column
                 if (dgViewMeetings.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
                 {
-                    MessageBox.Show($"Button in row {e.RowIndex} clicked.");
+                    if (MessageBox.Show("Are you sure you want to cancel the meeting?", "Cancel Meeting", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        DataGridViewRow row = this.dgViewMeetings.Rows[e.RowIndex];
+
+                        int meeting_ID = int.Parse(row.Cells["Meeting_ID"].Value.ToString());
+                        await CancelMeetingAsync(meeting_ID);
+
+                        await DisplayMeetingsAsync(CurrentGroup.Group_ID);
+                    }
                 }
                 else
                 {

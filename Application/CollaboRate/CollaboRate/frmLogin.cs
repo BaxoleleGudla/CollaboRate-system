@@ -140,7 +140,6 @@ namespace CollaboRate
                         CurrentUser.Username = user.Username;
                         CurrentUser.Email = user.Email;
 
-                        MessageBox.Show("Login successful!" + "User ID: " + CurrentUser.User_ID + CurrentUser.Username + CurrentUser.Email, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmMain mainForm = new frmMain();
                         mainForm.Show();
                         this.Hide();

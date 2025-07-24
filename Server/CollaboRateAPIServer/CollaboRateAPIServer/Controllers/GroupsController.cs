@@ -470,5 +470,41 @@ namespace CollaboRateAPIServer.Controllers
                 return StatusCode(500, "An error occurred while adding users to the group.");
             }
         }
+
+        // Method to get users in a group
+        [HttpGet("group/{groupId}/users")]
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsersByGroup(int groupId, [FromQuery] string? keyword = null)
+        {
+            try
+            {
+                // Base query
+                var query = _context.tblGroupMember
+                    .Where(gm => gm.Group_ID == groupId && gm.Join_Status == "Accepted")
+                    .Select(gm => gm.User);
+
+                // Apply keyword filter if provided
+                if (string.IsNullOrWhiteSpace(keyword) == false)
+                {
+                    string lowerKeyword = keyword.ToLower();
+                    query = query.Where(u =>
+                    u.Username.ToLower().Contains(lowerKeyword));
+                }
+
+                var users = await query
+                    .OrderBy(u => u.Username)
+                    .Select(u => new UserDto
+                    {
+                        User_ID = u.User_ID,
+                        Username = u.Username
+                    })
+                    .ToListAsync();
+
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
+        }
     }
 }

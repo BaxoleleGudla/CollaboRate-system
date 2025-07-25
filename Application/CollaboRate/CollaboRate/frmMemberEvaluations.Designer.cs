@@ -74,6 +74,7 @@
             this.txtSearchMemberName.TabIndex = 18;
             this.txtSearchMemberName.Texts = "";
             this.txtSearchMemberName.UnderlinedStyle = false;
+            this.txtSearchMemberName._TextChanged += new System.EventHandler(this.txtSearchMemberName__TextChanged);
             // 
             // dgViewMemberEvaluations
             // 
@@ -118,6 +119,7 @@
             this.dgViewMemberEvaluations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgViewMemberEvaluations.Size = new System.Drawing.Size(772, 463);
             this.dgViewMemberEvaluations.TabIndex = 17;
+            this.dgViewMemberEvaluations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewMemberEvaluations_CellClick);
             // 
             // button1
             // 
@@ -215,7 +217,7 @@
             // 
             // Score_Average
             // 
-            this.Score_Average.DataPropertyName = "Average";
+            this.Score_Average.DataPropertyName = "Average_Score";
             this.Score_Average.HeaderText = "Average";
             this.Score_Average.MinimumWidth = 6;
             this.Score_Average.Name = "Score_Average";

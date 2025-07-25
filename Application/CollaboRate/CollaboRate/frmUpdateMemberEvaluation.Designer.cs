@@ -42,11 +42,11 @@
             // lblMemberNameError
             // 
             this.lblMemberNameError.AutoSize = true;
-            this.lblMemberNameError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMemberNameError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMemberNameError.ForeColor = System.Drawing.Color.Red;
-            this.lblMemberNameError.Location = new System.Drawing.Point(34, 125);
+            this.lblMemberNameError.Location = new System.Drawing.Point(30, 123);
             this.lblMemberNameError.Name = "lblMemberNameError";
-            this.lblMemberNameError.Size = new System.Drawing.Size(35, 16);
+            this.lblMemberNameError.Size = new System.Drawing.Size(45, 21);
             this.lblMemberNameError.TabIndex = 30;
             this.lblMemberNameError.Text = "Error";
             this.lblMemberNameError.Visible = false;
@@ -76,6 +76,7 @@
             this.txtMemberName.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
             this.txtMemberName.BorderRadius = 5;
             this.txtMemberName.BorderSize = 1;
+            this.txtMemberName.Enabled = false;
             this.txtMemberName.Icon = null;
             this.txtMemberName.IconSize = new System.Drawing.Size(20, 20);
             this.txtMemberName.Location = new System.Drawing.Point(35, 84);
@@ -175,6 +176,7 @@
             this.txtAverageScore.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
             this.txtAverageScore.BorderRadius = 5;
             this.txtAverageScore.BorderSize = 1;
+            this.txtAverageScore.Enabled = false;
             this.txtAverageScore.Icon = null;
             this.txtAverageScore.IconSize = new System.Drawing.Size(20, 20);
             this.txtAverageScore.Location = new System.Drawing.Point(37, 273);
@@ -204,9 +206,10 @@
             this.Controls.Add(this.btnSaveChanges);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUpdateMemberEvaluation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmUpdateMemberEvaluation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,11 +219,11 @@
         private System.Windows.Forms.Label lblMemberNameError;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private SATATextBox txtMemberName;
         private System.Windows.Forms.Label lblHeading;
         private FrameworkTest.SATAButton btnSaveChanges;
-        private SATAComboBox cmbxScore;
         private System.Windows.Forms.Label label4;
-        private SATATextBox txtAverageScore;
+        public SATATextBox txtMemberName;
+        public SATAComboBox cmbxScore;
+        public SATATextBox txtAverageScore;
     }
 }

@@ -26,31 +26,58 @@ namespace CollaboRateAPIServer.Controllers
         // Add average calculation, search functionality
         // Method to get ratings done by a specific member
         [HttpGet("group/{groupId}/rater/{raterId}/rated-members")]
-        public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetRatedMemberByRaterAsync(int groupId, int raterId)
+        public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetRatedMemberByRaterAsync(int groupId, int raterId, [FromQuery] string? keyword = null)
         {
             try
             {
-                var ratedMembers = await _context.tblRating
+                // Get all ratings in the group to cmpute average per Ratee
+                // Grouping on Ratee_ID and calculate average score
+                var averageRatingsQuery = _context.tblRating
+                    .Where(r => r.Group_ID == groupId)
+                    .GroupBy(r => r.Ratee_ID)
+                    .Select(g => new
+                    {
+                        Ratee_ID = g.Key,
+                        AverageScore = g.Average(r => r.Score)
+                    });
+
+                // Get the ratings made by the specified rater in the group
+                var query = _context.tblRating
                     .Where(r => r.Group_ID == groupId && r.Rater_ID == raterId)
                     .Join(_context.tblUser,
                         rating => rating.Ratee_ID,
                         user => user.User_ID,
-                        (rating, user) => new RatedMemberDto
+                        (rating, user) => new
                         {
-                            User_ID = user.User_ID,
-                            Username = user.Username,
-                            Score = (byte)rating.Score
-                        })
-                    .OrderBy(rm => rm.Username)
-                    .ToListAsync();
+                            user.User_ID,
+                            user.Username,
+                            Score = rating.Score
+                        });
 
-                if (!ratedMembers.Any())
+                // Apply keyword filter on Username if keyword supplied
+                if (string.IsNullOrWhiteSpace(keyword) == false)
                 {
-                    // Return an empty list
-                    return Ok(new List<RatedMemberDto>());
+                    string lowerKeyword = keyword.ToLower();
+                    query = query.Where(u => u.Username.ToLower().Contains(lowerKeyword));
                 }
 
-                return Ok(ratedMembers);
+                // Join the rating-by-rater with average rating per Ratee_ID
+                var resultQuery = query
+                    .Join(averageRatingsQuery,
+                        raterRating => raterRating.User_ID,
+                        avg => avg.Ratee_ID,
+                        (raterRating, avg) => new RatedMemberDto
+                        {
+                            User_ID = raterRating.User_ID,
+                            Username = raterRating.Username,
+                            Score = (byte)raterRating.Score,
+                            Average_Score = Math.Round(avg.AverageScore, 2)
+                        })
+                    .OrderBy(rm => rm.Username);
+
+                var resultList = await resultQuery.ToListAsync();
+
+                return Ok(resultList);
             }
             catch (Exception)
             {

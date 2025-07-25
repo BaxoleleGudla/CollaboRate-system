@@ -41,14 +41,14 @@ namespace CollaboRate
         }
 
         // Method to load ratings
-        private async Task<List<RatedMemberDto>> GetRatingsAsync(int groupId, int userId)
+        private async Task<List<RatedMemberDto>> GetRatingsAsync(int groupId, int userId, string keyword = null)
         {
             string url = $"https://localhost:7287/api/Ratings/group/{groupId}/rater/{userId}/rated-members";
 
-            /*if (string.IsNullOrWhiteSpace(keyword) == false)
+            if (string.IsNullOrWhiteSpace(keyword) == false)
             {
                 url += $"?keyword={Uri.EscapeDataString(keyword)}";
-            }*/
+            }
 
             var response = await client.GetAsync(url);
 
@@ -73,13 +73,13 @@ namespace CollaboRate
         }
 
         // Method to display meetings
-        public async Task DisplayRatingsAsync(int groupId, int userId)
+        public async Task DisplayRatingsAsync(int groupId, int userId, string keyword = null)
         {
             try
             {
                 pbLoadingSpinner.Visible = true;
 
-                var ratings = await GetRatingsAsync(groupId, userId);
+                var ratings = await GetRatingsAsync(groupId, userId, keyword);
 
                 if (ratings != null)
                 {
@@ -107,6 +107,35 @@ namespace CollaboRate
         private async void frmMemberEvaluations_Load(object sender, EventArgs e)
         {
             await DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
+        }
+
+        private async void txtSearchMemberName__TextChanged(object sender, EventArgs e)
+        {
+            await DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID, txtSearchMemberName.Texts);
+        }
+
+        private void dgViewMemberEvaluations_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    frmUpdateMemberEvaluation updateMemberEvaluationForm = new frmUpdateMemberEvaluation();
+
+                    DataGridViewRow row = this.dgViewMemberEvaluations.Rows[e.RowIndex];
+
+                    updateMemberEvaluationForm.ratee_ID = int.Parse(row.Cells["Member_ID"].Value.ToString());
+                    updateMemberEvaluationForm.txtMemberName.Texts = (row.Cells["Member_Name"].Value).ToString();
+                    updateMemberEvaluationForm.cmbxScore.Text = (row.Cells["Member_Score"].Value.ToString());
+                    updateMemberEvaluationForm.txtAverageScore.Text = (row.Cells["Score_Average"].Value.ToString());
+
+                    updateMemberEvaluationForm.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An unexpected error occured", "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

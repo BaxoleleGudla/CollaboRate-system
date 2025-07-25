@@ -408,6 +408,11 @@
         "Name": "raterId",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "keyword",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [

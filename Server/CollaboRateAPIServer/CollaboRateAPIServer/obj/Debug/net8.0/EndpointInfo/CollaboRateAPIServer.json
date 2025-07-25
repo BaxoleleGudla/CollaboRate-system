@@ -734,6 +734,13 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1367,6 +1374,10 @@
           "score": {
             "type": "integer",
             "format": "int32"
+          },
+          "average_Score": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false

@@ -128,7 +128,13 @@ namespace CollaboRate
                         btnSubmitEvaluations.Enabled = true;
 
                         MessageBox.Show("Ratings submitted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //return true;
+
+                        var memberEvaluationsForm = Application.OpenForms.OfType<frmMemberEvaluations>().FirstOrDefault();
+                        if (memberEvaluationsForm != null)
+                        {
+                            MessageBox.Show("Ratings about to be refreshed");
+                            await memberEvaluationsForm.DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
+                        }
                     }
                     else
                     {

@@ -1,10 +1,13 @@
-﻿using System;
+﻿using CollaboRate.Dtos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,6 +15,13 @@ namespace CollaboRate
 {
     public partial class frmMemberEvaluations : Form
     {
+        private const string ApiBaseUrl = "https://localhost:7287";
+        private readonly HttpClient client = new HttpClient
+        {
+            Timeout = TimeSpan.FromSeconds(30)
+        };
+        private BindingSource ratingsBindingSource = new BindingSource();
+
         public frmMemberEvaluations()
         {
             InitializeComponent();
@@ -28,6 +38,75 @@ namespace CollaboRate
         {
             frmEvaluateAllMembers evaluateAllMembersForm = new frmEvaluateAllMembers();
             evaluateAllMembersForm.ShowDialog();
+        }
+
+        // Method to load ratings
+        private async Task<List<RatedMemberDto>> GetRatingsAsync(int groupId, int userId)
+        {
+            string url = $"https://localhost:7287/api/Ratings/group/{groupId}/rater/{userId}/rated-members";
+
+            /*if (string.IsNullOrWhiteSpace(keyword) == false)
+            {
+                url += $"?keyword={Uri.EscapeDataString(keyword)}";
+            }*/
+
+            var response = await client.GetAsync(url);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return new List<RatedMemberDto>();
+            }
+
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+
+            var ratings = JsonSerializer.Deserialize<List<RatedMemberDto>>(json, options);
+
+            return ratings ?? new List<RatedMemberDto>();
+        }
+
+        // Method to display meetings
+        public async Task DisplayRatingsAsync(int groupId, int userId)
+        {
+            try
+            {
+                pbLoadingSpinner.Visible = true;
+
+                var ratings = await GetRatingsAsync(groupId, userId);
+
+                if (ratings != null)
+                {
+                    ratingsBindingSource.DataSource = ratings;
+                    dgViewMemberEvaluations.AutoGenerateColumns = false;
+                    dgViewMemberEvaluations.DataSource = ratingsBindingSource;
+                }
+                else
+                {
+                    ratingsBindingSource.DataSource = null;
+                    dgViewMemberEvaluations.DataSource = ratingsBindingSource;
+                }
+            }
+            catch (Exception ex)
+            {
+                pbLoadingSpinner.Visible = false;
+                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                pbLoadingSpinner.Visible = false;
+            }
+        }
+
+        private async void frmMemberEvaluations_Load(object sender, EventArgs e)
+        {
+            await DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
         }
     }
 }

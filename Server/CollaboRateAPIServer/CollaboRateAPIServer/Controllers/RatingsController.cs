@@ -22,6 +22,8 @@ namespace CollaboRateAPIServer.Controllers
             _context = context;
         }
 
+
+        // Add average calculation, search functionality
         // Method to get ratings done by a specific member
         [HttpGet("group/{groupId}/rater/{raterId}/rated-members")]
         public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetRatedMemberByRaterAsync(int groupId, int raterId)

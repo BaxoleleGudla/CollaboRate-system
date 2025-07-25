@@ -90,6 +90,7 @@
     <Compile Include="Dtos\GroupWithRequestStatusDto.cs" />
     <Compile Include="Dtos\MeetingDto.cs" />
     <Compile Include="Dtos\PendingUserDto.cs" />
+    <Compile Include="Dtos\RatedMemberDto.cs" />
     <Compile Include="Dtos\RatingDto.cs" />
     <Compile Include="Dtos\UpdateGroupRequest.cs" />
     <Compile Include="Dtos\UpdateMeetingDto.cs" />

@@ -34,14 +34,15 @@
             this.lblHeading = new System.Windows.Forms.Label();
             this.txtSearchMemberName = new SATATextBox();
             this.dgViewMemberEvaluations = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnEvaluateAllMembers = new FrameworkTest.SATAButton();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.Member_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Member_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Member_Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rated_At = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Score_Average = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnEvaluateAllMembers = new FrameworkTest.SATAButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMemberEvaluations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
             // 
             // lblHeading
@@ -98,7 +99,6 @@
             this.Member_ID,
             this.Member_Name,
             this.Member_Score,
-            this.Rated_At,
             this.Score_Average});
             this.dgViewMemberEvaluations.EnableHeadersVisualStyles = false;
             this.dgViewMemberEvaluations.GridColor = System.Drawing.SystemColors.Control;
@@ -118,52 +118,6 @@
             this.dgViewMemberEvaluations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgViewMemberEvaluations.Size = new System.Drawing.Size(772, 463);
             this.dgViewMemberEvaluations.TabIndex = 17;
-            // 
-            // Member_ID
-            // 
-            this.Member_ID.HeaderText = "Member ID";
-            this.Member_ID.MinimumWidth = 6;
-            this.Member_ID.Name = "Member_ID";
-            this.Member_ID.ReadOnly = true;
-            this.Member_ID.Visible = false;
-            this.Member_ID.Width = 125;
-            // 
-            // Member_Name
-            // 
-            this.Member_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Member_Name.HeaderText = "Member Name";
-            this.Member_Name.MinimumWidth = 6;
-            this.Member_Name.Name = "Member_Name";
-            this.Member_Name.ReadOnly = true;
-            // 
-            // Member_Score
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.Member_Score.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Member_Score.FillWeight = 75F;
-            this.Member_Score.HeaderText = "Member Score";
-            this.Member_Score.MinimumWidth = 6;
-            this.Member_Score.Name = "Member_Score";
-            this.Member_Score.ReadOnly = true;
-            this.Member_Score.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Member_Score.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Member_Score.Width = 235;
-            // 
-            // Rated_At
-            // 
-            this.Rated_At.HeaderText = "Rated At";
-            this.Rated_At.MinimumWidth = 6;
-            this.Rated_At.Name = "Rated_At";
-            this.Rated_At.ReadOnly = true;
-            this.Rated_At.Width = 125;
-            // 
-            // Score_Average
-            // 
-            this.Score_Average.HeaderText = "Average";
-            this.Score_Average.MinimumWidth = 6;
-            this.Score_Average.Name = "Score_Average";
-            this.Score_Average.ReadOnly = true;
-            this.Score_Average.Width = 125;
             // 
             // button1
             // 
@@ -214,12 +168,67 @@
             this.btnEvaluateAllMembers.TextOffset = new System.Drawing.Point(0, 0);
             this.btnEvaluateAllMembers.Click += new System.EventHandler(this.btnEvaluateAllMembers_Click);
             // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(389, 300);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 54;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
+            // 
+            // Member_ID
+            // 
+            this.Member_ID.DataPropertyName = "User_ID";
+            this.Member_ID.HeaderText = "Member ID";
+            this.Member_ID.MinimumWidth = 6;
+            this.Member_ID.Name = "Member_ID";
+            this.Member_ID.ReadOnly = true;
+            this.Member_ID.Visible = false;
+            this.Member_ID.Width = 125;
+            // 
+            // Member_Name
+            // 
+            this.Member_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Member_Name.DataPropertyName = "Username";
+            this.Member_Name.HeaderText = "Member Name";
+            this.Member_Name.MinimumWidth = 6;
+            this.Member_Name.Name = "Member_Name";
+            this.Member_Name.ReadOnly = true;
+            // 
+            // Member_Score
+            // 
+            this.Member_Score.DataPropertyName = "Score";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.Member_Score.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Member_Score.FillWeight = 75F;
+            this.Member_Score.HeaderText = "Member Score";
+            this.Member_Score.MinimumWidth = 6;
+            this.Member_Score.Name = "Member_Score";
+            this.Member_Score.ReadOnly = true;
+            this.Member_Score.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Member_Score.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Member_Score.Width = 235;
+            // 
+            // Score_Average
+            // 
+            this.Score_Average.DataPropertyName = "Average";
+            this.Score_Average.HeaderText = "Average";
+            this.Score_Average.MinimumWidth = 6;
+            this.Score_Average.Name = "Score_Average";
+            this.Score_Average.ReadOnly = true;
+            this.Score_Average.Width = 125;
+            // 
             // frmMemberEvaluations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(810, 627);
+            this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnEvaluateAllMembers);
             this.Controls.Add(this.lblHeading);
@@ -229,7 +238,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMemberEvaluations";
+            this.Load += new System.EventHandler(this.frmMemberEvaluations_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMemberEvaluations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,10 +253,10 @@
         private SATATextBox txtSearchMemberName;
         private System.Windows.Forms.DataGridView dgViewMemberEvaluations;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pbLoadingSpinner;
         private System.Windows.Forms.DataGridViewTextBoxColumn Member_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Member_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Member_Score;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rated_At;
         private System.Windows.Forms.DataGridViewTextBoxColumn Score_Average;
     }
 }

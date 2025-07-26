@@ -28,33 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblMemberNameError = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMemberName = new SATATextBox();
             this.lblHeading = new System.Windows.Forms.Label();
             this.btnSaveChanges = new FrameworkTest.SATAButton();
-            this.cmbxScore = new SATAComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtAverageScore = new SATATextBox();
+            this.cmbxScore = new SATAComboBox();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblMemberNameError
-            // 
-            this.lblMemberNameError.AutoSize = true;
-            this.lblMemberNameError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMemberNameError.ForeColor = System.Drawing.Color.Red;
-            this.lblMemberNameError.Location = new System.Drawing.Point(30, 123);
-            this.lblMemberNameError.Name = "lblMemberNameError";
-            this.lblMemberNameError.Size = new System.Drawing.Size(45, 21);
-            this.lblMemberNameError.TabIndex = 30;
-            this.lblMemberNameError.Text = "Error";
-            this.lblMemberNameError.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 152);
+            this.label2.Location = new System.Drawing.Point(32, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 21);
             this.label2.TabIndex = 29;
@@ -121,7 +110,7 @@
             this.btnSaveChanges.ImageTint = System.Drawing.Color.White;
             this.btnSaveChanges.IsToggleButton = false;
             this.btnSaveChanges.IsToggled = false;
-            this.btnSaveChanges.Location = new System.Drawing.Point(34, 388);
+            this.btnSaveChanges.Location = new System.Drawing.Point(34, 385);
             this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
@@ -137,33 +126,12 @@
             this.btnSaveChanges.TabIndex = 34;
             this.btnSaveChanges.TextAutoCenter = true;
             this.btnSaveChanges.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // cmbxScore
-            // 
-            this.cmbxScore.BackColor = System.Drawing.Color.Transparent;
-            this.cmbxScore.BackgroundColor = System.Drawing.Color.White;
-            this.cmbxScore.BorderColor = System.Drawing.Color.LightGray;
-            this.cmbxScore.BorderThickness = 1;
-            this.cmbxScore.CornerRadius = 5;
-            this.cmbxScore.Items = new string[] {
-        "1. Unsatisfactory",
-        "2",
-        "3",
-        "4",
-        "5. Excellent"};
-            this.cmbxScore.Keys = null;
-            this.cmbxScore.Location = new System.Drawing.Point(36, 178);
-            this.cmbxScore.Name = "cmbxScore";
-            this.cmbxScore.SelectedIndex = -1;
-            this.cmbxScore.Size = new System.Drawing.Size(343, 51);
-            this.cmbxScore.TabIndex = 36;
-            this.cmbxScore.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.cmbxScore.TextOffset = new System.Windows.Forms.Padding(0);
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 248);
+            this.label4.Location = new System.Drawing.Point(35, 226);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(134, 21);
             this.label4.TabIndex = 38;
@@ -179,7 +147,7 @@
             this.txtAverageScore.Enabled = false;
             this.txtAverageScore.Icon = null;
             this.txtAverageScore.IconSize = new System.Drawing.Size(20, 20);
-            this.txtAverageScore.Location = new System.Drawing.Point(37, 273);
+            this.txtAverageScore.Location = new System.Drawing.Point(37, 251);
             this.txtAverageScore.Multiline = false;
             this.txtAverageScore.Name = "txtAverageScore";
             this.txtAverageScore.PasswordChar = false;
@@ -190,15 +158,49 @@
             this.txtAverageScore.Texts = "";
             this.txtAverageScore.UnderlinedStyle = false;
             // 
+            // cmbxScore
+            // 
+            this.cmbxScore.BackColor = System.Drawing.Color.Transparent;
+            this.cmbxScore.BackgroundColor = System.Drawing.Color.White;
+            this.cmbxScore.BorderColor = System.Drawing.Color.DimGray;
+            this.cmbxScore.BorderThickness = 1;
+            this.cmbxScore.CornerRadius = 5;
+            this.cmbxScore.Items = new string[] {
+        "1. Unsatisfactory",
+        "2",
+        "3",
+        "4",
+        "5. Excellent"};
+            this.cmbxScore.Keys = null;
+            this.cmbxScore.Location = new System.Drawing.Point(36, 165);
+            this.cmbxScore.Name = "cmbxScore";
+            this.cmbxScore.SelectedIndex = -1;
+            this.cmbxScore.Size = new System.Drawing.Size(343, 45);
+            this.cmbxScore.TabIndex = 36;
+            this.cmbxScore.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.cmbxScore.TextOffset = new System.Windows.Forms.Padding(0);
+            // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(189, 211);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 54;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
+            // 
             // frmUpdateMemberEvaluation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 443);
+            this.ClientSize = new System.Drawing.Size(411, 438);
+            this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtAverageScore);
             this.Controls.Add(this.cmbxScore);
-            this.Controls.Add(this.lblMemberNameError);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtMemberName);
@@ -210,20 +212,21 @@
             this.Name = "frmUpdateMemberEvaluation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmUpdateMemberEvaluation_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblMemberNameError;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblHeading;
         private FrameworkTest.SATAButton btnSaveChanges;
         private System.Windows.Forms.Label label4;
         public SATATextBox txtMemberName;
-        public SATAComboBox cmbxScore;
         public SATATextBox txtAverageScore;
+        public SATAComboBox cmbxScore;
+        private System.Windows.Forms.PictureBox pbLoadingSpinner;
     }
 }

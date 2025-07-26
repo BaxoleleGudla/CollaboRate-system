@@ -22,8 +22,6 @@ namespace CollaboRateAPIServer.Controllers
             _context = context;
         }
 
-
-        // Add average calculation, search functionality
         // Method to get ratings done by a specific member
         [HttpGet("group/{groupId}/rater/{raterId}/rated-members")]
         public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetRatedMemberByRaterAsync(int groupId, int raterId, [FromQuery] string? keyword = null)
@@ -140,6 +138,33 @@ namespace CollaboRateAPIServer.Controllers
                 await transaction.RollbackAsync();
                 return StatusCode(500, "An error occurred while adding ratings.");
             }
+        }
+
+        // Method to update ratings
+        [HttpPut("ratings")]
+        public async Task<ActionResult> UpdateMemberEvaluationAsync([FromBody] UpdateRatingDto dto)
+        {
+            if (dto.Score < 1 || dto.Score > 5)
+            {
+                return BadRequest("Score must be between 1 and 5.");
+            }
+
+            var rating = await _context.tblRating.FirstOrDefaultAsync(r =>
+                r.Group_ID == dto.Group_ID &&
+                r.Rater_ID == dto.Rater_ID &&
+                r.Ratee_ID == dto.Ratee_ID);
+
+            if (rating == null)
+            {
+                return NotFound("Rating record not found.");
+            }
+
+            rating.Score = (byte)dto.Score;
+            rating.Rated_At = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

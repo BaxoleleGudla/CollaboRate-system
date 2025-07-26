@@ -814,6 +814,35 @@
             "description": "OK"
           }
         }
+      },
+      "put": {
+        "tags": [
+          "Ratings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRatingDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRatingDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRatingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/Users/users": {
@@ -1529,6 +1558,28 @@
           "meeting_Date": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateRatingDto": {
+        "type": "object",
+        "properties": {
+          "group_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rater_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ratee_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

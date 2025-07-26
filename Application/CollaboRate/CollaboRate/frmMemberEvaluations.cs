@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace CollaboRate
 {
@@ -126,15 +127,15 @@ namespace CollaboRate
 
                     updateMemberEvaluationForm.ratee_ID = int.Parse(row.Cells["Member_ID"].Value.ToString());
                     updateMemberEvaluationForm.txtMemberName.Texts = (row.Cells["Member_Name"].Value).ToString();
-                    updateMemberEvaluationForm.cmbxScore.Text = (row.Cells["Member_Score"].Value.ToString());
-                    updateMemberEvaluationForm.txtAverageScore.Text = (row.Cells["Score_Average"].Value.ToString());
+                    updateMemberEvaluationForm.cmbxScore.SelectedIndex = int.Parse((row.Cells["Member_Score"].Value.ToString())) - 1;
+                    updateMemberEvaluationForm.txtAverageScore.Texts = (row.Cells["Score_Average"].Value.ToString());
 
                     updateMemberEvaluationForm.ShowDialog();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An unexpected error occured", "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An unexpected error occured: " + ex.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

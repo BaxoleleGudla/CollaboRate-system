@@ -444,6 +444,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CollaboRateAPIServer.Controllers.RatingsController",
+    "Method": "UpdateMemberEvaluationAsync",
+    "RelativePath": "api/Ratings/ratings",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "CollaboRateAPIServer.Dtos.UpdateRatingDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CollaboRateAPIServer.Controllers.UsersController",
     "Method": "CreateUser",
     "RelativePath": "api/Users",

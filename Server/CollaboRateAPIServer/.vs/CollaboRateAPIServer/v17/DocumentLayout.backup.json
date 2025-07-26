@@ -7,8 +7,8 @@
       "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\ratingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\dtos\\ratedmemberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\dtos\\ratedmemberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\dtos\\updateratingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\dtos\\updateratingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\meetingscontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,14 +39,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RatedMemberDto.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\RatedMemberDto.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Dtos\\RatedMemberDto.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\RatedMemberDto.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\RatedMemberDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Title": "UpdateRatingDto.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UpdateRatingDto.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Dtos\\UpdateRatingDto.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UpdateRatingDto.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\UpdateRatingDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T17:18:39.336Z",
+              "WhenOpened": "2025-07-26T16:40:12.811Z",
               "EditorCaption": ""
             },
             {
@@ -57,7 +57,7 @@
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\RatingsController.cs",
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\RatingsController.cs",
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\RatingsController.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAowEkAAABLAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAJcAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-22T21:49:16.478Z",
               "EditorCaption": ""

@@ -845,6 +845,37 @@
         }
       }
     },
+    "/api/Tasks/tasks": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTaskDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTaskDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTaskDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Users/users": {
       "get": {
         "tags": [
@@ -1260,6 +1291,36 @@
         },
         "additionalProperties": false
       },
+      "CreateTaskDto": {
+        "type": "object",
+        "properties": {
+          "group_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "task_Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "task_Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "deadline": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "assignedUserIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GroupDto": {
         "type": "object",
         "properties": {
@@ -1481,26 +1542,26 @@
             "type": "integer",
             "format": "int32"
           },
+          "task": {
+            "$ref": "#/components/schemas/Task"
+          },
           "user_ID": {
             "type": "integer",
             "format": "int32"
           },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
           "is_Completed": {
             "type": "boolean"
           },
-          "created_At": {
+          "completed_At": {
             "type": "string",
             "format": "date-time"
           },
           "note": {
             "type": "string",
             "nullable": true
-          },
-          "task": {
-            "$ref": "#/components/schemas/Task"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
           }
         },
         "additionalProperties": false

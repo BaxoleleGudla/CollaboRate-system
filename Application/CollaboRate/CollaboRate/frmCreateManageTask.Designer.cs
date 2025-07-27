@@ -78,7 +78,7 @@
             this.Action});
             this.dgViewUsers.EnableHeadersVisualStyles = false;
             this.dgViewUsers.GridColor = System.Drawing.SystemColors.Control;
-            this.dgViewUsers.Location = new System.Drawing.Point(34, 374);
+            this.dgViewUsers.Location = new System.Drawing.Point(34, 378);
             this.dgViewUsers.Name = "dgViewUsers";
             this.dgViewUsers.ReadOnly = true;
             this.dgViewUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -131,26 +131,24 @@
             // lblTaskDescriptionError
             // 
             this.lblTaskDescriptionError.AutoSize = true;
-            this.lblTaskDescriptionError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaskDescriptionError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaskDescriptionError.ForeColor = System.Drawing.Color.Red;
-            this.lblTaskDescriptionError.Location = new System.Drawing.Point(33, 261);
+            this.lblTaskDescriptionError.Location = new System.Drawing.Point(30, 258);
             this.lblTaskDescriptionError.Name = "lblTaskDescriptionError";
-            this.lblTaskDescriptionError.Size = new System.Drawing.Size(35, 16);
+            this.lblTaskDescriptionError.Size = new System.Drawing.Size(45, 21);
             this.lblTaskDescriptionError.TabIndex = 31;
             this.lblTaskDescriptionError.Text = "Error";
-            this.lblTaskDescriptionError.Visible = false;
             // 
             // lblTaskTitleError
             // 
             this.lblTaskTitleError.AutoSize = true;
-            this.lblTaskTitleError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaskTitleError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaskTitleError.ForeColor = System.Drawing.Color.Red;
-            this.lblTaskTitleError.Location = new System.Drawing.Point(34, 120);
+            this.lblTaskTitleError.Location = new System.Drawing.Point(31, 117);
             this.lblTaskTitleError.Name = "lblTaskTitleError";
-            this.lblTaskTitleError.Size = new System.Drawing.Size(35, 16);
+            this.lblTaskTitleError.Size = new System.Drawing.Size(45, 21);
             this.lblTaskTitleError.TabIndex = 30;
             this.lblTaskTitleError.Text = "Error";
-            this.lblTaskTitleError.Visible = false;
             // 
             // label2
             // 
@@ -224,7 +222,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 349);
+            this.label3.Location = new System.Drawing.Point(33, 353);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 21);
             this.label3.TabIndex = 35;
@@ -284,14 +282,13 @@
             // lblTaskDeadlineError
             // 
             this.lblTaskDeadlineError.AutoSize = true;
-            this.lblTaskDeadlineError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaskDeadlineError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaskDeadlineError.ForeColor = System.Drawing.Color.Red;
-            this.lblTaskDeadlineError.Location = new System.Drawing.Point(35, 330);
+            this.lblTaskDeadlineError.Location = new System.Drawing.Point(32, 327);
             this.lblTaskDeadlineError.Name = "lblTaskDeadlineError";
-            this.lblTaskDeadlineError.Size = new System.Drawing.Size(35, 16);
+            this.lblTaskDeadlineError.Size = new System.Drawing.Size(45, 21);
             this.lblTaskDeadlineError.TabIndex = 42;
             this.lblTaskDeadlineError.Text = "Error";
-            this.lblTaskDeadlineError.Visible = false;
             // 
             // label4
             // 

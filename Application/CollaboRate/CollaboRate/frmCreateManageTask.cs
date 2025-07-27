@@ -51,5 +51,32 @@ namespace CollaboRate
                 dgViewUsers.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
+
+        // Method to get selected users
+        private List<int> GetSelectedUserIds()
+        {
+            var checkedUserIds = new List<int>();
+
+            foreach (DataGridViewRow row in dgViewUsers.Rows)
+            {
+                // Check if the checkbox cell is checked
+                var isCheckedObj = row.Cells["Action"].Value;
+                bool isChecked = isCheckedObj != null && Convert.ToBoolean(isCheckedObj);
+
+                if (isChecked == true)
+                {
+                    // Safely parse User_ID cell value
+                    var userIdObj = row.Cells["User_ID"].Value;
+                    if (userIdObj != null && int.TryParse(userIdObj.ToString(), out int userId))
+                    {
+                        checkedUserIds.Add(userId);
+                    }
+                }
+            }
+
+            return checkedUserIds;
+        }
+
+
     }
 }

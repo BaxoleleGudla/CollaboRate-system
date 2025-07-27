@@ -460,6 +460,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CollaboRateAPIServer.Controllers.TasksController",
+    "Method": "AddTasAsync",
+    "RelativePath": "api/Tasks/tasks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskDto",
+        "Type": "CollaboRateAPIServer.Dtos.CreateTaskDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CollaboRateAPIServer.Controllers.UsersController",
     "Method": "CreateUser",
     "RelativePath": "api/Users",

@@ -81,6 +81,72 @@ namespace CollaboRateAPIServer.Controllers
 
             return "Not Started";
         }*/
+
+        [HttpPost("tasks")]
+        public async Task<ActionResult> AddTasAsync([FromBody] CreateTaskDto taskDto)
+        {
+            if (taskDto == null)
+            {
+                return BadRequest("Task data is required.");
+            }
+
+            if (string.IsNullOrEmpty(taskDto.Task_Title))
+            {
+                return BadRequest("Task Title is required.");
+            }
+
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                var taskEntity = new Models.Task
+                {
+                    Group_ID = taskDto.Group_ID,
+                    Task_Title = taskDto.Task_Title,
+                    Task_Description = taskDto.Task_Description,
+                    Deadline = taskDto.Deadline,
+                    Created_At = DateTime.UtcNow
+                };
+
+                // Add task record
+                await _context.tblTask.AddAsync(taskEntity);
+                await _context.SaveChangesAsync();
+
+                // Assign users
+                if (taskDto.AssignedUserIds != null && taskDto.AssignedUserIds.Any())
+                {
+                    var taskAssignments = taskDto.AssignedUserIds.Select(userId => new TaskAssignment
+                    {
+                        Task_ID = taskEntity.Task_ID,
+                        User_ID = userId,
+                        Is_Completed = false,
+                    });
+
+                    await _context.tblTaskAssignment.AddRangeAsync(taskAssignments);
+                    await _context.SaveChangesAsync();
+                }
+
+                await transaction.CommitAsync();
+
+                return Ok(new { Message = "Task created successfully.", TaksId = taskEntity.Task_ID });
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                //return StatusCode(500, "An error occurred while adding the task." + ex.Message);
+
+                // Unwrap inner exceptions to get detailed error message
+                string errorMessage = ex.Message;
+                Exception? inner = ex.InnerException;
+                while (inner != null)
+                {
+                    errorMessage += " --> " + inner.Message;
+                    inner = inner.InnerException;
+                }
+
+                return StatusCode(500, $"An error occurred while adding the task. {errorMessage}");
+            }
+        }
     }
 }
 

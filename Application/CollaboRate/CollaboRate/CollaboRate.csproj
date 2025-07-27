@@ -86,6 +86,7 @@
     <Compile Include="Dtos\CreateGroupRequest.cs" />
     <Compile Include="Dtos\CreateGroupResponse.cs" />
     <Compile Include="Dtos\CreateMeetingDto.cs" />
+    <Compile Include="Dtos\CreateTaskDto.cs" />
     <Compile Include="Dtos\GroupUserDto.cs" />
     <Compile Include="Dtos\GroupWithRequestStatusDto.cs" />
     <Compile Include="Dtos\MeetingDto.cs" />

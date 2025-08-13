@@ -34,6 +34,9 @@ namespace CollaboRate
             scheduleMeetingForm.btnScheduleUpdateMeeting.ButtonText = "Schedule Meeting";
             scheduleMeetingForm.txtMeetingTitle.PlaceholderText = "Enter meeting title";
             scheduleMeetingForm.txtMeetingDescription.PlaceholderText = "Enter meeting description";
+            scheduleMeetingForm.btnCancelMeeting.Visible = false;
+            scheduleMeetingForm.btnScheduleUpdateMeeting.Size = new Size(344, 35);
+            scheduleMeetingForm.btnScheduleUpdateMeeting.Location = new Point(35, 408);
             scheduleMeetingForm.ShowDialog();
         }
 
@@ -183,6 +186,8 @@ namespace CollaboRate
                 else
                 {
                     DataGridViewRow row = this.dgViewMeetings.Rows[e.RowIndex];
+
+                    updateMeetingForm.lblHeading.Text = "Update Meeting";
 
                     updateMeetingForm.meeting_ID = int.Parse(row.Cells["Meeting_ID"].Value.ToString());
                     updateMeetingForm.txtMeetingTitle.Texts = (row.Cells["Meeting_Title"].Value).ToString();

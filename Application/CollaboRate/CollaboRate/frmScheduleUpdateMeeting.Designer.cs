@@ -295,7 +295,6 @@
         private System.Windows.Forms.Label lblMeetingTitleError;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblMeetingDateError;
         public FrameworkTest.SATAButton btnScheduleUpdateMeeting;
@@ -304,5 +303,6 @@
         public SATATextBox txtMeetingTitle;
         public SATAUiFramework.Controls.SATADateTimePicker dtpMeetingDate;
         public FrameworkTest.SATAButton btnCancelMeeting;
+        public System.Windows.Forms.Label lblHeading;
     }
 }

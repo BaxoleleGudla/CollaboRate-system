@@ -32,9 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgViewUsers = new System.Windows.Forms.DataGridView();
-            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTaskDescriptionError = new System.Windows.Forms.Label();
             this.lblTaskTitleError = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,7 +45,12 @@
             this.lblTaskDeadlineError = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpTaskDeadline = new SATAUiFramework.Controls.SATADateTimePicker();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
+            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
             // 
             // dgViewUsers
@@ -95,39 +97,6 @@
             this.dgViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewUsers_CellContentClick);
             this.dgViewUsers.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgViewUsers_CurrentCellDirtyStateChanged);
             // 
-            // User_ID
-            // 
-            this.User_ID.HeaderText = "User ID";
-            this.User_ID.MinimumWidth = 6;
-            this.User_ID.Name = "User_ID";
-            this.User_ID.ReadOnly = true;
-            this.User_ID.Visible = false;
-            this.User_ID.Width = 125;
-            // 
-            // User_Name
-            // 
-            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.User_Name.HeaderText = "Username";
-            this.User_Name.MinimumWidth = 6;
-            this.User_Name.Name = "User_Name";
-            this.User_Name.ReadOnly = true;
-            // 
-            // Action
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.NullValue = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Action.FillWeight = 75F;
-            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Action.HeaderText = "Action";
-            this.Action.MinimumWidth = 6;
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
-            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Action.Width = 50;
-            // 
             // lblTaskDescriptionError
             // 
             this.lblTaskDescriptionError.AutoSize = true;
@@ -138,6 +107,7 @@
             this.lblTaskDescriptionError.Size = new System.Drawing.Size(45, 21);
             this.lblTaskDescriptionError.TabIndex = 31;
             this.lblTaskDescriptionError.Text = "Error";
+            this.lblTaskDescriptionError.Visible = false;
             // 
             // lblTaskTitleError
             // 
@@ -149,6 +119,7 @@
             this.lblTaskTitleError.Size = new System.Drawing.Size(45, 21);
             this.lblTaskTitleError.TabIndex = 30;
             this.lblTaskTitleError.Text = "Error";
+            this.lblTaskTitleError.Visible = false;
             // 
             // label2
             // 
@@ -168,12 +139,12 @@
             this.txtTaskDescription.BorderSize = 1;
             this.txtTaskDescription.Icon = null;
             this.txtTaskDescription.IconSize = new System.Drawing.Size(20, 20);
-            this.txtTaskDescription.Location = new System.Drawing.Point(34, 164);
+            this.txtTaskDescription.Location = new System.Drawing.Point(35, 164);
             this.txtTaskDescription.Multiline = true;
             this.txtTaskDescription.Name = "txtTaskDescription";
             this.txtTaskDescription.PasswordChar = false;
             this.txtTaskDescription.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtTaskDescription.PlaceholderText = "Enter task description";
+            this.txtTaskDescription.PlaceholderText = "";
             this.txtTaskDescription.Size = new System.Drawing.Size(379, 94);
             this.txtTaskDescription.TabIndex = 28;
             this.txtTaskDescription.Texts = "";
@@ -202,7 +173,7 @@
             this.txtTaskTitle.Name = "txtTaskTitle";
             this.txtTaskTitle.PasswordChar = false;
             this.txtTaskTitle.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtTaskTitle.PlaceholderText = "Enter task title";
+            this.txtTaskTitle.PlaceholderText = "";
             this.txtTaskTitle.Size = new System.Drawing.Size(378, 39);
             this.txtTaskTitle.TabIndex = 26;
             this.txtTaskTitle.Texts = "";
@@ -289,6 +260,7 @@
             this.lblTaskDeadlineError.Size = new System.Drawing.Size(45, 21);
             this.lblTaskDeadlineError.TabIndex = 42;
             this.lblTaskDeadlineError.Text = "Error";
+            this.lblTaskDeadlineError.Visible = false;
             // 
             // label4
             // 
@@ -311,11 +283,60 @@
             this.dtpTaskDeadline.Size = new System.Drawing.Size(250, 28);
             this.dtpTaskDeadline.TabIndex = 40;
             // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(208, 269);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 53;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
+            // 
+            // User_ID
+            // 
+            this.User_ID.DataPropertyName = "User_ID";
+            this.User_ID.HeaderText = "User ID";
+            this.User_ID.MinimumWidth = 6;
+            this.User_ID.Name = "User_ID";
+            this.User_ID.ReadOnly = true;
+            this.User_ID.Visible = false;
+            this.User_ID.Width = 125;
+            // 
+            // User_Name
+            // 
+            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.User_Name.DataPropertyName = "Username";
+            this.User_Name.HeaderText = "Username";
+            this.User_Name.MinimumWidth = 6;
+            this.User_Name.Name = "User_Name";
+            this.User_Name.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.DataPropertyName = "IsInTask";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.NullValue = false;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Action.FillWeight = 75F;
+            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Action.HeaderText = "Action";
+            this.Action.MinimumWidth = 6;
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Action.Width = 50;
+            // 
             // frmCreateUpdateTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 620);
+            this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.lblTaskDeadlineError);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dtpTaskDeadline);
@@ -335,7 +356,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCreateUpdateTask";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmCreateUpdateTask_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,21 +367,22 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgViewUsers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User_Name;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Action;
         private System.Windows.Forms.Label lblTaskDescriptionError;
         private System.Windows.Forms.Label lblTaskTitleError;
         private System.Windows.Forms.Label label2;
-        private SATATextBox txtTaskDescription;
         private System.Windows.Forms.Label label1;
-        private SATATextBox txtTaskTitle;
-        private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.Label label3;
-        private FrameworkTest.SATAButton btnCreateUpdateTask;
-        private System.Windows.Forms.CheckBox ckbTaskCompleted;
         private System.Windows.Forms.Label lblTaskDeadlineError;
         private System.Windows.Forms.Label label4;
-        private SATAUiFramework.Controls.SATADateTimePicker dtpTaskDeadline;
+        private System.Windows.Forms.PictureBox pbLoadingSpinner;
+        public FrameworkTest.SATAButton btnCreateUpdateTask;
+        public System.Windows.Forms.Label lblHeading;
+        public System.Windows.Forms.CheckBox ckbTaskCompleted;
+        public SATAUiFramework.Controls.SATADateTimePicker dtpTaskDeadline;
+        public SATATextBox txtTaskDescription;
+        public SATATextBox txtTaskTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn User_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn User_Name;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Action;
     }
 }

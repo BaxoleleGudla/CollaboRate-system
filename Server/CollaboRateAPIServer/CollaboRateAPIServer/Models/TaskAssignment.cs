@@ -16,7 +16,7 @@ namespace CollaboRateAPIServer.Models
         public User? User { get; set; }
 
         public bool Is_Completed { get; set; }
-        public DateTime Completed_At { get; set; }
+        public DateTime? Completed_At { get; set; }
         public string? Note { get; set; }
     }
 }

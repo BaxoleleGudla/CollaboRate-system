@@ -104,6 +104,44 @@ namespace CollaboRateAPIServer.Controllers
             return user;
         }
 
+        // Method to get users in a group with task assignment
+        [HttpGet("group/{groupId}/task/{taskId}/users")]
+        public async Task<ActionResult<List<UserWithTaskAssignmentDto>>> GetUsersInGroupWithTaskAssignmentAsync(int groupId, int taskId)
+        {
+            try
+            {
+                var query = from user in _context.tblUser
+                           join groupMember in _context.tblGroupMember
+                                on user.User_ID equals groupMember.User_ID
+                           where groupMember.Group_ID == groupId
+                           select new
+                           {
+                               user.User_ID,
+                               user.Username,
+                               IsInTask = _context.tblTaskAssignment
+                                    .Any(ta => ta.Task_ID == taskId && ta.User_ID == user.User_ID)
+                           };
+
+                var users = await query
+                    .OrderByDescending(u => u.IsInTask) // Assigned users first
+                    .ThenBy(u => u.Username)
+                    .ToListAsync();
+
+                var result = users.Select(u => new UserWithTaskAssignmentDto
+                {
+                    User_ID = u.User_ID,
+                    Username = u.Username,
+                    IsInTask = u.IsInTask
+                }).ToList();
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occured while retrieving users. " + ex.Message);
+            }
+        }
+
         // POST: api/users
         // Adds a new user to the database
         [HttpPost]

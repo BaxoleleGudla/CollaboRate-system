@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCreateNewTask = new FrameworkTest.SATAButton();
             this.lblHeading = new System.Windows.Forms.Label();
             this.txtSearchTask = new SATATextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.dgViewTasks = new System.Windows.Forms.DataGridView();
             this.Task_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Task_Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +42,9 @@
             this.Assigned_To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Task_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MarkAsCompleted = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewTasks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreateNewTask
@@ -114,16 +115,7 @@
             this.txtSearchTask.TabIndex = 22;
             this.txtSearchTask.Texts = "";
             this.txtSearchTask.UnderlinedStyle = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(324, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.txtSearchTask._TextChanged += new System.EventHandler(this.txtSearchTask__TextChanged);
             // 
             // dgViewTasks
             // 
@@ -135,14 +127,14 @@
             this.dgViewTasks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewTasks.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgViewTasks.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgViewTasks.ColumnHeadersHeight = 35;
             this.dgViewTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewTasks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -161,15 +153,17 @@
             this.dgViewTasks.ReadOnly = true;
             this.dgViewTasks.RowHeadersVisible = false;
             this.dgViewTasks.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewTasks.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewTasks.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgViewTasks.RowTemplate.Height = 35;
             this.dgViewTasks.Size = new System.Drawing.Size(772, 463);
             this.dgViewTasks.TabIndex = 24;
+            this.dgViewTasks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewTasks_CellClick);
             // 
             // Task_ID
             // 
+            this.Task_ID.DataPropertyName = "Task_ID";
             this.Task_ID.HeaderText = "Task ID";
             this.Task_ID.MinimumWidth = 6;
             this.Task_ID.Name = "Task_ID";
@@ -180,6 +174,7 @@
             // Task_Title
             // 
             this.Task_Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Task_Title.DataPropertyName = "Task_Title";
             this.Task_Title.HeaderText = "Task Title";
             this.Task_Title.MinimumWidth = 6;
             this.Task_Title.Name = "Task_Title";
@@ -187,6 +182,7 @@
             // 
             // Task_Description
             // 
+            this.Task_Description.DataPropertyName = "Task_Description";
             this.Task_Description.HeaderText = "Description";
             this.Task_Description.MinimumWidth = 6;
             this.Task_Description.Name = "Task_Description";
@@ -195,6 +191,7 @@
             // 
             // Task_Deadline
             // 
+            this.Task_Deadline.DataPropertyName = "Deadline";
             this.Task_Deadline.HeaderText = "Deadline";
             this.Task_Deadline.MinimumWidth = 6;
             this.Task_Deadline.Name = "Task_Deadline";
@@ -203,6 +200,7 @@
             // 
             // Assigned_To
             // 
+            this.Assigned_To.DataPropertyName = "AssignedUsersDisplay";
             this.Assigned_To.HeaderText = "Assigned To";
             this.Assigned_To.MinimumWidth = 6;
             this.Assigned_To.Name = "Assigned_To";
@@ -211,6 +209,7 @@
             // 
             // Task_Status
             // 
+            this.Task_Status.DataPropertyName = "Status";
             this.Task_Status.HeaderText = "Status";
             this.Task_Status.MinimumWidth = 6;
             this.Task_Status.Name = "Task_Status";
@@ -219,11 +218,11 @@
             // 
             // MarkAsCompleted
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.MarkAsCompleted.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.MarkAsCompleted.DefaultCellStyle = dataGridViewCellStyle5;
             this.MarkAsCompleted.FillWeight = 75F;
             this.MarkAsCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MarkAsCompleted.HeaderText = "Action";
@@ -234,14 +233,26 @@
             this.MarkAsCompleted.UseColumnTextForButtonValue = true;
             this.MarkAsCompleted.Width = 160;
             // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(389, 300);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 54;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
+            // 
             // frmGroupTasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(810, 627);
+            this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.dgViewTasks);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCreateNewTask);
             this.Controls.Add(this.lblHeading);
             this.Controls.Add(this.txtSearchTask);
@@ -250,7 +261,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmGroupTasks";
             this.Text = "frmGroupTasks";
+            this.Load += new System.EventHandler(this.frmGroupTasks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewTasks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,8 +274,8 @@
         private FrameworkTest.SATAButton btnCreateNewTask;
         private System.Windows.Forms.Label lblHeading;
         private SATATextBox txtSearchTask;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgViewTasks;
+        private System.Windows.Forms.PictureBox pbLoadingSpinner;
         private System.Windows.Forms.DataGridViewTextBoxColumn Task_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Task_Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Task_Description;

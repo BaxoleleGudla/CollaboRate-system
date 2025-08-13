@@ -461,7 +461,7 @@
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.TasksController",
-    "Method": "AddTasAsync",
+    "Method": "AddTaskAsync",
     "RelativePath": "api/Tasks/tasks",
     "HttpMethod": "POST",
     "IsController": true,
@@ -470,6 +470,58 @@
       {
         "Name": "taskDto",
         "Type": "CollaboRateAPIServer.Dtos.CreateTaskDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.TasksController",
+    "Method": "GetTasksByGroupAsync",
+    "RelativePath": "api/Tasks/tasks/by-group",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "group_ID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "user_ID",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CollaboRateAPIServer.Dtos.TaskWithUsersDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.TasksController",
+    "Method": "UpdateTaskAsync",
+    "RelativePath": "api/Tasks/tasks/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateTaskDto",
+        "Type": "CollaboRateAPIServer.Dtos.UpdateTaskDto",
         "IsRequired": true
       }
     ],
@@ -563,6 +615,37 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.UsersController",
+    "Method": "GetUsersInGroupWithTaskAssignmentAsync",
+    "RelativePath": "api/Users/group/{groupId}/task/{taskId}/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CollaboRateAPIServer.Dtos.UserWithTaskAssignmentDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.UsersController",

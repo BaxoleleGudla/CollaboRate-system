@@ -93,10 +93,13 @@
     <Compile Include="Dtos\PendingUserDto.cs" />
     <Compile Include="Dtos\RatedMemberDto.cs" />
     <Compile Include="Dtos\RatingDto.cs" />
+    <Compile Include="Dtos\TaskWithUsersDto.cs" />
     <Compile Include="Dtos\UpdateDto.cs" />
     <Compile Include="Dtos\UpdateGroupRequest.cs" />
     <Compile Include="Dtos\UpdateMeetingDto.cs" />
+    <Compile Include="Dtos\UpdateTaskDto.cs" />
     <Compile Include="Dtos\UserDto.cs" />
+    <Compile Include="Dtos\UserWithTaskAssignmentDto.cs" />
     <Compile Include="frmAddNewMembers.cs">
       <SubType>Form</SubType>
     </Compile>

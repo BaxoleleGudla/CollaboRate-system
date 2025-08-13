@@ -158,7 +158,6 @@ namespace CollaboRate
             }
         }
 
-        // Finish and test this code
         // Method to get users
         private async Task<List<UserDto>> GetUsersNotInGroupAsync(int currentGroupId, string keyword = null)
         {

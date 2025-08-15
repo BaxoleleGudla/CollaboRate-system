@@ -126,7 +126,44 @@ namespace CollaboRate
             await DisplayTasksAsync(CurrentGroup.Group_ID, null, txtSearchTask.Texts);
         }
 
-        private void dgViewTasks_CellClick(object sender, DataGridViewCellEventArgs e)
+        // Method to change task status
+        private async Task<bool> ChangeTaskStatusAsync(int taskId, bool status)
+        {
+            try
+            {
+                pbLoadingSpinner.Visible = true;
+                dgViewTasks.Enabled = false;
+
+                string url = $"https://localhost:7287/api/Tasks/tasks/{taskId}/change-status?isCompleted={status}";
+
+                var response = await client.PutAsync(url, null);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+
+                pbLoadingSpinner.Visible = false;
+                dgViewTasks.Enabled = true;
+                string error = await response.Content.ReadAsStringAsync();
+                MessageBox.Show("Failed to change task status: " + error, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                pbLoadingSpinner.Visible = false;
+                dgViewTasks.Enabled = true;
+                MessageBox.Show("Could not change task status: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                pbLoadingSpinner.Visible = false;
+                dgViewTasks.Enabled = true;
+            }
+        }
+
+        private async void dgViewTasks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -142,14 +179,43 @@ namespace CollaboRate
                 // Check if the clicked column is a button column
                 if (dgViewTasks.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
                 {
-                    // Mark the task as completed
-                    /*
-                    DataGridViewRow row = this.dgViewMeetings.Rows[e.RowIndex];
+                    // Get the bound data item for the clicked row
+                    var task = dgViewTasks.Rows[e.RowIndex].DataBoundItem as TaskWithUsersDto;
 
-                    int meeting_ID = int.Parse(row.Cells["Meeting_ID"].Value.ToString());
-                    await CancelMeetingAsync(meeting_ID);
+                    if (task == null)
+                    {
+                        return;
+                    }
 
-                    await DisplayMeetingsAsync(CurrentGroup.Group_ID);*/
+                    var dgv = sender as DataGridView;
+
+                    // Get the task ID from the clicked row
+                    int task_ID = Convert.ToInt32(dgv.Rows[e.RowIndex].Cells["Task_ID"].Value);
+
+                    if (task.Status == "Completed")
+                    {
+                        bool success = await ChangeTaskStatusAsync(task_ID, false);
+
+                        if (success)
+                        {
+                            //group.HasPendingRequest = false;
+                            //dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
+                            await DisplayTasksAsync(CurrentGroup.Group_ID);
+                            MessageBox.Show("Task marked as incomplete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else if (task.Status == "Not Completed")
+                    {
+                        bool success = await ChangeTaskStatusAsync(task_ID, true);
+
+                        if (success)
+                        {
+                            //group.HasPendingRequest = true;
+                            //dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
+                            await DisplayTasksAsync(CurrentGroup.Group_ID);
+                            MessageBox.Show("Task marked as completed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
                 }
                 else
                 {
@@ -180,6 +246,31 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgViewTasks_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgViewTasks.Columns[e.ColumnIndex].Name == "Action" && e.RowIndex >= 0)
+            {
+                var task = dgViewTasks.Rows[e.RowIndex].DataBoundItem as TaskWithUsersDto;
+
+                if (task != null)
+                {
+                    string buttonText = "";
+
+                    if (task.Status == "Completed")
+                    {
+                        buttonText = "Mark as incomplete";
+                    }
+                    else if (task.Status == "Not Completed")
+                    {
+                        buttonText = "Mark as completed";
+                    }
+                    
+                    e.Value = buttonText;
+                    e.FormattingApplied = true;
+                }
             }
         }
     }

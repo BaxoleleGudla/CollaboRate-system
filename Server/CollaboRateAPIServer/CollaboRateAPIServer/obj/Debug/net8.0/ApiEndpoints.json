@@ -477,6 +477,27 @@
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.TasksController",
+    "Method": "ChangeTaskStatusAsync",
+    "RelativePath": "api/Tasks/tasks/{taskId}/change-status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "isCompleted",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.TasksController",
     "Method": "GetTasksByGroupAsync",
     "RelativePath": "api/Tasks/tasks/by-group",
     "HttpMethod": "GET",

@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCreateNewTask = new FrameworkTest.SATAButton();
             this.lblHeading = new System.Windows.Forms.Label();
             this.txtSearchTask = new SATATextBox();
             this.dgViewTasks = new System.Windows.Forms.DataGridView();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.Task_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Task_Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Task_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Task_Deadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Assigned_To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Task_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MarkAsCompleted = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
+            this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewTasks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
@@ -127,14 +127,14 @@
             this.dgViewTasks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewTasks.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgViewTasks.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgViewTasks.ColumnHeadersHeight = 35;
             this.dgViewTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewTasks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -144,7 +144,7 @@
             this.Task_Deadline,
             this.Assigned_To,
             this.Task_Status,
-            this.MarkAsCompleted});
+            this.Action});
             this.dgViewTasks.EnableHeadersVisualStyles = false;
             this.dgViewTasks.GridColor = System.Drawing.SystemColors.Control;
             this.dgViewTasks.Location = new System.Drawing.Point(15, 152);
@@ -153,13 +153,26 @@
             this.dgViewTasks.ReadOnly = true;
             this.dgViewTasks.RowHeadersVisible = false;
             this.dgViewTasks.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewTasks.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewTasks.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgViewTasks.RowTemplate.Height = 35;
             this.dgViewTasks.Size = new System.Drawing.Size(772, 463);
             this.dgViewTasks.TabIndex = 24;
             this.dgViewTasks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewTasks_CellClick);
+            this.dgViewTasks.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgViewTasks_CellFormatting);
+            // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(389, 300);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 54;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
             // 
             // Task_ID
             // 
@@ -216,34 +229,23 @@
             this.Task_Status.ReadOnly = true;
             this.Task_Status.Width = 110;
             // 
-            // MarkAsCompleted
+            // Action
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.MarkAsCompleted.DefaultCellStyle = dataGridViewCellStyle5;
-            this.MarkAsCompleted.FillWeight = 75F;
-            this.MarkAsCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MarkAsCompleted.HeaderText = "Action";
-            this.MarkAsCompleted.MinimumWidth = 6;
-            this.MarkAsCompleted.Name = "MarkAsCompleted";
-            this.MarkAsCompleted.ReadOnly = true;
-            this.MarkAsCompleted.Text = "Mark as completed";
-            this.MarkAsCompleted.UseColumnTextForButtonValue = true;
-            this.MarkAsCompleted.Width = 160;
-            // 
-            // pbLoadingSpinner
-            // 
-            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
-            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
-            this.pbLoadingSpinner.Location = new System.Drawing.Point(389, 300);
-            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
-            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
-            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLoadingSpinner.TabIndex = 54;
-            this.pbLoadingSpinner.TabStop = false;
-            this.pbLoadingSpinner.Visible = false;
+            this.Action.DataPropertyName = "Action";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Action.FillWeight = 75F;
+            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Action.HeaderText = "Action";
+            this.Action.MinimumWidth = 6;
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Text = "Mark as completed";
+            this.Action.UseColumnTextForButtonValue = true;
+            this.Action.Width = 160;
             // 
             // frmGroupTasks
             // 
@@ -282,6 +284,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Task_Deadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn Assigned_To;
         private System.Windows.Forms.DataGridViewTextBoxColumn Task_Status;
-        private System.Windows.Forms.DataGridViewButtonColumn MarkAsCompleted;
+        private System.Windows.Forms.DataGridViewButtonColumn Action;
     }
 }

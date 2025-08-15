@@ -7,16 +7,8 @@
       "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmgrouptasks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\collaborate\\frmcreatemanagetask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmcreatemanagetask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\application\\collaborate\\collaborate\\frmcreatemanagetask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmcreatemanagetask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\application\\collaborate\\collaborate\\dtos\\updatetaskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\dtos\\updatetaskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\collaborate\\frmprojectgroups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmprojectgroups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,47 +28,22 @@
               "RelativeDocumentMoniker": "CollaboRate\\frmGroupTasks.cs",
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmGroupTasks.cs",
               "RelativeToolTip": "CollaboRate\\frmGroupTasks.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAowHkAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAIkAAAAAAAAAAADwv6EAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T08:01:29.638Z",
+              "WhenOpened": "2025-08-14T20:38:24.225Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmCreateManageTask.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmCreateManageTask.cs",
-              "RelativeDocumentMoniker": "CollaboRate\\frmCreateManageTask.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmCreateManageTask.cs",
-              "RelativeToolTip": "CollaboRate\\frmCreateManageTask.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAYwHQBAAAsAAAAAAAAAA==",
+              "Title": "frmProjectGroups.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.cs",
+              "RelativeDocumentMoniker": "CollaboRate\\frmProjectGroups.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.cs",
+              "RelativeToolTip": "CollaboRate\\frmProjectGroups.cs",
+              "ViewState": "AgIAAKEBAAAAAAAAAADwv+cBAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T07:59:44.94Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmCreateManageTask.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmCreateManageTask.cs",
-              "RelativeDocumentMoniker": "CollaboRate\\frmCreateManageTask.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmCreateManageTask.cs [Design]",
-              "RelativeToolTip": "CollaboRate\\frmCreateManageTask.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T09:41:40.903Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UpdateTaskDto.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\Dtos\\UpdateTaskDto.cs",
-              "RelativeDocumentMoniker": "CollaboRate\\Dtos\\UpdateTaskDto.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\Dtos\\UpdateTaskDto.cs",
-              "RelativeToolTip": "CollaboRate\\Dtos\\UpdateTaskDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T09:31:09.268Z",
+              "WhenOpened": "2025-08-14T20:28:32.367Z",
               "EditorCaption": ""
             }
           ]

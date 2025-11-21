@@ -52,7 +52,7 @@
             // txtSearchMessage
             // 
             this.txtSearchMessage.BackColor = System.Drawing.Color.White;
-            this.txtSearchMessage.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.txtSearchMessage.BorderColor = System.Drawing.Color.DimGray;
             this.txtSearchMessage.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
             this.txtSearchMessage.BorderRadius = 5;
             this.txtSearchMessage.BorderSize = 1;

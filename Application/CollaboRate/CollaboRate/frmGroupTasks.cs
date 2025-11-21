@@ -38,6 +38,9 @@ namespace CollaboRate
             createTaskForm.ckbTaskCompleted.Visible = false;
             createTaskForm.dtpTaskDeadline.Size = new System.Drawing.Size(377, 28);
             createTaskForm.dtpTaskDeadline.Location = new System.Drawing.Point(35, 303);
+            createTaskForm.btnDeleteTask.Visible = false;
+            createTaskForm.btnCreateUpdateTask.Size = new Size(379, 35);
+            createTaskForm.btnCreateUpdateTask.Location = new Point(35, 571);
             createTaskForm.ShowDialog();
         }
 

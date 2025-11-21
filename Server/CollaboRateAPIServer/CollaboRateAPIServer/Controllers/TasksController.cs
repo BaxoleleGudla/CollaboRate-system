@@ -259,6 +259,64 @@ namespace CollaboRateAPIServer.Controllers
                 return StatusCode(500, $"An error occurred while updating the task status: {ex.Message}");
             }
         }
+
+        // Method to delete a task and send notification
+        [HttpDelete("tasks/{taskId}/delete")]
+        public async Task<IActionResult> DeleteTaskAsync(int taskId, [FromQuery] int deletedByUserId)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                // Load the task to verify existence and get Group_ID
+                var task = await _context.tblTask.FirstOrDefaultAsync(t => t.Task_ID == taskId);
+
+                if (task == null)
+                {
+                    return NotFound($"Task with ID {taskId} not found.");
+                }
+
+                int groupId = task.Group_ID;
+
+                // Load the user who deletes the task to get thier name
+                var user = await _context.tblUser.FirstOrDefaultAsync(u => u.User_ID == deletedByUserId);
+                string userName = user?.Username ?? "Unknown User";
+
+                // Load the group to get its name
+                var group = await _context.tblGroup.FirstOrDefaultAsync(g => g.Group_ID == groupId);
+                string groupName = group?.Group_Name ?? "Unknown Group";
+
+                // Remove related task assignments
+                var assignments = _context.tblTaskAssignment.Where(ta => ta.Task_ID == taskId);
+
+                _context.tblTaskAssignment.RemoveRange(assignments);
+
+                // Remove the task itself
+                _context.tblTask.Remove(task);
+
+                // Create and add a single group notification
+                var notification = new GroupNotification
+                {
+                    Group_ID = task.Group_ID,
+                    Notification_Type = "Task Deleted",
+                    Notification_Message = $"Task '{task.Task_Title}' in group '{groupName}' was deleted by {userName}.",
+                    Created_At = DateTime.UtcNow
+                };
+
+                await _context.tblGroupNotification.AddAsync(notification);
+
+                // Save all changes and commit transaction
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return Ok($"Task {taskId} deleted successfully and notification created.");
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, $"An error occurred while deleting the task: {ex.Message}");
+            }
+        }
     }
-}
+} 
 

@@ -35,7 +35,6 @@
             this.lblHeading = new System.Windows.Forms.Label();
             this.txtSearchTask = new SATATextBox();
             this.dgViewTasks = new System.Windows.Forms.DataGridView();
-            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.Task_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Task_Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Task_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +42,7 @@
             this.Assigned_To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Task_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewTasks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
@@ -99,7 +99,7 @@
             // txtSearchTask
             // 
             this.txtSearchTask.BackColor = System.Drawing.Color.White;
-            this.txtSearchTask.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.txtSearchTask.BorderColor = System.Drawing.Color.DimGray;
             this.txtSearchTask.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
             this.txtSearchTask.BorderRadius = 5;
             this.txtSearchTask.BorderSize = 1;
@@ -111,7 +111,7 @@
             this.txtSearchTask.PasswordChar = false;
             this.txtSearchTask.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtSearchTask.PlaceholderText = "Search task";
-            this.txtSearchTask.Size = new System.Drawing.Size(772, 39);
+            this.txtSearchTask.Size = new System.Drawing.Size(394, 39);
             this.txtSearchTask.TabIndex = 22;
             this.txtSearchTask.Texts = "";
             this.txtSearchTask.UnderlinedStyle = false;
@@ -161,18 +161,6 @@
             this.dgViewTasks.TabIndex = 24;
             this.dgViewTasks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewTasks_CellClick);
             this.dgViewTasks.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgViewTasks_CellFormatting);
-            // 
-            // pbLoadingSpinner
-            // 
-            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
-            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
-            this.pbLoadingSpinner.Location = new System.Drawing.Point(389, 300);
-            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
-            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
-            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLoadingSpinner.TabIndex = 54;
-            this.pbLoadingSpinner.TabStop = false;
-            this.pbLoadingSpinner.Visible = false;
             // 
             // Task_ID
             // 
@@ -246,6 +234,18 @@
             this.Action.Text = "Mark as completed";
             this.Action.UseColumnTextForButtonValue = true;
             this.Action.Width = 160;
+            // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(389, 300);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 54;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
             // 
             // frmGroupTasks
             // 

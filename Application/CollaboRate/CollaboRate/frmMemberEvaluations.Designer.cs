@@ -34,13 +34,13 @@
             this.lblHeading = new System.Windows.Forms.Label();
             this.txtSearchMemberName = new SATATextBox();
             this.dgViewMemberEvaluations = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnEvaluateAllMembers = new FrameworkTest.SATAButton();
-            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.Member_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Member_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Member_Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Score_Average = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnEvaluateAllMembers = new FrameworkTest.SATAButton();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMemberEvaluations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
@@ -121,6 +121,48 @@
             this.dgViewMemberEvaluations.TabIndex = 17;
             this.dgViewMemberEvaluations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewMemberEvaluations_CellClick);
             // 
+            // Member_ID
+            // 
+            this.Member_ID.DataPropertyName = "User_ID";
+            this.Member_ID.HeaderText = "Member ID";
+            this.Member_ID.MinimumWidth = 6;
+            this.Member_ID.Name = "Member_ID";
+            this.Member_ID.ReadOnly = true;
+            this.Member_ID.Visible = false;
+            this.Member_ID.Width = 125;
+            // 
+            // Member_Name
+            // 
+            this.Member_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Member_Name.DataPropertyName = "Username";
+            this.Member_Name.HeaderText = "Member Name";
+            this.Member_Name.MinimumWidth = 6;
+            this.Member_Name.Name = "Member_Name";
+            this.Member_Name.ReadOnly = true;
+            // 
+            // Member_Score
+            // 
+            this.Member_Score.DataPropertyName = "Score";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.Member_Score.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Member_Score.FillWeight = 75F;
+            this.Member_Score.HeaderText = "Member Score";
+            this.Member_Score.MinimumWidth = 6;
+            this.Member_Score.Name = "Member_Score";
+            this.Member_Score.ReadOnly = true;
+            this.Member_Score.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Member_Score.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Member_Score.Width = 235;
+            // 
+            // Score_Average
+            // 
+            this.Score_Average.DataPropertyName = "Average_Score";
+            this.Score_Average.HeaderText = "Average";
+            this.Score_Average.MinimumWidth = 6;
+            this.Score_Average.Name = "Score_Average";
+            this.Score_Average.ReadOnly = true;
+            this.Score_Average.Width = 125;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(374, 35);
@@ -181,48 +223,6 @@
             this.pbLoadingSpinner.TabIndex = 54;
             this.pbLoadingSpinner.TabStop = false;
             this.pbLoadingSpinner.Visible = false;
-            // 
-            // Member_ID
-            // 
-            this.Member_ID.DataPropertyName = "User_ID";
-            this.Member_ID.HeaderText = "Member ID";
-            this.Member_ID.MinimumWidth = 6;
-            this.Member_ID.Name = "Member_ID";
-            this.Member_ID.ReadOnly = true;
-            this.Member_ID.Visible = false;
-            this.Member_ID.Width = 125;
-            // 
-            // Member_Name
-            // 
-            this.Member_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Member_Name.DataPropertyName = "Username";
-            this.Member_Name.HeaderText = "Member Name";
-            this.Member_Name.MinimumWidth = 6;
-            this.Member_Name.Name = "Member_Name";
-            this.Member_Name.ReadOnly = true;
-            // 
-            // Member_Score
-            // 
-            this.Member_Score.DataPropertyName = "Score";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.Member_Score.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Member_Score.FillWeight = 75F;
-            this.Member_Score.HeaderText = "Member Score";
-            this.Member_Score.MinimumWidth = 6;
-            this.Member_Score.Name = "Member_Score";
-            this.Member_Score.ReadOnly = true;
-            this.Member_Score.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Member_Score.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Member_Score.Width = 235;
-            // 
-            // Score_Average
-            // 
-            this.Score_Average.DataPropertyName = "Average_Score";
-            this.Score_Average.HeaderText = "Average";
-            this.Score_Average.MinimumWidth = 6;
-            this.Score_Average.Name = "Score_Average";
-            this.Score_Average.ReadOnly = true;
-            this.Score_Average.Width = 125;
             // 
             // frmMemberEvaluations
             // 

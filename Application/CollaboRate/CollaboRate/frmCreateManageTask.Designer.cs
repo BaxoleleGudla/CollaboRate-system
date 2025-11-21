@@ -32,6 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgViewUsers = new System.Windows.Forms.DataGridView();
+            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTaskDescriptionError = new System.Windows.Forms.Label();
             this.lblTaskTitleError = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,9 +49,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dtpTaskDeadline = new SATAUiFramework.Controls.SATADateTimePicker();
             this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
-            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnDeleteTask = new FrameworkTest.SATAButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +97,42 @@
             this.dgViewUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewUsers_CellClick);
             this.dgViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewUsers_CellContentClick);
             this.dgViewUsers.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgViewUsers_CurrentCellDirtyStateChanged);
+            // 
+            // User_ID
+            // 
+            this.User_ID.DataPropertyName = "User_ID";
+            this.User_ID.HeaderText = "User ID";
+            this.User_ID.MinimumWidth = 6;
+            this.User_ID.Name = "User_ID";
+            this.User_ID.ReadOnly = true;
+            this.User_ID.Visible = false;
+            this.User_ID.Width = 125;
+            // 
+            // User_Name
+            // 
+            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.User_Name.DataPropertyName = "Username";
+            this.User_Name.HeaderText = "Username";
+            this.User_Name.MinimumWidth = 6;
+            this.User_Name.Name = "User_Name";
+            this.User_Name.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.DataPropertyName = "IsInTask";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.NullValue = false;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Action.FillWeight = 75F;
+            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Action.HeaderText = "Action";
+            this.Action.MinimumWidth = 6;
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Action.Width = 50;
             // 
             // lblTaskDescriptionError
             // 
@@ -220,7 +257,7 @@
             this.btnCreateUpdateTask.ImageTint = System.Drawing.Color.White;
             this.btnCreateUpdateTask.IsToggleButton = false;
             this.btnCreateUpdateTask.IsToggled = false;
-            this.btnCreateUpdateTask.Location = new System.Drawing.Point(34, 566);
+            this.btnCreateUpdateTask.Location = new System.Drawing.Point(228, 571);
             this.btnCreateUpdateTask.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnCreateUpdateTask.Name = "btnCreateUpdateTask";
             this.btnCreateUpdateTask.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
@@ -232,7 +269,7 @@
             this.btnCreateUpdateTask.PressedImageTint = System.Drawing.Color.White;
             this.btnCreateUpdateTask.PressedOutline = System.Drawing.Color.Empty;
             this.btnCreateUpdateTask.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnCreateUpdateTask.Size = new System.Drawing.Size(379, 35);
+            this.btnCreateUpdateTask.Size = new System.Drawing.Size(185, 35);
             this.btnCreateUpdateTask.TabIndex = 34;
             this.btnCreateUpdateTask.TextAutoCenter = true;
             this.btnCreateUpdateTask.TextOffset = new System.Drawing.Point(0, 0);
@@ -295,47 +332,51 @@
             this.pbLoadingSpinner.TabStop = false;
             this.pbLoadingSpinner.Visible = false;
             // 
-            // User_ID
+            // btnDeleteTask
             // 
-            this.User_ID.DataPropertyName = "User_ID";
-            this.User_ID.HeaderText = "User ID";
-            this.User_ID.MinimumWidth = 6;
-            this.User_ID.Name = "User_ID";
-            this.User_ID.ReadOnly = true;
-            this.User_ID.Visible = false;
-            this.User_ID.Width = 125;
-            // 
-            // User_Name
-            // 
-            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.User_Name.DataPropertyName = "Username";
-            this.User_Name.HeaderText = "Username";
-            this.User_Name.MinimumWidth = 6;
-            this.User_Name.Name = "User_Name";
-            this.User_Name.ReadOnly = true;
-            // 
-            // Action
-            // 
-            this.Action.DataPropertyName = "IsInTask";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.NullValue = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Action.FillWeight = 75F;
-            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Action.HeaderText = "Action";
-            this.Action.MinimumWidth = 6;
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
-            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Action.Width = 50;
+            this.btnDeleteTask.ButtonText = "Delete Task";
+            this.btnDeleteTask.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnDeleteTask.CheckedForeColor = System.Drawing.Color.White;
+            this.btnDeleteTask.CheckedImageTint = System.Drawing.Color.White;
+            this.btnDeleteTask.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnDeleteTask.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnDeleteTask.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTask.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(30)))), ((int)(((byte)(0)))));
+            this.btnDeleteTask.HoverForeColor = System.Drawing.Color.White;
+            this.btnDeleteTask.HoverImage = null;
+            this.btnDeleteTask.HoverImageTint = System.Drawing.Color.White;
+            this.btnDeleteTask.HoverOutline = System.Drawing.Color.Empty;
+            this.btnDeleteTask.Image = null;
+            this.btnDeleteTask.ImageAutoCenter = false;
+            this.btnDeleteTask.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnDeleteTask.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnDeleteTask.ImageTint = System.Drawing.Color.White;
+            this.btnDeleteTask.IsToggleButton = false;
+            this.btnDeleteTask.IsToggled = false;
+            this.btnDeleteTask.Location = new System.Drawing.Point(35, 571);
+            this.btnDeleteTask.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnDeleteTask.Name = "btnDeleteTask";
+            this.btnDeleteTask.NormalBackground = System.Drawing.Color.Red;
+            this.btnDeleteTask.NormalForeColor = System.Drawing.Color.White;
+            this.btnDeleteTask.NormalOutline = System.Drawing.Color.Empty;
+            this.btnDeleteTask.OutlineThickness = 2F;
+            this.btnDeleteTask.PressedBackground = System.Drawing.Color.Red;
+            this.btnDeleteTask.PressedForeColor = System.Drawing.Color.White;
+            this.btnDeleteTask.PressedImageTint = System.Drawing.Color.White;
+            this.btnDeleteTask.PressedOutline = System.Drawing.Color.Empty;
+            this.btnDeleteTask.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnDeleteTask.Size = new System.Drawing.Size(185, 35);
+            this.btnDeleteTask.TabIndex = 54;
+            this.btnDeleteTask.TextAutoCenter = true;
+            this.btnDeleteTask.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnDeleteTask.Click += new System.EventHandler(this.btnDeleteTask_Click);
             // 
             // frmCreateUpdateTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 620);
+            this.Controls.Add(this.btnDeleteTask);
             this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.lblTaskDeadlineError);
             this.Controls.Add(this.label4);
@@ -384,5 +425,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn User_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn User_Name;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Action;
+        public FrameworkTest.SATAButton btnDeleteTask;
     }
 }

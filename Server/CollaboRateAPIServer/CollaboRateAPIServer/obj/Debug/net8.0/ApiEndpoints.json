@@ -498,6 +498,27 @@
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.TasksController",
+    "Method": "DeleteTaskAsync",
+    "RelativePath": "api/Tasks/tasks/{taskId}/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "deletedByUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.TasksController",
     "Method": "GetTasksByGroupAsync",
     "RelativePath": "api/Tasks/tasks/by-group",
     "HttpMethod": "GET",

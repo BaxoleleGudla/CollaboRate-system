@@ -447,6 +447,72 @@ namespace CollaboRate
             }
         }
 
+        // Method to delete a task
+        private async Task<bool> DeleteTaskAsync(int taskId, int deletedByUserId)
+        {
+            if (MessageBox.Show("Are you sure you want to delete this task?", "Delete Task", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    pbLoadingSpinner.Visible = true; // Show loading indicator
+
+                    if (task_ID > 0)
+                    {
+                        string url = $"{ApiBaseUrl}/api/Tasks/tasks/{taskId}/delete?deletedByUserId={deletedByUserId}";
+
+                        // Send DELETE request
+                        HttpResponseMessage response = await client.DeleteAsync(url);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            pbLoadingSpinner.Visible = false;
+                            string responseBody = await response.Content.ReadAsStringAsync();
+                            MessageBox.Show("Task deleted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            var groupTaskForm = Application.OpenForms.OfType<frmGroupTasks>().FirstOrDefault();
+                            if (groupTaskForm != null)
+                            {
+                                _ = groupTaskForm.DisplayTasksAsync(CurrentUser.User_ID);
+                            }
+
+                            this.Close();
+
+                            return true;
+                        }
+                        else
+                        {
+                            pbLoadingSpinner.Visible = false;
+                            string error = await response.Content.ReadAsStringAsync();
+                            MessageBox.Show($"Failed to delete task: {error}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        pbLoadingSpinner.Visible = false;
+                        MessageBox.Show("Please login to delete a task", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+                catch (HttpRequestException ex)
+                {
+                    pbLoadingSpinner.Visible = false;
+                    MessageBox.Show($"Network error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    pbLoadingSpinner.Visible = false;
+                    MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private async void btnCreateUpdateTask_Click(object sender, EventArgs e)
         {
             if (btnCreateUpdateTask.ButtonText.Contains("Create Task") == true)
@@ -507,6 +573,11 @@ namespace CollaboRate
             {
                 MessageBox.Show("Could not load group members", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private async void btnDeleteTask_Click(object sender, EventArgs e)
+        {
+            await DeleteTaskAsync(task_ID, CurrentUser.User_ID);
         }
     }
 }

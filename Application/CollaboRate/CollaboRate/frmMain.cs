@@ -141,7 +141,9 @@ namespace CollaboRate
 
         private void btnGroupChats_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmGroupChats());
+            frmGroupChats groupChatsForm = new frmGroupChats();
+            groupChatsForm.txtMessage.PlaceholderText = "Type a message";
+            openChildForm(groupChatsForm);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

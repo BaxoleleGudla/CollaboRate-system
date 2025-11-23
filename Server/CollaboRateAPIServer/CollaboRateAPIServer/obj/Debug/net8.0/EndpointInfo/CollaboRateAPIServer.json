@@ -36,6 +36,60 @@
         }
       }
     },
+    "/api/GroupMessages/messages": {
+      "post": {
+        "tags": [
+          "GroupMessages"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupMessage"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupMessage"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupMessage"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/GroupMessages/messages/{id}": {
+      "get": {
+        "tags": [
+          "GroupMessages"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Groups/user/{userId}": {
       "get": {
         "tags": [
@@ -1544,6 +1598,32 @@
           "group_Name": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GroupMessage": {
+        "type": "object",
+        "properties": {
+          "message_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sender_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "group_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message_Text": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_At": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false

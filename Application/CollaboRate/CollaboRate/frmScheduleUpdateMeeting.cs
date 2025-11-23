@@ -131,7 +131,7 @@ namespace CollaboRate
                     pbLoadingSpinner.Visible = false;
                     btnScheduleUpdateMeeting.Enabled = true;
 
-                    MessageBox.Show("Meeting sheduled successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Meeting scheduled successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     txtMeetingTitle.Texts = "";
                     txtMeetingDescription.Texts = "";

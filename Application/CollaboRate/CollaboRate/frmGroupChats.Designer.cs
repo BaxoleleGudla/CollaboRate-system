@@ -36,7 +36,9 @@
             this.txtMessage = new SATATextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlDivider = new System.Windows.Forms.Panel();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.pnlBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
             // 
             // lblHeading
@@ -127,6 +129,7 @@
             this.btnSendMessage.TabIndex = 33;
             this.btnSendMessage.TextAutoCenter = false;
             this.btnSendMessage.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
             // 
             // txtMessage
             // 
@@ -144,7 +147,7 @@
             this.txtMessage.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.txtMessage.PasswordChar = false;
             this.txtMessage.PlaceholderColor = System.Drawing.Color.DimGray;
-            this.txtMessage.PlaceholderText = "Type a message";
+            this.txtMessage.PlaceholderText = "";
             this.txtMessage.Size = new System.Drawing.Size(722, 39);
             this.txtMessage.TabIndex = 32;
             this.txtMessage.Texts = "";
@@ -168,12 +171,25 @@
             this.pnlDivider.Size = new System.Drawing.Size(810, 1);
             this.pnlDivider.TabIndex = 33;
             // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(388, 300);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 55;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
+            // 
             // frmGroupChats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(810, 627);
+            this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.pnlDivider);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlBottom);
@@ -185,7 +201,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmGroupChats";
             this.Text = "frmGroupChats";
+            this.Load += new System.EventHandler(this.frmGroupChats_Load);
             this.pnlBottom.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,9 +215,10 @@
         private SATATextBox txtSearchMessage;
         private System.Windows.Forms.ListBox lstChats;
         private System.Windows.Forms.Panel pnlBottom;
-        private SATATextBox txtMessage;
         private FrameworkTest.SATAButton btnSendMessage;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlDivider;
+        private System.Windows.Forms.PictureBox pbLoadingSpinner;
+        public SATATextBox txtMessage;
     }
 }

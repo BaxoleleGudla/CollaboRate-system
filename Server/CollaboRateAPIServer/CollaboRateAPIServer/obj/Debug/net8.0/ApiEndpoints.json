@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupMessagesController",
+    "Method": "AddMessageAsync",
+    "RelativePath": "api/GroupMessages/messages",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newMessage",
+        "Type": "CollaboRateAPIServer.Models.GroupMessage",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupMessagesController",
+    "Method": "GetMessageById",
+    "RelativePath": "api/GroupMessages/messages/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
     "Method": "GetGroupsWithAcceptedUsers",
     "RelativePath": "api/Groups/{groupId}/details-with-accepted-users",

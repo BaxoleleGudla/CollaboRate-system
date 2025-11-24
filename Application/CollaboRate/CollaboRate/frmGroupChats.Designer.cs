@@ -34,7 +34,6 @@
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.btnSendMessage = new FrameworkTest.SATAButton();
             this.txtMessage = new SATATextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlDivider = new System.Windows.Forms.Panel();
             this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.pnlBottom.SuspendLayout();
@@ -70,16 +69,19 @@
             this.txtSearchMessage.TabIndex = 29;
             this.txtSearchMessage.Texts = "";
             this.txtSearchMessage.UnderlinedStyle = false;
+            this.txtSearchMessage._TextChanged += new System.EventHandler(this.txtSearchMessage__TextChanged);
             // 
             // lstChats
             // 
             this.lstChats.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstChats.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lstChats.FormattingEnabled = true;
             this.lstChats.ItemHeight = 21;
             this.lstChats.Location = new System.Drawing.Point(15, 93);
             this.lstChats.Name = "lstChats";
             this.lstChats.Size = new System.Drawing.Size(780, 483);
             this.lstChats.TabIndex = 30;
+            this.lstChats.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstChats_DrawItem);
             // 
             // pnlBottom
             // 
@@ -153,16 +155,6 @@
             this.txtMessage.Texts = "";
             this.txtMessage.UnderlinedStyle = false;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(314, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // pnlDivider
             // 
             this.pnlDivider.BackColor = System.Drawing.Color.Gainsboro;
@@ -191,7 +183,6 @@
             this.ClientSize = new System.Drawing.Size(810, 627);
             this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.pnlDivider);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlBottom);
             this.Controls.Add(this.lstChats);
             this.Controls.Add(this.lblHeading);
@@ -216,7 +207,6 @@
         private System.Windows.Forms.ListBox lstChats;
         private System.Windows.Forms.Panel pnlBottom;
         private FrameworkTest.SATAButton btnSendMessage;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlDivider;
         private System.Windows.Forms.PictureBox pbLoadingSpinner;
         public SATATextBox txtMessage;

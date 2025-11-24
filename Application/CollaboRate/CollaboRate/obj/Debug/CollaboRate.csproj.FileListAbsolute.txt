@@ -1,71 +1,8 @@
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe.config
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.pdb
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\SATAUiFramework.dll
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.AssemblyReference.cache
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMain.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.Properties.Resources.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.GenerateResource.cache
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CoreCompileInputs.cache
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboR.D812CFD4.Up2Date
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmProjectGroups.resources
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe.config
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.pdb
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\SATAUiFramework.dll
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.AssemblyReference.cache
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMain.resources
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmProjectGroups.resources
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.Properties.Resources.resources
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.GenerateResource.cache
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CoreCompileInputs.cache
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboR.D812CFD4.Up2Date
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
-E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe.config
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.pdb
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\SATAUiFramework.dll
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.AssemblyReference.cache
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMain.resources
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmProjectGroups.resources
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.Properties.Resources.resources
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.GenerateResource.cache
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CoreCompileInputs.cache
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CopyComplete
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
-\\Client\E$\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe.config
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.exe
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\CollaboRate.pdb
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\SATAUiFramework.dll
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.AssemblyReference.cache
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMain.resources
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmProjectGroups.resources
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.Properties.Resources.resources
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.GenerateResource.cache
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CoreCompileInputs.cache
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CopyComplete
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
-\\143.160.81.140\CTX_Redirected_Data$\45997519\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMemberEvaluations.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupTasks.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupMeetings.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupChats.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmCreateNewGroup.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmEditGroup.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmAddNewMembers.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmEvaluateAllMembers.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmUpdateMemberEvaluation.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmCreateUpdateTask.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmScheduleUpdateMeeting.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmLogin.resources
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmRegister.resources
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\SATAUiFramework.dll
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.Buffers.dll
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.IO.Pipelines.dll
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.Memory.dll
@@ -85,3 +22,63 @@ C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\App
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.Text.Json.xml
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.ValueTuple.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.AssemblyReference.cache
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmAddNewMembers.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmCreateUpdateTask.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmCreateNewGroup.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmEvaluateAllMembers.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupChats.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupMeetings.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupTasks.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmLogin.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMain.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmEditGroup.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMemberEvaluations.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmProjectGroups.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmRegister.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmScheduleUpdateMeeting.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmUpdateMemberEvaluation.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.Properties.Resources.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.GenerateResource.cache
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CoreCompileInputs.cache
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboR.D812CFD4.Up2Date
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.SignalR.Client.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Configuration.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.Threading.Channels.dll
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.Connections.Abstractions.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.Http.Connections.Client.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.Http.Connections.Common.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.SignalR.Client.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.SignalR.Client.Core.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.SignalR.Common.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.AspNetCore.SignalR.Protocols.Json.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Configuration.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.Threading.Channels.xml
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config

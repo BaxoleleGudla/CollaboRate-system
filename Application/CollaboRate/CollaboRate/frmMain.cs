@@ -116,7 +116,7 @@ namespace CollaboRate
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            //openChildForm(new frmHome());
+            openChildForm(new frmHome());
         }
 
         private void btnProjectGroups_Click(object sender, EventArgs e)

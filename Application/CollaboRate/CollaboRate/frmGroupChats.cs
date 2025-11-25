@@ -132,7 +132,15 @@ namespace CollaboRate
 
         private async void frmGroupChats_Load(object sender, EventArgs e)
         {
-            await _connection.StartAsync();
+            try
+            {
+                await _connection.StartAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             await DisplayMessages(CurrentGroup.Group_ID);
         }
 
@@ -245,12 +253,19 @@ namespace CollaboRate
         // Dispose connection on form close
         protected override async void OnFormClosing(FormClosingEventArgs e)
         { 
-            if (_connection != null)
+            try
             {
-                await _connection.StopAsync();
-                await _connection.DisposeAsync();
+                if (_connection != null)
+                {
+                    await _connection.StopAsync();
+                    await _connection.DisposeAsync();
+                }
+                base.OnFormClosing(e);
             }
-            base.OnFormClosing(e);
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

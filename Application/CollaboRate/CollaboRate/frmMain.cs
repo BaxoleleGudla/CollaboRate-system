@@ -148,7 +148,7 @@ namespace CollaboRate
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            //openChildForm(new frmSettings());
+            openChildForm(new frmSettings());
         }
 
         private async void frmMain_Load(object sender, EventArgs e)

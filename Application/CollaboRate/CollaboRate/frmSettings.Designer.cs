@@ -28,11 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius3 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius4 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius5 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius6 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius7 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             this.pnlSettings = new System.Windows.Forms.Panel();
+            this.pnlNotificationPreferences = new System.Windows.Forms.Panel();
+            this.pnlAlerts = new SATAUiFramework.SATAPanel();
+            this.sataPanel1 = new SATAUiFramework.SATAPanel();
+            this.pnlEmailNotification = new SATAUiFramework.SATAPanel();
+            this.tglEmailNotifications = new SATAUiFramework.Controls.SATAToggle();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pnlPushNotification = new SATAUiFramework.SATAPanel();
+            this.tglPushNotifications = new SATAUiFramework.Controls.SATAToggle();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblNotificationPreferencesHeading = new System.Windows.Forms.Label();
             this.pnlAccountAndSecurity = new System.Windows.Forms.Panel();
             this.pnlChangePassword = new SATAUiFramework.SATAPanel();
+            this.btnSaveNotificationPreferences = new FrameworkTest.SATAButton();
             this.lblConfirmNewPasswordError = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtConfirmNewPassword = new SATATextBox();
@@ -57,15 +74,34 @@
             this.lblAccountAndSecurityHeading = new System.Windows.Forms.Label();
             this.lblHeading = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.pnlApplicationDefaults = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblApplicationDefaultsHeading = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnSaveDefaults = new FrameworkTest.SATAButton();
+            this.cmbxDefaultJoinStatus = new SATAComboBox();
+            this.cmbxDefaultRole = new SATAComboBox();
+            this.pnlGroupManagementDefaults = new SATAUiFramework.SATAPanel();
             this.pnlSettings.SuspendLayout();
+            this.pnlNotificationPreferences.SuspendLayout();
+            this.pnlAlerts.SuspendLayout();
+            this.sataPanel1.SuspendLayout();
+            this.pnlEmailNotification.SuspendLayout();
+            this.pnlPushNotification.SuspendLayout();
             this.pnlAccountAndSecurity.SuspendLayout();
             this.pnlChangePassword.SuspendLayout();
             this.pnlProfileInformation.SuspendLayout();
+            this.pnlApplicationDefaults.SuspendLayout();
+            this.pnlGroupManagementDefaults.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSettings
             // 
             this.pnlSettings.AutoScroll = true;
+            this.pnlSettings.Controls.Add(this.pnlApplicationDefaults);
+            this.pnlSettings.Controls.Add(this.pnlNotificationPreferences);
             this.pnlSettings.Controls.Add(this.pnlAccountAndSecurity);
             this.pnlSettings.Controls.Add(this.lblHeading);
             this.pnlSettings.Controls.Add(this.pnlTop);
@@ -74,6 +110,151 @@
             this.pnlSettings.Name = "pnlSettings";
             this.pnlSettings.Size = new System.Drawing.Size(810, 627);
             this.pnlSettings.TabIndex = 0;
+            // 
+            // pnlNotificationPreferences
+            // 
+            this.pnlNotificationPreferences.BackColor = System.Drawing.Color.White;
+            this.pnlNotificationPreferences.Controls.Add(this.pnlAlerts);
+            this.pnlNotificationPreferences.Controls.Add(this.panel1);
+            this.pnlNotificationPreferences.Controls.Add(this.lblNotificationPreferencesHeading);
+            this.pnlNotificationPreferences.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlNotificationPreferences.Location = new System.Drawing.Point(0, 880);
+            this.pnlNotificationPreferences.Name = "pnlNotificationPreferences";
+            this.pnlNotificationPreferences.Size = new System.Drawing.Size(789, 268);
+            this.pnlNotificationPreferences.TabIndex = 29;
+            // 
+            // pnlAlerts
+            // 
+            this.pnlAlerts.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlAlerts.BackColor2 = System.Drawing.Color.WhiteSmoke;
+            this.pnlAlerts.BorderColor = System.Drawing.Color.Black;
+            borderRadius2.BottomLeft = 5;
+            borderRadius2.BottomRight = 5;
+            borderRadius2.TopLeft = 5;
+            borderRadius2.TopRight = 5;
+            this.pnlAlerts.BorderRadius = borderRadius2;
+            this.pnlAlerts.BorderThickness = 0;
+            this.pnlAlerts.Controls.Add(this.sataPanel1);
+            this.pnlAlerts.Controls.Add(this.pnlEmailNotification);
+            this.pnlAlerts.Controls.Add(this.pnlPushNotification);
+            this.pnlAlerts.Location = new System.Drawing.Point(19, 61);
+            this.pnlAlerts.Name = "pnlAlerts";
+            this.pnlAlerts.Size = new System.Drawing.Size(755, 162);
+            this.pnlAlerts.TabIndex = 23;
+            // 
+            // sataPanel1
+            // 
+            this.sataPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.sataPanel1.BackColor2 = System.Drawing.Color.WhiteSmoke;
+            this.sataPanel1.BorderColor = System.Drawing.Color.Black;
+            borderRadius3.BottomLeft = 5;
+            borderRadius3.BottomRight = 5;
+            borderRadius3.TopLeft = 5;
+            borderRadius3.TopRight = 5;
+            this.sataPanel1.BorderRadius = borderRadius3;
+            this.sataPanel1.BorderThickness = 0;
+            this.sataPanel1.Controls.Add(this.btnSaveNotificationPreferences);
+            this.sataPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.sataPanel1.Location = new System.Drawing.Point(0, 70);
+            this.sataPanel1.Name = "sataPanel1";
+            this.sataPanel1.Size = new System.Drawing.Size(755, 90);
+            this.sataPanel1.TabIndex = 26;
+            // 
+            // pnlEmailNotification
+            // 
+            this.pnlEmailNotification.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlEmailNotification.BackColor2 = System.Drawing.Color.WhiteSmoke;
+            this.pnlEmailNotification.BorderColor = System.Drawing.Color.Black;
+            borderRadius4.BottomLeft = 5;
+            borderRadius4.BottomRight = 5;
+            borderRadius4.TopLeft = 5;
+            borderRadius4.TopRight = 5;
+            this.pnlEmailNotification.BorderRadius = borderRadius4;
+            this.pnlEmailNotification.BorderThickness = 0;
+            this.pnlEmailNotification.Controls.Add(this.tglEmailNotifications);
+            this.pnlEmailNotification.Controls.Add(this.label3);
+            this.pnlEmailNotification.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlEmailNotification.Location = new System.Drawing.Point(0, 35);
+            this.pnlEmailNotification.Name = "pnlEmailNotification";
+            this.pnlEmailNotification.Size = new System.Drawing.Size(755, 35);
+            this.pnlEmailNotification.TabIndex = 25;
+            // 
+            // tglEmailNotifications
+            // 
+            this.tglEmailNotifications.EllipseBorderColor = "#3b73d1";
+            this.tglEmailNotifications.EllipseColor = "Green";
+            this.tglEmailNotifications.Location = new System.Drawing.Point(184, 8);
+            this.tglEmailNotifications.Name = "tglEmailNotifications";
+            this.tglEmailNotifications.Size = new System.Drawing.Size(47, 19);
+            this.tglEmailNotifications.TabIndex = 8;
+            this.tglEmailNotifications.Text = "Email Notifications";
+            this.tglEmailNotifications.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(157, 21);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Email notifications";
+            // 
+            // pnlPushNotification
+            // 
+            this.pnlPushNotification.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlPushNotification.BackColor2 = System.Drawing.Color.WhiteSmoke;
+            this.pnlPushNotification.BorderColor = System.Drawing.Color.Black;
+            borderRadius5.BottomLeft = 5;
+            borderRadius5.BottomRight = 5;
+            borderRadius5.TopLeft = 5;
+            borderRadius5.TopRight = 5;
+            this.pnlPushNotification.BorderRadius = borderRadius5;
+            this.pnlPushNotification.BorderThickness = 0;
+            this.pnlPushNotification.Controls.Add(this.tglPushNotifications);
+            this.pnlPushNotification.Controls.Add(this.label11);
+            this.pnlPushNotification.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlPushNotification.Location = new System.Drawing.Point(0, 0);
+            this.pnlPushNotification.Name = "pnlPushNotification";
+            this.pnlPushNotification.Size = new System.Drawing.Size(755, 35);
+            this.pnlPushNotification.TabIndex = 24;
+            // 
+            // tglPushNotifications
+            // 
+            this.tglPushNotifications.EllipseBorderColor = "#3b73d1";
+            this.tglPushNotifications.EllipseColor = "Green";
+            this.tglPushNotifications.Location = new System.Drawing.Point(184, 8);
+            this.tglPushNotifications.Name = "tglPushNotifications";
+            this.tglPushNotifications.Size = new System.Drawing.Size(47, 19);
+            this.tglPushNotifications.TabIndex = 7;
+            this.tglPushNotifications.Text = "Push Notifications";
+            this.tglPushNotifications.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(14, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(152, 21);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Push notifications";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.panel1.Location = new System.Drawing.Point(18, 42);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(755, 1);
+            this.panel1.TabIndex = 22;
+            // 
+            // lblNotificationPreferencesHeading
+            // 
+            this.lblNotificationPreferencesHeading.AutoSize = true;
+            this.lblNotificationPreferencesHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNotificationPreferencesHeading.Location = new System.Drawing.Point(15, 13);
+            this.lblNotificationPreferencesHeading.Name = "lblNotificationPreferencesHeading";
+            this.lblNotificationPreferencesHeading.Size = new System.Drawing.Size(243, 23);
+            this.lblNotificationPreferencesHeading.TabIndex = 21;
+            this.lblNotificationPreferencesHeading.Text = "Notification Preferences";
             // 
             // pnlAccountAndSecurity
             // 
@@ -84,7 +265,7 @@
             this.pnlAccountAndSecurity.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlAccountAndSecurity.Location = new System.Drawing.Point(0, 80);
             this.pnlAccountAndSecurity.Name = "pnlAccountAndSecurity";
-            this.pnlAccountAndSecurity.Size = new System.Drawing.Size(789, 767);
+            this.pnlAccountAndSecurity.Size = new System.Drawing.Size(789, 800);
             this.pnlAccountAndSecurity.TabIndex = 17;
             // 
             // pnlChangePassword
@@ -92,11 +273,11 @@
             this.pnlChangePassword.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlChangePassword.BackColor2 = System.Drawing.Color.WhiteSmoke;
             this.pnlChangePassword.BorderColor = System.Drawing.Color.Black;
-            borderRadius1.BottomLeft = 5;
-            borderRadius1.BottomRight = 5;
-            borderRadius1.TopLeft = 5;
-            borderRadius1.TopRight = 5;
-            this.pnlChangePassword.BorderRadius = borderRadius1;
+            borderRadius6.BottomLeft = 5;
+            borderRadius6.BottomRight = 5;
+            borderRadius6.TopLeft = 5;
+            borderRadius6.TopRight = 5;
+            this.pnlChangePassword.BorderRadius = borderRadius6;
             this.pnlChangePassword.BorderThickness = 0;
             this.pnlChangePassword.Controls.Add(this.lblConfirmNewPasswordError);
             this.pnlChangePassword.Controls.Add(this.label6);
@@ -113,6 +294,44 @@
             this.pnlChangePassword.Name = "pnlChangePassword";
             this.pnlChangePassword.Size = new System.Drawing.Size(755, 378);
             this.pnlChangePassword.TabIndex = 21;
+            // 
+            // btnSaveNotificationPreferences
+            // 
+            this.btnSaveNotificationPreferences.ButtonText = "Save Preferences";
+            this.btnSaveNotificationPreferences.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnSaveNotificationPreferences.CheckedForeColor = System.Drawing.Color.White;
+            this.btnSaveNotificationPreferences.CheckedImageTint = System.Drawing.Color.White;
+            this.btnSaveNotificationPreferences.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnSaveNotificationPreferences.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSaveNotificationPreferences.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveNotificationPreferences.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnSaveNotificationPreferences.HoverForeColor = System.Drawing.Color.White;
+            this.btnSaveNotificationPreferences.HoverImage = null;
+            this.btnSaveNotificationPreferences.HoverImageTint = System.Drawing.Color.White;
+            this.btnSaveNotificationPreferences.HoverOutline = System.Drawing.Color.Empty;
+            this.btnSaveNotificationPreferences.Image = null;
+            this.btnSaveNotificationPreferences.ImageAutoCenter = false;
+            this.btnSaveNotificationPreferences.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnSaveNotificationPreferences.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnSaveNotificationPreferences.ImageTint = System.Drawing.Color.White;
+            this.btnSaveNotificationPreferences.IsToggleButton = false;
+            this.btnSaveNotificationPreferences.IsToggled = false;
+            this.btnSaveNotificationPreferences.Location = new System.Drawing.Point(17, 36);
+            this.btnSaveNotificationPreferences.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSaveNotificationPreferences.Name = "btnSaveNotificationPreferences";
+            this.btnSaveNotificationPreferences.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnSaveNotificationPreferences.NormalForeColor = System.Drawing.Color.White;
+            this.btnSaveNotificationPreferences.NormalOutline = System.Drawing.Color.Empty;
+            this.btnSaveNotificationPreferences.OutlineThickness = 2F;
+            this.btnSaveNotificationPreferences.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnSaveNotificationPreferences.PressedForeColor = System.Drawing.Color.White;
+            this.btnSaveNotificationPreferences.PressedImageTint = System.Drawing.Color.White;
+            this.btnSaveNotificationPreferences.PressedOutline = System.Drawing.Color.Empty;
+            this.btnSaveNotificationPreferences.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnSaveNotificationPreferences.Size = new System.Drawing.Size(195, 35);
+            this.btnSaveNotificationPreferences.TabIndex = 9;
+            this.btnSaveNotificationPreferences.TextAutoCenter = true;
+            this.btnSaveNotificationPreferences.TextOffset = new System.Drawing.Point(0, 0);
             // 
             // lblConfirmNewPasswordError
             // 
@@ -151,7 +370,7 @@
             this.txtConfirmNewPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtConfirmNewPassword.PlaceholderText = "";
             this.txtConfirmNewPassword.Size = new System.Drawing.Size(508, 39);
-            this.txtConfirmNewPassword.TabIndex = 29;
+            this.txtConfirmNewPassword.TabIndex = 5;
             this.txtConfirmNewPassword.Texts = "";
             this.txtConfirmNewPassword.UnderlinedStyle = false;
             // 
@@ -189,7 +408,7 @@
             this.btnChangePassword.PressedOutline = System.Drawing.Color.Empty;
             this.btnChangePassword.Rounding = new System.Windows.Forms.Padding(5);
             this.btnChangePassword.Size = new System.Drawing.Size(195, 35);
-            this.btnChangePassword.TabIndex = 28;
+            this.btnChangePassword.TabIndex = 6;
             this.btnChangePassword.TextAutoCenter = true;
             this.btnChangePassword.TextOffset = new System.Drawing.Point(0, 0);
             // 
@@ -230,7 +449,7 @@
             this.txtNewPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtNewPassword.PlaceholderText = "";
             this.txtNewPassword.Size = new System.Drawing.Size(508, 39);
-            this.txtNewPassword.TabIndex = 25;
+            this.txtNewPassword.TabIndex = 4;
             this.txtNewPassword.Texts = "";
             this.txtNewPassword.UnderlinedStyle = false;
             // 
@@ -271,7 +490,7 @@
             this.txtCurrentPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtCurrentPassword.PlaceholderText = "";
             this.txtCurrentPassword.Size = new System.Drawing.Size(508, 39);
-            this.txtCurrentPassword.TabIndex = 22;
+            this.txtCurrentPassword.TabIndex = 3;
             this.txtCurrentPassword.Texts = "";
             this.txtCurrentPassword.UnderlinedStyle = false;
             // 
@@ -291,11 +510,11 @@
             this.pnlProfileInformation.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlProfileInformation.BackColor2 = System.Drawing.Color.WhiteSmoke;
             this.pnlProfileInformation.BorderColor = System.Drawing.Color.Black;
-            borderRadius2.BottomLeft = 5;
-            borderRadius2.BottomRight = 5;
-            borderRadius2.TopLeft = 5;
-            borderRadius2.TopRight = 5;
-            this.pnlProfileInformation.BorderRadius = borderRadius2;
+            borderRadius7.BottomLeft = 5;
+            borderRadius7.BottomRight = 5;
+            borderRadius7.TopLeft = 5;
+            borderRadius7.TopRight = 5;
+            this.pnlProfileInformation.BorderRadius = borderRadius7;
             this.pnlProfileInformation.BorderThickness = 0;
             this.pnlProfileInformation.Controls.Add(this.btnSaveProfileChanges);
             this.pnlProfileInformation.Controls.Add(this.lblEmailError);
@@ -344,7 +563,7 @@
             this.btnSaveProfileChanges.PressedOutline = System.Drawing.Color.Empty;
             this.btnSaveProfileChanges.Rounding = new System.Windows.Forms.Padding(5);
             this.btnSaveProfileChanges.Size = new System.Drawing.Size(195, 35);
-            this.btnSaveProfileChanges.TabIndex = 28;
+            this.btnSaveProfileChanges.TabIndex = 2;
             this.btnSaveProfileChanges.TextAutoCenter = true;
             this.btnSaveProfileChanges.TextOffset = new System.Drawing.Point(0, 0);
             // 
@@ -385,7 +604,7 @@
             this.txtEmail.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.Size = new System.Drawing.Size(508, 39);
-            this.txtEmail.TabIndex = 25;
+            this.txtEmail.TabIndex = 1;
             this.txtEmail.Texts = "";
             this.txtEmail.UnderlinedStyle = false;
             // 
@@ -426,7 +645,7 @@
             this.txtUsername.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtUsername.PlaceholderText = "";
             this.txtUsername.Size = new System.Drawing.Size(508, 39);
-            this.txtUsername.TabIndex = 22;
+            this.txtUsername.TabIndex = 0;
             this.txtUsername.Texts = "";
             this.txtUsername.UnderlinedStyle = false;
             // 
@@ -477,6 +696,164 @@
             this.pnlTop.Size = new System.Drawing.Size(789, 80);
             this.pnlTop.TabIndex = 0;
             // 
+            // pnlApplicationDefaults
+            // 
+            this.pnlApplicationDefaults.Controls.Add(this.pnlGroupManagementDefaults);
+            this.pnlApplicationDefaults.Controls.Add(this.panel3);
+            this.pnlApplicationDefaults.Controls.Add(this.lblApplicationDefaultsHeading);
+            this.pnlApplicationDefaults.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlApplicationDefaults.Location = new System.Drawing.Point(0, 1148);
+            this.pnlApplicationDefaults.Name = "pnlApplicationDefaults";
+            this.pnlApplicationDefaults.Size = new System.Drawing.Size(789, 412);
+            this.pnlApplicationDefaults.TabIndex = 22;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.panel3.Location = new System.Drawing.Point(15, 36);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(755, 1);
+            this.panel3.TabIndex = 19;
+            // 
+            // lblApplicationDefaultsHeading
+            // 
+            this.lblApplicationDefaultsHeading.AutoSize = true;
+            this.lblApplicationDefaultsHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApplicationDefaultsHeading.Location = new System.Drawing.Point(12, 7);
+            this.lblApplicationDefaultsHeading.Name = "lblApplicationDefaultsHeading";
+            this.lblApplicationDefaultsHeading.Size = new System.Drawing.Size(207, 23);
+            this.lblApplicationDefaultsHeading.TabIndex = 18;
+            this.lblApplicationDefaultsHeading.Text = "Application Defaults";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(17, 14);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(266, 22);
+            this.label21.TabIndex = 21;
+            this.label21.Text = "Group Management Defaults";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(16, 46);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(284, 21);
+            this.label20.TabIndex = 23;
+            this.label20.Text = "Default Join Status For Invitations";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(16, 133);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(321, 21);
+            this.label18.TabIndex = 26;
+            this.label18.Text = "Default Role for New Group Members";
+            // 
+            // btnSaveDefaults
+            // 
+            this.btnSaveDefaults.ButtonText = "Save Defaults";
+            this.btnSaveDefaults.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnSaveDefaults.CheckedForeColor = System.Drawing.Color.White;
+            this.btnSaveDefaults.CheckedImageTint = System.Drawing.Color.White;
+            this.btnSaveDefaults.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnSaveDefaults.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSaveDefaults.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveDefaults.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnSaveDefaults.HoverForeColor = System.Drawing.Color.White;
+            this.btnSaveDefaults.HoverImage = null;
+            this.btnSaveDefaults.HoverImageTint = System.Drawing.Color.White;
+            this.btnSaveDefaults.HoverOutline = System.Drawing.Color.Empty;
+            this.btnSaveDefaults.Image = null;
+            this.btnSaveDefaults.ImageAutoCenter = false;
+            this.btnSaveDefaults.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnSaveDefaults.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnSaveDefaults.ImageTint = System.Drawing.Color.White;
+            this.btnSaveDefaults.IsToggleButton = false;
+            this.btnSaveDefaults.IsToggled = false;
+            this.btnSaveDefaults.Location = new System.Drawing.Point(20, 235);
+            this.btnSaveDefaults.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSaveDefaults.Name = "btnSaveDefaults";
+            this.btnSaveDefaults.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnSaveDefaults.NormalForeColor = System.Drawing.Color.White;
+            this.btnSaveDefaults.NormalOutline = System.Drawing.Color.Empty;
+            this.btnSaveDefaults.OutlineThickness = 2F;
+            this.btnSaveDefaults.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnSaveDefaults.PressedForeColor = System.Drawing.Color.White;
+            this.btnSaveDefaults.PressedImageTint = System.Drawing.Color.White;
+            this.btnSaveDefaults.PressedOutline = System.Drawing.Color.Empty;
+            this.btnSaveDefaults.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnSaveDefaults.Size = new System.Drawing.Size(195, 35);
+            this.btnSaveDefaults.TabIndex = 12;
+            this.btnSaveDefaults.TextAutoCenter = true;
+            this.btnSaveDefaults.TextOffset = new System.Drawing.Point(0, 0);
+            // 
+            // cmbxDefaultJoinStatus
+            // 
+            this.cmbxDefaultJoinStatus.BackColor = System.Drawing.Color.Transparent;
+            this.cmbxDefaultJoinStatus.BackgroundColor = System.Drawing.Color.White;
+            this.cmbxDefaultJoinStatus.BorderColor = System.Drawing.Color.LightGray;
+            this.cmbxDefaultJoinStatus.BorderThickness = 1;
+            this.cmbxDefaultJoinStatus.CornerRadius = 5;
+            this.cmbxDefaultJoinStatus.Items = new string[] {
+        "Pending (requires Admin approval)",
+        "Accepted (member joins immediately)"};
+            this.cmbxDefaultJoinStatus.Keys = null;
+            this.cmbxDefaultJoinStatus.Location = new System.Drawing.Point(21, 70);
+            this.cmbxDefaultJoinStatus.Name = "cmbxDefaultJoinStatus";
+            this.cmbxDefaultJoinStatus.SelectedIndex = 0;
+            this.cmbxDefaultJoinStatus.Size = new System.Drawing.Size(508, 40);
+            this.cmbxDefaultJoinStatus.TabIndex = 10;
+            this.cmbxDefaultJoinStatus.Text = "sataComboBox1";
+            this.cmbxDefaultJoinStatus.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.cmbxDefaultJoinStatus.TextOffset = new System.Windows.Forms.Padding(0);
+            // 
+            // cmbxDefaultRole
+            // 
+            this.cmbxDefaultRole.BackColor = System.Drawing.Color.Transparent;
+            this.cmbxDefaultRole.BackgroundColor = System.Drawing.Color.White;
+            this.cmbxDefaultRole.BorderColor = System.Drawing.Color.LightGray;
+            this.cmbxDefaultRole.BorderThickness = 1;
+            this.cmbxDefaultRole.CornerRadius = 5;
+            this.cmbxDefaultRole.Items = new string[] {
+        "Member",
+        "Admin"};
+            this.cmbxDefaultRole.Keys = null;
+            this.cmbxDefaultRole.Location = new System.Drawing.Point(21, 157);
+            this.cmbxDefaultRole.Name = "cmbxDefaultRole";
+            this.cmbxDefaultRole.SelectedIndex = 0;
+            this.cmbxDefaultRole.Size = new System.Drawing.Size(508, 40);
+            this.cmbxDefaultRole.TabIndex = 11;
+            this.cmbxDefaultRole.Text = "sataComboBox2";
+            this.cmbxDefaultRole.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.cmbxDefaultRole.TextOffset = new System.Windows.Forms.Padding(0);
+            // 
+            // pnlGroupManagementDefaults
+            // 
+            this.pnlGroupManagementDefaults.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlGroupManagementDefaults.BackColor2 = System.Drawing.Color.WhiteSmoke;
+            this.pnlGroupManagementDefaults.BorderColor = System.Drawing.Color.Black;
+            borderRadius1.BottomLeft = 5;
+            borderRadius1.BottomRight = 5;
+            borderRadius1.TopLeft = 5;
+            borderRadius1.TopRight = 5;
+            this.pnlGroupManagementDefaults.BorderRadius = borderRadius1;
+            this.pnlGroupManagementDefaults.BorderThickness = 0;
+            this.pnlGroupManagementDefaults.Controls.Add(this.cmbxDefaultRole);
+            this.pnlGroupManagementDefaults.Controls.Add(this.cmbxDefaultJoinStatus);
+            this.pnlGroupManagementDefaults.Controls.Add(this.btnSaveDefaults);
+            this.pnlGroupManagementDefaults.Controls.Add(this.label18);
+            this.pnlGroupManagementDefaults.Controls.Add(this.label20);
+            this.pnlGroupManagementDefaults.Controls.Add(this.label21);
+            this.pnlGroupManagementDefaults.Location = new System.Drawing.Point(16, 55);
+            this.pnlGroupManagementDefaults.Name = "pnlGroupManagementDefaults";
+            this.pnlGroupManagementDefaults.Size = new System.Drawing.Size(755, 294);
+            this.pnlGroupManagementDefaults.TabIndex = 20;
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -491,12 +868,24 @@
             this.Text = "frmSettings";
             this.pnlSettings.ResumeLayout(false);
             this.pnlSettings.PerformLayout();
+            this.pnlNotificationPreferences.ResumeLayout(false);
+            this.pnlNotificationPreferences.PerformLayout();
+            this.pnlAlerts.ResumeLayout(false);
+            this.sataPanel1.ResumeLayout(false);
+            this.pnlEmailNotification.ResumeLayout(false);
+            this.pnlEmailNotification.PerformLayout();
+            this.pnlPushNotification.ResumeLayout(false);
+            this.pnlPushNotification.PerformLayout();
             this.pnlAccountAndSecurity.ResumeLayout(false);
             this.pnlAccountAndSecurity.PerformLayout();
             this.pnlChangePassword.ResumeLayout(false);
             this.pnlChangePassword.PerformLayout();
             this.pnlProfileInformation.ResumeLayout(false);
             this.pnlProfileInformation.PerformLayout();
+            this.pnlApplicationDefaults.ResumeLayout(false);
+            this.pnlApplicationDefaults.PerformLayout();
+            this.pnlGroupManagementDefaults.ResumeLayout(false);
+            this.pnlGroupManagementDefaults.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -530,5 +919,27 @@
         private System.Windows.Forms.Label lblConfirmNewPasswordError;
         private System.Windows.Forms.Label label6;
         private SATATextBox txtConfirmNewPassword;
+        private System.Windows.Forms.Panel pnlNotificationPreferences;
+        private SATAUiFramework.SATAPanel pnlAlerts;
+        private FrameworkTest.SATAButton btnSaveNotificationPreferences;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblNotificationPreferencesHeading;
+        private SATAUiFramework.SATAPanel pnlEmailNotification;
+        private System.Windows.Forms.Label label3;
+        private SATAUiFramework.SATAPanel pnlPushNotification;
+        private SATAUiFramework.Controls.SATAToggle tglPushNotifications;
+        private SATAUiFramework.SATAPanel sataPanel1;
+        private SATAUiFramework.Controls.SATAToggle tglEmailNotifications;
+        private System.Windows.Forms.Panel pnlApplicationDefaults;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblApplicationDefaultsHeading;
+        private SATAUiFramework.SATAPanel pnlGroupManagementDefaults;
+        private SATAComboBox cmbxDefaultRole;
+        private SATAComboBox cmbxDefaultJoinStatus;
+        private FrameworkTest.SATAButton btnSaveDefaults;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
     }
 }

@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle85 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle87 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle86 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle88 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle93 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle94 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle96 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle95 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblHeading = new System.Windows.Forms.Label();
             this.lblProjectGroupName = new System.Windows.Forms.Label();
             this.tblPanelHome = new System.Windows.Forms.TableLayoutPanel();
-            this.lblGroupMembersHeading = new System.Windows.Forms.Label();
-            this.lblMeetingsHeading = new System.Windows.Forms.Label();
-            this.lblTasksHeading = new System.Windows.Forms.Label();
             this.lblEvaluationsHeading = new System.Windows.Forms.Label();
+            this.lblTasksHeading = new System.Windows.Forms.Label();
+            this.lblMeetingsHeading = new System.Windows.Forms.Label();
+            this.lblGroupMembersHeading = new System.Windows.Forms.Label();
             this.dgViewMembers = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemoveMember = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button1 = new System.Windows.Forms.Button();
             this.dgViewMemberEvaluations = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,25 +114,15 @@
             this.tblPanelHome.Size = new System.Drawing.Size(774, 467);
             this.tblPanelHome.TabIndex = 18;
             // 
-            // lblGroupMembersHeading
+            // lblEvaluationsHeading
             // 
-            this.lblGroupMembersHeading.AutoSize = true;
-            this.lblGroupMembersHeading.Location = new System.Drawing.Point(0, 0);
-            this.lblGroupMembersHeading.Margin = new System.Windows.Forms.Padding(0);
-            this.lblGroupMembersHeading.Name = "lblGroupMembersHeading";
-            this.lblGroupMembersHeading.Size = new System.Drawing.Size(151, 21);
-            this.lblGroupMembersHeading.TabIndex = 19;
-            this.lblGroupMembersHeading.Text = "Group Members:";
-            // 
-            // lblMeetingsHeading
-            // 
-            this.lblMeetingsHeading.AutoSize = true;
-            this.lblMeetingsHeading.Location = new System.Drawing.Point(387, 0);
-            this.lblMeetingsHeading.Margin = new System.Windows.Forms.Padding(0);
-            this.lblMeetingsHeading.Name = "lblMeetingsHeading";
-            this.lblMeetingsHeading.Size = new System.Drawing.Size(182, 21);
-            this.lblMeetingsHeading.TabIndex = 20;
-            this.lblMeetingsHeading.Text = "Upcoming Meetings:";
+            this.lblEvaluationsHeading.AutoSize = true;
+            this.lblEvaluationsHeading.Location = new System.Drawing.Point(387, 233);
+            this.lblEvaluationsHeading.Margin = new System.Windows.Forms.Padding(0);
+            this.lblEvaluationsHeading.Name = "lblEvaluationsHeading";
+            this.lblEvaluationsHeading.Size = new System.Drawing.Size(186, 21);
+            this.lblEvaluationsHeading.TabIndex = 21;
+            this.lblEvaluationsHeading.Text = "Member Evaluations:";
             // 
             // lblTasksHeading
             // 
@@ -144,15 +134,25 @@
             this.lblTasksHeading.TabIndex = 20;
             this.lblTasksHeading.Text = "Upcoming Tasks:";
             // 
-            // lblEvaluationsHeading
+            // lblMeetingsHeading
             // 
-            this.lblEvaluationsHeading.AutoSize = true;
-            this.lblEvaluationsHeading.Location = new System.Drawing.Point(387, 233);
-            this.lblEvaluationsHeading.Margin = new System.Windows.Forms.Padding(0);
-            this.lblEvaluationsHeading.Name = "lblEvaluationsHeading";
-            this.lblEvaluationsHeading.Size = new System.Drawing.Size(186, 21);
-            this.lblEvaluationsHeading.TabIndex = 21;
-            this.lblEvaluationsHeading.Text = "Member Evaluations:";
+            this.lblMeetingsHeading.AutoSize = true;
+            this.lblMeetingsHeading.Location = new System.Drawing.Point(387, 0);
+            this.lblMeetingsHeading.Margin = new System.Windows.Forms.Padding(0);
+            this.lblMeetingsHeading.Name = "lblMeetingsHeading";
+            this.lblMeetingsHeading.Size = new System.Drawing.Size(182, 21);
+            this.lblMeetingsHeading.TabIndex = 20;
+            this.lblMeetingsHeading.Text = "Upcoming Meetings:";
+            // 
+            // lblGroupMembersHeading
+            // 
+            this.lblGroupMembersHeading.AutoSize = true;
+            this.lblGroupMembersHeading.Location = new System.Drawing.Point(0, 0);
+            this.lblGroupMembersHeading.Margin = new System.Windows.Forms.Padding(0);
+            this.lblGroupMembersHeading.Name = "lblGroupMembersHeading";
+            this.lblGroupMembersHeading.Size = new System.Drawing.Size(151, 21);
+            this.lblGroupMembersHeading.TabIndex = 19;
+            this.lblGroupMembersHeading.Text = "Group Members:";
             // 
             // dgViewMembers
             // 
@@ -163,14 +163,14 @@
             this.dgViewMembers.BackgroundColor = System.Drawing.Color.White;
             this.dgViewMembers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewMembers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle85.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle85.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle85.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle85.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle85.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle85.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle85.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle85;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgViewMembers.ColumnHeadersHeight = 35;
             this.dgViewMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewMembers.ColumnHeadersVisible = false;
@@ -185,23 +185,13 @@
             this.dgViewMembers.ReadOnly = true;
             this.dgViewMembers.RowHeadersVisible = false;
             this.dgViewMembers.RowHeadersWidth = 51;
-            dataGridViewCellStyle87.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle87.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewMembers.RowsDefaultCellStyle = dataGridViewCellStyle87;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewMembers.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgViewMembers.RowTemplate.DividerHeight = 5;
             this.dgViewMembers.RowTemplate.Height = 35;
             this.dgViewMembers.Size = new System.Drawing.Size(365, 180);
             this.dgViewMembers.TabIndex = 19;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(375, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // User_ID
             // 
@@ -224,11 +214,11 @@
             // 
             // RemoveMember
             // 
-            dataGridViewCellStyle86.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle86.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle86.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle86.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
-            this.RemoveMember.DefaultCellStyle = dataGridViewCellStyle86;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
+            this.RemoveMember.DefaultCellStyle = dataGridViewCellStyle2;
             this.RemoveMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveMember.HeaderText = "Remove";
             this.RemoveMember.MinimumWidth = 6;
@@ -237,6 +227,16 @@
             this.RemoveMember.Text = "Remove";
             this.RemoveMember.UseColumnTextForButtonValue = true;
             this.RemoveMember.Width = 114;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(375, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dgViewMemberEvaluations
             // 
@@ -247,14 +247,14 @@
             this.dgViewMemberEvaluations.BackgroundColor = System.Drawing.Color.White;
             this.dgViewMemberEvaluations.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewMemberEvaluations.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle88.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle88.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle88.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle88.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle88.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle88.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle88.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewMemberEvaluations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle88;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMemberEvaluations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgViewMemberEvaluations.ColumnHeadersHeight = 35;
             this.dgViewMemberEvaluations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewMemberEvaluations.ColumnHeadersVisible = false;
@@ -269,9 +269,9 @@
             this.dgViewMemberEvaluations.ReadOnly = true;
             this.dgViewMemberEvaluations.RowHeadersVisible = false;
             this.dgViewMemberEvaluations.RowHeadersWidth = 51;
-            dataGridViewCellStyle90.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle90.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewMemberEvaluations.RowsDefaultCellStyle = dataGridViewCellStyle90;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewMemberEvaluations.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgViewMemberEvaluations.RowTemplate.DividerHeight = 5;
             this.dgViewMemberEvaluations.RowTemplate.Height = 35;
             this.dgViewMemberEvaluations.Size = new System.Drawing.Size(365, 180);
@@ -298,10 +298,10 @@
             // 
             // MemberAverage
             // 
-            dataGridViewCellStyle89.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle89.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle89.SelectionBackColor = System.Drawing.Color.White;
-            this.MemberAverage.DefaultCellStyle = dataGridViewCellStyle89;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            this.MemberAverage.DefaultCellStyle = dataGridViewCellStyle5;
             this.MemberAverage.HeaderText = "Average Contribution";
             this.MemberAverage.MinimumWidth = 6;
             this.MemberAverage.Name = "MemberAverage";
@@ -320,14 +320,14 @@
             this.dgViewTasks.BackgroundColor = System.Drawing.Color.White;
             this.dgViewTasks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewTasks.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle91.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle91.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle91.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle91.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle91.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle91.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle91.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle91;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgViewTasks.ColumnHeadersHeight = 35;
             this.dgViewTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewTasks.ColumnHeadersVisible = false;
@@ -342,9 +342,9 @@
             this.dgViewTasks.ReadOnly = true;
             this.dgViewTasks.RowHeadersVisible = false;
             this.dgViewTasks.RowHeadersWidth = 51;
-            dataGridViewCellStyle93.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle93.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewTasks.RowsDefaultCellStyle = dataGridViewCellStyle93;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewTasks.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgViewTasks.RowTemplate.DividerHeight = 5;
             this.dgViewTasks.RowTemplate.Height = 35;
             this.dgViewTasks.Size = new System.Drawing.Size(365, 180);
@@ -371,10 +371,10 @@
             // 
             // Deadline
             // 
-            dataGridViewCellStyle92.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle92.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle92.SelectionBackColor = System.Drawing.Color.White;
-            this.Deadline.DefaultCellStyle = dataGridViewCellStyle92;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            this.Deadline.DefaultCellStyle = dataGridViewCellStyle8;
             this.Deadline.HeaderText = "Deadline";
             this.Deadline.MinimumWidth = 6;
             this.Deadline.Name = "Deadline";
@@ -393,14 +393,14 @@
             this.dgViewMeetings.BackgroundColor = System.Drawing.Color.White;
             this.dgViewMeetings.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewMeetings.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle94.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle94.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle94.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle94.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle94.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle94.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle94.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewMeetings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle94;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMeetings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgViewMeetings.ColumnHeadersHeight = 35;
             this.dgViewMeetings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewMeetings.ColumnHeadersVisible = false;
@@ -415,9 +415,9 @@
             this.dgViewMeetings.ReadOnly = true;
             this.dgViewMeetings.RowHeadersVisible = false;
             this.dgViewMeetings.RowHeadersWidth = 51;
-            dataGridViewCellStyle96.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle96.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewMeetings.RowsDefaultCellStyle = dataGridViewCellStyle96;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewMeetings.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgViewMeetings.RowTemplate.DividerHeight = 5;
             this.dgViewMeetings.RowTemplate.Height = 35;
             this.dgViewMeetings.Size = new System.Drawing.Size(365, 180);
@@ -445,10 +445,10 @@
             // Meeting_Date
             // 
             this.Meeting_Date.DataPropertyName = "Meeting_Date";
-            dataGridViewCellStyle95.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle95.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle95.SelectionBackColor = System.Drawing.Color.White;
-            this.Meeting_Date.DefaultCellStyle = dataGridViewCellStyle95;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            this.Meeting_Date.DefaultCellStyle = dataGridViewCellStyle11;
             this.Meeting_Date.HeaderText = "Meeting Date";
             this.Meeting_Date.MinimumWidth = 6;
             this.Meeting_Date.Name = "Meeting_Date";
@@ -525,9 +525,10 @@
             this.Controls.Add(this.lblHeading);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmHome";
             this.Text = "frmHome";
+            this.Load += new System.EventHandler(this.frmHome_Load);
             this.tblPanelHome.ResumeLayout(false);
             this.tblPanelHome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMembers)).EndInit();

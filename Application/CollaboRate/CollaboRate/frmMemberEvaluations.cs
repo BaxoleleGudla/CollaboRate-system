@@ -30,7 +30,6 @@ namespace CollaboRate
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //dgViewMemberEvaluations.Rows.Add("Mia", "5", "20", "Yes");
             frmUpdateMemberEvaluation updateMemberEvaluationForm = new frmUpdateMemberEvaluation();
             updateMemberEvaluationForm.ShowDialog();
         }

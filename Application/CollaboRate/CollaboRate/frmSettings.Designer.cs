@@ -72,6 +72,7 @@
             this.txtCurrentPassword = new SATATextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlProfileInformation = new SATAUiFramework.SATAPanel();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.btnSaveProfileChanges = new FrameworkTest.SATAButton();
             this.lblEmailError = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -84,7 +85,7 @@
             this.lblAccountAndSecurityHeading = new System.Windows.Forms.Label();
             this.lblHeading = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
+            this.pbLoadingSpinnerChangePassword = new System.Windows.Forms.PictureBox();
             this.pnlSettings.SuspendLayout();
             this.pnlApplicationDefaults.SuspendLayout();
             this.pnlGroupManagementDefaults.SuspendLayout();
@@ -97,6 +98,7 @@
             this.pnlChangePassword.SuspendLayout();
             this.pnlProfileInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerChangePassword)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSettings
@@ -477,6 +479,7 @@
             borderRadius6.TopRight = 5;
             this.pnlChangePassword.BorderRadius = borderRadius6;
             this.pnlChangePassword.BorderThickness = 0;
+            this.pnlChangePassword.Controls.Add(this.pbLoadingSpinnerChangePassword);
             this.pnlChangePassword.Controls.Add(this.lblConfirmNewPasswordError);
             this.pnlChangePassword.Controls.Add(this.label6);
             this.pnlChangePassword.Controls.Add(this.txtConfirmNewPassword);
@@ -498,7 +501,7 @@
             this.lblConfirmNewPasswordError.AutoSize = true;
             this.lblConfirmNewPasswordError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfirmNewPasswordError.ForeColor = System.Drawing.Color.Red;
-            this.lblConfirmNewPasswordError.Location = new System.Drawing.Point(16, 290);
+            this.lblConfirmNewPasswordError.Location = new System.Drawing.Point(16, 286);
             this.lblConfirmNewPasswordError.Name = "lblConfirmNewPasswordError";
             this.lblConfirmNewPasswordError.Size = new System.Drawing.Size(45, 21);
             this.lblConfirmNewPasswordError.TabIndex = 31;
@@ -529,7 +532,7 @@
             this.txtConfirmNewPassword.PasswordChar = false;
             this.txtConfirmNewPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtConfirmNewPassword.PlaceholderText = "";
-            this.txtConfirmNewPassword.Size = new System.Drawing.Size(508, 34);
+            this.txtConfirmNewPassword.Size = new System.Drawing.Size(508, 39);
             this.txtConfirmNewPassword.TabIndex = 5;
             this.txtConfirmNewPassword.Texts = "";
             this.txtConfirmNewPassword.UnderlinedStyle = false;
@@ -571,13 +574,14 @@
             this.btnChangePassword.TabIndex = 6;
             this.btnChangePassword.TextAutoCenter = true;
             this.btnChangePassword.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // lblNewPasswordError
             // 
             this.lblNewPasswordError.AutoSize = true;
             this.lblNewPasswordError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewPasswordError.ForeColor = System.Drawing.Color.Red;
-            this.lblNewPasswordError.Location = new System.Drawing.Point(16, 199);
+            this.lblNewPasswordError.Location = new System.Drawing.Point(16, 195);
             this.lblNewPasswordError.Name = "lblNewPasswordError";
             this.lblNewPasswordError.Size = new System.Drawing.Size(45, 21);
             this.lblNewPasswordError.TabIndex = 27;
@@ -618,7 +622,7 @@
             this.lblCurrentPasswordError.AutoSize = true;
             this.lblCurrentPasswordError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentPasswordError.ForeColor = System.Drawing.Color.Red;
-            this.lblCurrentPasswordError.Location = new System.Drawing.Point(16, 112);
+            this.lblCurrentPasswordError.Location = new System.Drawing.Point(16, 108);
             this.lblCurrentPasswordError.Name = "lblCurrentPasswordError";
             this.lblCurrentPasswordError.Size = new System.Drawing.Size(45, 21);
             this.lblCurrentPasswordError.TabIndex = 24;
@@ -689,6 +693,18 @@
             this.pnlProfileInformation.Name = "pnlProfileInformation";
             this.pnlProfileInformation.Size = new System.Drawing.Size(755, 294);
             this.pnlProfileInformation.TabIndex = 20;
+            // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(96, 239);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 55;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
             // 
             // btnSaveProfileChanges
             // 
@@ -858,17 +874,17 @@
             this.pnlTop.Size = new System.Drawing.Size(789, 80);
             this.pnlTop.TabIndex = 0;
             // 
-            // pbLoadingSpinner
+            // pbLoadingSpinnerChangePassword
             // 
-            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
-            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
-            this.pbLoadingSpinner.Location = new System.Drawing.Point(96, 239);
-            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
-            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
-            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLoadingSpinner.TabIndex = 55;
-            this.pbLoadingSpinner.TabStop = false;
-            this.pbLoadingSpinner.Visible = false;
+            this.pbLoadingSpinnerChangePassword.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinnerChangePassword.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinnerChangePassword.Location = new System.Drawing.Point(96, 332);
+            this.pbLoadingSpinnerChangePassword.Name = "pbLoadingSpinnerChangePassword";
+            this.pbLoadingSpinnerChangePassword.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinnerChangePassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinnerChangePassword.TabIndex = 56;
+            this.pbLoadingSpinnerChangePassword.TabStop = false;
+            this.pbLoadingSpinnerChangePassword.Visible = false;
             // 
             // frmSettings
             // 
@@ -904,6 +920,7 @@
             this.pnlProfileInformation.ResumeLayout(false);
             this.pnlProfileInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerChangePassword)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -960,5 +977,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.PictureBox pbLoadingSpinner;
+        private System.Windows.Forms.PictureBox pbLoadingSpinnerChangePassword;
     }
 }

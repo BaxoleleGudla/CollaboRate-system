@@ -158,6 +158,7 @@
     <Compile Include="Dtos\UpdateDto.cs" />
     <Compile Include="Dtos\UpdateGroupRequest.cs" />
     <Compile Include="Dtos\UpdateMeetingDto.cs" />
+    <Compile Include="Dtos\UpdatePasswordDto.cs" />
     <Compile Include="Dtos\UpdateTaskDto.cs" />
     <Compile Include="Dtos\UpdateUserDto.cs" />
     <Compile Include="Dtos\UserDto.cs" />

@@ -11,6 +11,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CollaboRate
 {
@@ -47,8 +49,8 @@ namespace CollaboRate
             }
         }
 
-        // Method to check for errors
-        private bool InputValidation()
+        // Method to check for profile errors
+        private bool ProfileInputValidation()
         {
             bool hasError = false;
 
@@ -116,7 +118,7 @@ namespace CollaboRate
         {
             try
             {
-                if (InputValidation() == false)
+                if (ProfileInputValidation() == false)
                 {
                     btnSaveProfileChanges.Enabled = false;
                     btnSaveProfileChanges.ButtonText = "";
@@ -176,9 +178,151 @@ namespace CollaboRate
             }
         }
 
+        // Method to check for password errors
+        private bool PasswordInputValidation()
+        {
+            bool hasError = false;
+
+            // Current password validation
+            if (string.IsNullOrWhiteSpace(txtCurrentPassword.Texts))
+            {
+                if (!lblCurrentPasswordError.Visible)
+                    lblCurrentPasswordError.Visible = true;
+
+                lblCurrentPasswordError.Text = "Please enter current password";
+
+                if (txtCurrentPassword.BorderColor != Color.Red)
+                    txtCurrentPassword.BorderColor = Color.Red;
+
+                hasError = true;
+            }
+            else
+            {
+                if (lblCurrentPasswordError.Visible)
+                    lblCurrentPasswordError.Visible = false;
+
+                if (txtCurrentPassword.BorderColor != Color.DimGray)
+                    txtCurrentPassword.BorderColor = Color.DimGray;
+            }
+
+            // New password validation
+            if (string.IsNullOrWhiteSpace(txtNewPassword.Texts))
+            {
+                if (!lblNewPasswordError.Visible)
+                    lblNewPasswordError.Visible = true;
+
+                lblNewPasswordError.Text = "Please enter new password";
+
+                if (txtNewPassword.BorderColor != Color.Red)
+                    txtNewPassword.BorderColor = Color.Red;
+
+                hasError = true;
+            }
+            else
+            {
+                if (lblNewPasswordError.Visible)
+                    lblNewPasswordError.Visible = false;
+
+                if (txtNewPassword.BorderColor != Color.DimGray)
+                    txtNewPassword.BorderColor = Color.DimGray;
+            }
+
+            // Confirm new password validation
+            if (string.IsNullOrWhiteSpace(txtConfirmNewPassword.Texts))
+            {
+                if (!lblConfirmNewPasswordError.Visible)
+                    lblConfirmNewPasswordError.Visible = true;
+
+                lblConfirmNewPasswordError.Text = "Please enter confirmation password";
+
+                if (txtConfirmNewPassword.BorderColor != Color.Red)
+                    txtConfirmNewPassword.BorderColor = Color.Red;
+
+                hasError = true;
+            }
+            else
+            {
+                if (lblConfirmNewPasswordError.Visible)
+                    lblConfirmNewPasswordError.Visible = false;
+
+                if (txtConfirmNewPassword.BorderColor != Color.DimGray)
+                    txtConfirmNewPassword.BorderColor = Color.DimGray;
+            }
+
+            return hasError;
+        }
+
         private async void btnSaveProfileChanges_Click(object sender, EventArgs e)
         {
             await UpdateUserProfileAsync(CurrentUser.User_ID, txtUsername.Texts, txtEmail.Texts);
+        }
+
+        // Method to update password
+        public async Task<bool> UpdateUserPasswordAsync(int userId, string currentPassword, string newPassword, string confirmPassword)
+        {
+            try
+            {
+                if (PasswordInputValidation() == false)
+                {
+                    btnChangePassword.Enabled = false;
+                    btnChangePassword.ButtonText = "";
+                    pbLoadingSpinnerChangePassword.Visible = true; 
+
+                    var passwordDto = new UpdatePasswordDto
+                    {
+                        User_ID = userId,
+                        CurrentPassword = currentPassword,
+                        NewPassword = newPassword,
+                        ConfirmPassword = confirmPassword
+                    };
+
+                    var json = JsonSerializer.Serialize(passwordDto);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    string url = $"{ApiBaseUrl}/api/Account/users/{userId}/password";
+
+                    var response = await client.PutAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        btnChangePassword.Enabled = true;
+                        btnChangePassword.ButtonText = "Change Password";
+                        pbLoadingSpinnerChangePassword.Visible = false;
+
+                        MessageBox.Show("Password updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    else
+                    {
+                        string errorMsg = await response.Content.ReadAsStringAsync();
+
+                        btnChangePassword.Enabled = true;
+                        btnChangePassword.ButtonText = "Change Password";
+                        pbLoadingSpinnerChangePassword.Visible = false;
+
+                        MessageBox.Show($"Failed to update password: {errorMsg}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                btnChangePassword.Enabled = true;
+                btnChangePassword.ButtonText = "Change Password";
+                pbLoadingSpinnerChangePassword.Visible = false;
+
+                MessageBox.Show($"Error: {ex.Message}", "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private async void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            await UpdateUserPasswordAsync(CurrentUser.User_ID, txtCurrentPassword.Texts, txtNewPassword.Texts, txtConfirmNewPassword.Texts);
         }
     }
 }

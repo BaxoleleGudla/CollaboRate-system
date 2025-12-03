@@ -21,6 +21,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CollaboRateAPIServer.Controllers.AccountController",
+    "Method": "UpdatePassword",
+    "RelativePath": "api/Account/users/{id}/password",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "passwordDto",
+        "Type": "CollaboRateAPIServer.Dtos.UpdatePasswordDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CollaboRateAPIServer.Controllers.GroupMessagesController",
     "Method": "GetMessagesAsync",
     "RelativePath": "api/GroupMessages/messages",

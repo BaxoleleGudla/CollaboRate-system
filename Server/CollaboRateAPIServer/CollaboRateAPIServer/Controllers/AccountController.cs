@@ -88,5 +88,58 @@ namespace CollaboRateAPIServer.Controllers
                 return StatusCode(500, new { error = "An error occurred while updating account details.", detail = ex.Message });
             }
         }
+
+        // Method to update a password
+        [HttpPut("users/{id}/password")]
+        public async Task<IActionResult> UpdatePassword(int id, [FromBody] UpdatePasswordDto passwordDto)
+        {
+            if (id <= 0 || passwordDto == null)
+            {
+                return BadRequest("Invalid user ID or password data.");
+            }
+
+            if (id != passwordDto.User_ID)
+            {
+                return BadRequest("User ID mismatch.");
+            }
+
+            // Validate new password matches confirmation
+            if (passwordDto.NewPassword != passwordDto.ConfirmPassword)
+            {
+                return BadRequest("New password and confirmation do not match.");
+            }
+
+            try
+            {
+                // Find the user
+                var user = await _context.tblUser.FindAsync(id);
+
+                if (user == null)
+                {
+                    return NotFound("User not found.");
+                }
+
+                // Verify current password
+                if (user.PasswordHash != passwordDto.CurrentPassword)
+                {
+                    return BadRequest("Current password is incorrect.");
+                }
+
+                // Update password
+                user.PasswordHash = passwordDto.NewPassword;
+
+                _context.tblUser.Update(user);
+                await _context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    message = "Password updated successfully.", userId = user.User_ID
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "An error occurred while updating the password.", detail = ex.Message });
+            }
+        }
     }
 }

@@ -156,7 +156,33 @@ namespace CollaboRate
             await LoadUserGroupsAsync(CurrentUser.User_ID);
         }
 
-        private void cmbxCurrentGroup_SelectedIndexChanged(object sender, EventArgs e)
+        // Method to get the role of a user
+        public async Task<string> GetUserGroupRoleAsync(int userId, int groupId)
+        {
+            try
+            {
+                string url = $"{ApiBaseUrl}/api/Groups/users/{userId}/groups/{groupId}/role";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+
+                    var result = JsonSerializer.Deserialize<UserRoleResponseDto>(
+                json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                    return result?.User_Role ?? "NoRole";
+                }
+
+                return "NoRole";
+            }
+            catch (Exception ex)
+            {
+                return "Error getting user role";
+            }
+        }
+
+        private async void cmbxCurrentGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -168,6 +194,8 @@ namespace CollaboRate
                 {
                     CurrentGroup.Group_ID = Convert.ToInt32(cmbxCurrentGroup.SelectedValue.ToString());
                     CurrentGroup.Group_Name = cmbxCurrentGroup.Text;
+                    CurrentUser.Group_Role = await GetUserGroupRoleAsync(CurrentUser.User_ID, CurrentGroup.Group_ID);
+                    MessageBox.Show("Group Role: " + CurrentUser.Group_Role);
                 }
             }
             catch (Exception ex)

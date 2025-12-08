@@ -183,6 +183,7 @@
             this.btnEditGroup.TabIndex = 3;
             this.btnEditGroup.TextAutoCenter = true;
             this.btnEditGroup.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnEditGroup.Visible = false;
             this.btnEditGroup.Click += new System.EventHandler(this.btnEditGroup_Click);
             // 
             // lblGroupDescription
@@ -270,6 +271,7 @@
             this.pnlMiddle.Name = "pnlMiddle";
             this.pnlMiddle.Size = new System.Drawing.Size(810, 119);
             this.pnlMiddle.TabIndex = 1;
+            this.pnlMiddle.Visible = false;
             // 
             // pbLoadingSpinner
             // 

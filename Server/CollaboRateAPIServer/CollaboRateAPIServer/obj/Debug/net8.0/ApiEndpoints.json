@@ -387,6 +387,27 @@
     ]
   },
   {
+    "ContainingType": "CollaboRateAPIServer.Controllers.GroupsController",
+    "Method": "GetUserGroupRole",
+    "RelativePath": "api/Groups/users/{userId}/groups/{groupId}/role",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CollaboRateAPIServer.Controllers.MeetingsController",
     "Method": "CreateMeeting",
     "RelativePath": "api/Meetings",

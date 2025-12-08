@@ -506,5 +506,44 @@ namespace CollaboRateAPIServer.Controllers
                 return StatusCode(500, "An error occurred while processing your request.");
             }
         }
+
+        // Method to get a member role from a group
+        [HttpGet("users/{userId}/groups/{groupId}/role")]
+        public async Task<IActionResult> GetUserGroupRole(int userId, int groupId)
+        {
+            if (userId <= 0 || groupId <= 0)
+            {
+                return BadRequest("Invalid user ID or group ID.");
+            }
+
+            try
+            {
+                var memberRole = await _context.tblGroupMember
+                    .AsNoTracking()
+                    .Where(m => m.User_ID == userId && m.Group_ID == groupId && m.Join_Status == "Accepted")
+                    .Select(m => new
+                    {
+                        User_Role = m.User_Role
+                    })
+                    .FirstOrDefaultAsync();
+
+                if (memberRole == null)
+                {
+                    return Ok(new
+                    {
+                        User_Role = "NoRole"
+                    });
+                }
+
+                return Ok(new
+                {
+                    User_Role = memberRole.User_Role
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "Error retrieving user role.", detail = ex.Message });
+            }
+        }
     }
 }

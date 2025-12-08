@@ -11,5 +11,6 @@ namespace CollaboRate
         public static int User_ID { get; set; }
         public static string Username { get; set; }
         public static string Email { get; set; }
+        public static string Group_Role { get; set; }
     }
 }

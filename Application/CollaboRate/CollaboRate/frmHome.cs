@@ -35,6 +35,10 @@ namespace CollaboRate
         public frmHome()
         {
             InitializeComponent();
+            if (CurrentUser.Group_Role.Contains("Admin"))
+            {
+                dgViewMembers.Columns["RemoveMember"].Visible = true;
+            }
         }
 
         // Method to get group details
@@ -351,6 +355,11 @@ namespace CollaboRate
 
         private async void frmHome_Load(object sender, EventArgs e)
         {
+            if (CurrentUser.Group_Role.Contains("Admin"))
+            {
+                dgViewMembers.Columns["RemoveMember"].Visible = true;
+            }
+
             var loadGroupMembersTask = LoadGroupMembersAsync();
             var displayUpcomingMeetingsTask = DisplayUpcomingMeetingsAsync(CurrentGroup.Group_ID);
             var displayUpcomingTasksTask = DisplayUpcomingTasksAsync(CurrentGroup.Group_ID);

@@ -21,6 +21,7 @@ namespace CollaboRate
         public frmMain()
         {
             InitializeComponent();
+            openChildForm(new frmHome());
         }
 
         // Method to load groups
@@ -154,6 +155,7 @@ namespace CollaboRate
         private async void frmMain_Load(object sender, EventArgs e)
         {
             await LoadUserGroupsAsync(CurrentUser.User_ID);
+            openChildForm(new frmHome());
         }
 
         // Method to get the role of a user
@@ -182,6 +184,54 @@ namespace CollaboRate
             }
         }
 
+        // Method to refresh data on the form when the group is changed
+        public async Task RefreshDisplayedFormData()
+        {
+            // Store teh type fo the active form
+            Type activeFormType = activeForm?.GetType();
+
+            if (activeForm != null && activeFormType != typeof(frmSettings))
+            {
+                activeForm.Close();
+                activeForm.Dispose();
+                activeForm = null;
+            }
+
+            // Instantiate and open a brand new form of the same type
+            Form formToOpen = null;
+
+            if (activeFormType == typeof(frmHome))
+            {
+                formToOpen = new frmHome();
+            }
+            else if (activeFormType == typeof(frmProjectGroups))
+            {
+                formToOpen = new frmProjectGroups();
+            }
+            else if (activeFormType == typeof(frmMemberEvaluations))
+            {
+                formToOpen = new frmMemberEvaluations();
+            }
+            else if (activeFormType == typeof(frmGroupTasks))
+            {
+                formToOpen = new frmGroupTasks();
+            }
+            else if (activeFormType == typeof(frmGroupMeetings))
+            {
+                formToOpen = new frmGroupMeetings();
+            }
+            else if (activeFormType == typeof(frmGroupChats))
+            {
+                formToOpen = new frmGroupChats();
+            }
+
+            // Open the new form instance
+            if (formToOpen != null)
+            {
+                openChildForm(formToOpen);
+            }
+        }
+
         private async void cmbxCurrentGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -195,7 +245,8 @@ namespace CollaboRate
                     CurrentGroup.Group_ID = Convert.ToInt32(cmbxCurrentGroup.SelectedValue.ToString());
                     CurrentGroup.Group_Name = cmbxCurrentGroup.Text;
                     CurrentUser.Group_Role = await GetUserGroupRoleAsync(CurrentUser.User_ID, CurrentGroup.Group_ID);
-                    MessageBox.Show("Group Role: " + CurrentUser.Group_Role);
+
+                    await RefreshDisplayedFormData();
                 }
             }
             catch (Exception ex)
@@ -206,7 +257,6 @@ namespace CollaboRate
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            // Test this code
             CurrentGroup.Group_ID = 0;
             CurrentGroup.Group_Name = null;
             frmLogin loginForm = new frmLogin();

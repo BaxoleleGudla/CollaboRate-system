@@ -1,18 +1,19 @@
 ﻿using CollaboRate.Dtos;
+using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Net;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.AspNetCore.SignalR.Client;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace CollaboRate
 {
@@ -38,6 +39,12 @@ namespace CollaboRate
             {
                 this.Invoke((Action)(() =>
                 {
+                    // Check if the control is disposed before accessing it
+                    if (this.IsDisposed || lstChats.IsDisposed)
+                    {
+                        return; // Exit the lambda if the form is closing/closed
+                    }
+
                     lstChats.BeginUpdate();
                     lstChats.Items.Add($"{senderUsername} {createdAt:yyyy/MM/dd} {createdAt:HH:mm}");
                     lstChats.Items.Add(string.IsNullOrEmpty(messageText) ? "[No message]" : messageText);
@@ -51,13 +58,13 @@ namespace CollaboRate
         }
 
         // Method to get messages
-        public async Task<List<MessageDto>> GetMessagesAsync(int groupId, int pageNumber = 1, int pageSize = 50, string keyword = null)
+        public async Task<List<MessageDto>> GetMessagesAsync(int groupId, int pageNumber = 1, int pageSize = 50, string keyword = null, CancellationToken cancellationToken = default)
         {
             try
             {
                 string url = $"{ApiBaseUrl}/api/GroupMessages/messages?groupId={groupId}&pageNumber={pageNumber}&pageSize={pageSize}&keyword={keyword}";
 
-                var response = await client.GetAsync(url);
+                var response = await client.GetAsync(url, cancellationToken);
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -84,6 +91,10 @@ namespace CollaboRate
                     return messages?.OrderBy(m => m.Created_At).ToList() ?? new List<MessageDto>();
                 }   
             }
+            catch (OperationCanceledException)
+            {
+                return new List<MessageDto>();
+            }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -92,7 +103,7 @@ namespace CollaboRate
         }
 
         // Method to display the messages
-        public async Task DisplayMessages(int groupId, int pageNumber = 1, int pageSize = 50, string keyword = null)
+        public async Task DisplayMessages(int groupId, int pageNumber = 1, int pageSize = 50, string keyword = null, CancellationToken cancellationToken = default)
         {
             try
             {
@@ -101,7 +112,7 @@ namespace CollaboRate
                 lstChats.BeginUpdate();
                 lstChats.Items.Clear();
 
-                var messages = await GetMessagesAsync(groupId, pageNumber, pageSize, keyword);
+                var messages = await GetMessagesAsync(groupId, pageNumber, pageSize, keyword, cancellationToken);
 
                 foreach (var msg in messages)
                 {
@@ -242,10 +253,21 @@ namespace CollaboRate
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
 
+            // Capture the token for the new request
+            CancellationToken token = _cts.Token;
+
             try
             {
                 await Task.Delay(300, _cts.Token); // Wait 300ms for pauses in typing
-                await DisplayMessages(CurrentGroup.Group_ID, 1, 50, txtSearchMessage.Texts);
+
+                // Check if cancellation was requested after the delay
+                if (token.IsCancellationRequested)
+                {
+                    return;
+                }
+
+                // Pass the token to DisplayMessages
+                await DisplayMessages(CurrentGroup.Group_ID, 1, 50, txtSearchMessage.Texts, token);
             }
             catch (TaskCanceledException) { }
         }

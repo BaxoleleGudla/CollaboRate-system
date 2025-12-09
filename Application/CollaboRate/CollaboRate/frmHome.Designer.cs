@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,7 +40,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblHeading = new System.Windows.Forms.Label();
             this.lblProjectGroupName = new System.Windows.Forms.Label();
             this.tblPanelHome = new System.Windows.Forms.TableLayoutPanel();
@@ -48,6 +48,10 @@
             this.lblMeetingsHeading = new System.Windows.Forms.Label();
             this.lblGroupMembersHeading = new System.Windows.Forms.Label();
             this.dgViewMembers = new System.Windows.Forms.DataGridView();
+            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User_Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RemoveMember = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgViewMemberEvaluations = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,10 +68,6 @@
             this.lblMemberEvaluations = new System.Windows.Forms.Label();
             this.lblUpcomingTasks = new System.Windows.Forms.Label();
             this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
-            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User_Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RemoveMember = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tblPanelHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMembers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMemberEvaluations)).BeginInit();
@@ -193,6 +193,51 @@
             this.dgViewMembers.RowTemplate.Height = 35;
             this.dgViewMembers.Size = new System.Drawing.Size(365, 180);
             this.dgViewMembers.TabIndex = 19;
+            // 
+            // User_ID
+            // 
+            this.User_ID.DataPropertyName = "User_ID";
+            this.User_ID.HeaderText = "User ID";
+            this.User_ID.MinimumWidth = 6;
+            this.User_ID.Name = "User_ID";
+            this.User_ID.ReadOnly = true;
+            this.User_ID.Visible = false;
+            this.User_ID.Width = 125;
+            // 
+            // Username
+            // 
+            this.Username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Username.DataPropertyName = "Username";
+            this.Username.HeaderText = "Username";
+            this.Username.MinimumWidth = 6;
+            this.Username.Name = "Username";
+            this.Username.ReadOnly = true;
+            // 
+            // User_Role
+            // 
+            this.User_Role.DataPropertyName = "User_Role";
+            this.User_Role.HeaderText = "Member Role";
+            this.User_Role.MinimumWidth = 6;
+            this.User_Role.Name = "User_Role";
+            this.User_Role.ReadOnly = true;
+            this.User_Role.Width = 125;
+            // 
+            // RemoveMember
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
+            this.RemoveMember.DefaultCellStyle = dataGridViewCellStyle2;
+            this.RemoveMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveMember.HeaderText = "Remove";
+            this.RemoveMember.MinimumWidth = 6;
+            this.RemoveMember.Name = "RemoveMember";
+            this.RemoveMember.ReadOnly = true;
+            this.RemoveMember.Text = "Remove";
+            this.RemoveMember.UseColumnTextForButtonValue = true;
+            this.RemoveMember.Visible = false;
+            this.RemoveMember.Width = 114;
             // 
             // dgViewMemberEvaluations
             // 
@@ -463,51 +508,6 @@
             this.pbLoadingSpinner.TabStop = false;
             this.pbLoadingSpinner.Visible = false;
             // 
-            // User_ID
-            // 
-            this.User_ID.DataPropertyName = "User_ID";
-            this.User_ID.HeaderText = "User ID";
-            this.User_ID.MinimumWidth = 6;
-            this.User_ID.Name = "User_ID";
-            this.User_ID.ReadOnly = true;
-            this.User_ID.Visible = false;
-            this.User_ID.Width = 125;
-            // 
-            // Username
-            // 
-            this.Username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Username.DataPropertyName = "Username";
-            this.Username.HeaderText = "Username";
-            this.Username.MinimumWidth = 6;
-            this.Username.Name = "Username";
-            this.Username.ReadOnly = true;
-            // 
-            // User_Role
-            // 
-            this.User_Role.DataPropertyName = "User_Role";
-            this.User_Role.HeaderText = "Member Role";
-            this.User_Role.MinimumWidth = 6;
-            this.User_Role.Name = "User_Role";
-            this.User_Role.ReadOnly = true;
-            this.User_Role.Width = 125;
-            // 
-            // RemoveMember
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
-            this.RemoveMember.DefaultCellStyle = dataGridViewCellStyle2;
-            this.RemoveMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RemoveMember.HeaderText = "Remove";
-            this.RemoveMember.MinimumWidth = 6;
-            this.RemoveMember.Name = "RemoveMember";
-            this.RemoveMember.ReadOnly = true;
-            this.RemoveMember.Text = "Remove";
-            this.RemoveMember.UseColumnTextForButtonValue = true;
-            this.RemoveMember.Visible = false;
-            this.RemoveMember.Width = 114;
-            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -559,9 +559,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_Date;
-        private System.Windows.Forms.Label lblUpcomingMeetings;
-        private System.Windows.Forms.Label lblMemberEvaluations;
-        private System.Windows.Forms.Label lblUpcomingTasks;
         private System.Windows.Forms.PictureBox pbLoadingSpinner;
         private System.Windows.Forms.DataGridViewTextBoxColumn Task_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Task_Title;
@@ -573,5 +570,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewTextBoxColumn User_Role;
         private System.Windows.Forms.DataGridViewButtonColumn RemoveMember;
+        public System.Windows.Forms.Label lblUpcomingMeetings;
+        public System.Windows.Forms.Label lblMemberEvaluations;
+        public System.Windows.Forms.Label lblUpcomingTasks;
     }
 }

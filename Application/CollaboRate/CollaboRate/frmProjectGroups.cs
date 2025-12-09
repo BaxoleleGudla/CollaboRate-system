@@ -136,7 +136,7 @@ namespace CollaboRate
         }
 
         // Method to get groups
-        private async Task<List<GroupWithRequestStatusDto>> GetAvailableGroupsForUserAsync(int userId, string keyword = null)
+        public async Task<List<GroupWithRequestStatusDto>> GetAvailableGroupsForUserAsync(int userId, string keyword = null)
         {
             string apiUrl = $"https://localhost:7287/api/groups/available-groups?userId={userId}&keyword={keyword}";
 
@@ -213,7 +213,7 @@ namespace CollaboRate
         }
 
         // Method to dsplay join requests
-        private async Task LoadJoinRequetsAsync()
+        public async Task LoadJoinRequetsAsync()
         {
             if (CurrentGroup.Group_ID >= 1)
             {
@@ -244,7 +244,7 @@ namespace CollaboRate
         }
 
         // Method to display groups in a datagridview
-        private async Task LoadGroupsAsync(int userId, string keyword = null)
+        public async Task LoadGroupsAsync(int userId, string keyword = null)
         {
             try
             {

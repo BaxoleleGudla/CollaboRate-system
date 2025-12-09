@@ -35,9 +35,13 @@ namespace CollaboRate
         public frmHome()
         {
             InitializeComponent();
-            if (CurrentUser.Group_Role.Contains("Admin"))
+
+            if (CurrentUser.Group_Role != null)
             {
-                dgViewMembers.Columns["RemoveMember"].Visible = true;
+                if (CurrentUser.Group_Role.Contains("Admin"))
+                {
+                    dgViewMembers.Columns["RemoveMember"].Visible = true;
+                }
             }
         }
 
@@ -355,9 +359,12 @@ namespace CollaboRate
 
         private async void frmHome_Load(object sender, EventArgs e)
         {
-            if (CurrentUser.Group_Role.Contains("Admin"))
+            if (CurrentUser.Group_Role != null)
             {
-                dgViewMembers.Columns["RemoveMember"].Visible = true;
+                if (CurrentUser.Group_Role.Contains("Admin"))
+                {
+                    dgViewMembers.Columns["RemoveMember"].Visible = true;
+                }
             }
 
             var loadGroupMembersTask = LoadGroupMembersAsync();

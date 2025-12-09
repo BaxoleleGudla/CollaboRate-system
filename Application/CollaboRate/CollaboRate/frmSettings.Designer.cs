@@ -60,6 +60,7 @@
             this.lblNotificationPreferencesHeading = new System.Windows.Forms.Label();
             this.pnlAccountAndSecurity = new System.Windows.Forms.Panel();
             this.pnlChangePassword = new SATAUiFramework.SATAPanel();
+            this.pbLoadingSpinnerChangePassword = new System.Windows.Forms.PictureBox();
             this.lblConfirmNewPasswordError = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtConfirmNewPassword = new SATATextBox();
@@ -85,7 +86,6 @@
             this.lblAccountAndSecurityHeading = new System.Windows.Forms.Label();
             this.lblHeading = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.pbLoadingSpinnerChangePassword = new System.Windows.Forms.PictureBox();
             this.pnlSettings.SuspendLayout();
             this.pnlApplicationDefaults.SuspendLayout();
             this.pnlGroupManagementDefaults.SuspendLayout();
@@ -96,9 +96,9 @@
             this.pnlPushNotification.SuspendLayout();
             this.pnlAccountAndSecurity.SuspendLayout();
             this.pnlChangePassword.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerChangePassword)).BeginInit();
             this.pnlProfileInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerChangePassword)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSettings
@@ -125,6 +125,7 @@
             this.pnlApplicationDefaults.Name = "pnlApplicationDefaults";
             this.pnlApplicationDefaults.Size = new System.Drawing.Size(789, 412);
             this.pnlApplicationDefaults.TabIndex = 22;
+            this.pnlApplicationDefaults.Visible = false;
             // 
             // pnlGroupManagementDefaults
             // 
@@ -495,6 +496,18 @@
             this.pnlChangePassword.Name = "pnlChangePassword";
             this.pnlChangePassword.Size = new System.Drawing.Size(755, 378);
             this.pnlChangePassword.TabIndex = 21;
+            // 
+            // pbLoadingSpinnerChangePassword
+            // 
+            this.pbLoadingSpinnerChangePassword.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinnerChangePassword.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinnerChangePassword.Location = new System.Drawing.Point(96, 332);
+            this.pbLoadingSpinnerChangePassword.Name = "pbLoadingSpinnerChangePassword";
+            this.pbLoadingSpinnerChangePassword.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinnerChangePassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinnerChangePassword.TabIndex = 56;
+            this.pbLoadingSpinnerChangePassword.TabStop = false;
+            this.pbLoadingSpinnerChangePassword.Visible = false;
             // 
             // lblConfirmNewPasswordError
             // 
@@ -874,18 +887,6 @@
             this.pnlTop.Size = new System.Drawing.Size(789, 80);
             this.pnlTop.TabIndex = 0;
             // 
-            // pbLoadingSpinnerChangePassword
-            // 
-            this.pbLoadingSpinnerChangePassword.BackColor = System.Drawing.SystemColors.Control;
-            this.pbLoadingSpinnerChangePassword.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
-            this.pbLoadingSpinnerChangePassword.Location = new System.Drawing.Point(96, 332);
-            this.pbLoadingSpinnerChangePassword.Name = "pbLoadingSpinnerChangePassword";
-            this.pbLoadingSpinnerChangePassword.Size = new System.Drawing.Size(32, 26);
-            this.pbLoadingSpinnerChangePassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLoadingSpinnerChangePassword.TabIndex = 56;
-            this.pbLoadingSpinnerChangePassword.TabStop = false;
-            this.pbLoadingSpinnerChangePassword.Visible = false;
-            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -917,10 +918,10 @@
             this.pnlAccountAndSecurity.PerformLayout();
             this.pnlChangePassword.ResumeLayout(false);
             this.pnlChangePassword.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerChangePassword)).EndInit();
             this.pnlProfileInformation.ResumeLayout(false);
             this.pnlProfileInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerChangePassword)).EndInit();
             this.ResumeLayout(false);
 
         }

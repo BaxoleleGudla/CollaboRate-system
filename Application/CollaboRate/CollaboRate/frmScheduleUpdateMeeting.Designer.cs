@@ -128,13 +128,13 @@
             // 
             // lblHeading
             // 
-            this.lblHeading.AutoSize = true;
             this.lblHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeading.Location = new System.Drawing.Point(88, 3);
+            this.lblHeading.Location = new System.Drawing.Point(37, 3);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(237, 23);
+            this.lblHeading.Size = new System.Drawing.Size(341, 23);
             this.lblHeading.TabIndex = 25;
             this.lblHeading.Text = "Schedule New Meeting";
+            this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnScheduleUpdateMeeting
             // 

@@ -29,6 +29,18 @@ namespace CollaboRate
         public frmProjectGroups()
         {
             InitializeComponent();
+            if (CurrentUser.Group_Role != null)
+            {
+                if (CurrentUser.Group_Role.Contains("Admin"))
+                {
+                    btnEditGroup.Visible = true;
+
+                    if (dgViewJoinRequests.Rows.Count > 0)
+                    {
+                        pnlMiddle.Visible = true;
+                    }
+                }
+            }
         }
 
         private void btnCreateNewGroup_Click(object sender, EventArgs e)
@@ -269,13 +281,25 @@ namespace CollaboRate
         // Form load event
         private async void frmProjectGroups_Load(object sender, EventArgs e)
         {
-            // Fix spinner logic for these methods
             // Display data
             var groupDetailsTask = LoadGroupDetailsAsync();
             var joinRequestsTask = LoadJoinRequetsAsync();
             var groupsTask = LoadGroupsAsync(CurrentUser.User_ID);
 
             await Task.WhenAll(groupDetailsTask, joinRequestsTask, groupsTask);
+
+            if (CurrentUser.Group_Role != null)
+            {
+                if (CurrentUser.Group_Role.Contains("Admin"))
+                {
+                    btnEditGroup.Visible = true;
+
+                    if (dgViewJoinRequests.Rows.Count > 0)
+                    {
+                        pnlMiddle.Visible = true;
+                    }
+                }
+            }
         }
 
         private void dgViewProjectGroups_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

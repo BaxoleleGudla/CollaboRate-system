@@ -81,13 +81,13 @@
             // 
             // lblHeading
             // 
-            this.lblHeading.AutoSize = true;
             this.lblHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeading.Location = new System.Drawing.Point(69, 3);
+            this.lblHeading.Location = new System.Drawing.Point(36, 3);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(275, 23);
+            this.lblHeading.Size = new System.Drawing.Size(342, 23);
             this.lblHeading.TabIndex = 25;
             this.lblHeading.Text = "Update Member Evaluation";
+            this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSaveChanges
             // 

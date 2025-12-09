@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgViewUsers = new System.Windows.Forms.DataGridView();
-            this.txtSearchUsername = new SATATextBox();
-            this.lblHeading = new System.Windows.Forms.Label();
-            this.btnSubmitEvaluations = new FrameworkTest.SATAButton();
             this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User_Score = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.txtSearchUsername = new SATATextBox();
+            this.lblHeading = new System.Windows.Forms.Label();
+            this.btnSubmitEvaluations = new FrameworkTest.SATAButton();
             this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
@@ -53,14 +53,14 @@
             this.dgViewUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgViewUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgViewUsers.ColumnHeadersHeight = 28;
             this.dgViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -74,13 +74,52 @@
             this.dgViewUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgViewUsers.RowHeadersVisible = false;
             this.dgViewUsers.RowHeadersWidth = 51;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgViewUsers.RowTemplate.Height = 28;
             this.dgViewUsers.Size = new System.Drawing.Size(344, 405);
             this.dgViewUsers.TabIndex = 45;
+            // 
+            // User_ID
+            // 
+            this.User_ID.DataPropertyName = "User_ID";
+            this.User_ID.HeaderText = "User ID";
+            this.User_ID.MinimumWidth = 6;
+            this.User_ID.Name = "User_ID";
+            this.User_ID.ReadOnly = true;
+            this.User_ID.Visible = false;
+            this.User_ID.Width = 125;
+            // 
+            // User_Name
+            // 
+            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.User_Name.DataPropertyName = "Username";
+            this.User_Name.HeaderText = "Username";
+            this.User_Name.MinimumWidth = 6;
+            this.User_Name.Name = "User_Name";
+            this.User_Name.ReadOnly = true;
+            // 
+            // User_Score
+            // 
+            this.User_Score.DataPropertyName = "Score";
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.User_Score.DefaultCellStyle = dataGridViewCellStyle2;
+            this.User_Score.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.User_Score.FillWeight = 75F;
+            this.User_Score.HeaderText = "Score";
+            this.User_Score.Items.AddRange(new object[] {
+            "1. Unsatisfactory",
+            "2",
+            "3",
+            "4",
+            "5. Excellent"});
+            this.User_Score.MinimumWidth = 6;
+            this.User_Score.Name = "User_Score";
+            this.User_Score.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.User_Score.Width = 125;
             // 
             // txtSearchUsername
             // 
@@ -105,13 +144,13 @@
             // 
             // lblHeading
             // 
-            this.lblHeading.AutoSize = true;
             this.lblHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeading.Location = new System.Drawing.Point(91, 3);
+            this.lblHeading.Location = new System.Drawing.Point(34, 3);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(221, 23);
+            this.lblHeading.Size = new System.Drawing.Size(344, 23);
             this.lblHeading.TabIndex = 37;
             this.lblHeading.Text = "Evaluate All Members";
+            this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSubmitEvaluations
             // 
@@ -152,45 +191,6 @@
             this.btnSubmitEvaluations.TextOffset = new System.Drawing.Point(0, 0);
             this.btnSubmitEvaluations.Click += new System.EventHandler(this.btnSubmitEvaluations_Click);
             // 
-            // User_ID
-            // 
-            this.User_ID.DataPropertyName = "User_ID";
-            this.User_ID.HeaderText = "User ID";
-            this.User_ID.MinimumWidth = 6;
-            this.User_ID.Name = "User_ID";
-            this.User_ID.ReadOnly = true;
-            this.User_ID.Visible = false;
-            this.User_ID.Width = 125;
-            // 
-            // User_Name
-            // 
-            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.User_Name.DataPropertyName = "Username";
-            this.User_Name.HeaderText = "Username";
-            this.User_Name.MinimumWidth = 6;
-            this.User_Name.Name = "User_Name";
-            this.User_Name.ReadOnly = true;
-            // 
-            // User_Score
-            // 
-            this.User_Score.DataPropertyName = "Score";
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.User_Score.DefaultCellStyle = dataGridViewCellStyle14;
-            this.User_Score.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.User_Score.FillWeight = 75F;
-            this.User_Score.HeaderText = "Score";
-            this.User_Score.Items.AddRange(new object[] {
-            "1. Unsatisfactory",
-            "2",
-            "3",
-            "4",
-            "5. Excellent"});
-            this.User_Score.MinimumWidth = 6;
-            this.User_Score.Name = "User_Score";
-            this.User_Score.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.User_Score.Width = 125;
-            // 
             // pbLoadingSpinner
             // 
             this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
@@ -222,7 +222,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

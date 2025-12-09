@@ -26,6 +26,14 @@ namespace CollaboRate
         public frmGroupMeetings()
         {
             InitializeComponent();
+            if (CurrentUser.Group_Role != null)
+            {
+                if (CurrentUser.Group_Role.Contains("Admin"))
+                {
+                    btnScheduleNewMeeting.Visible = true;
+                    dgViewMeetings.Columns["CancelMeeting"].Visible = true;
+                }
+            }
         }
 
         private void btnScheduleNewMeeting_Click(object sender, EventArgs e)
@@ -106,6 +114,14 @@ namespace CollaboRate
 
         private async void frmGroupMeetings_Load(object sender, EventArgs e)
         {
+            if (CurrentUser.Group_Role != null)
+            {
+                if (CurrentUser.Group_Role.Contains("Admin"))
+                {
+                    btnScheduleNewMeeting.Visible = true;
+                    dgViewMeetings.Columns["CancelMeeting"].Visible = true;
+                }
+            }
             await DisplayMeetingsAsync(CurrentGroup.Group_ID);
         }
 
@@ -195,6 +211,20 @@ namespace CollaboRate
                     updateMeetingForm.dtpMeetingDate.Value = DateTime.Parse((row.Cells["Meeting_Date"].Value.ToString()));
 
                     updateMeetingForm.btnCancelMeeting.Enabled = true;
+
+                    if (CurrentUser.Group_Role != null)
+                    {
+                        if (CurrentUser.Group_Role.Contains("Member"))
+                        {
+                            updateMeetingForm.lblHeading.Text = "Meeting Details";
+                            updateMeetingForm.txtMeetingTitle.Enabled = false;
+                            updateMeetingForm.txtMeetingDescription.Enabled = false;
+                            updateMeetingForm.btnCancelMeeting.Visible = false;
+                            updateMeetingForm.btnScheduleUpdateMeeting.Visible = false;
+                            updateMeetingForm.dtpMeetingDate.Enabled = false;
+                            updateMeetingForm.Size = new System.Drawing.Size(429, 428);
+                        }
+                    }
 
                     updateMeetingForm.ShowDialog();
                 }

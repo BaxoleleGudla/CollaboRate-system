@@ -34,13 +34,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnAddMembers = new FrameworkTest.SATAButton();
             this.dgViewUsers = new System.Windows.Forms.DataGridView();
+            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtSearchUsername = new SATATextBox();
             this.lblHeading = new System.Windows.Forms.Label();
             this.btnBack = new FrameworkTest.SATAButton();
             this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
-            this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
@@ -138,6 +138,42 @@
             this.dgViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewUsers_CellContentClick);
             this.dgViewUsers.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgViewUsers_CurrentCellDirtyStateChanged);
             // 
+            // User_ID
+            // 
+            this.User_ID.DataPropertyName = "User_ID";
+            this.User_ID.HeaderText = "User ID";
+            this.User_ID.MinimumWidth = 6;
+            this.User_ID.Name = "User_ID";
+            this.User_ID.ReadOnly = true;
+            this.User_ID.Visible = false;
+            this.User_ID.Width = 125;
+            // 
+            // User_Name
+            // 
+            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.User_Name.DataPropertyName = "Username";
+            this.User_Name.HeaderText = "Username";
+            this.User_Name.MinimumWidth = 6;
+            this.User_Name.Name = "User_Name";
+            this.User_Name.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.DataPropertyName = "Action";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.NullValue = false;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Action.FillWeight = 75F;
+            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Action.HeaderText = "Action";
+            this.Action.MinimumWidth = 6;
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Action.Width = 50;
+            // 
             // txtSearchUsername
             // 
             this.txtSearchUsername.BackColor = System.Drawing.Color.White;
@@ -161,13 +197,13 @@
             // 
             // lblHeading
             // 
-            this.lblHeading.AutoSize = true;
             this.lblHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeading.Location = new System.Drawing.Point(109, 3);
+            this.lblHeading.Location = new System.Drawing.Point(34, 3);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(198, 23);
+            this.lblHeading.Size = new System.Drawing.Size(344, 23);
             this.lblHeading.TabIndex = 25;
             this.lblHeading.Text = "Add New Members";
+            this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBack
             // 
@@ -219,42 +255,6 @@
             this.pbLoadingSpinner.TabIndex = 54;
             this.pbLoadingSpinner.TabStop = false;
             this.pbLoadingSpinner.Visible = false;
-            // 
-            // User_ID
-            // 
-            this.User_ID.DataPropertyName = "User_ID";
-            this.User_ID.HeaderText = "User ID";
-            this.User_ID.MinimumWidth = 6;
-            this.User_ID.Name = "User_ID";
-            this.User_ID.ReadOnly = true;
-            this.User_ID.Visible = false;
-            this.User_ID.Width = 125;
-            // 
-            // User_Name
-            // 
-            this.User_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.User_Name.DataPropertyName = "Username";
-            this.User_Name.HeaderText = "Username";
-            this.User_Name.MinimumWidth = 6;
-            this.User_Name.Name = "User_Name";
-            this.User_Name.ReadOnly = true;
-            // 
-            // Action
-            // 
-            this.Action.DataPropertyName = "Action";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.NullValue = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.Action.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Action.FillWeight = 75F;
-            this.Action.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Action.HeaderText = "Action";
-            this.Action.MinimumWidth = 6;
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
-            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Action.Width = 50;
             // 
             // frmAddNewMembers
             // 

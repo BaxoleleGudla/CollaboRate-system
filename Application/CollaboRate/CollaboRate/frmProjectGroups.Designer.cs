@@ -99,6 +99,8 @@
             // 
             // pnlCurrentGroup
             // 
+            this.pnlCurrentGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlCurrentGroup.BackColor = System.Drawing.Color.White;
             this.pnlCurrentGroup.BackColor2 = System.Drawing.Color.White;
             this.pnlCurrentGroup.BorderColor = System.Drawing.Color.LightGray;
@@ -148,6 +150,8 @@
             // 
             // btnEditGroup
             // 
+            this.btnEditGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditGroup.ButtonText = "Edit Group";
             this.btnEditGroup.CheckedBackground = System.Drawing.Color.DodgerBlue;
             this.btnEditGroup.CheckedForeColor = System.Drawing.Color.White;
@@ -214,6 +218,7 @@
             // 
             // btnCreateNewGroup
             // 
+            this.btnCreateNewGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreateNewGroup.ButtonText = "Create New Group";
             this.btnCreateNewGroup.CheckedBackground = System.Drawing.Color.DodgerBlue;
             this.btnCreateNewGroup.CheckedForeColor = System.Drawing.Color.White;
@@ -300,7 +305,9 @@
             this.dgViewJoinRequests.AllowUserToDeleteRows = false;
             this.dgViewJoinRequests.AllowUserToResizeColumns = false;
             this.dgViewJoinRequests.AllowUserToResizeRows = false;
-            this.dgViewJoinRequests.BackgroundColor = System.Drawing.Color.White;
+            this.dgViewJoinRequests.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgViewJoinRequests.BackgroundColor = System.Drawing.Color.Yellow;
             this.dgViewJoinRequests.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewJoinRequests.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -409,6 +416,8 @@
             // 
             // txtSearchGroup
             // 
+            this.txtSearchGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchGroup.BackColor = System.Drawing.Color.White;
             this.txtSearchGroup.BorderColor = System.Drawing.Color.DimGray;
             this.txtSearchGroup.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
@@ -434,7 +443,10 @@
             this.dgViewProjectGroups.AllowUserToDeleteRows = false;
             this.dgViewProjectGroups.AllowUserToResizeColumns = false;
             this.dgViewProjectGroups.AllowUserToResizeRows = false;
-            this.dgViewProjectGroups.BackgroundColor = System.Drawing.Color.White;
+            this.dgViewProjectGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgViewProjectGroups.BackgroundColor = System.Drawing.Color.Yellow;
             this.dgViewProjectGroups.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewProjectGroups.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;

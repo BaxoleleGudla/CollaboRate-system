@@ -17,7 +17,7 @@ namespace CollaboRate
 {
     public partial class frmEvaluateAllMembers : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -118,7 +118,7 @@ namespace CollaboRate
 
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    string url = $"https://localhost:7287/api/Ratings/ratings";
+                    string url = $"https://collaborateapi.runasp.net/api/Ratings/ratings";
 
                     var response = await client.PostAsync(url, content);
 
@@ -183,7 +183,7 @@ namespace CollaboRate
         {
             try
             {
-                string url = $"https://localhost:7287/api/Groups/group/{groupId}/users";
+                string url = $"https://collaborateapi.runasp.net/api/Groups/group/{groupId}/users";
 
                 if (string.IsNullOrEmpty(keyword) == false)
                 {

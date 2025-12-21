@@ -19,7 +19,7 @@ namespace CollaboRate
 {
     public partial class frmGroupChats : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -29,6 +29,8 @@ namespace CollaboRate
         public frmGroupChats()
         {
             InitializeComponent();
+            txtMessage.PlaceholderText = "Type a message";
+
 
             _connection = new HubConnectionBuilder()
                 .WithUrl($"{ApiBaseUrl}/chathub")
@@ -145,6 +147,7 @@ namespace CollaboRate
         {
             try
             {
+                txtMessage.PlaceholderText = "Type a message";
                 await _connection.StartAsync();
             }
             catch (Exception ex)

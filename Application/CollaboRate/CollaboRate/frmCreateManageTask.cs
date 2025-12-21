@@ -15,7 +15,7 @@ namespace CollaboRate
 {
     public partial class frmCreateUpdateTask : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -33,7 +33,7 @@ namespace CollaboRate
         {
             try
             {
-                string url = $"https://localhost:7287/api/Groups/group/{groupId}/users";
+                string url = $"https://collaborateapi.runasp.net/api/Groups/group/{groupId}/users";
 
                 if (string.IsNullOrEmpty(keyword) == false)
                 {
@@ -108,7 +108,7 @@ namespace CollaboRate
         {
             try
             {
-                string url = $"https://localhost:7287/api/Users/group/{groupId}/task/{taskId}/users";
+                string url = $"https://collaborateapi.runasp.net/api/Users/group/{groupId}/task/{taskId}/users";
 
                 var response = await client.GetAsync(url);
 
@@ -288,7 +288,7 @@ namespace CollaboRate
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                     // API endpoint URL for adding tasks
-                    string apiUrl = "https://localhost:7287/api/Tasks/tasks";
+                    string apiUrl = "https://collaborateapi.runasp.net/api/Tasks/tasks";
 
                     HttpResponseMessage response = await client.PostAsync(apiUrl, content);
 
@@ -398,7 +398,7 @@ namespace CollaboRate
 
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    string url = $"https://localhost:7287/api/Tasks/tasks/update";
+                    string url = $"https://collaborateapi.runasp.net/api/Tasks/tasks/update";
 
                     // Send put request
                     HttpResponseMessage response = await client.PutAsync(url, content);
@@ -413,7 +413,7 @@ namespace CollaboRate
                         var groupTaskForm = Application.OpenForms.OfType<frmGroupTasks>().FirstOrDefault();
                         if (groupTaskForm != null)
                         {
-                            _ = groupTaskForm.DisplayTasksAsync(CurrentUser.User_ID);
+                            _ = groupTaskForm.DisplayTasksAsync(CurrentGroup.Group_ID);
                         }
                     }
                     else
@@ -472,7 +472,7 @@ namespace CollaboRate
                             var groupTaskForm = Application.OpenForms.OfType<frmGroupTasks>().FirstOrDefault();
                             if (groupTaskForm != null)
                             {
-                                _ = groupTaskForm.DisplayTasksAsync(CurrentUser.User_ID);
+                                _ = groupTaskForm.DisplayTasksAsync(CurrentGroup.Group_ID);
                             }
 
                             this.Close();

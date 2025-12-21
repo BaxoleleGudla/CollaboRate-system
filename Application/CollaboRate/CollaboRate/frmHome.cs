@@ -16,7 +16,7 @@ namespace CollaboRate
 {
     public partial class frmHome : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -48,7 +48,7 @@ namespace CollaboRate
         // Method to get group details
         public async Task<AcceptedGroupUsersDto> GetGroupDetailsAsync(int groupId)
         {
-            string apiUrl = $"https://localhost:7287/api/groups/{groupId}/details-with-accepted-users";
+            string apiUrl = $"https://collaborateapi.runasp.net/api/groups/{groupId}/details-with-accepted-users";
 
             try
             {
@@ -128,7 +128,7 @@ namespace CollaboRate
         // Method to get meetings
         private async Task<List<MeetingDto>> GetMeetingsAsync(int groupId, string keyword = null)
         {
-            string url = $"https://localhost:7287/api/Meetings/group/{groupId}";
+            string url = $"https://collaborateapi.runasp.net/api/Meetings/group/{groupId}";
 
             if (string.IsNullOrWhiteSpace(keyword) == false)
             {
@@ -219,7 +219,7 @@ namespace CollaboRate
 
             string queryString = string.Join("&", queryParams);
 
-            string url = $"https://localhost:7287/api/Tasks/tasks/by-group?{queryString}";
+            string url = $"https://collaborateapi.runasp.net/api/Tasks/tasks/by-group?{queryString}";
 
             var response = await client.GetAsync(url);
 
@@ -289,7 +289,7 @@ namespace CollaboRate
         // Method to load ratings
         private async Task<List<RatedMemberDto>> GetRatingsAsync(int groupId, int userId, string keyword = null)
         {
-            string url = $"https://localhost:7287/api/Ratings/group/{groupId}/rater/{userId}/rated-members";
+            string url = $"https://collaborateapi.runasp.net/api/Ratings/group/{groupId}/rater/{userId}/rated-members";
 
             if (string.IsNullOrWhiteSpace(keyword) == false)
             {
@@ -373,6 +373,14 @@ namespace CollaboRate
             var displayRatingsTask = DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
 
             await Task.WhenAll(loadGroupMembersTask, displayUpcomingMeetingsTask, displayUpcomingTasksTask, displayRatingsTask);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dgViewMembers.Rows.Add(1, "Mia");
+            dgViewMeetings.Rows.Add(1, "Meet up now", "17 June 2025");
+            dgViewTasks.Rows.Add(1, "Finish app design", "18 December 2025");
+            dgViewMemberEvaluations.Rows.Add(1, "Roy", "4.5");
         }
     }
 }

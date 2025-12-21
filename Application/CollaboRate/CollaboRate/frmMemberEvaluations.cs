@@ -16,7 +16,7 @@ namespace CollaboRate
 {
     public partial class frmMemberEvaluations : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -43,7 +43,7 @@ namespace CollaboRate
         // Method to load ratings
         private async Task<List<RatedMemberDto>> GetRatingsAsync(int groupId, int userId, string keyword = null)
         {
-            string url = $"https://localhost:7287/api/Ratings/group/{groupId}/rater/{userId}/rated-members";
+            string url = $"https://collaborateapi.runasp.net/api/Ratings/group/{groupId}/rater/{userId}/rated-members";
 
             if (string.IsNullOrWhiteSpace(keyword) == false)
             {
@@ -72,7 +72,7 @@ namespace CollaboRate
             return ratings ?? new List<RatedMemberDto>();
         }
 
-        // Method to display meetings
+        // Method to display ratings
         public async Task DisplayRatingsAsync(int groupId, int userId, string keyword = null)
         {
             try

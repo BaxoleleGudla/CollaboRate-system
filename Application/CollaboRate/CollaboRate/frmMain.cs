@@ -15,7 +15,7 @@ namespace CollaboRate
 {
     public partial class frmMain : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient();
 
         public frmMain()
@@ -29,7 +29,7 @@ namespace CollaboRate
         {
             try
             {
-                string apiUrl = $"https://localhost:7287/api/Groups/user/{userId}";
+                string apiUrl = $"https://collaborateapi.runasp.net/api/Groups/user/{userId}";
 
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
 
@@ -89,30 +89,37 @@ namespace CollaboRate
         // Method to open a form
         private void openChildForm(Form childForm)
         {
-            // If the active form is the same type as the requested form, do nothing
-            if (activeForm != null && activeForm.GetType() == childForm.GetType())
+            try
             {
-                activeForm.BringToFront();
-                return;
-            }
+                // If the active form is the same type as the requested form, do nothing
+                if (activeForm != null && activeForm.GetType() == childForm.GetType())
+                {
+                    activeForm.BringToFront();
+                    return;
+                }
 
-            // Close and dispose the current active form if any
-            if (activeForm != null)
+                // Close and dispose the current active form if any
+                if (activeForm != null)
+                {
+                    activeForm.Close();
+                    activeForm.Dispose();
+                }
+
+                activeForm = childForm;
+                childForm.TopLevel = false;
+                childForm.Dock = DockStyle.Fill;
+
+                pnlMain.Controls.Clear();
+                pnlMain.Controls.Add(childForm);
+                pnlMain.Tag = childForm;
+
+                childForm.BringToFront();
+                childForm.Show();
+            }
+            catch (Exception ex)
             {
-                activeForm.Close();
-                activeForm.Dispose();
+                MessageBox.Show("Error: " + ex.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.Dock = DockStyle.Fill;
-
-            pnlMain.Controls.Clear();
-            pnlMain.Controls.Add(childForm);
-            pnlMain.Tag = childForm;
-
-            childForm.BringToFront();
-            childForm.Show();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -262,6 +269,28 @@ namespace CollaboRate
             frmLogin loginForm = new frmLogin();
             loginForm.Show();
             this.Hide();
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

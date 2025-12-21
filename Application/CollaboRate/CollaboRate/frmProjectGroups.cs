@@ -17,7 +17,7 @@ namespace CollaboRate
 {
     public partial class frmProjectGroups : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -58,7 +58,7 @@ namespace CollaboRate
         // Method to get group details
         public async Task<AcceptedGroupUsersDto> GetGroupDetailsAsync(int groupId)
         {
-            string apiUrl = $"https://localhost:7287/api/groups/{groupId}/details-with-accepted-users";
+            string apiUrl = $"https://collaborateapi.runasp.net/api/groups/{groupId}/details-with-accepted-users";
 
             try
             {
@@ -99,7 +99,7 @@ namespace CollaboRate
         // Method to get users with a pending join request
         public async Task<List<PendingUserDto>> GetPendingUsersAsync(int groupId)
         {
-            string apiUrl = $"https://localhost:7287/api/groups/{groupId}/pending-users";
+            string apiUrl = $"https://collaborateapi.runasp.net/api/groups/{groupId}/pending-users";
 
             try
             {
@@ -138,7 +138,7 @@ namespace CollaboRate
         // Method to get groups
         public async Task<List<GroupWithRequestStatusDto>> GetAvailableGroupsForUserAsync(int userId, string keyword = null)
         {
-            string apiUrl = $"https://localhost:7287/api/groups/available-groups?userId={userId}&keyword={keyword}";
+            string apiUrl = $"https://collaborateapi.runasp.net/api/groups/available-groups?userId={userId}&keyword={keyword}";
 
             try
             {
@@ -325,7 +325,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = true;
                 dgViewProjectGroups.Enabled = false;
 
-                string url = $"https://localhost:7287/api/Groups/{groupId}/join-requests/{userId}";
+                string url = $"https://collaborateapi.runasp.net/api/Groups/{groupId}/join-requests/{userId}";
 
                 // Send POST request
                 HttpResponseMessage response = await client.PostAsync(url, null);
@@ -364,7 +364,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = true;
                 dgViewProjectGroups.Enabled = false;
 
-                string url = $"https://localhost:7287/api/Groups/{groupId}/join-requests/{userId}";
+                string url = $"https://collaborateapi.runasp.net/api/Groups/{groupId}/join-requests/{userId}";
 
                 // Send DELETE request
                 HttpResponseMessage response = await client.DeleteAsync(url);
@@ -447,7 +447,7 @@ namespace CollaboRate
         {
             try
             {
-                string url = $"https://localhost:7287/api/Groups/{groupId}/members/{userId}/accept";
+                string url = $"https://collaborateapi.runasp.net/api/Groups/{groupId}/members/{userId}/accept";
                 var response = await client.PutAsync(url, null);
 
                 response.EnsureSuccessStatusCode();
@@ -475,7 +475,7 @@ namespace CollaboRate
         {
             try
             {
-                string url = $"https://localhost:7287/api/Groups/{groupId}/members/{userId}/reject";
+                string url = $"https://collaborateapi.runasp.net/api/Groups/{groupId}/members/{userId}/reject";
                 var response = await client.DeleteAsync(url);
 
                 response.EnsureSuccessStatusCode();

@@ -18,7 +18,7 @@ namespace CollaboRate
 {
     public partial class frmLogin : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient();
 
         public frmLogin()

@@ -16,7 +16,7 @@ namespace CollaboRate
 {
     public partial class frmGroupMeetings : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -51,7 +51,7 @@ namespace CollaboRate
         // Method to load meetings
         private async Task<List<MeetingDto>> GetMeetingsAsync(int groupId, string keyword = null)
         {
-            string url = $"https://localhost:7287/api/Meetings/group/{groupId}";
+            string url = $"https://collaborateapi.runasp.net/api/Meetings/group/{groupId}";
 
             if (string.IsNullOrWhiteSpace(keyword) == false)
             {
@@ -138,7 +138,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = true;
                 dgViewMeetings.Enabled = false;
 
-                string url = $"https://localhost:7287/api/Meetings/cancel/{meetingId}";
+                string url = $"https://collaborateapi.runasp.net/api/Meetings/cancel/{meetingId}";
 
                 // Send DELETE request
                 HttpResponseMessage response = await client.DeleteAsync(url);

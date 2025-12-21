@@ -16,7 +16,7 @@ namespace CollaboRate
 {
     public partial class frmUpdateMemberEvaluation : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -64,7 +64,7 @@ namespace CollaboRate
                         Score = (byte)score
                     };
 
-                    string url = "https://localhost:7287/api/Ratings/ratings";
+                    string url = "https://collaborateapi.runasp.net/api/Ratings/ratings";
 
                     var json = JsonSerializer.Serialize(updateDto);
 

@@ -16,7 +16,7 @@ namespace CollaboRate
 {
     public partial class frmGroupTasks : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -63,7 +63,7 @@ namespace CollaboRate
 
             string queryString = string.Join("&", queryParams);
 
-            string url = $"https://localhost:7287/api/Tasks/tasks/by-group?{queryString}";
+            string url = $"https://collaborateapi.runasp.net/api/Tasks/tasks/by-group?{queryString}";
 
             var response = await client.GetAsync(url);
 
@@ -137,7 +137,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = true;
                 dgViewTasks.Enabled = false;
 
-                string url = $"https://localhost:7287/api/Tasks/tasks/{taskId}/change-status?isCompleted={status}";
+                string url = $"https://collaborateapi.runasp.net/api/Tasks/tasks/{taskId}/change-status?isCompleted={status}";
 
                 var response = await client.PutAsync(url, null);
 

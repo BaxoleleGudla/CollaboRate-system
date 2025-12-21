@@ -17,7 +17,7 @@ namespace CollaboRate
 {
     public partial class frmCreateNewGroup : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -234,7 +234,7 @@ namespace CollaboRate
         // Method to get users
         private async Task<List<UserDto>> GetUsersAsync(int userId, string keyword = null)
         {
-            string url = $"https://localhost:7287/api/Users/users?currentUserId={userId}&keyword={keyword}";
+            string url = $"https://collaborateapi.runasp.net/api/Users/users?currentUserId={userId}&keyword={keyword}";
 
             var response = await client.GetAsync(url);
             response.EnsureSuccessStatusCode();

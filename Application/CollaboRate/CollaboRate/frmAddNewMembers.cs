@@ -15,7 +15,7 @@ namespace CollaboRate
 {
     public partial class frmAddNewMembers : Form
     {
-        private const string ApiBaseUrl = "https://localhost:7287";
+        private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(30)
@@ -163,7 +163,7 @@ namespace CollaboRate
         {
             try
             {
-                string url = $"https://localhost:7287/api/Users/not-in-group/{currentGroupId}?currentUserId={CurrentUser.User_ID}&keyword={keyword}";
+                string url = $"https://collaborateapi.runasp.net/api/Users/not-in-group/{currentGroupId}?currentUserId={CurrentUser.User_ID}&keyword={keyword}";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 

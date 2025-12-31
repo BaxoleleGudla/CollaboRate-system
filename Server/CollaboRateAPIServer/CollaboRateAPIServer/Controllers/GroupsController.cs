@@ -507,6 +507,81 @@ namespace CollaboRateAPIServer.Controllers
             }
         }
 
+        // Method to remove a member from a group
+        [HttpDelete("{groupId}/members/{userId}")]
+        public async Task<IActionResult> RemoveUserFromGroup(int groupId, int userId)
+        {
+            if (groupId <= 0 || userId <= 0)
+            {
+                return BadRequest("Invalid group or user ID.");
+            }
+
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                var group = await _context.tblGroup.FirstOrDefaultAsync(g => g.Group_ID == groupId);
+
+                if (group == null)
+                {
+                    return NotFound("Group not found.");
+                }
+
+                // Check if membership exists
+                var membership = await _context.tblGroupMember.FirstOrDefaultAsync(gm => gm.Group_ID == groupId && gm.User_ID == userId);
+
+                if (membership == null)
+                {
+                    return NotFound("User is not a member of this group.");
+                }
+
+                // Check if user is the last admin in the group
+                if (membership.User_Role == "Admin")
+                {
+                    int adminCount = await _context.tblGroupMember.CountAsync(gm => gm.Group_ID == groupId && gm.Join_Status == "Accepted" && gm.User_Role == "Admin");
+
+                    if (adminCount <= 1)
+                    {
+                        return BadRequest("Cannot remove the las admin from the group.");
+                    }
+                }
+
+                // Remove the member
+                _context.tblGroupMember.Remove(membership);
+                await _context.SaveChangesAsync();
+
+                // Create a notification about removal
+                var notification = new GroupNotification
+                {
+                    Group_ID = groupId,
+                    Notification_Type = "Membership Removed",
+                    Notification_Message = $"You have been removed from group {group.Group_Name}",
+                    Created_At = DateTime.UtcNow
+                };
+
+                _context.tblGroupNotification.Add(notification);
+                await _context.SaveChangesAsync();
+
+                var recipient = new NotificationRecipient
+                {
+                    Group_Notification_ID = notification.Group_Notification_ID,
+                    User_ID = userId,
+                    Is_Read = false
+                };
+                _context.tblNotificationRecipient.Add(recipient);
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, "An error occurred while removing the member.");
+            }
+        }
+
         // Method to get a member role from a group
         [HttpGet("users/{userId}/groups/{groupId}/role")]
         public async Task<IActionResult> GetUserGroupRole(int userId, int groupId)

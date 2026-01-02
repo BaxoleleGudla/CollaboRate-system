@@ -10,11 +10,15 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace CollaboRate
 {
     public partial class frmEditGroup : Form
     {
+        // Field to store reference to add members form
+        private frmAddNewMembers _addMembersForm;
+
         private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
@@ -34,8 +38,9 @@ namespace CollaboRate
 
         private void btnAddNewMembers_Click(object sender, EventArgs e)
         {
-            frmAddNewMembers addNewMembersForm = new frmAddNewMembers();
-            addNewMembersForm.ShowDialog();
+            _addMembersForm = new frmAddNewMembers();
+            _addMembersForm.EditParentForm = this; // Set parent reference
+            _addMembersForm.Show();
             this.Hide();
         }
 

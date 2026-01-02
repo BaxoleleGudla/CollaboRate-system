@@ -142,6 +142,8 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Location = new System.Drawing.Point(2, 119);
             this.panel1.Name = "panel1";
@@ -192,6 +194,8 @@
             // 
             // lblGroupDescription
             // 
+            this.lblGroupDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGroupDescription.ForeColor = System.Drawing.Color.DimGray;
             this.lblGroupDescription.Location = new System.Drawing.Point(10, 38);
             this.lblGroupDescription.Name = "lblGroupDescription";
@@ -307,7 +311,7 @@
             this.dgViewJoinRequests.AllowUserToResizeRows = false;
             this.dgViewJoinRequests.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgViewJoinRequests.BackgroundColor = System.Drawing.Color.Yellow;
+            this.dgViewJoinRequests.BackgroundColor = System.Drawing.Color.White;
             this.dgViewJoinRequests.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewJoinRequests.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -446,7 +450,7 @@
             this.dgViewProjectGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgViewProjectGroups.BackgroundColor = System.Drawing.Color.Yellow;
+            this.dgViewProjectGroups.BackgroundColor = System.Drawing.Color.White;
             this.dgViewProjectGroups.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewProjectGroups.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;

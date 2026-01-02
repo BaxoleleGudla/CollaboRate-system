@@ -170,6 +170,12 @@
     <Compile Include="frmAddNewMembers.Designer.cs">
       <DependentUpon>frmAddNewMembers.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAlertBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAlertBox.Designer.cs">
+      <DependentUpon>frmAlertBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCreateManageTask.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +281,9 @@
     <EmbeddedResource Include="frmAddNewMembers.resx">
       <DependentUpon>frmAddNewMembers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAlertBox.resx">
+      <DependentUpon>frmAlertBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCreateManageTask.resx">
       <DependentUpon>frmCreateManageTask.cs</DependentUpon>
     </EmbeddedResource>
@@ -352,6 +361,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Loading Gif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Project Groups Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Information Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Error Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Success Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warning Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -52,6 +52,7 @@
             // 
             // txtSearchMessage
             // 
+            this.txtSearchMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchMessage.BackColor = System.Drawing.Color.White;
             this.txtSearchMessage.BorderColor = System.Drawing.Color.DimGray;
             this.txtSearchMessage.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
@@ -73,6 +74,9 @@
             // 
             // lstChats
             // 
+            this.lstChats.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstChats.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstChats.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lstChats.FormattingEnabled = true;
@@ -96,6 +100,7 @@
             // 
             // btnSendMessage
             // 
+            this.btnSendMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSendMessage.ButtonText = "";
             this.btnSendMessage.CheckedBackground = System.Drawing.Color.DodgerBlue;
             this.btnSendMessage.CheckedForeColor = System.Drawing.Color.White;
@@ -135,6 +140,7 @@
             // 
             // txtMessage
             // 
+            this.txtMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtMessage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtMessage.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.txtMessage.BorderFocusColor = System.Drawing.Color.WhiteSmoke;
@@ -157,6 +163,8 @@
             // 
             // pnlDivider
             // 
+            this.pnlDivider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlDivider.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlDivider.Location = new System.Drawing.Point(0, 89);
             this.pnlDivider.Name = "pnlDivider";

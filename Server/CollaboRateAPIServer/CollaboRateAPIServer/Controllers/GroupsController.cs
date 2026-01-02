@@ -542,7 +542,7 @@ namespace CollaboRateAPIServer.Controllers
 
                     if (adminCount <= 1)
                     {
-                        return BadRequest("Cannot remove the las admin from the group.");
+                        return BadRequest("Cannot remove the last admin from the group.");
                     }
                 }
 

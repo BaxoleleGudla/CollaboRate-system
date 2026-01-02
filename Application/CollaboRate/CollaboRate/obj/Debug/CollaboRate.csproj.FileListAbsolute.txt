@@ -84,3 +84,4 @@ C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\App
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmHome.resources
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmSettings.resources
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmAlertBox.resources

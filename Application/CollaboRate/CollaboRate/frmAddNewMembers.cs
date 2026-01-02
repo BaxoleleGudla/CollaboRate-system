@@ -15,6 +15,9 @@ namespace CollaboRate
 {
     public partial class frmAddNewMembers : Form
     {
+        // Custom property for parent form reference
+        public frmEditGroup EditParentForm { get; set; }
+
         private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
         private readonly HttpClient client = new HttpClient
         {
@@ -243,7 +246,13 @@ namespace CollaboRate
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-
+            if (EditParentForm != null)
+            {
+                EditParentForm.Show();
+                EditParentForm.BringToFront();
+                //_ = EditParentForm.RefreshGroupDetailsAsync();
+            }
+            this.Close();
         }
     }
 }

@@ -49,6 +49,7 @@
             // 
             // btnCreateNewTask
             // 
+            this.btnCreateNewTask.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreateNewTask.ButtonText = "Create New Task";
             this.btnCreateNewTask.CheckedBackground = System.Drawing.Color.DodgerBlue;
             this.btnCreateNewTask.CheckedForeColor = System.Drawing.Color.White;
@@ -123,6 +124,9 @@
             this.dgViewTasks.AllowUserToDeleteRows = false;
             this.dgViewTasks.AllowUserToResizeColumns = false;
             this.dgViewTasks.AllowUserToResizeRows = false;
+            this.dgViewTasks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgViewTasks.BackgroundColor = System.Drawing.Color.White;
             this.dgViewTasks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewTasks.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;

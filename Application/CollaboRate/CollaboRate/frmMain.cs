@@ -1,15 +1,16 @@
-﻿using System;
+﻿using CollaboRate.Dtos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CollaboRate.Dtos;
 
 namespace CollaboRate
 {
@@ -22,6 +23,18 @@ namespace CollaboRate
         {
             InitializeComponent();
             openChildForm(new frmHome());
+        }
+
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
         }
 
         // Method to load groups
@@ -291,6 +304,50 @@ namespace CollaboRate
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        // Drag form
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hIImd, int wMsg, int wParam, int lParam);
+
+        private void pnlTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pnlLogo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnNotification_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnSuccess_Click(object sender, EventArgs e)
+        {
+            AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Operation completed successfully.", Properties.Resources.Success_Icon);
+        }
+
+        private void btnError_Click(object sender, EventArgs e)
+        {
+            AlertBox(Color.LightPink, Color.DarkRed, "Error", "Operation encountered a problem.", Properties.Resources.Error_Icon);
+        }
+
+        private void btnWarning_Click(object sender, EventArgs e)
+        {
+            AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Are you confident in the operation.", Properties.Resources.Warning_Icon);
+        }
+
+        private void btnInformation_Click(object sender, EventArgs e)
+        {
+            AlertBox(Color.LightBlue, Color.DodgerBlue, "Information", "Operation is in progress.", Properties.Resources.Information_Icon);
         }
     }
 }

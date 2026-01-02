@@ -382,5 +382,78 @@ namespace CollaboRate
             dgViewTasks.Rows.Add(1, "Finish app design", "18 December 2025");
             dgViewMemberEvaluations.Rows.Add(1, "Roy", "4.5");
         }
+
+        // Method to remove a user from the group
+        private async Task<bool> RemoveUserFromGroupAsync(int groupId, int userId)
+        {
+            try
+            {
+                pbLoadingSpinner.Visible = true;
+                dgViewMembers.Enabled = false;
+
+                string url = $"https://collaborateapi.runasp.net/api/groups/{groupId}/members/{userId}";
+
+                HttpResponseMessage response = await client.DeleteAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+
+                string error = await response.Content.ReadAsStringAsync();
+                pbLoadingSpinner.Visible = false;
+                MessageBox.Show(error.ToString());
+                MessageBox.Show($"Failed to remove user: " + error, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            catch (TaskCanceledException)
+            {
+                pbLoadingSpinner.Visible = false;
+                MessageBox.Show("Request timed out. Please try again.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                pbLoadingSpinner.Visible = false;
+                MessageBox.Show("Error: " + ex.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                pbLoadingSpinner.Visible = false;
+                dgViewMembers.Enabled = true;
+            }
+        }
+
+
+        private async void dgViewMembers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Validate indexes and check if button column is clicked
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            {
+                return;
+            }
+
+            var dgView = sender as DataGridView;
+            var column = dgView.Columns[e.ColumnIndex];
+
+            if (dgViewMembers.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                int userId = Convert.ToInt32(dgView.Rows[e.RowIndex].Cells["User_ID"].Value);
+                int groupId = CurrentGroup.Group_ID;
+
+                if (MessageBox.Show("Are you sure you want to remove this member from the group?", "Remove member", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    bool success = await RemoveUserFromGroupAsync(groupId, userId);
+
+                    if (success)
+                    {
+                        await LoadGroupMembersAsync();
+
+                        MessageBox.Show("Member removed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
     }
 }

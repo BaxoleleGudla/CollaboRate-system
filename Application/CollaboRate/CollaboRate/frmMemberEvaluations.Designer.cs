@@ -82,6 +82,9 @@
             this.dgViewMemberEvaluations.AllowUserToDeleteRows = false;
             this.dgViewMemberEvaluations.AllowUserToResizeColumns = false;
             this.dgViewMemberEvaluations.AllowUserToResizeRows = false;
+            this.dgViewMemberEvaluations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgViewMemberEvaluations.BackgroundColor = System.Drawing.Color.White;
             this.dgViewMemberEvaluations.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewMemberEvaluations.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
@@ -175,6 +178,7 @@
             // 
             // btnEvaluateAllMembers
             // 
+            this.btnEvaluateAllMembers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEvaluateAllMembers.ButtonText = "Evaluate All Members";
             this.btnEvaluateAllMembers.CheckedBackground = System.Drawing.Color.DodgerBlue;
             this.btnEvaluateAllMembers.CheckedForeColor = System.Drawing.Color.White;

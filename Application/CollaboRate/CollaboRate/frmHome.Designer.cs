@@ -122,7 +122,7 @@
             // 
             // lblUpcomingTasks
             // 
-            this.lblUpcomingTasks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblUpcomingTasks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblUpcomingTasks.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUpcomingTasks.Location = new System.Drawing.Point(0, 21);
             this.lblUpcomingTasks.Margin = new System.Windows.Forms.Padding(0);
@@ -186,6 +186,7 @@
             // 
             this.Task_Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Task_Title.DataPropertyName = "Task_Title";
+            this.Task_Title.FillWeight = 300F;
             this.Task_Title.HeaderText = "Task Title";
             this.Task_Title.MinimumWidth = 6;
             this.Task_Title.Name = "Task_Title";
@@ -221,6 +222,7 @@
             // 
             // pnlGroupMembers
             // 
+            this.pnlGroupMembers.BackColor = System.Drawing.Color.White;
             this.pnlGroupMembers.Controls.Add(this.dgViewMembers);
             this.pnlGroupMembers.Controls.Add(this.lblGroupMembersHeading);
             this.pnlGroupMembers.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -235,8 +237,6 @@
             this.dgViewMembers.AllowUserToDeleteRows = false;
             this.dgViewMembers.AllowUserToResizeColumns = false;
             this.dgViewMembers.AllowUserToResizeRows = false;
-            this.dgViewMembers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dgViewMembers.BackgroundColor = System.Drawing.Color.White;
             this.dgViewMembers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewMembers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -256,6 +256,7 @@
             this.Username,
             this.User_Role,
             this.RemoveMember});
+            this.dgViewMembers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgViewMembers.EnableHeadersVisualStyles = false;
             this.dgViewMembers.GridColor = System.Drawing.SystemColors.Control;
             this.dgViewMembers.Location = new System.Drawing.Point(0, 21);
@@ -270,6 +271,7 @@
             this.dgViewMembers.RowTemplate.Height = 35;
             this.dgViewMembers.Size = new System.Drawing.Size(393, 227);
             this.dgViewMembers.TabIndex = 19;
+            this.dgViewMembers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewMembers_CellContentClick);
             // 
             // User_ID
             // 
@@ -285,6 +287,7 @@
             // 
             this.Username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Username.DataPropertyName = "Username";
+            this.Username.FillWeight = 300F;
             this.Username.HeaderText = "Username";
             this.Username.MinimumWidth = 6;
             this.Username.Name = "Username";
@@ -341,8 +344,7 @@
             // 
             // lblUpcomingMeetings
             // 
-            this.lblUpcomingMeetings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUpcomingMeetings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblUpcomingMeetings.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUpcomingMeetings.Location = new System.Drawing.Point(0, 21);
             this.lblUpcomingMeetings.Margin = new System.Windows.Forms.Padding(0);
@@ -406,6 +408,7 @@
             // 
             this.Meeting_Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Meeting_Title.DataPropertyName = "Meeting_Title";
+            this.Meeting_Title.FillWeight = 300F;
             this.Meeting_Title.HeaderText = "Meeting Title";
             this.Meeting_Title.MinimumWidth = 6;
             this.Meeting_Title.Name = "Meeting_Title";
@@ -452,7 +455,7 @@
             // 
             // lblMemberEvaluations
             // 
-            this.lblMemberEvaluations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMemberEvaluations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMemberEvaluations.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMemberEvaluations.Location = new System.Drawing.Point(0, 21);
             this.lblMemberEvaluations.Margin = new System.Windows.Forms.Padding(0);
@@ -516,6 +519,7 @@
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn2.DataPropertyName = "Username";
+            this.dataGridViewTextBoxColumn2.FillWeight = 300F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Username";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -643,17 +647,7 @@
         private System.Windows.Forms.DataGridView dgViewMembers;
         private System.Windows.Forms.DataGridView dgViewTasks;
         private System.Windows.Forms.DataGridView dgViewMeetings;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_Date;
         private System.Windows.Forms.PictureBox pbLoadingSpinner;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Task_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Task_Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Deadline;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User_Role;
-        private System.Windows.Forms.DataGridViewButtonColumn RemoveMember;
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblProjectGroupName;
@@ -665,10 +659,20 @@
         public System.Windows.Forms.Label lblUpcomingMeetings;
         private System.Windows.Forms.Panel pnlMemberEvaluations;
         private System.Windows.Forms.DataGridView dgViewMemberEvaluations;
+        public System.Windows.Forms.Label lblUpcomingTasks;
+        public System.Windows.Forms.Label lblMemberEvaluations;
+        private System.Windows.Forms.DataGridViewTextBoxColumn User_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn User_Role;
+        private System.Windows.Forms.DataGridViewButtonColumn RemoveMember;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Meeting_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Task_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Task_Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Deadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn MemberAverage;
-        public System.Windows.Forms.Label lblUpcomingTasks;
-        public System.Windows.Forms.Label lblMemberEvaluations;
     }
 }

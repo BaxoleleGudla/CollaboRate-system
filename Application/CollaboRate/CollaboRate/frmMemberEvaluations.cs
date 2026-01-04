@@ -28,6 +28,19 @@ namespace CollaboRate
             InitializeComponent();
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             frmUpdateMemberEvaluation updateMemberEvaluationForm = new frmUpdateMemberEvaluation();
@@ -96,7 +109,7 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading evaluations.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -134,7 +147,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An unexpected error occured: " + ex.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading evaluation details.", Properties.Resources.Error_Icon);
             }
         }
     }

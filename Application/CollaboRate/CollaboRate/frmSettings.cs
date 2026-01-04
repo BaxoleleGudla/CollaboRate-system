@@ -29,6 +29,19 @@ namespace CollaboRate
             InitializeComponent();
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         private void frmSettings_Load(object sender, EventArgs e)
         {
             txtUsername.Texts = CurrentUser.Username;
@@ -147,7 +160,7 @@ namespace CollaboRate
                         CurrentUser.Username = username;
                         CurrentUser.Email = email;
 
-                        MessageBox.Show("Profile updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Profile updated successfully.", Properties.Resources.Success_Icon);
                         return true;
                     }
                     else
@@ -158,7 +171,7 @@ namespace CollaboRate
                         btnSaveProfileChanges.ButtonText = "Save Profile Changes";
                         pbLoadingSpinner.Visible = false;
 
-                        MessageBox.Show($"Failed to update profile: {errorMsg}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to update profile.", Properties.Resources.Error_Icon);
                         return false;
                     }
                 }
@@ -173,7 +186,7 @@ namespace CollaboRate
                 btnSaveProfileChanges.ButtonText = "Save Profile Changes";
                 pbLoadingSpinner.Visible = false;
 
-                MessageBox.Show($"Error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while updating profile.", Properties.Resources.Error_Icon);
                 return false;
             }
         }
@@ -289,7 +302,7 @@ namespace CollaboRate
                         btnChangePassword.ButtonText = "Change Password";
                         pbLoadingSpinnerChangePassword.Visible = false;
 
-                        MessageBox.Show("Password updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Password updated successfully.", Properties.Resources.Success_Icon);
                         return true;
                     }
                     else
@@ -300,7 +313,7 @@ namespace CollaboRate
                         btnChangePassword.ButtonText = "Change Password";
                         pbLoadingSpinnerChangePassword.Visible = false;
 
-                        MessageBox.Show($"Failed to update password: {errorMsg}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to update password.", Properties.Resources.Error_Icon);
                         return false;
                     }
                 }
@@ -315,7 +328,7 @@ namespace CollaboRate
                 btnChangePassword.ButtonText = "Change Password";
                 pbLoadingSpinnerChangePassword.Visible = false;
 
-                MessageBox.Show($"Error: {ex.Message}", "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while updating password.", Properties.Resources.Error_Icon);
                 return false;
             }
         }

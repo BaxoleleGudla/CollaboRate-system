@@ -211,7 +211,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUpdateMemberEvaluation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.frmUpdateMemberEvaluation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

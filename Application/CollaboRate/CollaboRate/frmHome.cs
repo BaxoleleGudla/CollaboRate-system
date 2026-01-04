@@ -45,6 +45,19 @@ namespace CollaboRate
             }
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         // Method to get group details
         public async Task<AcceptedGroupUsersDto> GetGroupDetailsAsync(int groupId)
         {
@@ -70,18 +83,18 @@ namespace CollaboRate
             catch (TaskCanceledException ex) when (!ex.CancellationToken.IsCancellationRequested)
             {
                 // Timeout occurred
-                MessageBox.Show("The request timed out. Please try again later.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Timeout", "Request timed out. Please try again later.", Properties.Resources.Warning_Icon);
                 return null;
             }
             catch (HttpRequestException ex)
             {
                 // Network or HTTP error
-                MessageBox.Show("Request failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "A network error occurred while loading group details.", Properties.Resources.Error_Icon);
                 return null;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An unexpected error occured: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading group details.", Properties.Resources.Error_Icon);
                 return null;
             }
         }
@@ -112,7 +125,7 @@ namespace CollaboRate
                 catch (Exception ex)
                 {
                     pbLoadingSpinner.Visible = false;
-                    MessageBox.Show("Error: " + ex.Message, "error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading group members.", Properties.Resources.Error_Icon);
                 }
                 finally
                 {
@@ -121,7 +134,7 @@ namespace CollaboRate
             }
             else
             {
-                MessageBox.Show("No group selected", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "No group selected.", Properties.Resources.Warning_Icon);
             }
         }
 
@@ -192,7 +205,7 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading meetings.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -278,7 +291,7 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading tasks.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -349,7 +362,7 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading evaluations.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -402,20 +415,28 @@ namespace CollaboRate
 
                 string error = await response.Content.ReadAsStringAsync();
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show(error.ToString());
-                MessageBox.Show($"Failed to remove user: " + error, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (error.Contains("Cannot remove the las"))
+                {
+                    AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Cannot remove the last admin.", Properties.Resources.Warning_Icon);
+                }
+                else
+                {
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", error + " An error occurred while removing a member.", Properties.Resources.Error_Icon);
+                }
+                    
                 return false;
             }
             catch (TaskCanceledException)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Request timed out. Please try again.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Timeout", "Request timed out. Please try again later.", Properties.Resources.Warning_Icon);
                 return false;
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while removing a member.", Properties.Resources.Error_Icon);
                 return false;
             }
             finally
@@ -450,7 +471,7 @@ namespace CollaboRate
                     {
                         await LoadGroupMembersAsync();
 
-                        MessageBox.Show("Member removed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Member removed successfully.", Properties.Resources.Success_Icon);
                     }
                 }
             }

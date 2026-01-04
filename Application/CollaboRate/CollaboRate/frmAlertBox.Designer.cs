@@ -35,33 +35,33 @@
             this.timerAnimation = new System.Windows.Forms.Timer(this.components);
             this.elipse = new SATAUiFramework.Controls.SATAEllipseControl();
             this.pbxAlertIcon = new System.Windows.Forms.PictureBox();
+            this.pbxClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAlertIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxClose)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTextAlertBox
             // 
-            this.lblTextAlertBox.AutoSize = true;
-            this.lblTextAlertBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTextAlertBox.Location = new System.Drawing.Point(85, 41);
+            this.lblTextAlertBox.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTextAlertBox.Location = new System.Drawing.Point(56, 30);
             this.lblTextAlertBox.Name = "lblTextAlertBox";
-            this.lblTextAlertBox.Size = new System.Drawing.Size(128, 23);
+            this.lblTextAlertBox.Size = new System.Drawing.Size(288, 20);
             this.lblTextAlertBox.TabIndex = 1;
             this.lblTextAlertBox.Text = "TextAlertBox";
             // 
             // lblTitleAlertBox
             // 
-            this.lblTitleAlertBox.AutoSize = true;
-            this.lblTitleAlertBox.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleAlertBox.Location = new System.Drawing.Point(85, 14);
+            this.lblTitleAlertBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleAlertBox.Location = new System.Drawing.Point(56, 11);
             this.lblTitleAlertBox.Name = "lblTitleAlertBox";
-            this.lblTitleAlertBox.Size = new System.Drawing.Size(149, 27);
+            this.lblTitleAlertBox.Size = new System.Drawing.Size(206, 23);
             this.lblTitleAlertBox.TabIndex = 2;
             this.lblTitleAlertBox.Text = "TitleAlertBox";
             // 
             // pnlAlertBox
             // 
             this.pnlAlertBox.BackColor = System.Drawing.Color.Black;
-            this.pnlAlertBox.Location = new System.Drawing.Point(0, 73);
+            this.pnlAlertBox.Location = new System.Drawing.Point(-1, 57);
             this.pnlAlertBox.Name = "pnlAlertBox";
             this.pnlAlertBox.Size = new System.Drawing.Size(1, 6);
             this.pnlAlertBox.TabIndex = 3;
@@ -73,23 +73,35 @@
             // 
             // elipse
             // 
-            this.elipse.CornerRadius = 20;
+            this.elipse.CornerRadius = 12;
             this.elipse.TargetControl = this;
             // 
             // pbxAlertIcon
             // 
-            this.pbxAlertIcon.Location = new System.Drawing.Point(28, 14);
+            this.pbxAlertIcon.Location = new System.Drawing.Point(16, 15);
             this.pbxAlertIcon.Name = "pbxAlertIcon";
-            this.pbxAlertIcon.Size = new System.Drawing.Size(50, 50);
+            this.pbxAlertIcon.Size = new System.Drawing.Size(30, 30);
             this.pbxAlertIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxAlertIcon.TabIndex = 0;
             this.pbxAlertIcon.TabStop = false;
+            // 
+            // pbxClose
+            // 
+            this.pbxClose.Image = global::CollaboRate.Properties.Resources.Error_Icon;
+            this.pbxClose.Location = new System.Drawing.Point(332, 3);
+            this.pbxClose.Name = "pbxClose";
+            this.pbxClose.Size = new System.Drawing.Size(18, 18);
+            this.pbxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxClose.TabIndex = 4;
+            this.pbxClose.TabStop = false;
+            this.pbxClose.Click += new System.EventHandler(this.pbxClose_Click);
             // 
             // frmAlertBox
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(500, 80);
+            this.ClientSize = new System.Drawing.Size(353, 64);
+            this.Controls.Add(this.pbxClose);
             this.Controls.Add(this.pnlAlertBox);
             this.Controls.Add(this.lblTitleAlertBox);
             this.Controls.Add(this.lblTextAlertBox);
@@ -100,8 +112,8 @@
             this.Text = "frmAlertBox";
             this.Load += new System.EventHandler(this.frmAlertBox_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxAlertIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxClose)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -113,5 +125,6 @@
         private System.Windows.Forms.Panel pnlAlertBox;
         private System.Windows.Forms.Timer timerAnimation;
         private SATAUiFramework.Controls.SATAEllipseControl elipse;
+        private System.Windows.Forms.PictureBox pbxClose;
     }
 }

@@ -59,6 +59,19 @@ namespace CollaboRate
             });
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         // Method to get messages
         public async Task<List<MessageDto>> GetMessagesAsync(int groupId, int pageNumber = 1, int pageSize = 50, string keyword = null, CancellationToken cancellationToken = default)
         {
@@ -70,7 +83,7 @@ namespace CollaboRate
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show($"Failed to load messages: {response.ReasonPhrase}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to laod group chats.", Properties.Resources.Error_Icon);
                     return new List<MessageDto>();
                 }
 
@@ -79,7 +92,7 @@ namespace CollaboRate
                 {
                     if (!doc.RootElement.TryGetProperty("messages", out var messagesElement))
                     {
-                        MessageBox.Show("Response JSON does not contain 'Messages' property.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading chats.", Properties.Resources.Error_Icon);
                         return new List<MessageDto>();
                     }
 
@@ -99,7 +112,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading chats.", Properties.Resources.Error_Icon);
                 return new List<MessageDto>();
             }
         }
@@ -135,7 +148,7 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading chats.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -152,7 +165,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while establishing connection.", Properties.Resources.Error_Icon);
             }
 
             await DisplayMessages(CurrentGroup.Group_ID);
@@ -193,26 +206,26 @@ namespace CollaboRate
                 {
                     string errorMsg = await response.Content.ReadAsStringAsync();
                     pbLoadingSpinner.Visible = false;
-                    MessageBox.Show($"Failed to send message: {errorMsg}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to send message.", Properties.Resources.Error_Icon);
                     return false;
                 }
             }
             catch (HttpRequestException ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show($"Network error: {ex.Message}", "Network Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while sending message.", Properties.Resources.Error_Icon);
                 return false;
             }
             catch (TaskCanceledException)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Request timed out.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Request timed out. Please try again later.", Properties.Resources.Warning_Icon);
                 return false;
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while sending message.", Properties.Resources.Error_Icon);
                 return false;
             }
             finally
@@ -289,7 +302,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while closing connection.", Properties.Resources.Error_Icon);
             }
         }
     }

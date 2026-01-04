@@ -43,6 +43,19 @@ namespace CollaboRate
             }
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         private void btnCreateNewGroup_Click(object sender, EventArgs e)
         {
             frmCreateNewGroup createNewGroupForm = new frmCreateNewGroup();
@@ -80,18 +93,18 @@ namespace CollaboRate
             catch (TaskCanceledException ex) when (!ex.CancellationToken.IsCancellationRequested)
             {
                 // Timeout occurred
-                MessageBox.Show("The request timed out. Please try again later.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Timeout", "Request timed out. Please try again later.", Properties.Resources.Warning_Icon);
                 return null;
             }
             catch (HttpRequestException ex)
             {
                 // Network or HTTP error
-                MessageBox.Show("Request failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "A network error occurred while loading group details.", Properties.Resources.Error_Icon);
                 return null;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An unexpected error occured: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading group details.", Properties.Resources.Error_Icon);
                 return null;
             }
         }
@@ -120,17 +133,17 @@ namespace CollaboRate
             }
             catch (HttpRequestException ex)
             {
-                MessageBox.Show("Network error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while getting pending join requests.", Properties.Resources.Error_Icon);
                 return null;
             }
             catch (TaskCanceledException)
             {
-                MessageBox.Show("Request timed out. Please try again.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Timeout", "Request timed out. Please try again later.", Properties.Resources.Warning_Icon);
                 return null;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while getting pending join requests.", Properties.Resources.Error_Icon);
                 return null;
             }
         }
@@ -156,15 +169,15 @@ namespace CollaboRate
             }
             catch (HttpRequestException httpEx)
             {
-                MessageBox.Show("Network error while fetching groups: " + httpEx.Message, "Network Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "A network error occurred while loading groups.", Properties.Resources.Error_Icon);
             }
             catch (TaskCanceledException)
             {
-                MessageBox.Show("Request timed out while fetching groups. Please try again.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Timeout", "Request timed out. Please try again later.", Properties.Resources.Warning_Icon);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unexpected error while fetching groups: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading groups.", Properties.Resources.Error_Icon);
             }
 
             return null;
@@ -199,7 +212,7 @@ namespace CollaboRate
                 catch (Exception ex)
                 {
                     pbLoadingSpinner.Visible = false;
-                    MessageBox.Show("Error: " + ex.Message, "error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while displaying group details.", Properties.Resources.Error_Icon);
                 }
                 finally
                 {
@@ -208,7 +221,7 @@ namespace CollaboRate
             }
             else
             {
-                MessageBox.Show("No group selected", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "No group selected.", Properties.Resources.Warning_Icon);
             }
         }
 
@@ -234,12 +247,12 @@ namespace CollaboRate
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while displaying join requests.", Properties.Resources.Error_Icon);
                 }
             }
             else
             {
-                MessageBox.Show("No group selected", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "No group selected.", Properties.Resources.Warning_Icon);
             }
         }
 
@@ -269,7 +282,7 @@ namespace CollaboRate
             {
                 pbLoadingSpinner.Visible = false;
                 dgViewProjectGroups.Enabled = true;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while displaying groups.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -338,7 +351,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 dgViewProjectGroups.Enabled = true;
                 string error = await response.Content.ReadAsStringAsync();
-                MessageBox.Show("Failed to send join request: " + error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to send join request.", Properties.Resources.Error_Icon);
 
                 return false;
             }
@@ -346,7 +359,7 @@ namespace CollaboRate
             {
                 pbLoadingSpinner.Visible = false;
                 dgViewProjectGroups.Enabled = true;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while sending join request.", Properties.Resources.Error_Icon);
                 return false;
             }
             finally
@@ -377,14 +390,14 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 dgViewProjectGroups.Enabled = true;
                 string error = await response.Content.ReadAsStringAsync();
-                MessageBox.Show("Failed to cancel join request: " + error, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to cancel join request.", Properties.Resources.Error_Icon);
                 return false;
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
                 dgViewProjectGroups.Enabled = true;
-                MessageBox.Show("Could not cancel join request: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while cancelling join request.", Properties.Resources.Error_Icon);
                 return false;
             }
             finally
@@ -424,7 +437,7 @@ namespace CollaboRate
                         //group.HasPendingRequest = false;
                         //dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
                         await LoadGroupsAsync(CurrentUser.User_ID);
-                        MessageBox.Show("Request cancelled", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Join request cancelled.", Properties.Resources.Success_Icon);
                     }
                 }
                 else
@@ -436,7 +449,7 @@ namespace CollaboRate
                         //group.HasPendingRequest = true;
                         //dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
                         await LoadGroupsAsync(CurrentUser.User_ID);
-                        MessageBox.Show("Request sent", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Join request sent.", Properties.Resources.Success_Icon);
                     }
                 }
             }
@@ -456,15 +469,15 @@ namespace CollaboRate
             }
             catch (HttpRequestException ex)
             {
-                MessageBox.Show("Network error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while accepting member.", Properties.Resources.Error_Icon);
             }
             catch (TaskCanceledException)
             {
-                MessageBox.Show("Request timed out or was canceled.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Timeout", "Request timed out. Please try again later.", Properties.Resources.Warning_Icon);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unexpected error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while accepting member.", Properties.Resources.Error_Icon);
             }
 
             return false;
@@ -484,15 +497,15 @@ namespace CollaboRate
             }
             catch (HttpRequestException ex)
             {
-                MessageBox.Show("Network error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while rejecting member.", Properties.Resources.Error_Icon);
             }
             catch (TaskCanceledException)
             {
-                MessageBox.Show("Request timed out or was canceled.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Request timed out. Please try again later.", Properties.Resources.Warning_Icon);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unexpected error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occorred while rejecting member.", Properties.Resources.Error_Icon);
             }
             return false;
         }
@@ -529,7 +542,7 @@ namespace CollaboRate
                             await LoadJoinRequetsAsync();
                             pbLoadingSpinner.Visible = false;
                             dgViewJoinRequests.Enabled = true;
-                            MessageBox.Show("User accepted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "User accepted.", Properties.Resources.Success_Icon);
                         }
                     }
                     else if (column.Name == "RejectRequest")
@@ -541,7 +554,7 @@ namespace CollaboRate
                             await LoadJoinRequetsAsync();
                             pbLoadingSpinner.Visible = false;
                             dgViewJoinRequests.Enabled = true;
-                            MessageBox.Show("User rejected successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "User rejected.", Properties.Resources.Success_Icon);
                         }
                     }
                 }
@@ -549,7 +562,7 @@ namespace CollaboRate
                 {
                     pbLoadingSpinner.Visible = false;
                     dgViewJoinRequests.Enabled = true;
-                    MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "An unexpected error occurred.", Properties.Resources.Error_Icon);
                 }
             }
             finally

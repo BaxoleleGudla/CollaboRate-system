@@ -28,6 +28,19 @@ namespace CollaboRate
             InitializeComponent();
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         private void btnCreateNewTask_Click(object sender, EventArgs e)
         {
             frmCreateUpdateTask createTaskForm = new frmCreateUpdateTask();
@@ -111,7 +124,7 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading tasks.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -149,14 +162,14 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 dgViewTasks.Enabled = true;
                 string error = await response.Content.ReadAsStringAsync();
-                MessageBox.Show("Failed to change task status: " + error, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to change task status.", Properties.Resources.Error_Icon);
                 return false;
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
                 dgViewTasks.Enabled = true;
-                MessageBox.Show("Could not change task status: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while changing task status.", Properties.Resources.Error_Icon);
                 return false;
             }
             finally
@@ -204,7 +217,7 @@ namespace CollaboRate
                             //group.HasPendingRequest = false;
                             //dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
                             await DisplayTasksAsync(CurrentGroup.Group_ID);
-                            MessageBox.Show("Task marked as incomplete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Task marked as incomplete.", Properties.Resources.Success_Icon);
                         }
                     }
                     else if (task.Status == "Not Completed")
@@ -216,7 +229,7 @@ namespace CollaboRate
                             //group.HasPendingRequest = true;
                             //dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
                             await DisplayTasksAsync(CurrentGroup.Group_ID);
-                            MessageBox.Show("Task marked as completed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Task marked as completed.", Properties.Resources.Success_Icon);
                         }
                     }
                 }
@@ -241,14 +254,12 @@ namespace CollaboRate
                         updateTaskForm.ckbTaskCompleted.Checked = false;
                     }
 
-                    //updateTaskForm.btnDeleteTask.Enabled = true;
-
                     updateTaskForm.ShowDialog();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while changing task status.", Properties.Resources.Error_Icon);
             }
         }
 

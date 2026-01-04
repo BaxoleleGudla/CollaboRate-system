@@ -36,6 +36,19 @@ namespace CollaboRate
             _groupDetails = groupDetails;
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         private void btnAddNewMembers_Click(object sender, EventArgs e)
         {
             _addMembersForm = new frmAddNewMembers();
@@ -69,7 +82,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnSaveChanges.Enabled = true;
 
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while displaying group details.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -105,7 +118,7 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading users.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -212,7 +225,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnSaveChanges.Enabled = true;
 
-                        MessageBox.Show("Group updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Group updated successfully.", Properties.Resources.Success_Icon);
 
                         var mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
                         if (mainForm != null)
@@ -234,7 +247,7 @@ namespace CollaboRate
                         btnSaveChanges.Enabled = true;
 
                         string error = await response.Content.ReadAsStringAsync();
-                        MessageBox.Show("Faild to update group: " + error, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to update group.", Properties.Resources.Error_Icon);
                         return false;
                     }
                 }
@@ -248,7 +261,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnSaveChanges.Enabled = true;
 
-                MessageBox.Show("Network error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while updating group.", Properties.Resources.Error_Icon);
                 return false;
             }
             catch (Exception ex)
@@ -256,7 +269,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnSaveChanges.Enabled = true;
 
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while updating group.", Properties.Resources.Error_Icon);
                 return false;
             }
             finally

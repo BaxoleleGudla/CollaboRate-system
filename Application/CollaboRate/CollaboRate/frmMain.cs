@@ -25,6 +25,7 @@ namespace CollaboRate
             openChildForm(new frmHome());
         }
 
+        // Method for the toast form
         public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
         {
             frmAlertBox alertBoxForm = new frmAlertBox();
@@ -82,18 +83,18 @@ namespace CollaboRate
                     }
                     else
                     {
-                        MessageBox.Show("You do not belong to any groups", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightBlue, Color.DodgerBlue, "Information", "You do not belong to any groups.", Properties.Resources.Information_Icon);
                         cmbxCurrentGroup.DataSource = null;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Failed to load groups", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to load groups.", Properties.Resources.Error_Icon);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading groups: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Error occurred while loading groups.", Properties.Resources.Error_Icon);
             }
         }
 
@@ -131,7 +132,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Error occurred while opening chiled form.", Properties.Resources.Error_Icon);
             }
         }
 
@@ -258,7 +259,7 @@ namespace CollaboRate
             {
                 if ((cmbxCurrentGroup.SelectedIndex == -1))
                 {
-                    MessageBox.Show("No group selected");
+                    AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "No group selected.", Properties.Resources.Warning_Icon);
                 }
                 else
                 {
@@ -271,7 +272,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Error occurred while changing groups.", Properties.Resources.Error_Icon);
             }
         }
 

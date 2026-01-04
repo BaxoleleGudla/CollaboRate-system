@@ -29,6 +29,19 @@ namespace CollaboRate
             InitializeComponent();
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         // Method to check for errors
         private bool InputValidation()
         {
@@ -148,7 +161,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnCreateGroup.Enabled = true;
 
-                        MessageBox.Show("Group created successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Group created successfully.", Properties.Resources.Success_Icon);
 
                         txtGroupDescription.Texts = "";
                         txtGroupName.Texts = "";
@@ -162,7 +175,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnCreateGroup.Enabled = true;
 
-                        MessageBox.Show("Unexpected response format from server.", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Unexpected response format from server.", Properties.Resources.Error_Icon);
                     }
                 }
             }
@@ -171,21 +184,21 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnCreateGroup.Enabled = true;
 
-                MessageBox.Show($"Network error: {ex.Message}", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while creating group.", Properties.Resources.Error_Icon);
             }
             catch (TaskCanceledException)
             {
                 pbLoadingSpinner.Visible = false;
                 btnCreateGroup.Enabled = true;
 
-                MessageBox.Show("Request timed out.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Request timed out. Please try again later.", Properties.Resources.Warning_Icon);
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
                 btnCreateGroup.Enabled = true;
 
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while creating group.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -273,17 +286,17 @@ namespace CollaboRate
             catch (HttpRequestException ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Network error while loading users: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while loading users.", Properties.Resources.Error_Icon);
             }
             catch (JsonException ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Data format error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An internal error occurred while displaying users.", Properties.Resources.Error_Icon);
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while displaying users.", Properties.Resources.Error_Icon);
             }
             finally
             {

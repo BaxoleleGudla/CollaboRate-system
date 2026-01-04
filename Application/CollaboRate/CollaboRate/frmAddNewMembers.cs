@@ -30,6 +30,19 @@ namespace CollaboRate
             InitializeComponent();
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         // Method to get selected users
         private List<int> GetSelectedUserIds()
         {
@@ -67,7 +80,7 @@ namespace CollaboRate
 
                 if (!GetSelectedUserIds().Any())
                 {
-                    MessageBox.Show("Please select at least one user to add.", "No Users Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Please select at least one user to add.", Properties.Resources.Warning_Icon);
                     return;
                 }
 
@@ -92,7 +105,7 @@ namespace CollaboRate
                     pbLoadingSpinner.Visible = false;
                     btnAddMembers.Enabled = true;
 
-                    MessageBox.Show("User(s) added successfully:\n" + result, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "User(s) added successfully.", Properties.Resources.Success_Icon);
 
                     await DisplayUsersNotInGroupAsync(CurrentGroup.Group_ID);
 
@@ -101,8 +114,6 @@ namespace CollaboRate
                     {
                         _ = projectGroupForm.LoadGroupDetailsAsync();
                     }
-
-                    // Update frmEdit group with new members
                 }
                 else
                 {
@@ -110,14 +121,14 @@ namespace CollaboRate
                     btnAddMembers.Enabled = true;
 
                     string error = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show("Failed to add users: " + error, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to add users.", Properties.Resources.Error_Icon);
                 }
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
                 btnAddMembers.Enabled = true;
-                MessageBox.Show("Error adding users: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Error occurred while adding users.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -185,7 +196,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading users.", Properties.Resources.Error_Icon);
                 return new List<UserDto>();
             }
         }
@@ -216,17 +227,17 @@ namespace CollaboRate
             catch (HttpRequestException ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Network error while loading users: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while loading users.", Properties.Resources.Error_Icon);
             }
             catch (JsonException ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Data format error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An system error occurred while loading users.", Properties.Resources.Error_Icon);
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading users.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -250,7 +261,6 @@ namespace CollaboRate
             {
                 EditParentForm.Show();
                 EditParentForm.BringToFront();
-                //_ = EditParentForm.RefreshGroupDetailsAsync();
             }
             this.Close();
         }

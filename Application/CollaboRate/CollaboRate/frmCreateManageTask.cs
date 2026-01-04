@@ -28,6 +28,19 @@ namespace CollaboRate
             InitializeComponent();
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         // Method to load group members for task creation
         private async Task<List<UserDto>> GetUsersInGroupAsync(int groupId, string keyword = "")
         {
@@ -44,7 +57,7 @@ namespace CollaboRate
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("An error occured while getting group members", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading group members.", Properties.Resources.Error_Icon);
                     return null;
                 }
 
@@ -61,12 +74,12 @@ namespace CollaboRate
             }
             catch (HttpRequestException httpEx)
             {
-                MessageBox.Show("Error: " + httpEx.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while loading group members.", Properties.Resources.Error_Icon);
                 return null;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading group members.", Properties.Resources.Error_Icon);
                 return null;
             }
         }
@@ -95,7 +108,7 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while displaying group members.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -125,7 +138,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading assigned members.", Properties.Resources.Error_Icon);
                 return new List<UserWithTaskAssignmentDto>();
             }
         }
@@ -150,7 +163,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnCreateUpdateTask.Enabled = true;
 
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading members.", Properties.Resources.Error_Icon);
             }
         }
 
@@ -314,7 +327,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnCreateUpdateTask.Enabled = true;
 
-                        MessageBox.Show("Task created successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Task created successfully.", Properties.Resources.Success_Icon);
 
                         txtTaskTitle.Texts = "";
                         txtTaskDescription.Texts = "";
@@ -327,7 +340,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnCreateUpdateTask.Enabled = true;
 
-                        MessageBox.Show("Unexpected response format from server.", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "An internal server error occurred.", Properties.Resources.Error_Icon);
 
                         return false;
                     }
@@ -338,7 +351,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnCreateUpdateTask.Enabled = true;
 
-                MessageBox.Show($"Network error: {ex.Message}", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while creating task.", Properties.Resources.Error_Icon);
 
                 return false;
             }
@@ -347,7 +360,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnCreateUpdateTask.Enabled = true;
 
-                MessageBox.Show("Request timed out.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Request timed out. Please try again later.", Properties.Resources.Error_Icon);
 
                 return false;
             }
@@ -356,7 +369,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnCreateUpdateTask.Enabled = true;
 
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while creating task.", Properties.Resources.Error_Icon);
 
                 return false;
             }
@@ -408,7 +421,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnCreateUpdateTask.Enabled = true;
 
-                        MessageBox.Show("Task updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Task updated successfully.", Properties.Resources.Success_Icon);
 
                         var groupTaskForm = Application.OpenForms.OfType<frmGroupTasks>().FirstOrDefault();
                         if (groupTaskForm != null)
@@ -422,7 +435,7 @@ namespace CollaboRate
                         btnCreateUpdateTask.Enabled = true;
 
                         var error = await response.Content.ReadAsStringAsync();
-                        MessageBox.Show("Error: " + error, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while updating task.", Properties.Resources.Error_Icon);
                     }
                 }
             }
@@ -431,14 +444,14 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnCreateUpdateTask.Enabled = true;
 
-                MessageBox.Show("Error: " + httpEx.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while updating task.", Properties.Resources.Error_Icon);
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
                 btnCreateUpdateTask.Enabled = true;
 
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while updating task.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -454,7 +467,7 @@ namespace CollaboRate
             {
                 try
                 {
-                    pbLoadingSpinner.Visible = true; // Show loading indicator
+                    pbLoadingSpinner.Visible = true;
 
                     if (task_ID > 0)
                     {
@@ -467,7 +480,7 @@ namespace CollaboRate
                         {
                             pbLoadingSpinner.Visible = false;
                             string responseBody = await response.Content.ReadAsStringAsync();
-                            MessageBox.Show("Task deleted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Task deleted successfully.", Properties.Resources.Success_Icon);
 
                             var groupTaskForm = Application.OpenForms.OfType<frmGroupTasks>().FirstOrDefault();
                             if (groupTaskForm != null)
@@ -483,27 +496,27 @@ namespace CollaboRate
                         {
                             pbLoadingSpinner.Visible = false;
                             string error = await response.Content.ReadAsStringAsync();
-                            MessageBox.Show($"Failed to delete task: {error}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to delete task.", Properties.Resources.Error_Icon);
                             return false;
                         }
                     }
                     else
                     {
                         pbLoadingSpinner.Visible = false;
-                        MessageBox.Show("Please login to delete a task", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Please login to delete a task.", Properties.Resources.Warning_Icon);
                         return false;
                     }
                 }
                 catch (HttpRequestException ex)
                 {
                     pbLoadingSpinner.Visible = false;
-                    MessageBox.Show($"Network error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while deleting task.", Properties.Resources.Error_Icon);
                     return false;
                 }
                 catch (Exception ex)
                 {
                     pbLoadingSpinner.Visible = false;
-                    MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while deleting task.", Properties.Resources.Error_Icon);
                     return false;
                 }
             }
@@ -525,7 +538,7 @@ namespace CollaboRate
             }
             else
             {
-                MessageBox.Show("Could not create or update task", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Could not create or update task.", Properties.Resources.Warning_Icon);
             }
         }
 
@@ -571,7 +584,7 @@ namespace CollaboRate
             }
             else
             {
-                MessageBox.Show("Could not load group members", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Could not load group members.", Properties.Resources.Warning_Icon);
             }
         }
 

@@ -27,6 +27,19 @@ namespace CollaboRate
             InitializeComponent();
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         // Method to check for errors
         private bool InputValidation()
         {
@@ -131,7 +144,7 @@ namespace CollaboRate
                     pbLoadingSpinner.Visible = false;
                     btnScheduleUpdateMeeting.Enabled = true;
 
-                    MessageBox.Show("Meeting scheduled successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Meeting scheduled successfully.", Properties.Resources.Success_Icon);
 
                     txtMeetingTitle.Texts = "";
                     txtMeetingDescription.Texts = "";
@@ -156,7 +169,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnScheduleUpdateMeeting.Enabled = true;
 
-                MessageBox.Show("Request error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while scheduling meeting.", Properties.Resources.Error_Icon);
                 return false;
             }
             catch (Exception ex)
@@ -164,7 +177,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnScheduleUpdateMeeting.Enabled = true;
 
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while scheduling meeting.", Properties.Resources.Error_Icon);
                 return false;
             }
             finally
@@ -210,7 +223,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnScheduleUpdateMeeting.Enabled = true;
 
-                        MessageBox.Show("Meeting updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Meeting updated successfully.", Properties.Resources.Success_Icon);
 
                         var groupMeetingForm = Application.OpenForms.OfType<frmGroupMeetings>().FirstOrDefault();
                         if (groupMeetingForm != null)
@@ -224,7 +237,7 @@ namespace CollaboRate
                         btnScheduleUpdateMeeting.Enabled = true;
 
                         var error = await response.Content.ReadAsStringAsync();
-                        MessageBox.Show("Error: " + error, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while updating meeting.", Properties.Resources.Error_Icon);
                     }
                 }
             }
@@ -233,14 +246,14 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnScheduleUpdateMeeting.Enabled = true;
 
-                MessageBox.Show("Error: " + httpEx.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while updating meeting.", Properties.Resources.Error_Icon);
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
                 btnScheduleUpdateMeeting.Enabled = true;
 
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while updating meeting.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -261,7 +274,7 @@ namespace CollaboRate
             }
             else
             {
-                MessageBox.Show("Could not create or update meeting", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Could not create or update meeting.", Properties.Resources.Warning_Icon);
             }
         }
 
@@ -283,7 +296,7 @@ namespace CollaboRate
                     pbLoadingSpinner.Visible = false;
                     btnCancelMeeting.Enabled = true;
 
-                    MessageBox.Show("Meeting cancelled successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Meeting cancelled successfully.", Properties.Resources.Success_Icon);
                 }
                 else
                 {
@@ -291,7 +304,7 @@ namespace CollaboRate
                     btnCancelMeeting.Enabled = true;
 
                     string error = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show("Failed to cancel a meeting: " + error, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to cancel meeting.", Properties.Resources.Error_Icon);
                 }
 
             }
@@ -299,7 +312,7 @@ namespace CollaboRate
             {
                 pbLoadingSpinner.Visible = false;
                 btnCancelMeeting.Enabled = true;
-                MessageBox.Show("Could not cancel meeting: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while cancelling meeting.", Properties.Resources.Error_Icon);
             }
             finally
             {

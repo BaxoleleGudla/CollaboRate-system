@@ -29,6 +29,19 @@ namespace CollaboRate
             InitializeComponent();
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         // Method to check if all members have ratings
         private bool AllMembersRated()
         {
@@ -56,7 +69,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while checking evaluations.", Properties.Resources.Error_Icon);
                 return false;
             }
 
@@ -92,7 +105,7 @@ namespace CollaboRate
                             pbLoadingSpinner.Visible = false;
                             btnSubmitEvaluations.Enabled = true;
 
-                            MessageBox.Show("Please select a rating (1-5) for user ID " + rateeId + ".");
+                            AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Please select a rating (1-5) for all members.", Properties.Resources.Warning_Icon);
                             return false;
                         }
 
@@ -110,7 +123,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnSubmitEvaluations.Enabled = true;
 
-                        MessageBox.Show("No ratings to submit.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "No ratings to submit.", Properties.Resources.Warning_Icon);
                         return false;
                     }
 
@@ -127,12 +140,11 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnSubmitEvaluations.Enabled = true;
 
-                        MessageBox.Show("Ratings submitted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Evaluations submitted successfully.", Properties.Resources.Success_Icon);
 
                         var memberEvaluationsForm = Application.OpenForms.OfType<frmMemberEvaluations>().FirstOrDefault();
                         if (memberEvaluationsForm != null)
                         {
-                            MessageBox.Show("Ratings about to be refreshed");
                             await memberEvaluationsForm.DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
                         }
                     }
@@ -143,7 +155,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnSubmitEvaluations.Enabled = true;
 
-                        MessageBox.Show("Error: " + response.StatusCode + "\n" + error, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to sumbit evaluations.", Properties.Resources.Error_Icon);
                         return false;
                     }
                 }
@@ -152,7 +164,7 @@ namespace CollaboRate
                     pbLoadingSpinner.Visible = false;
                     btnSubmitEvaluations.Enabled = true;
 
-                    MessageBox.Show("Please rate all members", "Rate all members", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Please evaluate all members.", Properties.Resources.Warning_Icon);
                     return false;
                 }
 
@@ -163,7 +175,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnSubmitEvaluations.Enabled = true;
 
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Error occurred while submitting evaluations.", Properties.Resources.Error_Icon);
                 return false;
             }
             finally
@@ -194,7 +206,7 @@ namespace CollaboRate
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("An error occured while getting group members", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading group members.", Properties.Resources.Error_Icon);
                     return null;
                 }
 
@@ -211,12 +223,12 @@ namespace CollaboRate
             }
             catch (HttpRequestException httpEx)
             {
-                MessageBox.Show("Error: " + httpEx.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while loading members.", Properties.Resources.Error_Icon);
                 return null;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading members.", Properties.Resources.Error_Icon);
                 return null;
             }
         }
@@ -245,7 +257,7 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while displaying members.", Properties.Resources.Error_Icon);
             }
             finally
             {

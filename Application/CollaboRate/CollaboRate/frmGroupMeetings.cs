@@ -36,6 +36,19 @@ namespace CollaboRate
             }
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         private void btnScheduleNewMeeting_Click(object sender, EventArgs e)
         {
             frmScheduleUpdateMeeting scheduleMeetingForm = new frmScheduleUpdateMeeting();
@@ -104,7 +117,7 @@ namespace CollaboRate
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loadig meetings.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -148,7 +161,7 @@ namespace CollaboRate
                     pbLoadingSpinner.Visible = false;
                     dgViewMeetings.Enabled = true;
 
-                    MessageBox.Show("Meeting cancelled successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Meeting cancelled successfully.", Properties.Resources.Success_Icon);
                 }
                 else
                 {
@@ -156,7 +169,7 @@ namespace CollaboRate
                     dgViewMeetings.Enabled = true;
 
                     string error = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show("Failed to cancel a meeting: " + error, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to cancel meeting.", Properties.Resources.Error_Icon);
                 }
                     
             }
@@ -164,7 +177,7 @@ namespace CollaboRate
             {
                 pbLoadingSpinner.Visible = false;
                 dgViewMeetings.Enabled = true;
-                MessageBox.Show("Could not cancel meeting: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while cancelling meeting.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -231,7 +244,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while accessing meeting details.", Properties.Resources.Error_Icon);
             }
         }
     }

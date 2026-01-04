@@ -79,7 +79,7 @@ namespace CollaboRate
             pnlAlertBox.Width += 2;
 
             // Use >= instead of == to be safe
-            if (pnlAlertBox.Width >= 500)
+            if (pnlAlertBox.Width >= 353)
             {
                 timerAnimation.Stop(); 
                 this.Close();
@@ -90,8 +90,13 @@ namespace CollaboRate
         {
             PositionAlertBox();
 
-            timerAnimation.Interval = 10; // Adjust speed here (ms)
+            timerAnimation.Interval = 20; // Adjust speed here (ms)
             timerAnimation.Start();
+        }
+
+        private void pbxClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

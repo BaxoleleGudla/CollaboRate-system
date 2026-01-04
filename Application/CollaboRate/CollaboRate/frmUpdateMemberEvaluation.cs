@@ -28,6 +28,19 @@ namespace CollaboRate
             InitializeComponent();
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            frmAlertBox alertBoxForm = new frmAlertBox();
+            alertBoxForm.BackColor = backColor;
+            alertBoxForm.ColorAlertBox = color;
+            alertBoxForm.TitleAlertBox = title;
+            alertBoxForm.TextAlertBox = text;
+            alertBoxForm.IconAlertBox = icon;
+
+            alertBoxForm.Show(this);
+        }
+
         // Method to check for errors
         private bool InputValidation()
         {
@@ -35,7 +48,7 @@ namespace CollaboRate
 
             if (ratee_ID <= 0)
             {
-                MessageBox.Show("An unexpected error occured", "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "A system error occurred while updating evaluation.", Properties.Resources.Error_Icon);
                 return true;
             }
 
@@ -77,7 +90,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnSaveChanges.Enabled = true;
 
-                        MessageBox.Show("Rating updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Member evaluation updated successfully.", Properties.Resources.Success_Icon);
 
                         var memberEvaluationsForm = Application.OpenForms.OfType<frmMemberEvaluations>().FirstOrDefault();
                         if (memberEvaluationsForm != null)
@@ -94,7 +107,7 @@ namespace CollaboRate
                         pbLoadingSpinner.Visible = false;
                         btnSaveChanges.Enabled = true;
 
-                        MessageBox.Show($"Failed to update rating.\nStatus: {response.StatusCode}\n{error}", "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to update member evaluation.", Properties.Resources.Error_Icon);
                         return false;
                     }
                 }
@@ -110,7 +123,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnSaveChanges.Enabled = true;
 
-                MessageBox.Show("Request error: " + httpEx.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while updating evaluation.", Properties.Resources.Error_Icon);
                 return false;
             }
             catch (Exception ex)
@@ -118,14 +131,9 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = false;
                 btnSaveChanges.Enabled = true;
 
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while updating evaluation.", Properties.Resources.Error_Icon);
                 return false;
             }
-        }
-
-        private void frmUpdateMemberEvaluation_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private async void btnSaveChanges_Click(object sender, EventArgs e)

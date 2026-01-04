@@ -2,12 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using Task = System.Threading.Tasks.Task;
 using System.Collections.Generic;
 using CollaboRateAPIServer.Data;
 using System.Runtime.Versioning;
 using CollaboRateAPIServer.Dtos;
 using CollaboRateAPIServer.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.AspNetCore.SignalR;
+using CollaboRateAPIServer.Hubs;
 
 namespace CollaboRateAPIServer.Controllers
 {
@@ -16,10 +19,29 @@ namespace CollaboRateAPIServer.Controllers
     public class GroupsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IHubContext<ChatHub> _hubContext;
 
-        public GroupsController(AppDbContext context)
+        public GroupsController(AppDbContext context, IHubContext<ChatHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
+        }
+
+        // Method to send updated pending users to all clients watching this group
+        private async Task BroadcastPendingUsersUpdate(int groupId)
+        {
+            var pendingUsers = await _context.tblGroupMember
+            .Where(gm => gm.Group_ID == groupId && gm.Join_Status == "Pending")
+            .Include(gm => gm.User)
+            .Select(gm => new PendingUserDto
+            {
+                User_ID = gm.User_ID,
+                Username = gm.User.Username
+            })
+            .ToListAsync();
+
+            // Send to all clients in this group
+            await _hubContext.Clients.Group($"PendingRequests_{groupId}").SendAsync("PendingUsersUpdated", groupId, pendingUsers);
         }
 
         // GET: api/groups/user
@@ -173,6 +195,9 @@ namespace CollaboRateAPIServer.Controllers
             _context.tblGroupMember.Add(membership);
             await _context.SaveChangesAsync();
 
+            // Notify all group admins about new pending request
+            await BroadcastPendingUsersUpdate(groupId);
+
             return NoContent();
         }
 
@@ -192,6 +217,9 @@ namespace CollaboRateAPIServer.Controllers
 
             _context.tblGroupMember.Remove(membership);
             await _context.SaveChangesAsync();
+
+            // Notify all group admins about cancelled request
+            await BroadcastPendingUsersUpdate(groupId);
 
             return NoContent();
         }
@@ -243,6 +271,9 @@ namespace CollaboRateAPIServer.Controllers
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
 
+                // Notify all group admins about updated pending list
+                await BroadcastPendingUsersUpdate(groupId);
+
                 return NoContent();
 
             }
@@ -288,6 +319,9 @@ namespace CollaboRateAPIServer.Controllers
                 // Save all changes 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
+
+                // Notify all group admins about updated pending list
+                await BroadcastPendingUsersUpdate(groupId);
 
                 return NoContent();
             }

@@ -10,15 +10,18 @@ namespace CollaboRateAPIServer.Hubs
             await Clients.All.SendAsync("ReceiveMessage", senderUsername, messageText, createdAt);
         }
 
-        // Group admins join this group to get pending users updates
-        public async Task JoinPendingRequestsGroup(int groupId)
+        // Clients call this to start receiving updates for a specific group
+        public async Task SubscribeToGroupUpdates(int groupId)
         {
-            await Groups.AddToGroupAsync(Context.ConnectionId, $"PendingRequests_{groupId}");
+            string groupName = $"Group_Admin_Room_{groupId}";
+            await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
         }
 
-        public async Task LeavePendingRequestsGroup(int groupId)
+        // Clients call this when they leave the screen to stop receiving updates
+        public async Task UnsubscribeFromGroupUpdates(int groupId)
         {
-            await Groups.RemoveFromGroupAsync(Context.ConnectionId, $"PendingRequests_{groupId}");
+            string groupName = $"Group_Admin_Room_{groupId}";
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
         }
     }
 }

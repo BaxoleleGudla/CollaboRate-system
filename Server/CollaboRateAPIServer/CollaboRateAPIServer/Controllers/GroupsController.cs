@@ -437,6 +437,15 @@ namespace CollaboRateAPIServer.Controllers
                     }
                 }
 
+                // Check if at least one member has the Admin role after the updates
+                bool hasAdmin = group.GroupMembers.Any(m => m.User_Role == "Admin");
+
+                if (!hasAdmin)
+                {
+                    // We return 422 (Unprocessable Entity) to signal a business logic error
+                    return StatusCode(422, new { ErrorCode = "NO_ADMIN_REMAINING", Message = "Group must have at least one Admin." });
+                }
+
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
 

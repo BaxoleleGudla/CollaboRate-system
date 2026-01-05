@@ -241,6 +241,14 @@ namespace CollaboRate
 
                         return true;
                     }
+                    else if (response.StatusCode == (System.Net.HttpStatusCode)422)
+                    {
+                        // Catch last admin removal error
+                        string jsonResponse = await response.Content.ReadAsStringAsync();
+
+                        AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "The group must have at least one Admin in the group.", Properties.Resources.Warning_Icon);
+                        return false;
+                    }
                     else
                     {
                         pbLoadingSpinner.Visible = false;

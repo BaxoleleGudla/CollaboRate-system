@@ -246,7 +246,7 @@ namespace CollaboRate
                         // Catch last admin removal error
                         string jsonResponse = await response.Content.ReadAsStringAsync();
 
-                        AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "The group must have at least one Admin in the group.", Properties.Resources.Warning_Icon);
+                        AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "The group must have at least one Admin.", Properties.Resources.Warning_Icon);
                         return false;
                     }
                     else

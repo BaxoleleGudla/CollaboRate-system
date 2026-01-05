@@ -81,7 +81,6 @@ C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\App
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Options.xml
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Extensions.Primitives.xml
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.Threading.Channels.xml
-C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmHome.resources
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmSettings.resources
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmAlertBox.resources
@@ -172,3 +171,4 @@ E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\
 E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboR.D812CFD4.Up2Date
 E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
 E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config

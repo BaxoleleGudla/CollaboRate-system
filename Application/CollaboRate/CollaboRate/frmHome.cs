@@ -476,5 +476,17 @@ namespace CollaboRate
                 }
             }
         }
+
+        private void frmHome_Resize(object sender, EventArgs e)
+        {
+            if (pbLoadingSpinner != null)
+            {
+                // Calculate center: (Parent Width / 2) - (Control Width / 2)
+                int x = (this.ClientSize.Width - pbLoadingSpinner.Width) / 2;
+                int y = (this.ClientSize.Height - pbLoadingSpinner.Height) / 2;
+
+                pbLoadingSpinner.Location = new Point(x, y);
+            }
+        }
     }
 }

@@ -589,6 +589,15 @@ namespace CollaboRateAPIServer.Controllers
                     }
                 }
 
+                // Get ratings where the user was the rater or the ratee within this group
+                var userRatings = _context.tblRating.Where(r =>
+                    r.Group_ID == groupId &&
+                    (r.Rater_ID == userId || r.Ratee_ID == userId)
+                );
+
+                // Remove them from context
+                _context.tblRating.RemoveRange(userRatings);
+
                 // Remove the member
                 _context.tblGroupMember.Remove(membership);
                 await _context.SaveChangesAsync();

@@ -646,6 +646,13 @@ namespace CollaboRate
 
         private void frmProjectGroups_Resize(object sender, EventArgs e)
         {
+            // Force specific controls to redraw
+            pnlTop.Invalidate();
+            pnlMiddle.Invalidate();
+            pnlBottom.Invalidate();
+            pnlCurrentGroup.Invalidate();
+            txtSearchGroup.Invalidate();
+
             if (pbLoadingSpinner != null)
             {
                 // Calculate center: (Parent Width / 2) - (Control Width / 2)

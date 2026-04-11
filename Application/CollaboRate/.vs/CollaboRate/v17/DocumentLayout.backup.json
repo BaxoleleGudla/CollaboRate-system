@@ -3,27 +3,27 @@
   "WorkspaceRootPath": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\collaborate\\frmprojectgroups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmprojectgroups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\collaborate\\frmprojectgroups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmprojectgroups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\application\\collaborate\\collaborate\\frmprojectgroups.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmprojectgroups.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\application\\collaborate\\collaborate\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\collaborate\\frmevaluateallmembers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmevaluateallmembers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\application\\collaborate\\collaborate\\frmprojectgroups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmprojectgroups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\application\\collaborate\\collaborate\\frmprojectgroups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmprojectgroups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\application\\collaborate\\collaborate\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\collaborate\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\application\\collaborate\\collaborate\\frmalertbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\collaborate\\frmalertbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmalertbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -74,33 +74,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "frmProjectGroups.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.Designer.cs",
+              "RelativeDocumentMoniker": "CollaboRate\\frmProjectGroups.Designer.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.Designer.cs",
+              "RelativeToolTip": "CollaboRate\\frmProjectGroups.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T19:44:06.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "frmHome.cs",
               "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmHome.cs",
               "RelativeDocumentMoniker": "CollaboRate\\frmHome.cs",
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmHome.cs",
               "RelativeToolTip": "CollaboRate\\frmHome.cs",
-              "ViewState": "AgIAAMgBAAAAAAAAAAAAANsBAABvAAAAAAAAAA==",
+              "ViewState": "AgIAAL8BAAAAAAAAAAAAANsBAABvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-11T19:22:54.552Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "frmProjectGroups.cs",
               "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.cs",
               "RelativeDocumentMoniker": "CollaboRate\\frmProjectGroups.cs",
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.cs",
               "RelativeToolTip": "CollaboRate\\frmProjectGroups.cs",
-              "ViewState": "AgIAAEQCAAAAAAAAAAAnwFMCAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAH4CAAAAAAAAAAAgwIoCAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-11T18:30:17.418Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmProjectGroups.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.cs",
+              "RelativeDocumentMoniker": "CollaboRate\\frmProjectGroups.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.cs [Design]",
+              "RelativeToolTip": "CollaboRate\\frmProjectGroups.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T19:13:58.302Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -116,19 +141,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmEvaluateAllMembers.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmEvaluateAllMembers.cs",
-              "RelativeDocumentMoniker": "CollaboRate\\frmEvaluateAllMembers.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmEvaluateAllMembers.cs",
-              "RelativeToolTip": "CollaboRate\\frmEvaluateAllMembers.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAnwJYAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-21T11:39:45.058Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
               "Title": "frmHome.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmHome.cs",
@@ -136,20 +148,7 @@
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmHome.cs [Design]",
               "RelativeToolTip": "CollaboRate\\frmHome.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T18:40:47.14Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmProjectGroups.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.cs",
-              "RelativeDocumentMoniker": "CollaboRate\\frmProjectGroups.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.cs [Design]",
-              "RelativeToolTip": "CollaboRate\\frmProjectGroups.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T19:13:58.302Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-04-11T18:40:47.14Z"
             },
             {
               "$type": "Document",
@@ -161,8 +160,7 @@
               "RelativeToolTip": "CollaboRate\\frmAlertBox.cs",
               "ViewState": "AgIAAEsAAAAAAAAAAAASwFoAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T14:21:53.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T14:21:53.776Z"
             },
             {
               "$type": "Document",
@@ -185,8 +183,7 @@
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmAlertBox.cs [Design]",
               "RelativeToolTip": "CollaboRate\\frmAlertBox.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T14:07:33.775Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-02T14:07:33.775Z"
             },
             {
               "$type": "Document",

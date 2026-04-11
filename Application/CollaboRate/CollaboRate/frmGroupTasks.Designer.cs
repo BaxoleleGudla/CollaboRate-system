@@ -268,6 +268,7 @@
             this.Name = "frmGroupTasks";
             this.Text = "frmGroupTasks";
             this.Load += new System.EventHandler(this.frmGroupTasks_Load);
+            this.Resize += new System.EventHandler(this.frmGroupTasks_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewTasks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);

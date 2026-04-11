@@ -147,6 +147,8 @@ namespace CollaboRate
                         {
                             await memberEvaluationsForm.DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
                         }
+
+                        this.Close();
                     }
                     else
                     {

@@ -247,6 +247,7 @@
             this.Name = "frmGroupMeetings";
             this.Text = "frmGroupMeetings";
             this.Load += new System.EventHandler(this.frmGroupMeetings_Load);
+            this.Resize += new System.EventHandler(this.frmGroupMeetings_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMeetings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);

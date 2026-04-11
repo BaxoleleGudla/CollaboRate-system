@@ -201,6 +201,7 @@
             this.Name = "frmGroupChats";
             this.Text = "frmGroupChats";
             this.Load += new System.EventHandler(this.frmGroupChats_Load);
+            this.Resize += new System.EventHandler(this.frmGroupChats_Resize);
             this.pnlBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);

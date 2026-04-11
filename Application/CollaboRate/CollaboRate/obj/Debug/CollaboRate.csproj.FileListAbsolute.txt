@@ -172,28 +172,3 @@ E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\
 E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
 E:\My Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.AssemblyReference.cache
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe.config
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmAddNewMembers.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmAlertBox.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmCreateUpdateTask.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmCreateNewGroup.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmEvaluateAllMembers.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupChats.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupMeetings.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmGroupTasks.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmHome.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmLogin.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMain.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmEditGroup.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmMemberEvaluations.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmProjectGroups.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmRegister.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmScheduleUpdateMeeting.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmSettings.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.frmUpdateMemberEvaluation.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.Properties.Resources.resources
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.GenerateResource.cache
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.CoreCompileInputs.cache
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.exe
-C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.pdb

@@ -245,6 +245,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMemberEvaluations";
             this.Load += new System.EventHandler(this.frmMemberEvaluations_Load);
+            this.Resize += new System.EventHandler(this.frmMemberEvaluations_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMemberEvaluations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
             this.ResumeLayout(false);

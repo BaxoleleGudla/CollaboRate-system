@@ -469,7 +469,12 @@ namespace CollaboRate
 
                     if (success)
                     {
-                        await LoadGroupMembersAsync();
+                        var loadGroupMembersTask = LoadGroupMembersAsync();
+                        var displayUpcomingTasksTask = DisplayUpcomingTasksAsync(CurrentGroup.Group_ID);
+                        var displayRatingsTask = DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
+
+                        await Task.WhenAll(loadGroupMembersTask, displayUpcomingTasksTask, displayRatingsTask);
+
 
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Member removed successfully.", Properties.Resources.Success_Icon);
                     }

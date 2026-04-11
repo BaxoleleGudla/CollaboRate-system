@@ -1,8 +1,10 @@
 ﻿using CollaboRate.Dtos;
+using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
@@ -26,9 +28,13 @@ namespace CollaboRate
         private BindingSource groupsBindingSource = new BindingSource();
         private AcceptedGroupUsersDto _currentGroupDetails;
 
+        // SignalR fields
+        private HubConnection _connection;
+
         public frmProjectGroups()
         {
             InitializeComponent();
+
             if (CurrentUser.Group_Role != null)
             {
                 if (CurrentUser.Group_Role.Contains("Admin"))
@@ -43,17 +49,64 @@ namespace CollaboRate
             }
         }
 
+        // Initialize SignalR connection
+        private async void InitializeSignalR()
+        {
+            _connection = new HubConnectionBuilder()
+                .WithUrl("https://collaborateapi.runasp.net/chathub")
+                .WithAutomaticReconnect()
+                .Build();
+
+            // Listen for updates from the server
+            _connection.On<List<PendingUserDto>>("RefreshPendingList", (newList) =>
+            {
+                this.Invoke(new Action(() => {
+                    // 1. Refresh the data source
+                    pendingUsersBindingSource.DataSource = newList;
+                    dgViewJoinRequests.DataSource = pendingUsersBindingSource;
+
+                    // 2. IMPORTANT: Force the panel visibility based on the new list
+                    // and check if the user is an admin before showing it
+                    bool isAdmin = CurrentUser.Group_Role != null && CurrentUser.Group_Role.Contains("Admin");
+                    pnlMiddle.Visible = (isAdmin && newList.Count > 0);
+                }));
+            });
+
+            try
+            {
+                await _connection.StartAsync();
+
+                // Subscribe to the group that was JUST selected in the frmMain ComboBox
+                if (CurrentGroup.Group_ID > 0)
+                {
+                    await _connection.InvokeAsync("SubscribeToGroupUpdates", CurrentGroup.Group_ID);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Fallback: If SignalR fails, the user still sees the initial data from the standard Load method
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Error occurred while establishing real-time connection.", Properties.Resources.Error_Icon);
+            }
+        }
+
         // Method for the toast form
         public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
         {
-            frmAlertBox alertBoxForm = new frmAlertBox();
-            alertBoxForm.BackColor = backColor;
-            alertBoxForm.ColorAlertBox = color;
-            alertBoxForm.TitleAlertBox = title;
-            alertBoxForm.TextAlertBox = text;
-            alertBoxForm.IconAlertBox = icon;
+            try
+            {
+                frmAlertBox alertBoxForm = new frmAlertBox();
+                alertBoxForm.BackColor = backColor;
+                alertBoxForm.ColorAlertBox = color;
+                alertBoxForm.TitleAlertBox = title;
+                alertBoxForm.TextAlertBox = text;
+                alertBoxForm.IconAlertBox = icon;
 
-            alertBoxForm.Show(this);
+                alertBoxForm.Show(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Warinng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnCreateNewGroup_Click(object sender, EventArgs e)
@@ -225,7 +278,7 @@ namespace CollaboRate
             }
         }
 
-        // Method to dsplay join requests
+        // Method to dsplay join requests (with signalR)
         public async Task LoadJoinRequetsAsync()
         {
             if (CurrentGroup.Group_ID >= 1)
@@ -294,6 +347,8 @@ namespace CollaboRate
         // Form load event
         private async void frmProjectGroups_Load(object sender, EventArgs e)
         {
+            InitializeSignalR();
+
             // Display data
             var groupDetailsTask = LoadGroupDetailsAsync();
             var joinRequestsTask = LoadJoinRequetsAsync();
@@ -537,9 +592,12 @@ namespace CollaboRate
                     {
                         bool success = await AcceptUserToGroup(groupId, userId);
 
+                        // Refresh group details with new user count
+                        await LoadGroupDetailsAsync();
+
                         if (success == true)
                         {
-                            await LoadJoinRequetsAsync();
+                            //await LoadJoinRequetsAsync();
                             pbLoadingSpinner.Visible = false;
                             dgViewJoinRequests.Enabled = true;
                             AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "User accepted.", Properties.Resources.Success_Icon);
@@ -551,7 +609,7 @@ namespace CollaboRate
 
                         if (success == true)
                         {
-                            await LoadJoinRequetsAsync();
+                            //await LoadJoinRequetsAsync();
                             pbLoadingSpinner.Visible = false;
                             dgViewJoinRequests.Enabled = true;
                             AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "User rejected.", Properties.Resources.Success_Icon);
@@ -575,6 +633,27 @@ namespace CollaboRate
         private async void txtSearchGroup__TextChanged(object sender, EventArgs e)
         {
             await LoadGroupsAsync(CurrentUser.User_ID, txtSearchGroup.Texts);
+        }
+
+        private async void frmProjectGroups_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_connection != null)
+            {
+                await _connection.StopAsync();
+                await _connection.DisposeAsync();
+            }
+        }
+
+        private void frmProjectGroups_Resize(object sender, EventArgs e)
+        {
+            if (pbLoadingSpinner != null)
+            {
+                // Calculate center: (Parent Width / 2) - (Control Width / 2)
+                int x = (this.ClientSize.Width - pbLoadingSpinner.Width) / 2;
+                int y = (this.ClientSize.Height - pbLoadingSpinner.Height) / 2;
+
+                pbLoadingSpinner.Location = new Point(x, y);
+            }
         }
     }
 }

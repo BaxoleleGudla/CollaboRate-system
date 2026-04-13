@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius8 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius9 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius10 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius11 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius12 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius13 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius14 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius3 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius4 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius5 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius6 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius7 = new SATAUiFramework.BorderRadius();
             this.pnlSettings = new System.Windows.Forms.Panel();
             this.pnlApplicationDefaults = new System.Windows.Forms.Panel();
             this.pnlGroupManagementDefaults = new SATAUiFramework.SATAPanel();
@@ -133,11 +133,11 @@
             this.pnlGroupManagementDefaults.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlGroupManagementDefaults.BackColor2 = System.Drawing.Color.WhiteSmoke;
             this.pnlGroupManagementDefaults.BorderColor = System.Drawing.Color.Black;
-            borderRadius8.BottomLeft = 5;
-            borderRadius8.BottomRight = 5;
-            borderRadius8.TopLeft = 5;
-            borderRadius8.TopRight = 5;
-            this.pnlGroupManagementDefaults.BorderRadius = borderRadius8;
+            borderRadius1.BottomLeft = 5;
+            borderRadius1.BottomRight = 5;
+            borderRadius1.TopLeft = 5;
+            borderRadius1.TopRight = 5;
+            this.pnlGroupManagementDefaults.BorderRadius = borderRadius1;
             this.pnlGroupManagementDefaults.BorderThickness = 0;
             this.pnlGroupManagementDefaults.Controls.Add(this.cmbxDefaultRole);
             this.pnlGroupManagementDefaults.Controls.Add(this.cmbxDefaultJoinStatus);
@@ -147,7 +147,7 @@
             this.pnlGroupManagementDefaults.Controls.Add(this.label21);
             this.pnlGroupManagementDefaults.Location = new System.Drawing.Point(16, 55);
             this.pnlGroupManagementDefaults.Name = "pnlGroupManagementDefaults";
-            this.pnlGroupManagementDefaults.Size = new System.Drawing.Size(755, 294);
+            this.pnlGroupManagementDefaults.Size = new System.Drawing.Size(782, 294);
             this.pnlGroupManagementDefaults.TabIndex = 20;
             // 
             // cmbxDefaultRole
@@ -263,7 +263,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
             this.panel3.Location = new System.Drawing.Point(15, 36);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(755, 1);
+            this.panel3.Size = new System.Drawing.Size(782, 1);
             this.panel3.TabIndex = 19;
             // 
             // lblApplicationDefaultsHeading
@@ -295,18 +295,18 @@
             this.pnlAlerts.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlAlerts.BackColor2 = System.Drawing.Color.WhiteSmoke;
             this.pnlAlerts.BorderColor = System.Drawing.Color.Black;
-            borderRadius9.BottomLeft = 5;
-            borderRadius9.BottomRight = 5;
-            borderRadius9.TopLeft = 5;
-            borderRadius9.TopRight = 5;
-            this.pnlAlerts.BorderRadius = borderRadius9;
+            borderRadius2.BottomLeft = 5;
+            borderRadius2.BottomRight = 5;
+            borderRadius2.TopLeft = 5;
+            borderRadius2.TopRight = 5;
+            this.pnlAlerts.BorderRadius = borderRadius2;
             this.pnlAlerts.BorderThickness = 0;
             this.pnlAlerts.Controls.Add(this.sataPanel1);
             this.pnlAlerts.Controls.Add(this.pnlEmailNotification);
             this.pnlAlerts.Controls.Add(this.pnlPushNotification);
             this.pnlAlerts.Location = new System.Drawing.Point(19, 61);
             this.pnlAlerts.Name = "pnlAlerts";
-            this.pnlAlerts.Size = new System.Drawing.Size(755, 162);
+            this.pnlAlerts.Size = new System.Drawing.Size(782, 162);
             this.pnlAlerts.TabIndex = 23;
             // 
             // sataPanel1
@@ -314,17 +314,17 @@
             this.sataPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.sataPanel1.BackColor2 = System.Drawing.Color.WhiteSmoke;
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius10.BottomLeft = 5;
-            borderRadius10.BottomRight = 5;
-            borderRadius10.TopLeft = 5;
-            borderRadius10.TopRight = 5;
-            this.sataPanel1.BorderRadius = borderRadius10;
+            borderRadius3.BottomLeft = 5;
+            borderRadius3.BottomRight = 5;
+            borderRadius3.TopLeft = 5;
+            borderRadius3.TopRight = 5;
+            this.sataPanel1.BorderRadius = borderRadius3;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.btnSaveNotificationPreferences);
             this.sataPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.sataPanel1.Location = new System.Drawing.Point(0, 70);
             this.sataPanel1.Name = "sataPanel1";
-            this.sataPanel1.Size = new System.Drawing.Size(755, 90);
+            this.sataPanel1.Size = new System.Drawing.Size(782, 90);
             this.sataPanel1.TabIndex = 26;
             // 
             // btnSaveNotificationPreferences
@@ -370,18 +370,18 @@
             this.pnlEmailNotification.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlEmailNotification.BackColor2 = System.Drawing.Color.WhiteSmoke;
             this.pnlEmailNotification.BorderColor = System.Drawing.Color.Black;
-            borderRadius11.BottomLeft = 5;
-            borderRadius11.BottomRight = 5;
-            borderRadius11.TopLeft = 5;
-            borderRadius11.TopRight = 5;
-            this.pnlEmailNotification.BorderRadius = borderRadius11;
+            borderRadius4.BottomLeft = 5;
+            borderRadius4.BottomRight = 5;
+            borderRadius4.TopLeft = 5;
+            borderRadius4.TopRight = 5;
+            this.pnlEmailNotification.BorderRadius = borderRadius4;
             this.pnlEmailNotification.BorderThickness = 0;
             this.pnlEmailNotification.Controls.Add(this.tglEmailNotifications);
             this.pnlEmailNotification.Controls.Add(this.label3);
             this.pnlEmailNotification.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlEmailNotification.Location = new System.Drawing.Point(0, 35);
             this.pnlEmailNotification.Name = "pnlEmailNotification";
-            this.pnlEmailNotification.Size = new System.Drawing.Size(755, 35);
+            this.pnlEmailNotification.Size = new System.Drawing.Size(782, 35);
             this.pnlEmailNotification.TabIndex = 25;
             // 
             // tglEmailNotifications
@@ -409,18 +409,18 @@
             this.pnlPushNotification.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlPushNotification.BackColor2 = System.Drawing.Color.WhiteSmoke;
             this.pnlPushNotification.BorderColor = System.Drawing.Color.Black;
-            borderRadius12.BottomLeft = 5;
-            borderRadius12.BottomRight = 5;
-            borderRadius12.TopLeft = 5;
-            borderRadius12.TopRight = 5;
-            this.pnlPushNotification.BorderRadius = borderRadius12;
+            borderRadius5.BottomLeft = 5;
+            borderRadius5.BottomRight = 5;
+            borderRadius5.TopLeft = 5;
+            borderRadius5.TopRight = 5;
+            this.pnlPushNotification.BorderRadius = borderRadius5;
             this.pnlPushNotification.BorderThickness = 0;
             this.pnlPushNotification.Controls.Add(this.tglPushNotifications);
             this.pnlPushNotification.Controls.Add(this.label11);
             this.pnlPushNotification.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlPushNotification.Location = new System.Drawing.Point(0, 0);
             this.pnlPushNotification.Name = "pnlPushNotification";
-            this.pnlPushNotification.Size = new System.Drawing.Size(755, 35);
+            this.pnlPushNotification.Size = new System.Drawing.Size(782, 35);
             this.pnlPushNotification.TabIndex = 24;
             // 
             // tglPushNotifications
@@ -449,7 +449,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
             this.panel1.Location = new System.Drawing.Point(18, 42);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(755, 1);
+            this.panel1.Size = new System.Drawing.Size(782, 1);
             this.panel1.TabIndex = 22;
             // 
             // lblNotificationPreferencesHeading
@@ -481,11 +481,11 @@
             this.pnlChangePassword.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlChangePassword.BackColor2 = System.Drawing.Color.WhiteSmoke;
             this.pnlChangePassword.BorderColor = System.Drawing.Color.Black;
-            borderRadius13.BottomLeft = 5;
-            borderRadius13.BottomRight = 5;
-            borderRadius13.TopLeft = 5;
-            borderRadius13.TopRight = 5;
-            this.pnlChangePassword.BorderRadius = borderRadius13;
+            borderRadius6.BottomLeft = 5;
+            borderRadius6.BottomRight = 5;
+            borderRadius6.TopLeft = 5;
+            borderRadius6.TopRight = 5;
+            this.pnlChangePassword.BorderRadius = borderRadius6;
             this.pnlChangePassword.BorderThickness = 0;
             this.pnlChangePassword.Controls.Add(this.pbLoadingSpinnerChangePassword);
             this.pnlChangePassword.Controls.Add(this.lblConfirmNewPasswordError);
@@ -501,7 +501,7 @@
             this.pnlChangePassword.Controls.Add(this.label8);
             this.pnlChangePassword.Location = new System.Drawing.Point(16, 377);
             this.pnlChangePassword.Name = "pnlChangePassword";
-            this.pnlChangePassword.Size = new System.Drawing.Size(755, 378);
+            this.pnlChangePassword.Size = new System.Drawing.Size(782, 378);
             this.pnlChangePassword.TabIndex = 21;
             // 
             // pbLoadingSpinnerChangePassword
@@ -696,11 +696,11 @@
             this.pnlProfileInformation.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlProfileInformation.BackColor2 = System.Drawing.Color.WhiteSmoke;
             this.pnlProfileInformation.BorderColor = System.Drawing.Color.Black;
-            borderRadius14.BottomLeft = 5;
-            borderRadius14.BottomRight = 5;
-            borderRadius14.TopLeft = 5;
-            borderRadius14.TopRight = 5;
-            this.pnlProfileInformation.BorderRadius = borderRadius14;
+            borderRadius7.BottomLeft = 5;
+            borderRadius7.BottomRight = 5;
+            borderRadius7.TopLeft = 5;
+            borderRadius7.TopRight = 5;
+            this.pnlProfileInformation.BorderRadius = borderRadius7;
             this.pnlProfileInformation.BorderThickness = 0;
             this.pnlProfileInformation.Controls.Add(this.pbLoadingSpinner);
             this.pnlProfileInformation.Controls.Add(this.btnSaveProfileChanges);
@@ -713,7 +713,7 @@
             this.pnlProfileInformation.Controls.Add(this.label1);
             this.pnlProfileInformation.Location = new System.Drawing.Point(16, 55);
             this.pnlProfileInformation.Name = "pnlProfileInformation";
-            this.pnlProfileInformation.Size = new System.Drawing.Size(755, 294);
+            this.pnlProfileInformation.Size = new System.Drawing.Size(782, 294);
             this.pnlProfileInformation.TabIndex = 20;
             // 
             // pbLoadingSpinner
@@ -867,7 +867,7 @@
             this.pnlDecoration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
             this.pnlDecoration.Location = new System.Drawing.Point(15, 36);
             this.pnlDecoration.Name = "pnlDecoration";
-            this.pnlDecoration.Size = new System.Drawing.Size(755, 1);
+            this.pnlDecoration.Size = new System.Drawing.Size(782, 1);
             this.pnlDecoration.TabIndex = 19;
             // 
             // lblAccountAndSecurityHeading
@@ -911,6 +911,7 @@
             this.Name = "frmSettings";
             this.Text = "frmSettings";
             this.Load += new System.EventHandler(this.frmSettings_Load);
+            this.Resize += new System.EventHandler(this.frmSettings_Resize);
             this.pnlSettings.ResumeLayout(false);
             this.pnlSettings.PerformLayout();
             this.pnlApplicationDefaults.ResumeLayout(false);

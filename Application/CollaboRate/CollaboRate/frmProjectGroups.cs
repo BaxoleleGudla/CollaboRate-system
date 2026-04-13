@@ -105,7 +105,8 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Warinng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Do nothing
+                ;
             }
         }
 

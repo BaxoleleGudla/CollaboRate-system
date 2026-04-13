@@ -32,14 +32,22 @@ namespace CollaboRate
         // Method for the toast form
         public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
         {
-            frmAlertBox alertBoxForm = new frmAlertBox();
-            alertBoxForm.BackColor = backColor;
-            alertBoxForm.ColorAlertBox = color;
-            alertBoxForm.TitleAlertBox = title;
-            alertBoxForm.TextAlertBox = text;
-            alertBoxForm.IconAlertBox = icon;
+            try
+            {
+                frmAlertBox alertBoxForm = new frmAlertBox();
+                alertBoxForm.BackColor = backColor;
+                alertBoxForm.ColorAlertBox = color;
+                alertBoxForm.TitleAlertBox = title;
+                alertBoxForm.TextAlertBox = text;
+                alertBoxForm.IconAlertBox = icon;
 
-            alertBoxForm.Show(this);
+                alertBoxForm.Show(this);
+            }
+            catch (Exception ex)
+            {
+                // Do nothing
+                ;
+            }
         }
 
         // Method to check for errors

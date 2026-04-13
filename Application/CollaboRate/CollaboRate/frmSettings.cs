@@ -32,14 +32,22 @@ namespace CollaboRate
         // Method for the toast form
         public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
         {
-            frmAlertBox alertBoxForm = new frmAlertBox();
-            alertBoxForm.BackColor = backColor;
-            alertBoxForm.ColorAlertBox = color;
-            alertBoxForm.TitleAlertBox = title;
-            alertBoxForm.TextAlertBox = text;
-            alertBoxForm.IconAlertBox = icon;
+            try
+            {
+                frmAlertBox alertBoxForm = new frmAlertBox();
+                alertBoxForm.BackColor = backColor;
+                alertBoxForm.ColorAlertBox = color;
+                alertBoxForm.TitleAlertBox = title;
+                alertBoxForm.TextAlertBox = text;
+                alertBoxForm.IconAlertBox = icon;
 
-            alertBoxForm.Show(this);
+                alertBoxForm.Show(this);
+            }
+            catch (Exception ex)
+            {
+                // Do nothing
+                ;
+            }
         }
 
         private void frmSettings_Load(object sender, EventArgs e)
@@ -336,6 +344,20 @@ namespace CollaboRate
         private async void btnChangePassword_Click(object sender, EventArgs e)
         {
             await UpdateUserPasswordAsync(CurrentUser.User_ID, txtCurrentPassword.Texts, txtNewPassword.Texts, txtConfirmNewPassword.Texts);
+        }
+
+        private void frmSettings_Resize(object sender, EventArgs e)
+        {
+            // Force specific controls to redraw
+            pnlTop.Invalidate();
+            pnlAccountAndSecurity.Invalidate();
+            pnlProfileInformation.Invalidate();
+            pnlChangePassword.Invalidate();
+            pnlNotificationPreferences.Invalidate();
+            pnlAlerts.Invalidate();
+            pnlPushNotification.Invalidate();
+            pnlApplicationDefaults.Invalidate();
+            pnlGroupManagementDefaults.Invalidate();
         }
     }
 }

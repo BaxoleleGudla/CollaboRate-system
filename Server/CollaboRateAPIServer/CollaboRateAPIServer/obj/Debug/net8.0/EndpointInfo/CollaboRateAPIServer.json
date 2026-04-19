@@ -958,7 +958,7 @@
         }
       }
     },
-    "/api/Ratings/group/{groupId}/rater/{raterId}/rated-members": {
+    "/api/Ratings/group/{groupId}/status-for/{raterId}": {
       "get": {
         "tags": [
           "Ratings"
@@ -980,13 +980,6 @@
             "schema": {
               "type": "integer",
               "format": "int32"
-            }
-          },
-          {
-            "name": "keyword",
-            "in": "query",
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -1023,7 +1016,7 @@
         }
       }
     },
-    "/api/Ratings/ratings": {
+    "/api/Ratings/batch-upsert": {
       "post": {
         "tags": [
           "Ratings"
@@ -1034,7 +1027,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/RatingDto"
+                  "$ref": "#/components/schemas/RatingUpdateDto"
                 }
               }
             },
@@ -1042,7 +1035,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/RatingDto"
+                  "$ref": "#/components/schemas/RatingUpdateDto"
                 }
               }
             },
@@ -1050,37 +1043,8 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/RatingDto"
+                  "$ref": "#/components/schemas/RatingUpdateDto"
                 }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Ratings"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateRatingDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateRatingDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateRatingDto"
               }
             }
           }
@@ -1947,18 +1911,32 @@
             "type": "string",
             "nullable": true
           },
-          "score": {
+          "myCurrentScore": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "averageScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "receivedRatingsCount": {
             "type": "integer",
             "format": "int32"
           },
-          "average_Score": {
-            "type": "number",
-            "format": "double"
+          "potentialRatingsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ratingStatus": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
           }
         },
         "additionalProperties": false
       },
-      "RatingDto": {
+      "RatingUpdateDto": {
         "type": "object",
         "properties": {
           "group_ID": {
@@ -2166,28 +2144,6 @@
           "confirmPassword": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateRatingDto": {
-        "type": "object",
-        "properties": {
-          "group_ID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "rater_ID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "ratee_ID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "score": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

@@ -540,8 +540,24 @@
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.RatingsController",
-    "Method": "GetRatedMemberByRaterAsync",
-    "RelativePath": "api/Ratings/group/{groupId}/rater/{raterId}/rated-members",
+    "Method": "BatchUpsert",
+    "RelativePath": "api/Ratings/batch-upsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updates",
+        "Type": "System.Collections.Generic.List\u00601[[CollaboRateAPIServer.Dtos.RatingUpdateDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.RatingsController",
+    "Method": "GetEvaluations",
+    "RelativePath": "api/Ratings/group/{groupId}/status-for/{raterId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -555,11 +571,6 @@
         "Name": "raterId",
         "Type": "System.Int32",
         "IsRequired": true
-      },
-      {
-        "Name": "keyword",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -573,38 +584,6 @@
         "StatusCode": 200
       }
     ]
-  },
-  {
-    "ContainingType": "CollaboRateAPIServer.Controllers.RatingsController",
-    "Method": "AddRatings",
-    "RelativePath": "api/Ratings/ratings",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "ratingsDto",
-        "Type": "System.Collections.Generic.List\u00601[[CollaboRateAPIServer.Dtos.RatingDto, CollaboRateAPIServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CollaboRateAPIServer.Controllers.RatingsController",
-    "Method": "UpdateMemberEvaluationAsync",
-    "RelativePath": "api/Ratings/ratings",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "CollaboRateAPIServer.Dtos.UpdateRatingDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.TasksController",

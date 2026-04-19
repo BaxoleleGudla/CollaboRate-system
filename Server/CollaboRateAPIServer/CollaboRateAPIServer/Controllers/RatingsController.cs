@@ -23,69 +23,48 @@ namespace CollaboRateAPIServer.Controllers
         }
 
         // Method to get ratings done by a specific member
-        [HttpGet("group/{groupId}/rater/{raterId}/rated-members")]
-        public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetRatedMemberByRaterAsync(int groupId, int raterId, [FromQuery] string? keyword = null)
+        [HttpGet("group/{groupId}/status-for/{raterId}")]
+        public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetEvaluations(int groupId, int raterId)
         {
-            try
+            var totalInGroup = await _context.tblGroupMember.CountAsync(gm => gm.Group_ID == groupId && gm.Join_Status == "Accepted");
+
+            var members = await _context.tblGroupMember
+                .Where(gm => gm.Group_ID == groupId && gm.User_ID != raterId && gm.Join_Status == "Accepted")
+                .Join(_context.tblUser, gm => gm.User_ID, u => u.User_ID, (gm, u) => new { u.User_ID, u.Username })
+                .ToListAsync();
+
+            var ratings = await _context.tblRating.Where(r => r.Group_ID == groupId).ToListAsync();
+
+            return Ok(members.Select(m => new RatedMemberDto
             {
-                // Get all ratings in the group to cmpute average per Ratee
-                // Grouping on Ratee_ID and calculate average score
-                var averageRatingsQuery = _context.tblRating
-                    .Where(r => r.Group_ID == groupId)
-                    .GroupBy(r => r.Ratee_ID)
-                    .Select(g => new
-                    {
-                        Ratee_ID = g.Key,
-                        AverageScore = g.Average(r => r.Score)
-                    });
-
-                // Get the ratings made by the specified rater in the group
-                var query = _context.tblRating
-                    .Where(r => r.Group_ID == groupId && r.Rater_ID == raterId)
-                    .Join(_context.tblUser,
-                        rating => rating.Ratee_ID,
-                        user => user.User_ID,
-                        (rating, user) => new
-                        {
-                            user.User_ID,
-                            user.Username,
-                            Score = rating.Score
-                        });
-
-                // Apply keyword filter on Username if keyword supplied
-                if (string.IsNullOrWhiteSpace(keyword) == false)
-                {
-                    string lowerKeyword = keyword.ToLower();
-                    query = query.Where(u => u.Username.ToLower().Contains(lowerKeyword));
-                }
-
-                // Join the rating-by-rater with average rating per Ratee_ID
-                var resultQuery = query
-                    .Join(averageRatingsQuery,
-                        raterRating => raterRating.User_ID,
-                        avg => avg.Ratee_ID,
-                        (raterRating, avg) => new RatedMemberDto
-                        {
-                            User_ID = raterRating.User_ID,
-                            Username = raterRating.Username,
-                            Score = (byte)raterRating.Score,
-                            Average_Score = Math.Round(avg.AverageScore, 2)
-                        })
-                    .OrderBy(rm => rm.Username);
-
-                var resultList = await resultQuery.ToListAsync();
-
-                return Ok(resultList);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "An error occurred while processing your request.");
-            }
+                User_ID = m.User_ID,
+                Username = m.Username,
+                MyCurrentScore = ratings.FirstOrDefault(r => r.Rater_ID == raterId && r.Ratee_ID == m.User_ID)?.Score,
+                AverageScore = ratings.Where(r => r.Ratee_ID == m.User_ID).Any() ?
+                               Math.Round(ratings.Where(r => r.Ratee_ID == m.User_ID).Average(r => (double)r.Score), 2) : 0,
+                ReceivedRatingsCount = ratings.Count(r => r.Ratee_ID == m.User_ID),
+                PotentialRatingsCount = totalInGroup - 1
+            }).OrderBy(x => x.Username));
         }
 
+        [HttpPost("batch-upsert")]
+        public async Task<IActionResult> BatchUpsert([FromBody] List<RatingUpdateDto> updates)
+        {
+            foreach (var dto in updates)
+            {
+                var existing = await _context.tblRating.FirstOrDefaultAsync(r => r.Group_ID == dto.Group_ID && r.Rater_ID == dto.Rater_ID && r.Ratee_ID == dto.Ratee_ID);
+                if (existing != null) { existing.Score = dto.Score; existing.Rated_At = DateTime.UtcNow; }
+                else { _context.tblRating.Add(new Rating { Group_ID = dto.Group_ID, Rater_ID = dto.Rater_ID, Ratee_ID = dto.Ratee_ID, Score = dto.Score }); }
+            }
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+
+        /* Old logic to for user ratings 
         // Method to add ratings
         [HttpPost("ratings")]
-        public async Task<ActionResult> AddRatings([FromBody] List<RatingDto> ratingsDto)
+        public async Task<ActionResult> AddRatings([FromBody] List<RatingUpdateDto> ratingsDto)
         {
             if (ratingsDto == null || !ratingsDto.Any())
             {
@@ -165,6 +144,6 @@ namespace CollaboRateAPIServer.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
+        }*/
     }
 }

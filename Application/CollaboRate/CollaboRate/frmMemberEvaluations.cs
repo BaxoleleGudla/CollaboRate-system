@@ -159,7 +159,7 @@ namespace CollaboRate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error refreshing data: " + ex.Message);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading evaluations.", Properties.Resources.Error_Icon);
             }
             finally
             {

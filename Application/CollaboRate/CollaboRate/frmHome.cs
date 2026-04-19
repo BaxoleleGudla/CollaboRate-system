@@ -308,68 +308,38 @@ namespace CollaboRate
         }
 
         // Method to load ratings
-        private async Task<List<RatedMemberDto>> GetRatingsAsync(int groupId, int userId, string keyword = null)
-        {
-            string url = $"https://collaborateapi.runasp.net/api/Ratings/group/{groupId}/rater/{userId}/rated-members";
-
-            if (string.IsNullOrWhiteSpace(keyword) == false)
-            {
-                url += $"?keyword={Uri.EscapeDataString(keyword)}";
-            }
-
-            var response = await client.GetAsync(url);
-
-            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                return new List<RatedMemberDto>();
-            }
-
-            response.EnsureSuccessStatusCode();
-
-            var json = await response.Content.ReadAsStringAsync();
-
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-
-
-            var ratings = JsonSerializer.Deserialize<List<RatedMemberDto>>(json, options);
-
-            return ratings ?? new List<RatedMemberDto>();
-        }
-
-        // Method to display meetings
-        public async Task DisplayRatingsAsync(int groupId, int userId, string keyword = null)
+        private async Task LoadMemberEvaluationsAsync(string keyword = "")
         {
             try
             {
+                dgViewMemberEvaluations.ClearSelection();
+                dgViewMemberEvaluations.CurrentCell = null;
+
                 pbLoadingSpinner.Visible = true;
 
-                var ratings = await GetRatingsAsync(groupId, userId, keyword);
+                // Construct the URL with an optional search keyword
+                string url = $"{ApiBaseUrl}/api/Ratings/group/{CurrentGroup.Group_ID}/status-for/{CurrentUser.User_ID}";
 
-                if (ratings != null)
+                if (!string.IsNullOrWhiteSpace(keyword))
                 {
-                    if (ratings.Count <= 0)
-                    {
-                        lblMemberEvaluations.Visible = true;
-                    }
-                    else
-                    {
-                        ratingsBindingSource.DataSource = ratings;
-                        dgViewMemberEvaluations.AutoGenerateColumns = false;
-                        dgViewMemberEvaluations.DataSource = ratingsBindingSource;
-                    }   
+                    url += $"?keyword={Uri.EscapeDataString(keyword)}";
                 }
-                else
+
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    ratingsBindingSource.DataSource = null;
-                    dgViewMemberEvaluations.DataSource = ratingsBindingSource;
+                    var json = await response.Content.ReadAsStringAsync();
+                    var data = JsonSerializer.Deserialize<List<RatedMemberDto>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                    // Prevent the grid from deleting your custom GUI columns
+                    dgViewMemberEvaluations.AutoGenerateColumns = false;
+
+                    dgViewMemberEvaluations.DataSource = data;
                 }
             }
             catch (Exception ex)
             {
-                pbLoadingSpinner.Visible = false;
                 AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading evaluations.", Properties.Resources.Error_Icon);
             }
             finally
@@ -391,7 +361,7 @@ namespace CollaboRate
             var loadGroupMembersTask = LoadGroupMembersAsync();
             var displayUpcomingMeetingsTask = DisplayUpcomingMeetingsAsync(CurrentGroup.Group_ID);
             var displayUpcomingTasksTask = DisplayUpcomingTasksAsync(CurrentGroup.Group_ID);
-            var displayRatingsTask = DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
+            var displayRatingsTask = LoadMemberEvaluationsAsync();
 
             await Task.WhenAll(loadGroupMembersTask, displayUpcomingMeetingsTask, displayUpcomingTasksTask, displayRatingsTask);
         }
@@ -479,7 +449,7 @@ namespace CollaboRate
                     {
                         var loadGroupMembersTask = LoadGroupMembersAsync();
                         var displayUpcomingTasksTask = DisplayUpcomingTasksAsync(CurrentGroup.Group_ID);
-                        var displayRatingsTask = DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
+                        var displayRatingsTask = LoadMemberEvaluationsAsync();
 
                         await Task.WhenAll(loadGroupMembersTask, displayUpcomingTasksTask, displayRatingsTask);
 

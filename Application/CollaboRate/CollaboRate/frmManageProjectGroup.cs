@@ -59,10 +59,26 @@ namespace CollaboRate
 
         private void btnAddNewMembers_Click(object sender, EventArgs e)
         {
-            _addMembersForm = new frmAddNewMembers();
-            _addMembersForm.EditParentForm = this; // Set parent reference
-            _addMembersForm.Show();
-            this.Hide();
+            using (frmAddNewMembers addMembersForm = new frmAddNewMembers())
+            {
+                addMembersForm.EditParentForm = this;
+                addMembersForm.StartPosition = FormStartPosition.CenterParent;
+
+                try
+                {
+                    this.Enabled = false;
+
+                    // This keeps the chain: frmMain -> frmManage -> frmAdd
+                    addMembersForm.ShowDialog(this);
+                }
+                finally
+                {
+                    // Re-enable the form when the dialog is closed
+                    this.Enabled = true;
+                    this.BringToFront();
+                    this.Focus();
+                }
+            }
         }
 
         private void BindUsersToGrid(List<GroupUserDto> users)

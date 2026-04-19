@@ -40,7 +40,10 @@ CREATE TABLE tblRating (
 	CONSTRAINT FK_RATING_GROUP FOREIGN KEY (Group_ID) REFERENCES tblGroup(Group_ID),
 	CONSTRAINT FK_RATING_RATER FOREIGN KEY (Rater_ID) REFERENCES tblUser(User_ID),
 	CONSTRAINT FK_RATING_RATEE FOREIGN KEY (Ratee_ID) REFERENCES tblUser(User_ID),
-	CONSTRAINT UQ_RATING_GROUP_RATER_RATEE UNIQUE (Group_ID, Rater_ID, Ratee_ID)
+	
+	-- Prevents self-rating and duplicate entries
+    CONSTRAINT CHK_NoSelfRating CHECK (Rater_ID <> Ratee_ID),
+    CONSTRAINT UQ_RATING_RELATION UNIQUE (Group_ID, Rater_ID, Ratee_ID)
 );
 
 CREATE TABLE tblMeeting (
@@ -66,7 +69,7 @@ CREATE TABLE tblTask (
 );
 
 CREATE TABLE tblTaskAssignment (
-	Task_Assignmet_ID INT IDENTITY(1,1) PRIMARY KEY,
+	Task_Assignment_ID INT IDENTITY(1,1) PRIMARY KEY,
 	Task_ID INT NOT NULL,
 	User_ID INT NOT NULL,
 	Is_Completed BIT NOT NULL DEFAULT 0,

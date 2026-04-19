@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tblPanelHome = new System.Windows.Forms.TableLayoutPanel();
             this.pnlTasks = new System.Windows.Forms.Panel();
             this.lblUpcomingTasks = new System.Windows.Forms.Label();
@@ -65,15 +65,15 @@
             this.pnlMemberEvaluations = new System.Windows.Forms.Panel();
             this.lblMemberEvaluations = new System.Windows.Forms.Label();
             this.dgViewMemberEvaluations = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MemberAverage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblEvaluationsHeading = new System.Windows.Forms.Label();
             this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.lblProjectGroupName = new System.Windows.Forms.Label();
             this.lblHeading = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AverageScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblPanelHome.SuspendLayout();
             this.pnlTasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewTasks)).BeginInit();
@@ -141,14 +141,14 @@
             this.dgViewTasks.BackgroundColor = System.Drawing.Color.White;
             this.dgViewTasks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewTasks.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgViewTasks.ColumnHeadersHeight = 35;
             this.dgViewTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewTasks.ColumnHeadersVisible = false;
@@ -164,9 +164,9 @@
             this.dgViewTasks.ReadOnly = true;
             this.dgViewTasks.RowHeadersVisible = false;
             this.dgViewTasks.RowHeadersWidth = 51;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewTasks.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewTasks.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgViewTasks.RowTemplate.DividerHeight = 5;
             this.dgViewTasks.RowTemplate.Height = 35;
             this.dgViewTasks.Size = new System.Drawing.Size(393, 227);
@@ -195,10 +195,10 @@
             // Deadline
             // 
             this.Deadline.DataPropertyName = "Deadline";
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
-            this.Deadline.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            this.Deadline.DefaultCellStyle = dataGridViewCellStyle2;
             this.Deadline.HeaderText = "Deadline";
             this.Deadline.MinimumWidth = 6;
             this.Deadline.Name = "Deadline";
@@ -240,14 +240,14 @@
             this.dgViewMembers.BackgroundColor = System.Drawing.Color.White;
             this.dgViewMembers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewMembers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgViewMembers.ColumnHeadersHeight = 35;
             this.dgViewMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewMembers.ColumnHeadersVisible = false;
@@ -264,9 +264,9 @@
             this.dgViewMembers.ReadOnly = true;
             this.dgViewMembers.RowHeadersVisible = false;
             this.dgViewMembers.RowHeadersWidth = 51;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewMembers.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewMembers.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgViewMembers.RowTemplate.DividerHeight = 5;
             this.dgViewMembers.RowTemplate.Height = 35;
             this.dgViewMembers.Size = new System.Drawing.Size(393, 227);
@@ -304,11 +304,11 @@
             // 
             // RemoveMember
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
-            this.RemoveMember.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
+            this.RemoveMember.DefaultCellStyle = dataGridViewCellStyle5;
             this.RemoveMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveMember.HeaderText = "Remove";
             this.RemoveMember.MinimumWidth = 6;
@@ -363,14 +363,14 @@
             this.dgViewMeetings.BackgroundColor = System.Drawing.Color.White;
             this.dgViewMeetings.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewMeetings.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewMeetings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMeetings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgViewMeetings.ColumnHeadersHeight = 35;
             this.dgViewMeetings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewMeetings.ColumnHeadersVisible = false;
@@ -386,9 +386,9 @@
             this.dgViewMeetings.ReadOnly = true;
             this.dgViewMeetings.RowHeadersVisible = false;
             this.dgViewMeetings.RowHeadersWidth = 51;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewMeetings.RowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewMeetings.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgViewMeetings.RowTemplate.DividerHeight = 5;
             this.dgViewMeetings.RowTemplate.Height = 35;
             this.dgViewMeetings.Size = new System.Drawing.Size(393, 227);
@@ -417,10 +417,10 @@
             // Meeting_Date
             // 
             this.Meeting_Date.DataPropertyName = "Meeting_Date";
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
-            this.Meeting_Date.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            this.Meeting_Date.DefaultCellStyle = dataGridViewCellStyle8;
             this.Meeting_Date.HeaderText = "Meeting Date";
             this.Meeting_Date.MinimumWidth = 6;
             this.Meeting_Date.Name = "Meeting_Date";
@@ -474,21 +474,21 @@
             this.dgViewMemberEvaluations.BackgroundColor = System.Drawing.Color.White;
             this.dgViewMemberEvaluations.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgViewMemberEvaluations.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewMemberEvaluations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMemberEvaluations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgViewMemberEvaluations.ColumnHeadersHeight = 35;
             this.dgViewMemberEvaluations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgViewMemberEvaluations.ColumnHeadersVisible = false;
             this.dgViewMemberEvaluations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
-            this.MemberAverage});
+            this.AverageScore});
             this.dgViewMemberEvaluations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgViewMemberEvaluations.EnableHeadersVisualStyles = false;
             this.dgViewMemberEvaluations.GridColor = System.Drawing.SystemColors.Control;
@@ -497,49 +497,13 @@
             this.dgViewMemberEvaluations.ReadOnly = true;
             this.dgViewMemberEvaluations.RowHeadersVisible = false;
             this.dgViewMemberEvaluations.RowHeadersWidth = 51;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgViewMemberEvaluations.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgViewMemberEvaluations.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgViewMemberEvaluations.RowTemplate.DividerHeight = 5;
             this.dgViewMemberEvaluations.RowTemplate.Height = 35;
             this.dgViewMemberEvaluations.Size = new System.Drawing.Size(393, 227);
             this.dgViewMemberEvaluations.TabIndex = 22;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "User_ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "User ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Username";
-            this.dataGridViewTextBoxColumn2.FillWeight = 300F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Username";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // MemberAverage
-            // 
-            this.MemberAverage.DataPropertyName = "Average_Score";
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
-            this.MemberAverage.DefaultCellStyle = dataGridViewCellStyle23;
-            this.MemberAverage.HeaderText = "Average Contribution";
-            this.MemberAverage.MinimumWidth = 6;
-            this.MemberAverage.Name = "MemberAverage";
-            this.MemberAverage.ReadOnly = true;
-            this.MemberAverage.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.MemberAverage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.MemberAverage.ToolTipText = "Average Contribution";
-            this.MemberAverage.Width = 114;
             // 
             // lblEvaluationsHeading
             // 
@@ -605,6 +569,42 @@
             this.lblHeading.Size = new System.Drawing.Size(80, 27);
             this.lblHeading.TabIndex = 54;
             this.lblHeading.Text = "Home";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "User_ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "User ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Username";
+            this.dataGridViewTextBoxColumn2.FillWeight = 300F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Username";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // AverageScore
+            // 
+            this.AverageScore.DataPropertyName = "AverageScore";
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            this.AverageScore.DefaultCellStyle = dataGridViewCellStyle11;
+            this.AverageScore.HeaderText = "Average Contribution";
+            this.AverageScore.MinimumWidth = 6;
+            this.AverageScore.Name = "AverageScore";
+            this.AverageScore.ReadOnly = true;
+            this.AverageScore.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AverageScore.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.AverageScore.ToolTipText = "Average Contribution";
+            this.AverageScore.Width = 114;
             // 
             // frmHome
             // 
@@ -672,6 +672,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Deadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MemberAverage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AverageScore;
     }
 }

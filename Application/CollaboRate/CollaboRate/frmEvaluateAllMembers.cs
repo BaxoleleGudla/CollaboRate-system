@@ -96,7 +96,7 @@ namespace CollaboRate
 
                 if (AllMembersRated() == true)
                 {
-                    var ratings = new List<RatingDto>();
+                    var ratings = new List<RatingUpdateDto>();
 
                     foreach (DataGridViewRow row in dgViewUsers.Rows)
                     {
@@ -117,7 +117,7 @@ namespace CollaboRate
                             return false;
                         }
 
-                        ratings.Add(new RatingDto
+                        ratings.Add(new RatingUpdateDto
                         {
                             Group_ID = CurrentGroup.Group_ID,
                             Rater_ID = CurrentUser.User_ID,
@@ -153,7 +153,7 @@ namespace CollaboRate
                         var memberEvaluationsForm = Application.OpenForms.OfType<frmMemberEvaluations>().FirstOrDefault();
                         if (memberEvaluationsForm != null)
                         {
-                            await memberEvaluationsForm.DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
+                            //await memberEvaluationsForm.DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
                         }
 
                         this.Close();

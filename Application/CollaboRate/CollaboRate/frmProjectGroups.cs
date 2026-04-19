@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Text.Json;
@@ -369,6 +370,15 @@ namespace CollaboRate
                     }
                 }
             }
+
+            // Code to fix ghosting effect on datagridview
+            typeof(DataGridView).InvokeMember(
+                "DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+                null,
+                dgViewProjectGroups,
+                new object[] { true }
+            );
         }
 
         private void dgViewProjectGroups_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -653,6 +663,8 @@ namespace CollaboRate
             pnlBottom.Invalidate();
             pnlCurrentGroup.Invalidate();
             txtSearchGroup.Invalidate();
+
+            this.Refresh();
 
             if (pbLoadingSpinner != null)
             {

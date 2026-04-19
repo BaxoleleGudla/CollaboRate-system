@@ -26,6 +26,27 @@ namespace CollaboRate
         public frmMemberEvaluations()
         {
             InitializeComponent();
+
+            try
+            {
+                // Code to map the ratings scores
+                var ratingOptions = new[] {
+                new { Text = "1. Unsatisfactory", Value = (byte)1 },
+                new { Text = "2", Value = (byte)2 },
+                new { Text = "3", Value = (byte)3 },
+                new { Text = "4", Value = (byte)4 },
+                new { Text = "5. Excellent", Value = (byte)5 }
+                };
+
+                DataGridViewComboBoxColumn col = (DataGridViewComboBoxColumn)dgViewMemberEvaluations.Columns["MyCurrentScore"];
+                col.DataSource = ratingOptions;
+                col.DisplayMember = "Text"; // What the user sees
+                col.ValueMember = "Value";   // What the code saves
+            }
+            catch (Exception ex)
+            {
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while initializing ratings.", Properties.Resources.Error_Icon); AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while updating group.", Properties.Resources.Error_Icon);
+            }
         }
 
         // Method for the toast form
@@ -49,75 +70,47 @@ namespace CollaboRate
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmUpdateMemberEvaluation updateMemberEvaluationForm = new frmUpdateMemberEvaluation();
-            updateMemberEvaluationForm.ShowDialog();
-        }
-
-        private void btnEvaluateAllMembers_Click(object sender, EventArgs e)
-        {
-            frmEvaluateAllMembers evaluateAllMembersForm = new frmEvaluateAllMembers();
-            evaluateAllMembersForm.ShowDialog();
-        }
-
-        // Method to load ratings
-        private async Task<List<RatedMemberDto>> GetRatingsAsync(int groupId, int userId, string keyword = null)
-        {
-            string url = $"https://collaborateapi.runasp.net/api/Ratings/group/{groupId}/rater/{userId}/rated-members";
-
-            if (string.IsNullOrWhiteSpace(keyword) == false)
-            {
-                url += $"?keyword={Uri.EscapeDataString(keyword)}";
-            }
-
-            var response = await client.GetAsync(url);
-
-            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                return new List<RatedMemberDto>();
-            }
-
-            response.EnsureSuccessStatusCode();
-
-            var json = await response.Content.ReadAsStringAsync();
-
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-
-
-            var ratings = JsonSerializer.Deserialize<List<RatedMemberDto>>(json, options);
-
-            return ratings ?? new List<RatedMemberDto>();
-        }
-
-        // Method to display ratings
-        public async Task DisplayRatingsAsync(int groupId, int userId, string keyword = null)
+        // Method to save evaluations
+        private async Task SaveEvaluations()
         {
             try
             {
                 pbLoadingSpinner.Visible = true;
 
-                var ratings = await GetRatingsAsync(groupId, userId, keyword);
+                // Commit any pending edits
+                dgViewMemberEvaluations.EndEdit();
 
-                if (ratings != null)
+                var updates = new List<RatingUpdateDto>();
+                foreach (DataGridViewRow row in dgViewMemberEvaluations.Rows)
                 {
-                    ratingsBindingSource.DataSource = ratings;
-                    dgViewMemberEvaluations.AutoGenerateColumns = false;
-                    dgViewMemberEvaluations.DataSource = ratingsBindingSource;
+                    if (row.Cells["MyCurrentScore"].Value != null)
+                    {
+                        updates.Add(new RatingUpdateDto
+                        {
+                            Group_ID = CurrentGroup.Group_ID,
+                            Rater_ID = CurrentUser.User_ID,
+                            Ratee_ID = (int)row.Cells["User_ID"].Value,
+                            Score = (byte)row.Cells["MyCurrentScore"].Value
+                        });
+                    }
                 }
-                else
+
+                var response = await client.PostAsync("https://collaborateapi.runasp.net/api/Ratings/batch-upsert", new StringContent(JsonSerializer.Serialize(updates), Encoding.UTF8, "application/json"));
+                if (response.IsSuccessStatusCode)
                 {
-                    ratingsBindingSource.DataSource = null;
-                    dgViewMemberEvaluations.DataSource = ratingsBindingSource;
+                    await LoadDataAsync();
+                    pbLoadingSpinner.Visible = false;
+                    dgViewMemberEvaluations.ClearSelection();
+                    dgViewMemberEvaluations.CurrentCell = null;
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Group evaluations saved successfully.", Properties.Resources.Success_Icon);
                 }
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading evaluations.", Properties.Resources.Error_Icon);
+                dgViewMemberEvaluations.ClearSelection();
+                dgViewMemberEvaluations.CurrentCell = null;
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occured while saving evaluations.", Properties.Resources.Error_Icon);
             }
             finally
             {
@@ -125,38 +118,112 @@ namespace CollaboRate
             }
         }
 
-        private async void frmMemberEvaluations_Load(object sender, EventArgs e)
+        private async void btnEvaluateAllMembers_Click(object sender, EventArgs e)
         {
-            await DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
+            await SaveEvaluations();
         }
 
-        private async void txtSearchMemberName__TextChanged(object sender, EventArgs e)
-        {
-            await DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID, txtSearchMemberName.Texts);
-        }
-
-        private void dgViewMemberEvaluations_CellClick(object sender, DataGridViewCellEventArgs e)
+        // New method to load data
+        private async Task LoadDataAsync(string keyword = "")
         {
             try
             {
-                if (e.RowIndex >= 0)
+                dgViewMemberEvaluations.ClearSelection();
+                dgViewMemberEvaluations.CurrentCell = null;
+
+                pbLoadingSpinner.Visible = true;
+
+                // Construct the URL with an optional search keyword
+                string url = $"{ApiBaseUrl}/api/Ratings/group/{CurrentGroup.Group_ID}/status-for/{CurrentUser.User_ID}";
+
+                if (!string.IsNullOrWhiteSpace(keyword))
                 {
-                    frmUpdateMemberEvaluation updateMemberEvaluationForm = new frmUpdateMemberEvaluation();
+                    url += $"?keyword={Uri.EscapeDataString(keyword)}";
+                }
 
-                    DataGridViewRow row = this.dgViewMemberEvaluations.Rows[e.RowIndex];
+                var response = await client.GetAsync(url);
 
-                    updateMemberEvaluationForm.ratee_ID = int.Parse(row.Cells["Member_ID"].Value.ToString());
-                    updateMemberEvaluationForm.txtMemberName.Texts = (row.Cells["Member_Name"].Value).ToString();
-                    updateMemberEvaluationForm.cmbxScore.SelectedIndex = int.Parse((row.Cells["Member_Score"].Value.ToString())) - 1;
-                    updateMemberEvaluationForm.txtAverageScore.Texts = (row.Cells["Score_Average"].Value.ToString());
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var data = JsonSerializer.Deserialize<List<RatedMemberDto>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-                    updateMemberEvaluationForm.ShowDialog();
+                    // Prevent the grid from deleting your custom GUI columns
+                    dgViewMemberEvaluations.AutoGenerateColumns = false;
+
+                    dgViewMemberEvaluations.DataSource = data;
+
+                    // Re-apply colors
+                    SetupRobustGrid();
                 }
             }
             catch (Exception ex)
             {
-                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while loading evaluation details.", Properties.Resources.Error_Icon);
+                MessageBox.Show("Error refreshing data: " + ex.Message);
             }
+            finally
+            {
+                pbLoadingSpinner.Visible = false;
+            }
+        }
+
+        // Method to setup data grid view styling
+        public void SetupRobustGrid()
+        {
+            try
+            {
+                // Heatmap Styling
+                // Ensure we actually have rows to style
+                if (dgViewMemberEvaluations.Rows.Count == 0) return;
+
+                foreach (DataGridViewRow row in dgViewMemberEvaluations.Rows)
+                {
+                    // Get the data object for accuracy
+                    var item = row.DataBoundItem as RatedMemberDto;
+                    if (item == null) continue;
+
+                    // 1. Bright Heatmap for Average Score
+                    if (item.AverageScore >= 4.0)
+                    {
+                        row.Cells["AverageScore"].Style.ForeColor = Color.ForestGreen;
+                        row.Cells["AverageScore"].Style.Font = new Font(dgViewMemberEvaluations.Font, FontStyle.Bold);
+                    }
+                    else if (item.AverageScore > 0 && item.AverageScore < 2.5)
+                    {
+                        row.Cells["AverageScore"].Style.ForeColor = Color.Red;
+                        row.Cells["AverageScore"].Style.Font = new Font(dgViewMemberEvaluations.Font, FontStyle.Bold);
+                    }
+
+                    // 2. Balanced Participation Status (Sophisticated Visibility)
+                    // We use a calm yellow for 'Incomplete' and a professional green for 'Complete'
+                    if (item.ReceivedRatingsCount < item.PotentialRatingsCount)
+                    {
+                        // A soft, recognizable gold/yellow that doesn't "glow"
+                        row.Cells["RatingStatus"].Style.BackColor = Color.Khaki;
+                        row.Cells["RatingStatus"].Style.ForeColor = Color.DarkSlateGray; // Darker text for better contrast
+                    }
+                    else
+                    {
+                        // A professional, sea-toned green that feels stable
+                        row.Cells["RatingStatus"].Style.BackColor = Color.MediumSeaGreen;
+                        row.Cells["RatingStatus"].Style.ForeColor = Color.White;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to heatmap.", Properties.Resources.Error_Icon);
+            }
+        }
+
+        private async void frmMemberEvaluations_Load(object sender, EventArgs e)
+        {
+            await LoadDataAsync();
+        }
+
+        private async void txtSearchMemberName__TextChanged(object sender, EventArgs e)
+        {
+            await LoadDataAsync(txtSearchMemberName.Texts);
         }
 
         private void frmMemberEvaluations_Resize(object sender, EventArgs e)

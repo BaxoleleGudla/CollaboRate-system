@@ -103,7 +103,7 @@ namespace CollaboRate
                         var memberEvaluationsForm = Application.OpenForms.OfType<frmMemberEvaluations>().FirstOrDefault();
                         if (memberEvaluationsForm != null)
                         {
-                            await memberEvaluationsForm.DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
+                            //await memberEvaluationsForm.DisplayRatingsAsync(CurrentGroup.Group_ID, CurrentUser.User_ID);
                         }
 
                         this.Close();

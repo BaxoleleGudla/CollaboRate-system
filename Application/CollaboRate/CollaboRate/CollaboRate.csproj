@@ -139,6 +139,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cntlNotificationItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cntlNotificationItem.Designer.cs">
+      <DependentUpon>cntlNotificationItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="CurrentGroup.cs" />
     <Compile Include="CurrentUser.cs" />
     <Compile Include="Dtos\AddUsersToGroupRequest.cs" />
@@ -151,6 +157,7 @@
     <Compile Include="Dtos\GroupWithRequestStatusDto.cs" />
     <Compile Include="Dtos\MeetingDto.cs" />
     <Compile Include="Dtos\MessageDto.cs" />
+    <Compile Include="Dtos\NotificationDto.cs" />
     <Compile Include="Dtos\PendingUserDto.cs" />
     <Compile Include="Dtos\RatedMemberDto.cs" />
     <Compile Include="Dtos\RatingUpdateDto.cs" />
@@ -236,6 +243,12 @@
     <Compile Include="frmMemberEvaluations.Designer.cs">
       <DependentUpon>frmMemberEvaluations.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNotifications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotifications.Designer.cs">
+      <DependentUpon>frmNotifications.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProjectGroups.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +279,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="cntlNotificationItem.resx">
+      <DependentUpon>cntlNotificationItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddNewMembers.resx">
       <DependentUpon>frmAddNewMembers.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMemberEvaluations.resx">
       <DependentUpon>frmMemberEvaluations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotifications.resx">
+      <DependentUpon>frmNotifications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProjectGroups.resx">
       <DependentUpon>frmProjectGroups.cs</DependentUpon>

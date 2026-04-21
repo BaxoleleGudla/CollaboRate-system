@@ -334,9 +334,28 @@ namespace CollaboRate
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void btnNotification_Click(object sender, EventArgs e)
+        private async void btnNotification_Click(object sender, EventArgs e)
         {
-            
+            frmNotifications notifForm = new frmNotifications();
+
+            // Set StartPosition to Manual so our coordinates are respected
+            notifForm.StartPosition = FormStartPosition.Manual;
+
+            // Calculate the screen location of the notification button
+            // PointToScreen(Point.Empty) gets the top-left corner of the button
+            Point screenPoint = btnNotification.PointToScreen(Point.Empty);
+
+            // 3. Align the RIGHT edge of the form with the RIGHT edge of the button
+            // This prevents the form from bleeding off the left side of the screen
+            int x = screenPoint.X + btnNotification.Width - notifForm.Width;
+            int y = screenPoint.Y + btnNotification.Height + 2;
+
+            notifForm.Location = new Point(x, y);
+
+            notifForm.Show();
+
+            // Load data dynamically
+            await notifForm.InitializeNotificationsAsync(CurrentUser.User_ID, CurrentGroup.Group_ID);
         }
 
         private void btnSuccess_Click(object sender, EventArgs e)

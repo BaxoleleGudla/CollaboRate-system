@@ -280,7 +280,7 @@ namespace CollaboRate
             }
         }
 
-        // Method to dsplay join requests (with signalR)
+        // Method to display join requests (with signalR)
         public async Task LoadJoinRequetsAsync()
         {
             if (CurrentGroup.Group_ID >= 1)
@@ -370,15 +370,6 @@ namespace CollaboRate
                     }
                 }
             }
-
-            // Code to fix ghosting effect on datagridview
-            typeof(DataGridView).InvokeMember(
-                "DoubleBuffered",
-                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
-                null,
-                dgViewProjectGroups,
-                new object[] { true }
-            );
         }
 
         private void dgViewProjectGroups_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

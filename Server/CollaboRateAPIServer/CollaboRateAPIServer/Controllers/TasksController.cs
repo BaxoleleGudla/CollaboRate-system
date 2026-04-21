@@ -294,13 +294,16 @@ namespace CollaboRateAPIServer.Controllers
                 // Remove the task itself
                 _context.tblTask.Remove(task);
 
+                // Using a variable for the date so it's identical for all records
+                var now = DateTime.UtcNow;
+
                 // Create and add a single group notification
                 var notification = new GroupNotification
                 {
                     Group_ID = task.Group_ID,
                     Notification_Type = "Task Deleted",
                     Notification_Message = $"Task '{task.Task_Title}' in group '{groupName}' was deleted by {userName}.",
-                    Created_At = DateTime.UtcNow
+                    Created_At = now
                 };
 
                 await _context.tblGroupNotification.AddAsync(notification);

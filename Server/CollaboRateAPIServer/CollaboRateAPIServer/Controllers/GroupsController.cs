@@ -246,13 +246,16 @@ namespace CollaboRateAPIServer.Controllers
                 membership.User_Role = "Member";
                 membership.Joined_At = DateTime.UtcNow;
 
+                // Using a variable for the date so it's identical for all records
+                var now = DateTime.UtcNow;
+
                 // Create a notification
                 var notification = new GroupNotification
                 {
                     Group_ID = groupId,
                     Notification_Type = "Membership Accepted",
                     Notification_Message = $"You have been accepted to group {groupId}.",
-                    Created_At = DateTime.UtcNow
+                    Created_At = now
                 };
 
                 _context.tblGroupNotification.Add(notification);
@@ -305,13 +308,16 @@ namespace CollaboRateAPIServer.Controllers
                 // Remove the membership request
                 _context.tblGroupMember.Remove(membership);
 
+                // Using a variable for the date so it's identical for all records
+                var now = DateTime.UtcNow;
+
                 // Create a notification
                 var notification = new GroupNotification
                 {
                     Group_ID = groupId,
                     Notification_Type = "Membership Rejected",
                     Notification_Message = $"Your request to join group {groupId} has been rejected.",
-                    Created_At = DateTime.UtcNow
+                    Created_At = now
                 };
 
                 _context.tblGroupNotification.Add(notification);
@@ -602,13 +608,16 @@ namespace CollaboRateAPIServer.Controllers
                 _context.tblGroupMember.Remove(membership);
                 await _context.SaveChangesAsync();
 
+                // Using a variable for the date so it's identical for all records
+                var now = DateTime.UtcNow;
+
                 // Create a notification about removal
                 var notification = new GroupNotification
                 {
                     Group_ID = groupId,
                     Notification_Type = "Membership Removed",
                     Notification_Message = $"You have been removed from group {group.Group_Name}",
-                    Created_At = DateTime.UtcNow
+                    Created_At = now
                 };
 
                 _context.tblGroupNotification.Add(notification);

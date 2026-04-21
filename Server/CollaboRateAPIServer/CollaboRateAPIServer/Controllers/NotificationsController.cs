@@ -29,7 +29,7 @@ namespace CollaboRateAPIServer.Controllers
                                            RecipientID = nr.Notification_Recipient_ID,
                                            Type = gn.Notification_Type,
                                            Message = gn.Notification_Message,
-                                           CreatedAt = gn.Created_At,
+                                           Created_At = gn.Created_At,
                                            IsRead = nr.Is_Read
                                        }).ToListAsync();
 

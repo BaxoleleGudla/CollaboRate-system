@@ -1998,7 +1998,7 @@
             "type": "string",
             "nullable": true
           },
-          "createdAt": {
+          "created_At": {
             "type": "string",
             "format": "date-time"
           },

@@ -99,11 +99,15 @@ namespace CollaboRateAPIServer.Controllers
                 // Create the group notification
                 string notificationMessage = $"New meeting scheduled for group {group.Group_Name} on {meeting.Meeting_Date:dddd, MMMM d, yyyy HH:mm}.";
 
+                // Using a variable for the date so it's identical for all records
+                var now = DateTime.UtcNow;
+
                 var groupNotification = new GroupNotification
                 {
                     Group_ID = group.Group_ID,
                     Notification_Type = "Meeting Scheduled",
                     Notification_Message = notificationMessage,
+                    Created_At = now
                 };
                 _context.tblGroupNotification.Add(groupNotification);
                 await _context.SaveChangesAsync();
@@ -186,11 +190,15 @@ namespace CollaboRateAPIServer.Controllers
                 // Create a notification about the update
                 string notificationMessage = $"Meeting for group {group.Group_Name}  has been updated and is now scheduled for {meeting.Meeting_Date:dddd, d MMMM, yyyy HH:mm}.";
 
+                // Using a variable for the date so it's identical for all records
+                var now = DateTime.UtcNow;
+
                 var groupNotification = new GroupNotification
                 {
                     Group_ID = group.Group_ID,
                     Notification_Type = "Meeting Updated",
-                    Notification_Message = notificationMessage
+                    Notification_Message = notificationMessage,
+                    Created_At = now
                 };
                 _context.tblGroupNotification.Add(groupNotification);
                 await _context.SaveChangesAsync();
@@ -259,11 +267,15 @@ namespace CollaboRateAPIServer.Controllers
 
                 string notificationMessage = $"The meeting for group: {group.Group_Name} scheduled on {meetingDate:dddd, d MMMM, yyyy HH:mm} has been cancelled.";
 
+                // Using a variable for the date so it's identical for all records
+                var now = DateTime.UtcNow;
+
                 var groupNotification = new GroupNotification
                 {
                     Group_ID = group.Group_ID,
                     Notification_Type = "Meeting Cancelled",
-                    Notification_Message = notificationMessage
+                    Notification_Message = notificationMessage,
+                    Created_At = now
                 };
                 _context.tblGroupNotification.Add(groupNotification);
                 await _context.SaveChangesAsync();

@@ -24,7 +24,7 @@ namespace CollaboRateAPIServer.Controllers
 
         // Method to get all tasks
         [HttpGet("tasks/by-group")]
-        public async Task<ActionResult<List<TaskWithUsersDto>>> GetTasksByGroupAsync([FromQuery] int group_ID, [FromQuery] int? user_ID = null, [FromQuery] string? keyword = null)
+        public async Task<ActionResult<List<TaskWithUsersDto>>> GetTasksByGroupAsync([FromQuery] int group_ID, [FromQuery] int? user_ID = null, [FromQuery] string? keyword = null, [FromQuery] string? status = null)
         {
             // Base query
             var tasksQuery = _context.tblTask
@@ -44,6 +44,27 @@ namespace CollaboRateAPIServer.Controllers
 
                 tasksQuery = tasksQuery.Where(t =>
                     t.Task_Title.ToLower().Contains(lowerKeyword) || (t.Task_Description != null && t.Task_Description.ToLower().Contains(lowerKeyword)));
+            }
+
+            // Filter by Status
+            if (string.IsNullOrWhiteSpace(status) == false && status.ToLower() != "all")
+            {
+                if (status.ToLower() == "completed")
+                {
+                    // All assignments must be completed
+                    tasksQuery = tasksQuery
+                        .Where(task => _context.tblTaskAssignment
+                        .Where(ta => ta.Task_ID == task.Task_ID)
+                        .All(a => a.Is_Completed));
+                }
+                else if (status.ToLower() == "not completed")
+                {
+                    // At least one assignment must not be completed
+                    tasksQuery = tasksQuery
+                          .Where(task => _context.tblTaskAssignment
+                                .Where(ta => ta.Task_ID == task.Task_ID)
+                                .Any(a => !a.Is_Completed));
+                }
             }
 
             // Fetch tasks matching filters

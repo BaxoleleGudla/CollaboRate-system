@@ -151,7 +151,7 @@
             this.lblTaskTitleError.AutoSize = true;
             this.lblTaskTitleError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaskTitleError.ForeColor = System.Drawing.Color.Red;
-            this.lblTaskTitleError.Location = new System.Drawing.Point(31, 117);
+            this.lblTaskTitleError.Location = new System.Drawing.Point(31, 118);
             this.lblTaskTitleError.Name = "lblTaskTitleError";
             this.lblTaskTitleError.Size = new System.Drawing.Size(45, 21);
             this.lblTaskTitleError.TabIndex = 30;
@@ -292,7 +292,7 @@
             this.lblTaskDeadlineError.AutoSize = true;
             this.lblTaskDeadlineError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaskDeadlineError.ForeColor = System.Drawing.Color.Red;
-            this.lblTaskDeadlineError.Location = new System.Drawing.Point(32, 327);
+            this.lblTaskDeadlineError.Location = new System.Drawing.Point(32, 331);
             this.lblTaskDeadlineError.Name = "lblTaskDeadlineError";
             this.lblTaskDeadlineError.Size = new System.Drawing.Size(45, 21);
             this.lblTaskDeadlineError.TabIndex = 42;

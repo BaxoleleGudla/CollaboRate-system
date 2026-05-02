@@ -48,7 +48,7 @@ namespace CollaboRate
                     }
 
                     lstChats.BeginUpdate();
-                    lstChats.Items.Add($"{senderUsername} {createdAt:yyyy/MM/dd} {createdAt:HH:mm}");
+                    lstChats.Items.Add($"{senderUsername} (You) {createdAt:yyyy/MM/dd} {createdAt:HH:mm}");
                     lstChats.Items.Add(string.IsNullOrEmpty(messageText) ? "[No message]" : messageText);
                     lstChats.Items.Add("");
                     lstChats.EndUpdate();
@@ -110,6 +110,14 @@ namespace CollaboRate
                     };
 
                     var messages = JsonSerializer.Deserialize<List<MessageDto>>(messagesElement.GetRawText(), options);
+
+                    // Add "(You)" to the name if the SenderUsername matches the CurrentUser.Username
+                    messages.ForEach(u => {
+                        if (u.SenderUsername == CurrentUser.Username) 
+                        {
+                            u.SenderUsername = $"{u.SenderUsername} (You)";
+                        }
+                    });
 
                     return messages?.OrderBy(m => m.Created_At).ToList() ?? new List<MessageDto>();
                 }   

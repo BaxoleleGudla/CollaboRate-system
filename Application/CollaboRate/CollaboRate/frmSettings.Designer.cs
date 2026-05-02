@@ -521,7 +521,7 @@
             this.lblConfirmNewPasswordError.AutoSize = true;
             this.lblConfirmNewPasswordError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfirmNewPasswordError.ForeColor = System.Drawing.Color.Red;
-            this.lblConfirmNewPasswordError.Location = new System.Drawing.Point(16, 286);
+            this.lblConfirmNewPasswordError.Location = new System.Drawing.Point(16, 287);
             this.lblConfirmNewPasswordError.Name = "lblConfirmNewPasswordError";
             this.lblConfirmNewPasswordError.Size = new System.Drawing.Size(45, 21);
             this.lblConfirmNewPasswordError.TabIndex = 31;
@@ -601,7 +601,7 @@
             this.lblNewPasswordError.AutoSize = true;
             this.lblNewPasswordError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewPasswordError.ForeColor = System.Drawing.Color.Red;
-            this.lblNewPasswordError.Location = new System.Drawing.Point(16, 195);
+            this.lblNewPasswordError.Location = new System.Drawing.Point(16, 196);
             this.lblNewPasswordError.Name = "lblNewPasswordError";
             this.lblNewPasswordError.Size = new System.Drawing.Size(45, 21);
             this.lblNewPasswordError.TabIndex = 27;
@@ -642,7 +642,7 @@
             this.lblCurrentPasswordError.AutoSize = true;
             this.lblCurrentPasswordError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentPasswordError.ForeColor = System.Drawing.Color.Red;
-            this.lblCurrentPasswordError.Location = new System.Drawing.Point(16, 108);
+            this.lblCurrentPasswordError.Location = new System.Drawing.Point(16, 109);
             this.lblCurrentPasswordError.Name = "lblCurrentPasswordError";
             this.lblCurrentPasswordError.Size = new System.Drawing.Size(45, 21);
             this.lblCurrentPasswordError.TabIndex = 24;
@@ -772,7 +772,7 @@
             this.lblEmailError.AutoSize = true;
             this.lblEmailError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmailError.ForeColor = System.Drawing.Color.Red;
-            this.lblEmailError.Location = new System.Drawing.Point(16, 195);
+            this.lblEmailError.Location = new System.Drawing.Point(16, 197);
             this.lblEmailError.Name = "lblEmailError";
             this.lblEmailError.Size = new System.Drawing.Size(45, 21);
             this.lblEmailError.TabIndex = 27;
@@ -813,7 +813,7 @@
             this.lblUsernameError.AutoSize = true;
             this.lblUsernameError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsernameError.ForeColor = System.Drawing.Color.Red;
-            this.lblUsernameError.Location = new System.Drawing.Point(16, 108);
+            this.lblUsernameError.Location = new System.Drawing.Point(16, 110);
             this.lblUsernameError.Name = "lblUsernameError";
             this.lblUsernameError.Size = new System.Drawing.Size(45, 21);
             this.lblUsernameError.TabIndex = 24;

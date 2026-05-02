@@ -22,10 +22,16 @@ namespace CollaboRate
             Timeout = TimeSpan.FromSeconds(30)
         };
         private BindingSource tasksBindingSource = new BindingSource();
+        string lastSelectionScope = "";
+        string lastSelectionStatus = "";
 
         public frmGroupTasks()
         {
             InitializeComponent();
+
+            // Set default filter selections
+            cboStatusFilter.SelectedIndex = 0; // "All"
+            cboScopeFilter.SelectedIndex = 0;  // "All"
         }
 
         // Method for the toast form
@@ -66,7 +72,7 @@ namespace CollaboRate
         }
 
         // Method to load tasks
-        private async Task<List<TaskWithUsersDto>> GetTasksAsync(int groupId, int? userId = null, string keyword = null)
+        private async Task<List<TaskWithUsersDto>> GetTasksAsync(int groupId, int? userId = null, string keyword = null, string status = null)
         {
             var queryParams = new List<string>();
 
@@ -80,6 +86,12 @@ namespace CollaboRate
             if (string.IsNullOrWhiteSpace(keyword) == false)
             {
                 queryParams.Add($"keyword={Uri.EscapeDataString(keyword)}");
+            }
+
+            // Append the status if it's not "All"
+            if (string.IsNullOrWhiteSpace(status) == false && status.ToLower() != "all")
+            {
+                queryParams.Add($"status={Uri.EscapeDataString(status)}");
             }
 
             string queryString = string.Join("&", queryParams);
@@ -109,13 +121,24 @@ namespace CollaboRate
         }
 
         // Method to display tasks
-        public async Task DisplayTasksAsync(int groupId, int? userId = null, string keyword = null)
+        public async Task DisplayTasksAsync(int groupId)
         {
             try
             {
                 pbLoadingSpinner.Visible = true;
 
-                var tasks = await GetTasksAsync(groupId, userId, keyword);
+                // Determine scope (User_ID)
+                int? userIdFilter = null;
+                if (cboScopeFilter.SelectedItem.ToString().Contains("With Me"))
+                {
+                    userIdFilter = CurrentUser.User_ID;
+                }
+
+                // Read other filters
+                string keywordFilter = txtSearchTask.Texts;
+                string statusFilter = cboStatusFilter.SelectedItem.ToString();
+
+                var tasks = await GetTasksAsync(groupId, userIdFilter, keywordFilter, statusFilter);
 
                 if (tasks != null)
                 {
@@ -147,7 +170,7 @@ namespace CollaboRate
 
         private async void txtSearchTask__TextChanged(object sender, EventArgs e)
         {
-            await DisplayTasksAsync(CurrentGroup.Group_ID, null, txtSearchTask.Texts);
+            await DisplayTasksAsync(CurrentGroup.Group_ID);
         }
 
         // Method to change task status
@@ -305,6 +328,31 @@ namespace CollaboRate
                 int y = (this.ClientSize.Height - pbLoadingSpinner.Height) / 2;
 
                 pbLoadingSpinner.Location = new Point(x, y);
+            }
+        }
+
+        // A single handler for any change, ensuring the grid is always current
+        private async void OnFilterChanged(object sender, EventArgs e)
+        {
+            // Avoid redundant calls if the group isn't selected
+            if (CurrentGroup.Group_ID > 0)
+            {
+                await DisplayTasksAsync(CurrentGroup.Group_ID);
+            }
+        }
+
+        private async void timer_Tick(object sender, EventArgs e)
+        {
+            if (cboScopeFilter.SelectedItem.ToString() != lastSelectionScope)
+            {
+                lastSelectionScope = cboScopeFilter.SelectedItem.ToString();
+                await DisplayTasksAsync(CurrentGroup.Group_ID);
+            }
+
+            if (cboStatusFilter.SelectedItem.ToString() != lastSelectionStatus)
+            {
+                lastSelectionStatus = cboStatusFilter.SelectedItem.ToString();
+                await DisplayTasksAsync(CurrentGroup.Group_ID);
             }
         }
     }

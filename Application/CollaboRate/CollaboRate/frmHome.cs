@@ -86,6 +86,19 @@ namespace CollaboRate
 
                 var groupDetails = JsonSerializer.Deserialize<AcceptedGroupUsersDto>(jsonString, options);
 
+                // Check if the object and the list inside are not null
+                if (groupDetails?.Accepted_Users != null)
+                {
+                    foreach (var user in groupDetails.Accepted_Users)
+                    {
+                        if (user.User_ID == CurrentUser.User_ID)
+                        {
+                            // Update the Username property specifically for the current user
+                            user.Username = $"{user.Username} (You)";
+                        }
+                    }
+                }
+
                 return groupDetails;
             }
             catch (TaskCanceledException ex) when (!ex.CancellationToken.IsCancellationRequested)
@@ -332,7 +345,15 @@ namespace CollaboRate
                     var json = await response.Content.ReadAsStringAsync();
                     var data = JsonSerializer.Deserialize<List<RatedMemberDto>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-                    // Prevent the grid from deleting your custom GUI columns
+                    // Add "(You)" to the name if the ID matches the CurrentUser.ID
+                    data.ForEach(u => {
+                        if (u.User_ID == CurrentUser.User_ID) 
+                        {
+                            u.Username = $"{u.Username} (You)";
+                        }
+                    });
+
+                    // Prevent the grid from deleting custom GUI columns
                     dgViewMemberEvaluations.AutoGenerateColumns = false;
 
                     dgViewMemberEvaluations.DataSource = data;

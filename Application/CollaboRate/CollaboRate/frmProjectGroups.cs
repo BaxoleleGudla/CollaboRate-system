@@ -66,7 +66,7 @@ namespace CollaboRate
                     pendingUsersBindingSource.DataSource = newList;
                     dgViewJoinRequests.DataSource = pendingUsersBindingSource;
 
-                    // 2. IMPORTANT: Force the panel visibility based on the new list
+                    // Force the panel visibility based on the new list
                     // and check if the user is an admin before showing it
                     bool isAdmin = CurrentUser.Group_Role != null && CurrentUser.Group_Role.Contains("Admin");
                     pnlMiddle.Visible = (isAdmin && newList.Count > 0);
@@ -142,6 +142,19 @@ namespace CollaboRate
                 };
 
                 var groupDetails = JsonSerializer.Deserialize<AcceptedGroupUsersDto>(jsonString, options);
+
+                // Check if the object and the list inside are not null
+                if (groupDetails?.Accepted_Users != null)
+                {
+                    foreach (var user in groupDetails.Accepted_Users)
+                    {
+                        if (user.User_ID == CurrentUser.User_ID)
+                        {
+                            // Update the Username property specifically for the current user
+                            user.Username = $"{user.Username} (You)";
+                        }
+                    }
+                }
 
                 return groupDetails;
             }

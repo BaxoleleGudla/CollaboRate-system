@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,6 +44,11 @@
             this.Task_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
+            this.cboScopeFilter = new SATAComboBox();
+            this.cboStatusFilter = new SATAComboBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.pnlLineScope = new System.Windows.Forms.Panel();
+            this.pnlStatus = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewTasks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
@@ -251,12 +257,81 @@
             this.pbLoadingSpinner.TabStop = false;
             this.pbLoadingSpinner.Visible = false;
             // 
+            // cboScopeFilter
+            // 
+            this.cboScopeFilter.BackColor = System.Drawing.Color.Transparent;
+            this.cboScopeFilter.BackgroundColor = System.Drawing.Color.White;
+            this.cboScopeFilter.BorderColor = System.Drawing.Color.DimGray;
+            this.cboScopeFilter.BorderThickness = 1;
+            this.cboScopeFilter.CornerRadius = 5;
+            this.cboScopeFilter.Items = new string[] {
+        "All Tasks",
+        "Involved With Me"};
+            this.cboScopeFilter.Keys = null;
+            this.cboScopeFilter.Location = new System.Drawing.Point(417, 91);
+            this.cboScopeFilter.MaximumSize = new System.Drawing.Size(200, 39);
+            this.cboScopeFilter.Name = "cboScopeFilter";
+            this.cboScopeFilter.SelectedIndex = -1;
+            this.cboScopeFilter.Size = new System.Drawing.Size(181, 39);
+            this.cboScopeFilter.TabIndex = 55;
+            this.cboScopeFilter.Text = "sataComboBox1";
+            this.cboScopeFilter.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.cboScopeFilter.TextOffset = new System.Windows.Forms.Padding(0);
+            // 
+            // cboStatusFilter
+            // 
+            this.cboStatusFilter.BackColor = System.Drawing.Color.Transparent;
+            this.cboStatusFilter.BackgroundColor = System.Drawing.Color.White;
+            this.cboStatusFilter.BorderColor = System.Drawing.Color.DimGray;
+            this.cboStatusFilter.BorderThickness = 1;
+            this.cboStatusFilter.CornerRadius = 5;
+            this.cboStatusFilter.Items = new string[] {
+        "All Tasks",
+        "Completed",
+        "Not Completed"};
+            this.cboStatusFilter.Keys = null;
+            this.cboStatusFilter.Location = new System.Drawing.Point(605, 91);
+            this.cboStatusFilter.MaximumSize = new System.Drawing.Size(200, 39);
+            this.cboStatusFilter.Name = "cboStatusFilter";
+            this.cboStatusFilter.SelectedIndex = -1;
+            this.cboStatusFilter.Size = new System.Drawing.Size(181, 39);
+            this.cboStatusFilter.TabIndex = 56;
+            this.cboStatusFilter.Text = "sataComboBox2";
+            this.cboStatusFilter.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.cboStatusFilter.TextOffset = new System.Windows.Forms.Padding(0);
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 300;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // pnlLineScope
+            // 
+            this.pnlLineScope.BackColor = System.Drawing.Color.Black;
+            this.pnlLineScope.Location = new System.Drawing.Point(422, 129);
+            this.pnlLineScope.Name = "pnlLineScope";
+            this.pnlLineScope.Size = new System.Drawing.Size(172, 1);
+            this.pnlLineScope.TabIndex = 57;
+            // 
+            // pnlStatus
+            // 
+            this.pnlStatus.BackColor = System.Drawing.Color.Black;
+            this.pnlStatus.Location = new System.Drawing.Point(609, 129);
+            this.pnlStatus.Name = "pnlStatus";
+            this.pnlStatus.Size = new System.Drawing.Size(172, 1);
+            this.pnlStatus.TabIndex = 58;
+            // 
             // frmGroupTasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(810, 627);
+            this.Controls.Add(this.pnlStatus);
+            this.Controls.Add(this.pnlLineScope);
+            this.Controls.Add(this.cboStatusFilter);
+            this.Controls.Add(this.cboScopeFilter);
             this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.dgViewTasks);
             this.Controls.Add(this.btnCreateNewTask);
@@ -290,5 +365,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Assigned_To;
         private System.Windows.Forms.DataGridViewTextBoxColumn Task_Status;
         private System.Windows.Forms.DataGridViewButtonColumn Action;
+        private SATAComboBox cboScopeFilter;
+        private SATAComboBox cboStatusFilter;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Panel pnlLineScope;
+        private System.Windows.Forms.Panel pnlStatus;
     }
 }

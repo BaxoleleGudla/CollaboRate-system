@@ -86,6 +86,46 @@ namespace CollaboRate
             dgViewUsers.DataSource = new BindingList<GroupUserDto>(users);
         }
 
+        // Method to refresh group details
+        public async Task RefreshGroupDetailsAsync()
+        {
+            try
+            {
+                pbLoadingSpinner.Visible = true;
+
+                // Fetch fresh data from the API to get the new members
+                string apiUrl = $"{ApiBaseUrl}/api/groups/{_groupDetails.Group_ID}/details-with-accepted-users";
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
+                    var freshDetails = JsonSerializer.Deserialize<AcceptedGroupUsersDto>(jsonString, options);
+
+                    if (freshDetails?.Accepted_Users != null)
+                    {
+                        // Update the fields and list reference
+                        _groupDetails = freshDetails;
+                        _allUsers = _groupDetails.Accepted_Users.ToList();
+
+                        // Re-bind to the DataGridView
+                        BindUsersToGrid(_allUsers);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                pbLoadingSpinner.Visible = false;
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while fetching group details.", Properties.Resources.Error_Icon);
+            }
+            finally
+            {
+                pbLoadingSpinner.Visible = false;
+            }
+        }
+
         private void frmEditGroup_Load(object sender, EventArgs e)
         {
             try

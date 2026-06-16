@@ -122,6 +122,12 @@ namespace CollaboRate
                     {
                         _ = projectGroupForm.LoadGroupDetailsAsync();
                     }
+
+                    // Refresh the frmEditGroup DataGridView via the parent property reference
+                    if (this.EditParentForm != null)
+                    {
+                        _ = this.EditParentForm.RefreshGroupDetailsAsync();
+                    }
                 }
                 else
                 {

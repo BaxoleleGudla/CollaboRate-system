@@ -57,12 +57,32 @@ namespace CollaboRate
                 int mainFormY = this.Owner.Location.Y;
                 int mainFormWidth = this.Owner.Width;
 
+                // If the owner form is minimized, hide the alert box
+                if (this.Owner.WindowState == FormWindowState.Minimized)
+                {
+                    this.Visible = false;
+                    return;
+                }
+                else
+                {
+                    this.Visible = true;
+                }
+
                 // Calculate Horizontal Center: 
                 // Start at Main X + half of Main Width, then subtract half of the Alert Width
                 int xPos = mainFormX + (mainFormWidth / 2) - (this.Width / 2);
 
                 // Position it at the top of the main form (with a small 10px margin)
                 int yPos = mainFormY + 10;
+
+                // Handle the case where the parent is maximized (coordinates can behave slightly differently)
+                if (this.Owner.WindowState == FormWindowState.Maximized)
+                {
+                    // Screen working area handles taskbar offsets automatically
+                    var screen = Screen.FromControl(this.Owner);
+                    xPos = screen.WorkingArea.X + (screen.WorkingArea.Width / 2) - (this.Width / 2);
+                    yPos = screen.WorkingArea.Y + 10;
+                }
 
                 this.Location = new Point(xPos, yPos);
             }
@@ -86,12 +106,35 @@ namespace CollaboRate
             }
         }
 
+        // Event handler for when the parent moves or resizes
+        private void Owner_PositionChanged(object sender, EventArgs e)
+        {
+            PositionAlertBox();
+        }
+
         private void frmAlertBox_Load(object sender, EventArgs e)
         {
             PositionAlertBox();
 
+            // Wire up parent form events so the toast moves dynamically
+            if (this.Owner != null)
+            {
+                this.Owner.LocationChanged += Owner_PositionChanged;
+                this.Owner.SizeChanged += Owner_PositionChanged;
+            }
+
             timerAnimation.Interval = 20; // Adjust speed here (ms)
             timerAnimation.Start();
+        }
+
+        private void frmAlertBox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Unsubscribe from events to clean up memory
+            if (this.Owner != null)
+            {
+                this.Owner.LocationChanged -= Owner_PositionChanged;
+                this.Owner.SizeChanged -= Owner_PositionChanged;
+            }
         }
 
         private void pbxClose_Click(object sender, EventArgs e)

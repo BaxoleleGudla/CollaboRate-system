@@ -359,5 +359,93 @@ namespace CollaboRate
             pnlApplicationDefaults.Invalidate();
             pnlGroupManagementDefaults.Invalidate();
         }
+
+        // Method to consume DELETE Account 
+        public async Task<bool> DeleteUserAccountAsync(int userId)
+        {
+            try
+            {
+                btnDeleteAccount.Enabled = false;
+                btnDeleteAccount.ButtonText = "";
+
+                pbLoadingSpinnerDeleteAccount.Visible = true;
+
+                string url = $"{ApiBaseUrl}/api/Users/{userId}";
+
+                var response = await client.DeleteAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    pbLoadingSpinnerDeleteAccount.Visible = false;
+
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Your account has been deleted permanently.", Properties.Resources.Success_Icon);
+                    return true;
+                }
+                else
+                {
+                    string errorMsg = await response.Content.ReadAsStringAsync();
+
+                    btnDeleteAccount.Enabled = true;
+                    btnDeleteAccount.ButtonText = "Delete Account";
+
+                    pbLoadingSpinnerDeleteAccount.Visible = false;
+
+                    AlertBox(Color.LightPink, Color.DarkRed, "Deletion Failed", "Could not complete account deletion.", Properties.Resources.Error_Icon);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                btnDeleteAccount.Enabled = true;
+                btnDeleteAccount.ButtonText = "Delete Account";
+
+                pbLoadingSpinnerDeleteAccount.Visible = false;
+
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An unexpected error occurred.", Properties.Resources.Error_Icon);
+                return false;
+            }
+            finally
+            {
+                btnDeleteAccount.Enabled = true;
+                btnDeleteAccount.ButtonText = "Delete Account";
+
+                pbLoadingSpinnerDeleteAccount.Visible = false;
+            }
+        }
+
+        private async void btnDeleteAccount_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to permanently delete your account?", "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                bool success = await DeleteUserAccountAsync(CurrentUser.User_ID);
+
+                if (success)
+                {
+                    // Clear locally cached session data
+                    CurrentUser.User_ID = 0;
+                    CurrentUser.Username = string.Empty;
+                    CurrentUser.Email = string.Empty;
+                    CurrentGroup.Group_ID = 0;
+                    CurrentGroup.Group_Name = null;
+
+                    // Step 4: Resolve the top-level form shell wrapper (frmMain)
+                    Form mainForm = this.TopLevelControl as Form;
+
+                    // Gracefully kick user back to Login view
+                    frmLogin loginForm = new frmLogin();
+                    loginForm.Show();
+
+                    // Step 6: Close the inner child settings view container
+                    this.Close();
+
+                    // Unload and hide the parent window shell safely
+                    if (mainForm != null && mainForm.Name == "frmMain")
+                    {
+                        mainForm.Hide();
+                        mainForm.Dispose(); // Clear window resources out of memory safely
+                    }
+                }
+            }
+        }
     }
 }

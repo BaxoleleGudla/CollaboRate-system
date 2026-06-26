@@ -595,6 +595,13 @@ namespace CollaboRateAPIServer.Controllers
                     }
                 }
 
+                // Remove related task assignments for tasks belonging to THIS specific group
+                var assignmentsToRemove = _context.tblTaskAssignment
+                    .Where(ta => ta.User_ID == userId && _context.tblTask
+                        .Any(t => t.Task_ID == ta.Task_ID && t.Group_ID == groupId));
+
+                _context.tblTaskAssignment.RemoveRange(assignmentsToRemove);
+
                 // Get ratings where the user was the rater or the ratee within this group
                 var userRatings = _context.tblRating.Where(r =>
                     r.Group_ID == groupId &&

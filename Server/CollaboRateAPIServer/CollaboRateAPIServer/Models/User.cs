@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace CollaboRateAPIServer.Models
 {
@@ -12,6 +14,8 @@ namespace CollaboRateAPIServer.Models
         public DateTime Created_At { get; set; }
 
         // Optionally navigation back to assignments
-        public ICollection<TaskAssignment> TaskAssignments { get; set; }
+        [JsonIgnore] // Make it nullable or ignore it during incoming requests
+        [ValidateNever] // Tells ASP.NET Model State validator to skip it
+        public ICollection<TaskAssignment> TaskAssignments { get; set; } = new List<TaskAssignment>();
     }
 }

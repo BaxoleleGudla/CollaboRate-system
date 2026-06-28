@@ -2087,79 +2087,6 @@
         },
         "additionalProperties": false
       },
-      "Task": {
-        "type": "object",
-        "properties": {
-          "task_ID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "group_ID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "task_Title": {
-            "type": "string",
-            "nullable": true
-          },
-          "task_Description": {
-            "type": "string",
-            "nullable": true
-          },
-          "deadline": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "created_At": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "taskAssignments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TaskAssignment"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "TaskAssignment": {
-        "type": "object",
-        "properties": {
-          "task_Assignment_ID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "task_ID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "task": {
-            "$ref": "#/components/schemas/Task"
-          },
-          "user_ID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "is_Completed": {
-            "type": "boolean"
-          },
-          "completed_At": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "note": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "TaskWithUsersDto": {
         "type": "object",
         "properties": {
@@ -2350,13 +2277,6 @@
           "created_At": {
             "type": "string",
             "format": "date-time"
-          },
-          "taskAssignments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TaskAssignment"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false

@@ -149,7 +149,16 @@ namespace CollaboRateAPIServer.Controllers
         {
             _context.tblUser.Add(user);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetUser), new { id = user.User_ID }, user);
+
+            var responseDto = new UserRegisterResponseDto
+            {
+                User_ID = user.User_ID,
+                Username = user.Username,
+                Email = user.Email,
+                Created_At = user.Created_At
+            };
+
+            return CreatedAtAction(nameof(GetUser), new { id = user.User_ID }, responseDto);
         }
 
         // PUT: api/users/

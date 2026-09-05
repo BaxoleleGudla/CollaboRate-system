@@ -14,11 +14,15 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e589e97a945f7a098fb2db26d73291fbbb383781")]
 >>>>>>> Stashed changes
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22226d0a15e3bbc5916909cb92d7100eb1b6512e")]
+>>>>>>> Baxolele_Gudla
 [assembly: System.Reflection.AssemblyProductAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -147,18 +147,37 @@ namespace CollaboRateAPIServer.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> CreateUser(User user)
         {
-            _context.tblUser.Add(user);
-            await _context.SaveChangesAsync();
+            // 1. Check if username or email already exists in the database
+            bool userExists = await _context.tblUser.AnyAsync(u =>
+                u.Username.ToLower() == user.Username.ToLower() ||
+                u.Email.ToLower() == user.Email.ToLower());
 
-            var responseDto = new UserRegisterResponseDto
+            if (userExists)
             {
-                User_ID = user.User_ID,
-                Username = user.Username,
-                Email = user.Email,
-                Created_At = user.Created_At
-            };
+                // Returns HTTP 409 Conflict with a plain string or JSON message
+                return Conflict("Username or email is already taken.");
+            }
 
-            return CreatedAtAction(nameof(GetUser), new { id = user.User_ID }, responseDto);
+            try
+            {
+                _context.tblUser.Add(user);
+                await _context.SaveChangesAsync();
+
+                var responseDto = new UserRegisterResponseDto
+                {
+                    User_ID = user.User_ID,
+                    Username = user.Username,
+                    Email = user.Email,
+                    Created_At = user.Created_At
+                };
+
+                return CreatedAtAction(nameof(GetUser), new { id = user.User_ID }, responseDto);
+            }
+            catch (DbUpdateException)
+            {
+                // 2. Fallback catch if a race condition hits the database unique index
+                return Conflict("Username or email is already taken.");
+            }
         }
 
         // PUT: api/users/

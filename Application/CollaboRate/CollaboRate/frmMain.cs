@@ -95,6 +95,10 @@ namespace CollaboRate
                         cmbxCurrentGroup.DataSource = null;
                     }
                 }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    // New user, do nothing
+                }
                 else
                 {
                     AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to load groups.", Properties.Resources.Error_Icon);

@@ -85,14 +85,23 @@ namespace CollaboRate
         {
             try
             {
+                if (groupId <= 0)
+                {
+                    return new List<MessageDto>();
+                }
+
                 string url = $"{ApiBaseUrl}/api/GroupMessages/messages?groupId={groupId}&pageNumber={pageNumber}&pageSize={pageSize}&keyword={keyword}";
 
                 var response = await client.GetAsync(url, cancellationToken);
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to laod group chats.", Properties.Resources.Error_Icon);
-                    return new List<MessageDto>();
+                    // Ignore 404 (No messages found in group) or 400 (Bad Request from empty parameters)
+                    if (response.StatusCode != System.Net.HttpStatusCode.NotFound && response.StatusCode != System.Net.HttpStatusCode.BadRequest)
+                    {
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to load group chats.", Properties.Resources.Error_Icon);
+                        return new List<MessageDto>();
+                    }
                 }
 
                 string json = await response.Content.ReadAsStringAsync();

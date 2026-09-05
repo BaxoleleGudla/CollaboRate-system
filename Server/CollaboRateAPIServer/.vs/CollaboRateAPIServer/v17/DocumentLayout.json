@@ -7,19 +7,15 @@
       "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< Updated upstream
-      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\github\\collaborate-system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\github\\collaborate-system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\dtos\\userregisterresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-=======
       "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\github\\collaborate-system\\server\\collaborateapiserver\\collaborateapiserver\\dtos\\userregisterresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
->>>>>>> Stashed changes
       "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\dtos\\userregisterresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -46,21 +42,44 @@
           "Children": [
             {
               "$type": "Document",
-<<<<<<< Updated upstream
-=======
-              "DocumentIndex": 1,
-              "Title": "UserRegisterResponseDto.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAgwLMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-28T13:55:13.011Z"
+              "WhenOpened": "2026-09-05T14:09:08.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T14:09:09.249Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T14:09:09.257Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Models\\User.cs",
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Models\\User.cs",
@@ -68,75 +87,19 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-28T13:00:36.922Z"
-            },
-            {
-              "$type": "Document",
->>>>>>> Stashed changes
-              "DocumentIndex": 0,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\UsersController.cs",
-<<<<<<< Updated upstream
-              "ViewState": "AgIAAJcAAAAAAAAAAAAgwLMAAAANAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAI8AAAAAAAAAAAAAAKYAAABGAAAAAAAAAA==",
->>>>>>> Stashed changes
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-26T17:56:50.327Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-05T13:44:24.106Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-05T13:43:26.448Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Models\\User.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Models\\User.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Models\\User.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-28T13:00:36.922Z"
+              "WhenOpened": "2026-09-05T14:09:09.274Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "UserRegisterResponseDto.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-28T13:55:13.011Z"
+              "WhenOpened": "2026-09-05T14:09:09.287Z"
             },
             {
               "$type": "Document",
@@ -148,7 +111,7 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\TasksController.cs",
               "ViewState": "AgIAACMBAAAAAAAAAAAAAFQBAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-26T17:03:25.111Z"
+              "WhenOpened": "2026-09-05T14:09:09.295Z"
             },
             {
               "$type": "Document",
@@ -160,7 +123,7 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\GroupsController.cs",
               "ViewState": "AgIAAIcCAAAAAAAAAAAYwFsCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-26T17:05:07.281Z"
+              "WhenOpened": "2026-09-05T14:09:09.3Z"
             }
           ]
         }

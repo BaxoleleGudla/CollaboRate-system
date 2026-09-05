@@ -15,6 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 =======
@@ -22,6 +23,9 @@ using System.Reflection;
 >>>>>>> Stashed changes
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22226d0a15e3bbc5916909cb92d7100eb1b6512e")]
+>>>>>>> Baxolele_Gudla
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04c62988a5eeb047bcb747ff4463af5e423e53dc")]
 >>>>>>> Baxolele_Gudla
 [assembly: System.Reflection.AssemblyProductAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CollaboRateAPIServer")]

@@ -143,7 +143,6 @@ namespace CollaboRate
                     pbLoadingSpinner.Refresh();
                     Application.DoEvents();
 
-                    //using var client = new HttpClient();
                     var newUser = new User
                     {
                         Username = txtUsername.Texts.Trim(),
@@ -179,10 +178,19 @@ namespace CollaboRate
                         CurrentUser.Username = user.Username;
                         CurrentUser.Email = user.Email;
 
-                        MessageBox.Show("Sign up successful!" + CurrentUser.User_ID + CurrentUser.Username + CurrentUser.Email, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmMain mainForm = new frmMain();
                         mainForm.Show();
                         this.Hide();
+                    }
+                    else if (response.StatusCode == System.Net.HttpStatusCode.Conflict) // 409 Conflict
+                    {
+                        // Displays "Username or email is already taken." sent from the API
+                        string errorMessage = !string.IsNullOrWhiteSpace(responseBody)
+                            ? responseBody.Trim('"')
+                            : "Username or email is already taken.";
+
+                        lblGeneralError.Text = errorMessage;
+                        lblGeneralError.Visible = true;
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)  // 401
                     {
@@ -209,7 +217,8 @@ namespace CollaboRate
                     else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)  // 500
                     {
                         pbLoadingSpinner.Visible = false;
-                        lblGeneralError.Text = "Please try again later";
+                        MessageBox.Show(responseBody.ToString());
+                        lblGeneralError.Text = "Server error. Please try again later";
                         lblGeneralError.Visible = true;
                     }
                     else

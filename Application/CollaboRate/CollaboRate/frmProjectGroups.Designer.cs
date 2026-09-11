@@ -91,7 +91,7 @@
             // 
             this.lblCurrentProjectGroup.AutoSize = true;
             this.lblCurrentProjectGroup.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentProjectGroup.Location = new System.Drawing.Point(16, 96);
+            this.lblCurrentProjectGroup.Location = new System.Drawing.Point(13, 96);
             this.lblCurrentProjectGroup.Name = "lblCurrentProjectGroup";
             this.lblCurrentProjectGroup.Size = new System.Drawing.Size(184, 19);
             this.lblCurrentProjectGroup.TabIndex = 11;

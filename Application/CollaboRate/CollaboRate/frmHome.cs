@@ -138,9 +138,16 @@ namespace CollaboRate
 
                         dgViewMembers.AutoGenerateColumns = false;
 
-                        lblProjectGroupName.Text = _currentGroupDetails.Group_Name + " (" + _currentGroupDetails.Accepted_User_Count + " members)";
+                        lblProjectGroupName.Text = _currentGroupDetails.Group_Name;
+                        lblTotalMembers.Text = _currentGroupDetails.Accepted_User_Count.ToString();
 
                         dgViewMembers.DataSource = new BindingList<GroupUserDto>(_allUsers);
+
+                        if (!(CurrentGroup.Group_ID > 0))
+                        {
+                            lblGroupMembers.Text = "(No group selected)";
+                            lblGroupMembers.Visible = true;
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -207,6 +214,7 @@ namespace CollaboRate
 
                     if (upcomingMeetings.Count > 0)
                     {
+                        lblTotalUpcomingMeetings.Text = upcomingMeetings.Count.ToString();
                         lblUpcomingMeetings.Visible = false;
                         meetingsBindingSource.DataSource = upcomingMeetings;
                         dgViewMeetings.AutoGenerateColumns = false;
@@ -214,6 +222,7 @@ namespace CollaboRate
                     }
                     else
                     {
+                        lblTotalUpcomingMeetings.Text = "0";
                         lblUpcomingMeetings.Visible = true;
                     }
                 }
@@ -293,6 +302,7 @@ namespace CollaboRate
 
                     if (upcomingTasks.Count > 0)
                     {
+                        lblTotalUpcomingTasks.Text = upcomingTasks.Count.ToString();
                         lblUpcomingTasks.Visible = false;
                         tasksBindingSource.DataSource = upcomingTasks;
                         dgViewTasks.AutoGenerateColumns = false;
@@ -300,6 +310,7 @@ namespace CollaboRate
                     }
                     else
                     {
+                        lblTotalUpcomingTasks.Text = "0";
                         lblUpcomingTasks.Visible = true;
                     }
                 }
@@ -352,6 +363,17 @@ namespace CollaboRate
                             u.Username = $"{u.Username} (You)";
                         }
                     });
+
+                    if (data.Count > 0)
+                    {
+                        lblMemberEvaluations.Visible = false;
+                        double groupAverageRating = data.Average(user => user.AverageScore);
+                        lblAverageRating.Text = groupAverageRating >= 0 ? groupAverageRating.ToString() + " / 5.0": "0";
+                    }
+                    else
+                    {
+                        lblMemberEvaluations.Visible = true;
+                    }
 
                     // Prevent the grid from deleting custom GUI columns
                     dgViewMemberEvaluations.AutoGenerateColumns = false;
@@ -483,6 +505,21 @@ namespace CollaboRate
 
         private void frmHome_Resize(object sender, EventArgs e)
         {
+            // Force specific controls to redraw
+            pnlTop.Invalidate();
+            tblPanelKPI.Invalidate();
+            pnlTotalGroupMembers.Invalidate();
+            pnlTotalUpcomingMeetings.Invalidate();
+            pnlTotalUpcomingTasks.Invalidate();
+            pnlAverageRating.Invalidate();
+            tblPanelDataGrids.Invalidate();
+            pnlGroupMembers.Invalidate();
+            pnlUpcomingMeetings.Invalidate();
+            pnlTasks.Invalidate();
+            pnlMemberEvaluations.Invalidate();
+
+            this.Refresh();
+
             if (pbLoadingSpinner != null)
             {
                 // Calculate center: (Parent Width / 2) - (Control Width / 2)

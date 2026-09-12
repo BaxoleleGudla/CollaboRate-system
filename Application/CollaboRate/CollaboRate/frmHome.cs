@@ -331,6 +331,40 @@ namespace CollaboRate
             }
         }
 
+        // Method to setup data grid view styling
+        public void SetupRobustGrid()
+        {
+            try
+            {
+                // Heatmap Styling
+                // Ensure we actually have rows to style
+                if (dgViewMemberEvaluations.Rows.Count == 0) return;
+
+                foreach (DataGridViewRow row in dgViewMemberEvaluations.Rows)
+                {
+                    // Get the data object for accuracy
+                    var item = row.DataBoundItem as RatedMemberDto;
+                    if (item == null) continue;
+
+                    // 1. Bright Heatmap for Average Score
+                    if (item.AverageScore >= 4.0)
+                    {
+                        row.Cells["AverageScore"].Style.ForeColor = Color.ForestGreen;
+                        row.Cells["AverageScore"].Style.Font = new Font(dgViewMemberEvaluations.Font, FontStyle.Bold);
+                    }
+                    else if (item.AverageScore > 0 && item.AverageScore < 2.5)
+                    {
+                        row.Cells["AverageScore"].Style.ForeColor = Color.Red;
+                        row.Cells["AverageScore"].Style.Font = new Font(dgViewMemberEvaluations.Font, FontStyle.Bold);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to heatmap.", Properties.Resources.Error_Icon);
+            }
+        }
+
         // Method to load ratings
         private async Task LoadMemberEvaluationsAsync(string keyword = "")
         {
@@ -379,6 +413,9 @@ namespace CollaboRate
                     dgViewMemberEvaluations.AutoGenerateColumns = false;
 
                     dgViewMemberEvaluations.DataSource = data;
+
+                    // Apply styling
+                    SetupRobustGrid();
                 }
             }
             catch (Exception ex)

@@ -342,7 +342,7 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = true;
 
                 // Construct the URL with an optional search keyword
-                string url = $"{ApiBaseUrl}/api/Ratings/group/{CurrentGroup.Group_ID}/status-for/{CurrentUser.User_ID}";
+                string url = $"{ApiBaseUrl}/api/Ratings/group/{CurrentGroup.Group_ID}/status-for/{CurrentUser.User_ID}/home";
 
                 if (!string.IsNullOrWhiteSpace(keyword))
                 {

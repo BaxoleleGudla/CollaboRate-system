@@ -66,5 +66,36 @@ namespace CollaboRateAPIServer.Controllers
             await _context.SaveChangesAsync();
             return Ok();
         }
+
+        // Method to get ratings done for home form
+        [HttpGet("group/{groupId}/status-for/{raterId}/home")]
+        public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetEvaluationsHome(int groupId, int raterId, [FromQuery] string keyword = null)
+        {
+            var totalInGroup = await _context.tblGroupMember.CountAsync(gm => gm.Group_ID == groupId && gm.Join_Status == "Accepted");
+
+            var members = await _context.tblGroupMember
+                .Where(gm => gm.Group_ID == groupId && gm.Join_Status == "Accepted")
+                .Join(_context.tblUser, gm => gm.User_ID, u => u.User_ID, (gm, u) => new { u.User_ID, u.Username })
+                .ToListAsync();
+
+            // Apply filtering
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                members = members.Where(m => m.Username.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            var ratings = await _context.tblRating.Where(r => r.Group_ID == groupId).ToListAsync();
+
+            return Ok(members.Select(m => new RatedMemberDto
+            {
+                User_ID = m.User_ID,
+                Username = m.Username,
+                MyCurrentScore = ratings.FirstOrDefault(r => r.Rater_ID == raterId && r.Ratee_ID == m.User_ID)?.Score,
+                AverageScore = ratings.Where(r => r.Ratee_ID == m.User_ID).Any() ?
+                               Math.Round(ratings.Where(r => r.Ratee_ID == m.User_ID).Average(r => (double)r.Score), 2) : 0,
+                ReceivedRatingsCount = ratings.Count(r => r.Ratee_ID == m.User_ID),
+                PotentialRatingsCount = totalInGroup - 1
+            }).OrderBy(x => x.Username));
+        }
     }
 }

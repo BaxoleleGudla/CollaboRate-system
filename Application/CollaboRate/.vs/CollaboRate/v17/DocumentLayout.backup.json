@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\collaborate\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\application\\collaborate\\collaborate\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -27,7 +27,7 @@
       "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmgroupchats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\application\\collaborate\\collaborate\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\collaborate\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2B422040-F7EB-41B8-BCD3-AF41010B221E}|CollaboRate\\CollaboRate.csproj|solutionrelative:collaborate\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -160,7 +160,7 @@
               "RelativeDocumentMoniker": "CollaboRate\\frmHome.cs",
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmHome.cs",
               "RelativeToolTip": "CollaboRate\\frmHome.cs",
-              "ViewState": "AgIAAO8BAAAAAAAAAAAWwAACAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAFABAAAAAAAAAAAAAFgBAAB9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-11T19:22:54.552Z",
               "EditorCaption": ""
@@ -174,8 +174,7 @@
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmHome.cs [Design]",
               "RelativeToolTip": "CollaboRate\\frmHome.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T18:40:47.14Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-04-11T18:40:47.14Z"
             },
             {
               "$type": "Document",
@@ -186,8 +185,7 @@
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Application\\CollaboRate\\CollaboRate\\frmProjectGroups.cs [Design]",
               "RelativeToolTip": "CollaboRate\\frmProjectGroups.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T19:13:58.302Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-04-11T19:13:58.302Z"
             },
             {
               "$type": "Document",
@@ -199,8 +197,7 @@
               "RelativeToolTip": "CollaboRate\\frmProjectGroups.cs",
               "ViewState": "AgIAAIkCAAAAAAAAAAAWwJkCAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T18:30:17.418Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-11T18:30:17.418Z"
             },
             {
               "$type": "Document",
@@ -212,8 +209,7 @@
               "RelativeToolTip": "CollaboRate\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T17:38:22.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-25T17:38:22.129Z"
             },
             {
               "$type": "Document",
@@ -225,8 +221,7 @@
               "RelativeToolTip": "CollaboRate\\frmGroupChats.cs",
               "ViewState": "AgIAAE0AAAAAAAAAAAAmwHEAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T17:38:02.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T17:38:02.592Z"
             },
             {
               "$type": "Document",
@@ -250,8 +245,7 @@
               "RelativeToolTip": "CollaboRate\\frmRegister.cs",
               "ViewState": "AgIAALQAAAAAAAAAAAAAAMkAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T17:36:45.581Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T17:36:45.581Z"
             },
             {
               "$type": "Document",

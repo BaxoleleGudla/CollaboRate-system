@@ -17,6 +17,7 @@ namespace CollaboRateAPIServer.Data
         public DbSet<Rating> tblRating { get; set; }
         public DbSet<Models.Task> tblTask { get; set; }
         public DbSet<TaskAssignment> tblTaskAssignment { get; set; }
+        public DbSet<UserSetting> tblUserSettings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -88,6 +89,12 @@ namespace CollaboRateAPIServer.Data
             // --- tblGroupMessage ---
             modelBuilder.Entity<GroupMessage>()
                 .Property(gm => gm.Created_At)
+                .HasDefaultValueSql("SYSUTCDATETIME()")
+                .ValueGeneratedOnAdd();
+
+            // --- tblUserSettings ---
+            modelBuilder.Entity<UserSetting>()
+                .Property(us => us.Updated_At)
                 .HasDefaultValueSql("SYSUTCDATETIME()")
                 .ValueGeneratedOnAdd();
         }

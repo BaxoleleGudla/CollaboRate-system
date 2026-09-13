@@ -112,6 +112,15 @@ CREATE TABLE tblGroupMessage (
 	CONSTRAINT FK_GROUP_MESSAGE_GROUP FOREIGN KEY (Group_ID) REFERENCES tblGroup(Group_ID)
 );
 
+CREATE TABLE tblUserSettings (
+	User_ID INT IDENTITY(1,1) PRIMARY KEY,
+	Enable_Push_Notifications BIT NOT NULL DEFAULT 1,
+	Enable_Email_Notifications BIT NOT NULL DEFAULT 1,
+	Updated_At DATETIME2 DEFAULT SYSUTCDATETIME(),
+
+	CONSTRAINT FK_USER_SETTINGS_USER FOREIGN KEY (User_ID) REFERENCES tblUser(User_ID) ON DELETE CASCADE
+);
+
 -- Indexes to speed up queries
 -- tblGroup: index on Creator (FK)
 CREATE NONCLUSTERED INDEX IDX_tblGroup_Creator

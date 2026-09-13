@@ -1153,7 +1153,7 @@
         }
       }
     },
-    "/api/Ratings/group/{groupId}/status-for/{raterId}home": {
+    "/api/Ratings/group/{groupId}/status-for/{raterId}/home": {
       "get": {
         "tags": [
           "Ratings"
@@ -1733,6 +1733,69 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/UserSettings/{userId}": {
+      "get": {
+        "tags": [
+          "UserSettings"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "UserSettings"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSettingsDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSettingsDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSettingsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -2356,6 +2419,18 @@
           "username": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserSettingsDto": {
+        "type": "object",
+        "properties": {
+          "enable_Push_Notifications": {
+            "type": "boolean"
+          },
+          "enable_Email_Notifications": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

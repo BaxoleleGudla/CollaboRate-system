@@ -645,7 +645,7 @@
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.RatingsController",
     "Method": "GetEvaluationsHome",
-    "RelativePath": "api/Ratings/group/{groupId}/status-for/{raterId}home",
+    "RelativePath": "api/Ratings/group/{groupId}/status-for/{raterId}/home",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -979,6 +979,43 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.CollaboRateAPIServer.Controllers.UserSettingsController",
+    "Method": "GetSettings",
+    "RelativePath": "api/UserSettings/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.CollaboRateAPIServer.Controllers.UserSettingsController",
+    "Method": "UpdateSettings",
+    "RelativePath": "api/UserSettings/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "CollaboRateAPIServer.Dtos.UserSettingsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.AuthController",

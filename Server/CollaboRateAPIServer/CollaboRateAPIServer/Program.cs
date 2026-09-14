@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using CollaboRateAPIServer.Data;
 using CollaboRateAPIServer.Hubs;
+using CollaboRateAPIServer.Interceptors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,15 @@ builder.Services.AddSignalR();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Register the interceptor
+builder.Services.AddScoped<NotificationInterceptor>();
+builder.Services.AddDbContext<AppDbContext>((serviceProvider, options) =>
+{
+    var interceptor = serviceProvider.GetRequiredService<NotificationInterceptor>();
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+        .AddInterceptors(interceptor);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,7 +42,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Map SignalR hub route
+// Map SignalR hubs route
 app.MapHub<ChatHub>("/chathub");
+app.MapHub<NotificationHub>("/notificationHub");
 
 app.Run();

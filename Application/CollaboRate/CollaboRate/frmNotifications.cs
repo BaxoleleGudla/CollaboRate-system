@@ -1,4 +1,5 @@
 ﻿using CollaboRate.Dtos;
+using CollaboRate.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,22 @@ namespace CollaboRate
             InitializeComponent();
             // Close the dropdown if the user clicks anywhere else
             this.Deactivate += (s, e) => this.Close();
+
+            // Wire up the Form Load and Form Closed events
+            this.Load += frmNotifications_Load;
+            this.FormClosed += frmNotifications_FormClosed;
+        }
+
+        private void frmNotifications_Load(object sender, EventArgs e)
+        {
+            // Subscribe to real-time events when form opens
+            SignalRService.Instance.OnNotificationReceived += HandleRealTimeNotification;
+        }
+
+        private void frmNotifications_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Unsubscribe when form closes to prevent memory leaks
+            SignalRService.Instance.OnNotificationReceived -= HandleRealTimeNotification;
         }
 
         public async Task InitializeNotificationsAsync(int userId, int groupId)
@@ -60,13 +77,7 @@ namespace CollaboRate
                     {
                         foreach (var notif in notifications)
                         {
-                            var item = new cntlNotificationItem();
-                            item.SetNotificationData(notif);
-
-                            // Adjust width to account for the scrollbar
-                            item.Width = flpNotifications.Width - 25;
-
-                            flpNotifications.Controls.Add(item);
+                            AddNotificationControl(notif, appendToTop: false);
                         }
 
                         // Mark all as read now that they are displayed
@@ -94,29 +105,68 @@ namespace CollaboRate
             }
         }
 
+        // Method triggered whenever a real-time SignalR message arrives
+        private void HandleRealTimeNotification(NotificationDto notif)
+        {
+            // Ensure UI thread execution
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => HandleRealTimeNotification(notif)));
+                return;
+            }
+
+            // Remove empty state label if present
+            var emptyLabel = flpNotifications.Controls.OfType<Label>().FirstOrDefault();
+            if (emptyLabel != null)
+            {
+                flpNotifications.Controls.Remove(emptyLabel);
+            }
+
+            // Prepend new real-time notification to the top of the list
+            AddNotificationControl(notif, appendToTop: true);
+        }
+
+        private void AddNotificationControl(NotificationDto notif, bool appendToTop)
+        {
+            var item = new cntlNotificationItem();
+            item.SetNotificationData(notif);
+            item.Width = flpNotifications.Width - 25;
+
+            flpNotifications.Controls.Add(item);
+
+            if (appendToTop)
+            {
+                flpNotifications.Controls.SetChildIndex(item, 0);
+            }
+        }
+
         // Helper method to show a clean empty message
         private void ShowEmptyState(string message)
         {
             try
             {
                 // UI updates should happen on the UI thread
-                this.Invoke((MethodInvoker)delegate {
-                    flpNotifications.Controls.Clear();
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((MethodInvoker)delegate { ShowEmptyState(message); });
+                    return;
+                }
 
-                    Label lblEmpty = new Label
-                    {
-                        Text = message,
-                        ForeColor = Color.Gray,
-                        Font = new Font("Century Gothic", 10, FontStyle.Italic),
-                        TextAlign = ContentAlignment.MiddleCenter,
+                flpNotifications.Controls.Clear();
 
-                        Width = flpNotifications.Width - 10,
-                        Height = 150,
-                        Margin = new Padding(0, 50, 0, 0)
-                    };
+                Label lblEmpty = new Label
+                {
+                    Text = message,
+                    ForeColor = Color.Gray,
+                    Font = new Font("Century Gothic", 10, FontStyle.Italic),
+                    TextAlign = ContentAlignment.MiddleCenter,
 
-                    flpNotifications.Controls.Add(lblEmpty);
-                });
+                    Width = flpNotifications.Width - 10,
+                    Height = 150,
+                    Margin = new Padding(0, 50, 0, 0)
+                };
+
+                flpNotifications.Controls.Add(lblEmpty);
             }
             catch (Exception ex)
             {

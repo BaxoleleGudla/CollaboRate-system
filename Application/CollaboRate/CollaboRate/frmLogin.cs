@@ -13,6 +13,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollaboRate.Dtos;
+using CollaboRate.Services;
 
 namespace CollaboRate
 {
@@ -139,6 +140,9 @@ namespace CollaboRate
                         CurrentUser.User_ID = user.User_ID;
                         CurrentUser.Username = user.Username;
                         CurrentUser.Email = user.Email;
+
+                        // SignalR for real time notifications
+                        await SignalRService.Instance.InitializeAsync(CurrentUser.User_ID);
 
                         frmMain mainForm = new frmMain();
                         mainForm.Show();

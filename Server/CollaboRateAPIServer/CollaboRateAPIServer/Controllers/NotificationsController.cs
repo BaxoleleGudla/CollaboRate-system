@@ -15,7 +15,17 @@ namespace CollaboRateAPIServer.Controllers
         {
             _context = context;
         }
-
+		
+		// Method to count unread notifications
+		[HttpGet("unread-count/user/{userId}/group/{groupId}")]
+		public async Task<IActionResult> GetUserCount(int userId, int groupId)
+		{
+			int unreadCount = await _context.tblNotification
+				.CountAsync(n => n.User_ID == userId && n.Group_ID == groupId && !n.IsRead);
+				
+			return Ok(new { UnreadCount = unreadCount, HasUnread = unreadCount > 0 });
+		}
+		
         // GET: api/Notifications/user/5/group/2
         [HttpGet("user/{userId}/group/{groupId}")]
         public async Task<ActionResult<IEnumerable<NotificationDto>>> GetNotifications(int userId, int groupId)

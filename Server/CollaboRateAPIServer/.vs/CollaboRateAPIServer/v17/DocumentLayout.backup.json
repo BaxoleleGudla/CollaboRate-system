@@ -70,21 +70,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NotificationRecipient.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Models\\NotificationRecipient.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Models\\NotificationRecipient.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Models\\NotificationRecipient.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Models\\NotificationRecipient.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-14T17:59:21.639Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -96,6 +83,19 @@
               "ViewState": "AgIAADUAAAAAAAAAAAAkwD8AAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-14T17:41:39.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NotificationRecipient.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Models\\NotificationRecipient.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Models\\NotificationRecipient.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Models\\NotificationRecipient.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Models\\NotificationRecipient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T17:59:21.639Z",
               "EditorCaption": ""
             },
             {

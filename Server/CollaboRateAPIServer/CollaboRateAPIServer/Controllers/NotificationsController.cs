@@ -20,7 +20,7 @@ namespace CollaboRateAPIServer.Controllers
 		[HttpGet("unread-count/user/{userId}/group/{groupId}")]
 		public async Task<IActionResult> GetUserCount(int userId, int groupId)
 		{
-			int unreadCount = await _context.tblNotification
+			int unreadCount = await _context.tblGroupNotification
 				.CountAsync(n => n.User_ID == userId && n.Group_ID == groupId && !n.IsRead);
 				
 			return Ok(new { UnreadCount = unreadCount, HasUnread = unreadCount > 0 });

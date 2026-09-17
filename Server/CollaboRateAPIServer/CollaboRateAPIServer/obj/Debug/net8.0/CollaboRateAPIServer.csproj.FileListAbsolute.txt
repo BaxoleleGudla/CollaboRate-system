@@ -165,3 +165,14 @@ C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Ser
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Server\CollaboRateAPIServer\CollaboRateAPIServer\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Server\CollaboRateAPIServer\CollaboRateAPIServer\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Server\CollaboRateAPIServer\CollaboRateAPIServer\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\CollaboRateAPIServer.csproj.AssemblyReference.cache
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\CollaboRateAPIServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\CollaboRateAPIServer.AssemblyInfoInputs.cache
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\CollaboRateAPIServer.AssemblyInfo.cs
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\CollaboRateAPIServer.csproj.CoreCompileInputs.cache
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\CollaboRateAPIServer.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\CollaboRateAPIServer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\CollaboRateAPIServer.sourcelink.json
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\CollaboRateAPIServer.dll
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\refint\CollaboRateAPIServer.dll
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Debug\net8.0\CollaboRateAPIServer.pdb

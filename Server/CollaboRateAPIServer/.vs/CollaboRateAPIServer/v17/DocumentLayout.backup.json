@@ -70,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -82,20 +82,20 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Interceptors\\NotificationInterceptor.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAkwEgAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-14T17:41:39.009Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-14T17:41:39.009Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Program.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Program.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Program.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Program.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAABsAAAADAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "NotificationsController.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-14T17:11:02.926Z"
+              "WhenOpened": "2026-09-14T17:29:50.213Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -111,16 +111,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NotificationsController.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Program.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Program.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Program.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Program.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAABsAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-14T17:29:50.213Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-14T17:11:02.926Z"
             },
             {
               "$type": "Document",

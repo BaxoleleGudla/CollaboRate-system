@@ -20,11 +20,35 @@ namespace CollaboRateAPIServer.Controllers
 		[HttpGet("unread-count/user/{userId}/group/{groupId}")]
 		public async Task<IActionResult> GetUserCount(int userId, int groupId)
 		{
-			int unreadCount = await _context.tblGroupNotification
-				.CountAsync(n => n.User_ID == userId && n.Group_ID == groupId && !n.IsRead);
-				
-			return Ok(new { UnreadCount = unreadCount, HasUnread = unreadCount > 0 });
-		}
+            if (userId <= 0 || groupId <= 0)
+            {
+                return BadRequest(new { message = "Invalid User ID or Group ID provided." });
+            }
+
+            try
+            {
+                // Join tblNotificationRecipient with tblGroupNotification to check unread items for this user and group
+                int unreadCount = await (
+                    from r in _context.tblNotificationRecipient
+                    join g in _context.tblGroupNotification
+                        on r.Group_Notification_ID equals g.Group_Notification_ID
+                    where r.User_ID == userId
+                       && g.Group_ID == groupId
+                       && !r.Is_Read
+                    select r
+                ).CountAsync();
+
+                return Ok(new
+                {
+                    unreadCount = unreadCount,
+                    hasUnread = unreadCount > 0
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while counting unread notifications." });
+            }
+        }
 		
         // GET: api/Notifications/user/5/group/2
         [HttpGet("user/{userId}/group/{groupId}")]

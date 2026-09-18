@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Identity.Data;
 using System.Security.Cryptography;
 
 namespace CollaboRateAPIServer.Controllers
-{
+{	
+	[ApiController]
+	[Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -49,7 +51,7 @@ namespace CollaboRateAPIServer.Controllers
             return Ok(new
             {
                 user_ID = user.User_ID,
-                usename = user.Username,
+                username = user.Username,
                 email = user.Email,
                 refreshToken = refreshToken
             });

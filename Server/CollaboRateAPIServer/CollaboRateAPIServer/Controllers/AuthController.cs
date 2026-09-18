@@ -24,37 +24,46 @@ namespace CollaboRateAPIServer.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         {
-            if (loginRequest == null || string.IsNullOrEmpty(loginRequest.Username) || string.IsNullOrEmpty(loginRequest.Password))
+			try
+			{
+				if (loginRequest == null || string.IsNullOrEmpty(loginRequest.Username) || string.IsNullOrEmpty(loginRequest.Password))
+				{
+					return BadRequest("Username and password are required.");
+				}
+
+				// Find user by username
+				var user = await _context.tblUser.FirstOrDefaultAsync(u => u.Username == loginRequest.Username);
+
+				if (user == null)
+				{
+					return Unauthorized("Invalid username or password");
+				}
+
+				if (user.PasswordHash != loginRequest.Password)
+				{
+					return Unauthorized("Invalid username or password.");
+				}
+
+				// Generate a Refresh Token
+				string refreshToken = GenerateSecureToken();
+				user.RefreshToken = refreshToken;
+				await _context.SaveChangesAsync();
+
+				// Authentication successful
+				return Ok(new
+				{
+					user_ID = user.User_ID,
+					username = user.Username,
+					email = user.Email,
+					refreshToken = refreshToken
+				});
+			}
+			catch (Exception ex)
             {
-                return BadRequest("Username and password are required.");
+                // Unhandled exception caught: returns details to help identify DbContext mapping issues
+                string innerMsg = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                return StatusCode(500, $"Database or EF error: {innerMsg}");
             }
-
-            // Find user by username
-            var user = await _context.tblUser.FirstOrDefaultAsync(u => u.Username == loginRequest.Username);
-
-            if (user == null)
-            {
-                return Unauthorized("Invalid username or password");
-            }
-
-            if (user.PasswordHash != loginRequest.Password)
-            {
-                return Unauthorized("Invalid username or password.");
-            }
-
-            // Generate a Refresh Token
-            string refreshToken = GenerateSecureToken();
-            user.RefreshToken = refreshToken;
-            await _context.SaveChangesAsync();
-
-            // Authentication successful
-            return Ok(new
-            {
-                user_ID = user.User_ID,
-                username = user.Username,
-                email = user.Email,
-                refreshToken = refreshToken
-            });
         }
 
         // Method responsible for refresh token

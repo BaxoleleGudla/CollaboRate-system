@@ -12,8 +12,8 @@ namespace CollaboRateAPIServer.Models
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public DateTime Created_At { get; set; }
-        public string RefreshToken { get; set; }
-	    public DateTime RefreshTokenExpiryTime { get; set; }
+        public string? RefreshToken { get; set; }
+	    public DateTime? RefreshTokenExpiryTime { get; set; }
 
         // Optionally navigation back to assignments
         [JsonIgnore] // Make it nullable or ignore it during incoming requests

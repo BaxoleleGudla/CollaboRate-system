@@ -49,15 +49,15 @@ namespace CollaboRateAPIServer.Controllers
 				user.RefreshToken = refreshToken;
 				await _context.SaveChangesAsync();
 
-				// Authentication successful
-				return Ok(new
-				{
-					user_ID = user.User_ID,
-					username = user.Username,
-					email = user.Email,
-					refreshToken = refreshToken
-				});
-			}
+                // Authentication successful
+                return Ok(new AuthResponse
+                {
+                    User_ID = user.User_ID,
+                    Username = user.Username,
+                    Email = user.Email,
+                    RefreshToken = refreshToken
+                });
+            }
 			catch (Exception ex)
             {
                 // Unhandled exception caught: returns details to help identify DbContext mapping issues
@@ -88,12 +88,12 @@ namespace CollaboRateAPIServer.Controllers
             user.RefreshToken = newRefreshToken;
             await _context.SaveChangesAsync();
 
-            return Ok(new
+            return Ok(new AuthResponse
             {
-                user_ID = user.User_ID,
-                username = user.Username,
-                email = user.Email,
-                refreshToken = newRefreshToken
+                User_ID = user.User_ID,
+                Username = user.Username,
+                Email = user.Email,
+                RefreshToken = newRefreshToken
             });
         }
 
@@ -117,6 +117,14 @@ namespace CollaboRateAPIServer.Controllers
         public class RefreshTokenRequest
         {
             public int UserId { get; set; }
+            public string RefreshToken { get; set; }
+        }
+
+        public class AuthResponse
+        {
+            public int User_ID { get; set; }
+            public string Username { get; set; }
+            public string Email { get; set; }
             public string RefreshToken { get; set; }
         }
     }

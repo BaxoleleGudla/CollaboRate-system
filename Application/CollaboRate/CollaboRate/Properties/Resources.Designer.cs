@@ -103,6 +103,26 @@ namespace CollaboRate.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Notifications_icon__no_notifications_ {
+            get {
+                object obj = ResourceManager.GetObject("Notifications icon (no notifications)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Notifications_icon__with_notifications_ {
+            get {
+                object obj = ResourceManager.GetObject("Notifications icon (with notifications)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Project_Groups_Icon {
             get {
                 object obj = ResourceManager.GetObject("Project Groups Icon", resourceCulture);

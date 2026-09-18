@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
             SATAUiFramework.BorderRadius borderRadius3 = new SATAUiFramework.BorderRadius();
             SATAUiFramework.BorderRadius borderRadius4 = new SATAUiFramework.BorderRadius();
@@ -35,8 +36,15 @@
             SATAUiFramework.BorderRadius borderRadius6 = new SATAUiFramework.BorderRadius();
             SATAUiFramework.BorderRadius borderRadius7 = new SATAUiFramework.BorderRadius();
             SATAUiFramework.BorderRadius borderRadius8 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             this.pnlSettings = new System.Windows.Forms.Panel();
+            this.pnlDangerZone = new System.Windows.Forms.Panel();
+            this.pnlDeleteAccount = new SATAUiFramework.SATAPanel();
+            this.pbLoadingSpinnerDeleteAccount = new System.Windows.Forms.PictureBox();
+            this.btnDeleteAccount = new FrameworkTest.SATAButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
             this.pnlApplicationDefaults = new System.Windows.Forms.Panel();
             this.pnlGroupManagementDefaults = new SATAUiFramework.SATAPanel();
             this.cmbxDefaultRole = new SATAComboBox();
@@ -87,15 +95,11 @@
             this.lblAccountAndSecurityHeading = new System.Windows.Forms.Label();
             this.lblHeading = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.pnlDangerZone = new System.Windows.Forms.Panel();
-            this.pnlDeleteAccount = new SATAUiFramework.SATAPanel();
-            this.pbLoadingSpinnerDeleteAccount = new System.Windows.Forms.PictureBox();
-            this.btnDeleteAccount = new FrameworkTest.SATAButton();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
+            this.pbLoadingSpinnerNotificationPreferences = new System.Windows.Forms.PictureBox();
             this.pnlSettings.SuspendLayout();
+            this.pnlDangerZone.SuspendLayout();
+            this.pnlDeleteAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerDeleteAccount)).BeginInit();
             this.pnlApplicationDefaults.SuspendLayout();
             this.pnlGroupManagementDefaults.SuspendLayout();
             this.pnlNotificationPreferences.SuspendLayout();
@@ -108,9 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerChangePassword)).BeginInit();
             this.pnlProfileInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
-            this.pnlDangerZone.SuspendLayout();
-            this.pnlDeleteAccount.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerDeleteAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerNotificationPreferences)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSettings
@@ -127,6 +129,130 @@
             this.pnlSettings.Name = "pnlSettings";
             this.pnlSettings.Size = new System.Drawing.Size(810, 627);
             this.pnlSettings.TabIndex = 0;
+            // 
+            // pnlDangerZone
+            // 
+            this.pnlDangerZone.Controls.Add(this.pnlDeleteAccount);
+            this.pnlDangerZone.Controls.Add(this.panel4);
+            this.pnlDangerZone.Controls.Add(this.label13);
+            this.pnlDangerZone.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlDangerZone.Location = new System.Drawing.Point(0, 1560);
+            this.pnlDangerZone.Name = "pnlDangerZone";
+            this.pnlDangerZone.Size = new System.Drawing.Size(789, 271);
+            this.pnlDangerZone.TabIndex = 23;
+            // 
+            // pnlDeleteAccount
+            // 
+            this.pnlDeleteAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlDeleteAccount.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlDeleteAccount.BackColor2 = System.Drawing.Color.WhiteSmoke;
+            this.pnlDeleteAccount.BorderColor = System.Drawing.Color.Black;
+            borderRadius1.BottomLeft = 5;
+            borderRadius1.BottomRight = 5;
+            borderRadius1.TopLeft = 5;
+            borderRadius1.TopRight = 5;
+            this.pnlDeleteAccount.BorderRadius = borderRadius1;
+            this.pnlDeleteAccount.BorderThickness = 0;
+            this.pnlDeleteAccount.Controls.Add(this.pbLoadingSpinnerDeleteAccount);
+            this.pnlDeleteAccount.Controls.Add(this.btnDeleteAccount);
+            this.pnlDeleteAccount.Controls.Add(this.label10);
+            this.pnlDeleteAccount.Controls.Add(this.label12);
+            this.pnlDeleteAccount.Location = new System.Drawing.Point(16, 54);
+            this.pnlDeleteAccount.Name = "pnlDeleteAccount";
+            this.pnlDeleteAccount.Size = new System.Drawing.Size(782, 164);
+            this.pnlDeleteAccount.TabIndex = 23;
+            // 
+            // pbLoadingSpinnerDeleteAccount
+            // 
+            this.pbLoadingSpinnerDeleteAccount.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinnerDeleteAccount.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinnerDeleteAccount.Location = new System.Drawing.Point(101, 109);
+            this.pbLoadingSpinnerDeleteAccount.Name = "pbLoadingSpinnerDeleteAccount";
+            this.pbLoadingSpinnerDeleteAccount.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinnerDeleteAccount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinnerDeleteAccount.TabIndex = 57;
+            this.pbLoadingSpinnerDeleteAccount.TabStop = false;
+            this.pbLoadingSpinnerDeleteAccount.Visible = false;
+            // 
+            // btnDeleteAccount
+            // 
+            this.btnDeleteAccount.ButtonText = "Delete Account";
+            this.btnDeleteAccount.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
+            this.btnDeleteAccount.CheckedForeColor = System.Drawing.Color.White;
+            this.btnDeleteAccount.CheckedImageTint = System.Drawing.Color.White;
+            this.btnDeleteAccount.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
+            this.btnDeleteAccount.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnDeleteAccount.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAccount.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
+            this.btnDeleteAccount.HoverForeColor = System.Drawing.Color.White;
+            this.btnDeleteAccount.HoverImage = null;
+            this.btnDeleteAccount.HoverImageTint = System.Drawing.Color.White;
+            this.btnDeleteAccount.HoverOutline = System.Drawing.Color.Empty;
+            this.btnDeleteAccount.Image = null;
+            this.btnDeleteAccount.ImageAutoCenter = false;
+            this.btnDeleteAccount.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnDeleteAccount.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnDeleteAccount.ImageTint = System.Drawing.Color.White;
+            this.btnDeleteAccount.IsToggleButton = false;
+            this.btnDeleteAccount.IsToggled = false;
+            this.btnDeleteAccount.Location = new System.Drawing.Point(20, 105);
+            this.btnDeleteAccount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnDeleteAccount.Name = "btnDeleteAccount";
+            this.btnDeleteAccount.NormalBackground = System.Drawing.Color.Red;
+            this.btnDeleteAccount.NormalForeColor = System.Drawing.Color.White;
+            this.btnDeleteAccount.NormalOutline = System.Drawing.Color.Empty;
+            this.btnDeleteAccount.OutlineThickness = 2F;
+            this.btnDeleteAccount.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
+            this.btnDeleteAccount.PressedForeColor = System.Drawing.Color.White;
+            this.btnDeleteAccount.PressedImageTint = System.Drawing.Color.White;
+            this.btnDeleteAccount.PressedOutline = System.Drawing.Color.Empty;
+            this.btnDeleteAccount.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnDeleteAccount.Size = new System.Drawing.Size(195, 35);
+            this.btnDeleteAccount.TabIndex = 12;
+            this.btnDeleteAccount.TextAutoCenter = true;
+            this.btnDeleteAccount.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.Location = new System.Drawing.Point(16, 46);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(738, 54);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Once you delete your account, all your data, group membership, and task assignmen" +
+    "ts will be permanently removed. This cannot be undone.";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(17, 14);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(264, 22);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "Permanently Delete Account";
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.panel4.Location = new System.Drawing.Point(15, 35);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(782, 1);
+            this.panel4.TabIndex = 22;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(12, 6);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(135, 23);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "Danger Zone";
             // 
             // pnlApplicationDefaults
             // 
@@ -333,6 +459,7 @@
             borderRadius4.TopRight = 5;
             this.sataPanel1.BorderRadius = borderRadius4;
             this.sataPanel1.BorderThickness = 0;
+            this.sataPanel1.Controls.Add(this.pbLoadingSpinnerNotificationPreferences);
             this.sataPanel1.Controls.Add(this.btnSaveNotificationPreferences);
             this.sataPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.sataPanel1.Location = new System.Drawing.Point(0, 70);
@@ -377,6 +504,7 @@
             this.btnSaveNotificationPreferences.TabIndex = 9;
             this.btnSaveNotificationPreferences.TextAutoCenter = true;
             this.btnSaveNotificationPreferences.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnSaveNotificationPreferences.Click += new System.EventHandler(this.btnSaveNotificationPreferences_Click);
             // 
             // pnlEmailNotification
             // 
@@ -911,129 +1039,17 @@
             this.pnlTop.Size = new System.Drawing.Size(789, 80);
             this.pnlTop.TabIndex = 0;
             // 
-            // pnlDangerZone
+            // pbLoadingSpinnerNotificationPreferences
             // 
-            this.pnlDangerZone.Controls.Add(this.pnlDeleteAccount);
-            this.pnlDangerZone.Controls.Add(this.panel4);
-            this.pnlDangerZone.Controls.Add(this.label13);
-            this.pnlDangerZone.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlDangerZone.Location = new System.Drawing.Point(0, 1560);
-            this.pnlDangerZone.Name = "pnlDangerZone";
-            this.pnlDangerZone.Size = new System.Drawing.Size(789, 271);
-            this.pnlDangerZone.TabIndex = 23;
-            // 
-            // pnlDeleteAccount
-            // 
-            this.pnlDeleteAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlDeleteAccount.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlDeleteAccount.BackColor2 = System.Drawing.Color.WhiteSmoke;
-            this.pnlDeleteAccount.BorderColor = System.Drawing.Color.Black;
-            borderRadius1.BottomLeft = 5;
-            borderRadius1.BottomRight = 5;
-            borderRadius1.TopLeft = 5;
-            borderRadius1.TopRight = 5;
-            this.pnlDeleteAccount.BorderRadius = borderRadius1;
-            this.pnlDeleteAccount.BorderThickness = 0;
-            this.pnlDeleteAccount.Controls.Add(this.pbLoadingSpinnerDeleteAccount);
-            this.pnlDeleteAccount.Controls.Add(this.btnDeleteAccount);
-            this.pnlDeleteAccount.Controls.Add(this.label10);
-            this.pnlDeleteAccount.Controls.Add(this.label12);
-            this.pnlDeleteAccount.Location = new System.Drawing.Point(16, 54);
-            this.pnlDeleteAccount.Name = "pnlDeleteAccount";
-            this.pnlDeleteAccount.Size = new System.Drawing.Size(782, 164);
-            this.pnlDeleteAccount.TabIndex = 23;
-            // 
-            // pbLoadingSpinnerDeleteAccount
-            // 
-            this.pbLoadingSpinnerDeleteAccount.BackColor = System.Drawing.SystemColors.Control;
-            this.pbLoadingSpinnerDeleteAccount.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
-            this.pbLoadingSpinnerDeleteAccount.Location = new System.Drawing.Point(101, 109);
-            this.pbLoadingSpinnerDeleteAccount.Name = "pbLoadingSpinnerDeleteAccount";
-            this.pbLoadingSpinnerDeleteAccount.Size = new System.Drawing.Size(32, 26);
-            this.pbLoadingSpinnerDeleteAccount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLoadingSpinnerDeleteAccount.TabIndex = 57;
-            this.pbLoadingSpinnerDeleteAccount.TabStop = false;
-            this.pbLoadingSpinnerDeleteAccount.Visible = false;
-            // 
-            // btnDeleteAccount
-            // 
-            this.btnDeleteAccount.ButtonText = "Delete Account";
-            this.btnDeleteAccount.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
-            this.btnDeleteAccount.CheckedForeColor = System.Drawing.Color.White;
-            this.btnDeleteAccount.CheckedImageTint = System.Drawing.Color.White;
-            this.btnDeleteAccount.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
-            this.btnDeleteAccount.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnDeleteAccount.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteAccount.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
-            this.btnDeleteAccount.HoverForeColor = System.Drawing.Color.White;
-            this.btnDeleteAccount.HoverImage = null;
-            this.btnDeleteAccount.HoverImageTint = System.Drawing.Color.White;
-            this.btnDeleteAccount.HoverOutline = System.Drawing.Color.Empty;
-            this.btnDeleteAccount.Image = null;
-            this.btnDeleteAccount.ImageAutoCenter = false;
-            this.btnDeleteAccount.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnDeleteAccount.ImageOffset = new System.Drawing.Point(17, 0);
-            this.btnDeleteAccount.ImageTint = System.Drawing.Color.White;
-            this.btnDeleteAccount.IsToggleButton = false;
-            this.btnDeleteAccount.IsToggled = false;
-            this.btnDeleteAccount.Location = new System.Drawing.Point(20, 105);
-            this.btnDeleteAccount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnDeleteAccount.Name = "btnDeleteAccount";
-            this.btnDeleteAccount.NormalBackground = System.Drawing.Color.Red;
-            this.btnDeleteAccount.NormalForeColor = System.Drawing.Color.White;
-            this.btnDeleteAccount.NormalOutline = System.Drawing.Color.Empty;
-            this.btnDeleteAccount.OutlineThickness = 2F;
-            this.btnDeleteAccount.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
-            this.btnDeleteAccount.PressedForeColor = System.Drawing.Color.White;
-            this.btnDeleteAccount.PressedImageTint = System.Drawing.Color.White;
-            this.btnDeleteAccount.PressedOutline = System.Drawing.Color.Empty;
-            this.btnDeleteAccount.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnDeleteAccount.Size = new System.Drawing.Size(195, 35);
-            this.btnDeleteAccount.TabIndex = 12;
-            this.btnDeleteAccount.TextAutoCenter = true;
-            this.btnDeleteAccount.TextOffset = new System.Drawing.Point(0, 0);
-            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.Location = new System.Drawing.Point(16, 46);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(738, 54);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Once you delete your account, all your data, group membership, and task assignmen" +
-    "ts will be permanently removed. This cannot be undone.";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(17, 14);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(264, 22);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Permanently Delete Account";
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.panel4.Location = new System.Drawing.Point(15, 35);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(782, 1);
-            this.panel4.TabIndex = 22;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 6);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(135, 23);
-            this.label13.TabIndex = 21;
-            this.label13.Text = "Danger Zone";
+            this.pbLoadingSpinnerNotificationPreferences.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinnerNotificationPreferences.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinnerNotificationPreferences.Location = new System.Drawing.Point(93, 40);
+            this.pbLoadingSpinnerNotificationPreferences.Name = "pbLoadingSpinnerNotificationPreferences";
+            this.pbLoadingSpinnerNotificationPreferences.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinnerNotificationPreferences.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinnerNotificationPreferences.TabIndex = 57;
+            this.pbLoadingSpinnerNotificationPreferences.TabStop = false;
+            this.pbLoadingSpinnerNotificationPreferences.Visible = false;
             // 
             // frmSettings
             // 
@@ -1051,6 +1067,11 @@
             this.Resize += new System.EventHandler(this.frmSettings_Resize);
             this.pnlSettings.ResumeLayout(false);
             this.pnlSettings.PerformLayout();
+            this.pnlDangerZone.ResumeLayout(false);
+            this.pnlDangerZone.PerformLayout();
+            this.pnlDeleteAccount.ResumeLayout(false);
+            this.pnlDeleteAccount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerDeleteAccount)).EndInit();
             this.pnlApplicationDefaults.ResumeLayout(false);
             this.pnlApplicationDefaults.PerformLayout();
             this.pnlGroupManagementDefaults.ResumeLayout(false);
@@ -1071,11 +1092,7 @@
             this.pnlProfileInformation.ResumeLayout(false);
             this.pnlProfileInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).EndInit();
-            this.pnlDangerZone.ResumeLayout(false);
-            this.pnlDangerZone.PerformLayout();
-            this.pnlDeleteAccount.ResumeLayout(false);
-            this.pnlDeleteAccount.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerDeleteAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinnerNotificationPreferences)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1141,5 +1158,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox pbLoadingSpinnerNotificationPreferences;
     }
 }

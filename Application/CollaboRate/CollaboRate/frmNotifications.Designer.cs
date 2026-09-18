@@ -68,7 +68,7 @@
             this.flpNotifications.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
             this.flpNotifications.Name = "flpNotifications";
             this.flpNotifications.Padding = new System.Windows.Forms.Padding(3);
-            this.flpNotifications.Size = new System.Drawing.Size(344, 406);
+            this.flpNotifications.Size = new System.Drawing.Size(344, 456);
             this.flpNotifications.TabIndex = 1;
             this.flpNotifications.WrapContents = false;
             // 
@@ -77,7 +77,7 @@
             this.pbLoadingSpinner.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
             this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
-            this.pbLoadingSpinner.Location = new System.Drawing.Point(156, 202);
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(156, 227);
             this.pbLoadingSpinner.Name = "pbLoadingSpinner";
             this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
             this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -90,7 +90,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(350, 450);
+            this.ClientSize = new System.Drawing.Size(350, 500);
             this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.flpNotifications);
             this.Controls.Add(this.pnlTop);

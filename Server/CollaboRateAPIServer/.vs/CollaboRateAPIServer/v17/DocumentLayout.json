@@ -92,7 +92,7 @@
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\NotificationsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-14T17:29:50.213Z",
               "EditorCaption": ""
@@ -155,7 +155,8 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\GroupMessagesController.cs",
               "ViewState": "AgIAAFcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-14T17:21:17.118Z"
+              "WhenOpened": "2026-09-14T17:21:17.118Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -167,7 +168,8 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\UserSettingsController.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAAkwHsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-13T16:57:40.652Z"
+              "WhenOpened": "2026-09-13T16:57:40.652Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -179,7 +181,8 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\RatingsController.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAswFAAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-12T22:05:07.99Z"
+              "WhenOpened": "2026-09-12T22:05:07.99Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -191,7 +194,8 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\UsersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-26T17:56:50.327Z"
+              "WhenOpened": "2026-06-26T17:56:50.327Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -215,7 +219,8 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-05T13:43:26.448Z"
+              "WhenOpened": "2026-09-05T13:43:26.448Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -227,7 +232,8 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\GroupsController.cs",
               "ViewState": "AgIAAIQCAAAAAAAAAAAAAIgCAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-26T17:05:07.281Z"
+              "WhenOpened": "2026-06-26T17:05:07.281Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -239,7 +245,8 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-28T13:55:13.011Z"
+              "WhenOpened": "2026-06-28T13:55:13.011Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -251,7 +258,8 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\TasksController.cs",
               "ViewState": "AgIAACMBAAAAAAAAAAAAAFQBAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-26T17:03:25.111Z"
+              "WhenOpened": "2026-06-26T17:03:25.111Z",
+              "EditorCaption": ""
             }
           ]
         }

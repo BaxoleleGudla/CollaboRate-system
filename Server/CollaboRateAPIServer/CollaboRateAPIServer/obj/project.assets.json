@@ -5163,11 +5163,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\CollaboRateAPIServer.csproj",
+      "projectUniqueName": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\CollaboRateAPIServer.csproj",
       "projectName": "CollaboRateAPIServer",
-      "projectPath": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\CollaboRateAPIServer.csproj",
+      "projectPath": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\CollaboRateAPIServer.csproj",
       "packagesPath": "C:\\Users\\Baxolele Gudla\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\obj\\",
+      "outputPath": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

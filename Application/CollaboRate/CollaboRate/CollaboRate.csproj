@@ -185,6 +185,7 @@
     <Compile Include="Dtos\UpdateUserDto.cs" />
     <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Dtos\UserRoleResponseDto.cs" />
+    <Compile Include="Dtos\UserSettingsDto.cs" />
     <Compile Include="Dtos\UserWithTaskAssignmentDto.cs" />
     <Compile Include="frmAddNewMembers.cs">
       <SubType>Form</SubType>
@@ -405,6 +406,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Notifications icon %28no notifications%29.png" />
+    <Content Include="Resources\Notifications icon %28with notifications%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

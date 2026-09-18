@@ -50,10 +50,13 @@ namespace CollaboRate
             }
         }
 
-        private void frmSettings_Load(object sender, EventArgs e)
+        private async void frmSettings_Load(object sender, EventArgs e)
         {
             txtUsername.Texts = CurrentUser.Username;
             txtEmail.Texts = CurrentUser.Email;
+
+            // Load user notification preferences from API
+            await LoadUserSettingsAsync(CurrentUser.User_ID);
         }
 
         // Method to check email validity
@@ -446,6 +449,103 @@ namespace CollaboRate
                     }
                 }
             }
+        }
+
+        // Method to load notification preferences from API
+        public async Task<bool> LoadUserSettingsAsync(int userId)
+        {
+            try
+            {
+                string url = $"{ApiBaseUrl}/api/UserSettings/{userId}";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStreamAsync();
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    var settings = JsonSerializer.Deserialize<UserSettingsDto>(json, options);
+
+                    if (settings != null)
+                    {
+                        tglPushNotifications.Checked = settings.Enable_Push_Notifications;
+                        tglEmailNotifications.Checked = settings.Enable_Email_Notifications;
+                    }
+                    return true;
+                }
+                else
+                {
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to load notification settings.", Properties.Resources.Error_Icon);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Error occurred while loading settings.", Properties.Resources.Error_Icon);
+                return false;
+            }
+        }
+
+        // Method to update notification preferences
+        public async Task<bool> UpdateNotificationPreferencesAsync(int userId, bool pushEnabled, bool emailEnabled)
+        {
+            try     
+            {
+                btnSaveNotificationPreferences.Enabled = false;
+                btnSaveNotificationPreferences.ButtonText = "";
+
+                pbLoadingSpinnerNotificationPreferences.Visible = true;
+
+                var settingsDto = new UserSettingsDto
+                {
+                    Enable_Push_Notifications = pushEnabled,
+                    Enable_Email_Notifications = emailEnabled
+                };
+
+                var json = JsonSerializer.Serialize(settingsDto);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                string url = $"{ApiBaseUrl}/api/UserSettings/{userId}";
+
+                var response = await client.PutAsync(url, content);
+
+                btnSaveNotificationPreferences.Enabled = true;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    btnSaveNotificationPreferences.Enabled = true;
+                    btnSaveNotificationPreferences.ButtonText = "Save Preferences";
+
+                    pbLoadingSpinnerNotificationPreferences.Visible = false;
+
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Preferences saved successfully.", Properties.Resources.Success_Icon);
+                    return true;
+                }
+                else
+                {
+                    btnSaveNotificationPreferences.Enabled = true;
+                    btnSaveNotificationPreferences.ButtonText = "Save Preferences";
+
+                    pbLoadingSpinnerNotificationPreferences.Visible = false;
+
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to save preferences.", Properties.Resources.Error_Icon);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                btnSaveNotificationPreferences.Enabled = true;
+                btnSaveNotificationPreferences.ButtonText = "Save Preferences";
+
+                pbLoadingSpinnerNotificationPreferences.Visible = false;
+
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while saving notification preferences.", Properties.Resources.Error_Icon);
+                return false;
+            }
+        }
+
+        private async void btnSaveNotificationPreferences_Click(object sender, EventArgs e)
+        {
+            await UpdateNotificationPreferencesAsync(CurrentUser.User_ID, tglPushNotifications.Checked, tglEmailNotifications.Checked);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CollaboRate.Dtos;
+using CollaboRate.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -189,6 +190,12 @@ namespace CollaboRate
         {
             await LoadUserGroupsAsync(CurrentUser.User_ID);
             openChildForm(new frmHome());
+
+            // Subscribe main form to real-time notifications
+            SignalRService.Instance.OnNotificationReceived += HandleRealTimeNotificationOnMain;
+
+            // Check unread status on startup
+            await CheckUnreadNotificationsAsync(CurrentUser.User_ID, CurrentGroup.Group_ID);
         }
 
         // Method to get the role of a user
@@ -280,6 +287,9 @@ namespace CollaboRate
                     CurrentUser.Group_Role = await GetUserGroupRoleAsync(CurrentUser.User_ID, CurrentGroup.Group_ID);
 
                     await RefreshDisplayedFormData();
+
+                    // Refresh unread indicator for the selected group
+                    await CheckUnreadNotificationsAsync(CurrentUser.User_ID, CurrentGroup.Group_ID);
                 }
             }
             catch (Exception ex)
@@ -356,6 +366,12 @@ namespace CollaboRate
 
             notifForm.Location = new Point(x, y);
 
+            // Reset the main form icon once the notification window closes (after reading)
+            notifForm.FormClosed += async (s, args) =>
+            {
+                await CheckUnreadNotificationsAsync(CurrentUser.User_ID, CurrentGroup.Group_ID);
+            };
+
             notifForm.Show();
 
             // Load data dynamically
@@ -364,6 +380,7 @@ namespace CollaboRate
 
         private void btnSuccess_Click(object sender, EventArgs e)
         {
+            btnNotification.Image = Properties.Resources.Notifications_icon__with_notifications_;
             AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Operation completed successfully.", Properties.Resources.Success_Icon);
         }
 
@@ -380,6 +397,70 @@ namespace CollaboRate
         private void btnInformation_Click(object sender, EventArgs e)
         {
             AlertBox(Color.LightBlue, Color.DodgerBlue, "Information", "Operation is in progress.", Properties.Resources.Information_Icon);
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Unsubsribe to prevent memory leaks
+            SignalRService.Instance.OnNotificationReceived -= HandleRealTimeNotificationOnMain;
+        }
+
+        // Method to check for unread notifications
+        public async Task CheckUnreadNotificationsAsync(int userId, int groupId)
+        {
+            if (groupId <= 0)
+            {
+                btnNotification.Image = Properties.Resources.Notifications_icon__no_notifications_;
+                return;
+            }
+
+            try
+            {
+                string url = $"{ApiBaseUrl}/api/Notifications/unread-count/user/{userId}/group/{groupId}";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    using (var doc = JsonDocument.Parse(json))
+                    {
+                        bool hasUnread = doc.RootElement.GetProperty("hasUnread").GetBoolean();
+
+                        UpdateNotificationIcon(hasUnread);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Fallback to default icon on failure
+                UpdateNotificationIcon(false);
+            }
+        }
+
+        // Dynamic update when real-time SignalR messages lands
+        private void HandleRealTimeNotificationOnMain(NotificationDto notif)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => HandleRealTimeNotificationOnMain(notif)));
+                return;
+            }
+
+            // Immediately change icon when a new push notification arrives
+            UpdateNotificationIcon(hasUnread: true);
+        }
+
+        // Method to toggle notification icon states
+        private void UpdateNotificationIcon(bool hasUnread)
+        {
+            if (hasUnread)
+            {
+                btnNotification.Image = Properties.Resources.Notifications_icon__with_notifications_;
+            }
+            else
+            {
+                btnNotification.Image = Properties.Resources.Notifications_icon__no_notifications_;
+            }
         }
     }
 }

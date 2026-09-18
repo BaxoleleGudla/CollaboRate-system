@@ -561,6 +561,27 @@
   },
   {
     "ContainingType": "CollaboRateAPIServer.Controllers.NotificationsController",
+    "Method": "GetUserCount",
+    "RelativePath": "api/Notifications/unread-count/user/{userId}/group/{groupId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CollaboRateAPIServer.Controllers.NotificationsController",
     "Method": "GetNotifications",
     "RelativePath": "api/Notifications/user/{userId}/group/{groupId}",
     "HttpMethod": "GET",
@@ -981,7 +1002,7 @@
     ]
   },
   {
-    "ContainingType": "CollaboRateAPIServer.Controllers.CollaboRateAPIServer.Controllers.UserSettingsController",
+    "ContainingType": "CollaboRateAPIServer.Controllers.UserSettingsController",
     "Method": "GetSettings",
     "RelativePath": "api/UserSettings/{userId}",
     "HttpMethod": "GET",
@@ -997,7 +1018,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CollaboRateAPIServer.Controllers.CollaboRateAPIServer.Controllers.UserSettingsController",
+    "ContainingType": "CollaboRateAPIServer.Controllers.UserSettingsController",
     "Method": "UpdateSettings",
     "RelativePath": "api/UserSettings/{userId}",
     "HttpMethod": "PUT",

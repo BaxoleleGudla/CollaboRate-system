@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
 using CollaboRate.Dtos;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace CollaboRate.Services
 {
@@ -36,6 +37,10 @@ namespace CollaboRate.Services
                 .WithAutomaticReconnect()
                 .Build();
 
+            // Wire up the Toas Notification Handler
+            OnNotificationReceived -= HandleIncomingNotification;
+            OnNotificationReceived += HandleIncomingNotification;
+
             // Listen for the broadcast sent by NotificationInterceptor
             _hubConnection.On<NotificationDto>("ReceiveNotification", (notification) =>
             {
@@ -53,6 +58,49 @@ namespace CollaboRate.Services
             {
                 // Handle or log connection failures silently
                 System.Diagnostics.Debug.WriteLine($"SignalR Connection Error: {ex.Message}");
+            }
+        }
+
+        // Evaluates notification type and triggers windows toasts
+        private void HandleIncomingNotification(NotificationDto notification)
+        {
+            if (notification == null)
+            {
+                return;
+            }
+
+            if (UserSettings.Enable_Push_Notifications != false)
+            {
+                // Match notification types
+                string type = notification.Type?.ToLower() ?? "";
+                string message = notification.Message ?? "";
+
+                switch (type)
+                {
+                    case "meeting scheduled":
+                        NotificationService.ShowNewMeetingNotification(type, message);
+                        break;
+                    case "meeting updated":
+                        NotificationService.ShowMeetingUpdatedNotification(type, message);
+                        break;
+                    case "meeting cancelled":
+                        NotificationService.ShowMeetingCancelledNotification(message);
+                        break;
+                    case "membership accepted":
+                    case "membership rejected":
+                    case "membership removed":
+                    case "join request":
+                    case "member requested":
+                        NotificationService.ShowJoinRequestNotification(message);
+                        break;
+                    case "task deleted":
+                        NotificationService.ShowTaskDeletedNotification(message);
+                        break;
+                    // Default fallback
+                    default:
+                        NotificationService.ShowNewMeetingNotification(string.IsNullOrEmpty(type) ? "Notification" : type, message);
+                        break;
+                }
             }
         }
 

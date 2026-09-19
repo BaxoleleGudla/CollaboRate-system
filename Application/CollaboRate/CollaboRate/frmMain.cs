@@ -186,6 +186,40 @@ namespace CollaboRate
             openChildForm(new frmSettings());
         }
 
+        // Method to load notification preferences from API
+        public async Task<bool> LoadUserSettingsAsync(int userId)
+        {
+            try
+            {
+                string url = $"{ApiBaseUrl}/api/UserSettings/{userId}";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStreamAsync();
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    var settings = JsonSerializer.Deserialize<UserSettingsDto>(json, options);
+
+                    if (settings != null)
+                    {
+                        UserSettings.Enable_Push_Notifications = settings.Enable_Push_Notifications;
+                        UserSettings.Enable_Email_Notifications = settings.Enable_Email_Notifications;
+                    }
+                    return true;
+                }
+                else
+                {
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Failed to load notification settings.", Properties.Resources.Error_Icon);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Error occurred while loading settings.", Properties.Resources.Error_Icon);
+                return false;
+            }
+        }
+
         private async void frmMain_Load(object sender, EventArgs e)
         {
             await LoadUserGroupsAsync(CurrentUser.User_ID);
@@ -203,6 +237,9 @@ namespace CollaboRate
 
             // Check unread status on startup
             await CheckUnreadNotificationsAsync(CurrentUser.User_ID, CurrentGroup.Group_ID);
+
+            // Load user notification preferences from API
+            await LoadUserSettingsAsync(CurrentUser.User_ID);
         }
 
         // Method to get the role of a user

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using CollaboRateAPIServer.Data;
 using CollaboRateAPIServer.Models;
 using CollaboRateAPIServer.Dtos;
+using System.Security.Cryptography;
 
 namespace CollaboRateAPIServer.Controllers
 {
@@ -160,6 +161,10 @@ namespace CollaboRateAPIServer.Controllers
 
             try
             {
+                // Generate Refresh Token for the new user
+                string refreshToken = GenerateSecureToken();
+                user.RefreshToken = refreshToken;
+
                 _context.tblUser.Add(user);
                 await _context.SaveChangesAsync();
 
@@ -168,7 +173,8 @@ namespace CollaboRateAPIServer.Controllers
                     User_ID = user.User_ID,
                     Username = user.Username,
                     Email = user.Email,
-                    Created_At = user.Created_At
+                    Created_At = user.Created_At,
+                    RefreshToken = user.RefreshToken
                 };
 
                 return CreatedAtAction(nameof(GetUser), new { id = user.User_ID }, responseDto);
@@ -177,6 +183,16 @@ namespace CollaboRateAPIServer.Controllers
             {
                 // 2. Fallback catch if a race condition hits the database unique index
                 return Conflict("Username or email is already taken.");
+            }
+        }
+
+        public static string GenerateSecureToken()
+        {
+            var randomNumber = new byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+                return Convert.ToBase64String(randomNumber);
             }
         }
 

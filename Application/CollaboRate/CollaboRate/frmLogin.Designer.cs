@@ -47,7 +47,6 @@
             this.lblPasswordError = new System.Windows.Forms.Label();
             this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.pbxLoginLogo = new System.Windows.Forms.PictureBox();
-            this.lblGeneralError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClose)).BeginInit();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbx2)).BeginInit();
@@ -287,25 +286,12 @@
             this.pbxLoginLogo.TabIndex = 31;
             this.pbxLoginLogo.TabStop = false;
             // 
-            // lblGeneralError
-            // 
-            this.lblGeneralError.AutoSize = true;
-            this.lblGeneralError.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGeneralError.ForeColor = System.Drawing.Color.Red;
-            this.lblGeneralError.Location = new System.Drawing.Point(62, 63);
-            this.lblGeneralError.Name = "lblGeneralError";
-            this.lblGeneralError.Size = new System.Drawing.Size(258, 21);
-            this.lblGeneralError.TabIndex = 51;
-            this.lblGeneralError.Text = "Invalid username or password";
-            this.lblGeneralError.Visible = false;
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(384, 587);
-            this.Controls.Add(this.lblGeneralError);
             this.Controls.Add(this.pbLoadingSpinner);
             this.Controls.Add(this.lblPasswordError);
             this.Controls.Add(this.lblUsernameError);
@@ -352,6 +338,5 @@
         private System.Windows.Forms.Label lblUsernameError;
         private System.Windows.Forms.Label lblPasswordError;
         private System.Windows.Forms.PictureBox pbLoadingSpinner;
-        private System.Windows.Forms.Label lblGeneralError;
     }
 }

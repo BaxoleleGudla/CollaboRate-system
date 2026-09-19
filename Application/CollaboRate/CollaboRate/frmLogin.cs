@@ -27,6 +27,27 @@ namespace CollaboRate
             InitializeComponent();
         }
 
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            try
+            {
+                frmAlertBox alertBoxForm = new frmAlertBox();
+                alertBoxForm.BackColor = backColor;
+                alertBoxForm.ColorAlertBox = color;
+                alertBoxForm.TitleAlertBox = title;
+                alertBoxForm.TextAlertBox = text;
+                alertBoxForm.IconAlertBox = icon;
+
+                alertBoxForm.Show(this);
+            }
+            catch (Exception ex)
+            {
+                // Do nothing
+                ;
+            }
+        }
+
         // Drag form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -97,8 +118,6 @@ namespace CollaboRate
         {
             try
             {
-                lblGeneralError.Visible = false;
-
                 if (InputValidation() == false)
                 {
                     btnLogin.Enabled = false;
@@ -109,37 +128,43 @@ namespace CollaboRate
                     pbLoadingSpinner.Refresh();
                     Application.DoEvents();
 
-                    // Run the HTTP call on a background thread to keep UI responsive
-                    var loginResult = await Task.Run(async () =>
+                    var loginData = new LoginRequest
                     {
-                        //using var client = new HttpClient();
-                        var loginData = new LoginRequest
-                        {
-                            Username = txtUsername.Texts.Trim(),
-                            Password = txtPassword.Texts
-                        };
+                        Username = txtUsername.Texts.Trim(),
+                        Password = txtPassword.Texts
+                    };
 
-                        string json = JsonSerializer.Serialize(loginData);
-                        var content = new StringContent(json, Encoding.UTF8, "application/json");
-                        string apiUrl = ApiBaseUrl + "/login";
+                    string json = JsonSerializer.Serialize(loginData);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    string apiUrl = ApiBaseUrl + "/api/auth/login";
 
-                        return await client.PostAsync(apiUrl, content);
-                    });
+                    var loginResult = await client.PostAsync(apiUrl, content);
 
                     if (loginResult.IsSuccessStatusCode)
                     {
-                        // Optionally read response content if needed
                         string responseBody = await loginResult.Content.ReadAsStringAsync();
 
-                        // Deserialize and use user info if necessary
-                        var user = JsonSerializer.Deserialize<LoginSuccessResponse>(responseBody);
+                        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                        var user = JsonSerializer.Deserialize<LoginSuccessResponse>(responseBody, options);
 
                         pbLoadingSpinner.Visible = false;
 
-                        // Store user information
+                        // Set active session state
                         CurrentUser.User_ID = user.User_ID;
                         CurrentUser.Username = user.Username;
                         CurrentUser.Email = user.Email;
+
+                        // Save encrypted 
+                        var session = new UserSessionData
+                        {
+                            UserId = user.User_ID,
+                            Username = user.Username,
+                            Email = user.Email,
+                            RefreshToken = user.RefreshToken,
+                            LastGroupId = 0,
+                            LastGroupName = ""
+                        };
+                        SecureStorageService.SaveSession(session);
 
                         // SignalR for real time notifications
                         await SignalRService.Instance.InitializeAsync(CurrentUser.User_ID);
@@ -152,37 +177,37 @@ namespace CollaboRate
                     {
                         // Unauthorized - Invalid credentials
                         string errorMessage = await loginResult.Content.ReadAsStringAsync();
-                        lblGeneralError.Text = "Invalid username or password";
-                        lblGeneralError.Visible = true;
+                        AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Invalid username or password.", Properties.Resources.Warning_Icon);
                     }
                     else if (loginResult.StatusCode == System.Net.HttpStatusCode.BadRequest)  // 400
                     {
                         // Bad Request - Usually validation errors or missing data
                         string errorMessage = await loginResult.Content.ReadAsStringAsync();
-                        MessageBox.Show(errorMessage, "Login Failed - Bad Request", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Login Failed - Bad Request.", Properties.Resources.Error_Icon);
                     }
                     else if (loginResult.StatusCode == System.Net.HttpStatusCode.Forbidden)  // 403
                     {
                         // Forbidden - User does not have permission
                         string errorMessage = await loginResult.Content.ReadAsStringAsync();
-                        MessageBox.Show(errorMessage, "Login Failed - Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Login Failed - Forbidden.", Properties.Resources.Error_Icon);
                     }
                     else if (loginResult.StatusCode == System.Net.HttpStatusCode.InternalServerError)  // 500
                     {
                         // Internal Server Error - Something went wrong on the server
-                        MessageBox.Show("Server error occurred. Please try again later.", "Server Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Internal server error c");
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Server error occurred.", Properties.Resources.Error_Icon);
                     }
                     else
                     {
                         // Other unexpected status codes
                         string errorMessage = await loginResult.Content.ReadAsStringAsync();
-                        MessageBox.Show($"Login failed. Server returned status code {(int)loginResult.StatusCode}: {errorMessage}", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Login failed. Try again later.", Properties.Resources.Error_Icon);
                     }
                 } 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Login error occurred.", Properties.Resources.Error_Icon);
             }
             finally
             {

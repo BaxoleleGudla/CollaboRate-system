@@ -191,6 +191,13 @@ namespace CollaboRate
             await LoadUserGroupsAsync(CurrentUser.User_ID);
             openChildForm(new frmHome());
 
+            var session = SecureStorageService.LoadSession();
+            if (session != null && session.LastGroupId > 0)
+            {
+                // Restore selected group UI state
+                cmbxCurrentGroup.SelectedValue = session.LastGroupId;
+            }
+
             // Subscribe main form to real-time notifications
             SignalRService.Instance.OnNotificationReceived += HandleRealTimeNotificationOnMain;
 
@@ -300,6 +307,9 @@ namespace CollaboRate
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            // Cleare local encrypted storage
+            SecureStorageService.ClearSession();
+
             CurrentGroup.Group_ID = 0;
             CurrentGroup.Group_Name = null;
             frmLogin loginForm = new frmLogin();
@@ -460,6 +470,18 @@ namespace CollaboRate
             else
             {
                 btnNotification.Image = Properties.Resources.Notifications_icon__no_notifications_;
+            }
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Persist active group on exit
+            var session = SecureStorageService.LoadSession();
+            if (session != null)
+            {
+                session.LastGroupId = CurrentGroup.Group_ID;
+                session.LastGroupName = CurrentGroup.Group_Name;
+                SecureStorageService.SaveSession(session);
             }
         }
     }

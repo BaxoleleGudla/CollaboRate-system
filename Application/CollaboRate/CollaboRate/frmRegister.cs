@@ -12,6 +12,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollaboRate.Dtos;
+using CollaboRate.Services;
 
 namespace CollaboRate
 {
@@ -23,6 +24,27 @@ namespace CollaboRate
         public frmRegister()
         {
             InitializeComponent();
+        }
+
+        // Method for the toast form
+        public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
+        {
+            try
+            {
+                frmAlertBox alertBoxForm = new frmAlertBox();
+                alertBoxForm.BackColor = backColor;
+                alertBoxForm.ColorAlertBox = color;
+                alertBoxForm.TitleAlertBox = title;
+                alertBoxForm.TextAlertBox = text;
+                alertBoxForm.IconAlertBox = icon;
+
+                alertBoxForm.Show(this);
+            }
+            catch (Exception ex)
+            {
+                // Do nothing
+                ;
+            }
         }
 
         // Method to check email validity
@@ -130,8 +152,6 @@ namespace CollaboRate
         {
             try
             {
-                lblGeneralError.Visible = false;
-
                 if (InputValidation() == false)
                 {
                     btnSignUp.Enabled = false;
@@ -169,7 +189,8 @@ namespace CollaboRate
                     if (response.IsSuccessStatusCode)
                     {
                         // Deserialize and use user info
-                        var user = JsonSerializer.Deserialize<LoginSuccessResponse>(responseBody);
+                        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                        var user = JsonSerializer.Deserialize<LoginSuccessResponse>(responseBody, options);
 
                         pbLoadingSpinner.Visible = false;
 
@@ -177,6 +198,21 @@ namespace CollaboRate
                         CurrentUser.User_ID = user.User_ID;
                         CurrentUser.Username = user.Username;
                         CurrentUser.Email = user.Email;
+
+                        // Save session locally so user auto-logins when reopening application after closing
+                        var session = new UserSessionData
+                        {
+                            UserId = user.User_ID,
+                            Username = user.Username,
+                            Email = user.Email,
+                            RefreshToken = user.RefreshToken,
+                            LastGroupId = 0,
+                            LastGroupName = ""
+                        };
+                        SecureStorageService.SaveSession(session);
+
+                        // Initialize SignalR websocket connection for current user
+                        await SignalRService.Instance.InitializeAsync(CurrentUser.User_ID);
 
                         frmMain mainForm = new frmMain();
                         mainForm.Show();
@@ -189,50 +225,45 @@ namespace CollaboRate
                             ? responseBody.Trim('"')
                             : "Username or email is already taken.";
 
-                        lblGeneralError.Text = errorMessage;
-                        lblGeneralError.Visible = true;
+                        AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Username or email taken.", Properties.Resources.Warning_Icon);
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)  // 401
                     {
                         // Unauthorized - Invalid credentials
                         pbLoadingSpinner.Visible = false;
                         string errorMessage = await response.Content.ReadAsStringAsync();
-                        lblGeneralError.Text = responseBody;
-                        lblGeneralError.Visible = true;
+                        AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Invalid credential provided.", Properties.Resources.Warning_Icon);
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)  // 400
                     {
                         // Bad Request - Usually validation errors or missing data
                         pbLoadingSpinner.Visible = false;
-                        lblGeneralError.Text = "Invalid information entered";
-                        lblGeneralError.Visible = true;
+                        AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Information provided is invalid.", Properties.Resources.Warning_Icon);
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Forbidden)  // 403
                     {
                         // Forbidden - User does not have permission
                         pbLoadingSpinner.Visible = false;
-                        lblGeneralError.Text = "You do not have permission to sign up";
-                        lblGeneralError.Visible = true;
+                        AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "You do not have permission to sign up.", Properties.Resources.Warning_Icon);
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)  // 500
                     {
                         pbLoadingSpinner.Visible = false;
                         MessageBox.Show(responseBody.ToString());
-                        lblGeneralError.Text = "Server error. Please try again later";
-                        lblGeneralError.Visible = true;
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Server error occurred.", Properties.Resources.Error_Icon);
                     }
                     else
                     {
                         // Other unexpected status codes
                         pbLoadingSpinner.Visible = false;
-                        MessageBox.Show($"Sign up failed. Server returned status code {(int)response.StatusCode}: {responseBody}", "Sign Up Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "Sign up error occurred.", Properties.Resources.Error_Icon);
                     }
                 }
             }
             catch (Exception ex)
             {
                 pbLoadingSpinner.Visible = false;
-                MessageBox.Show("Error: " + ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Sign up error occurred.", Properties.Resources.Error_Icon);
             }
             finally
             {

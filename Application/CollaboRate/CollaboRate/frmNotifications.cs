@@ -42,6 +42,20 @@ namespace CollaboRate
             SignalRService.Instance.OnNotificationReceived -= HandleRealTimeNotification;
         }
 
+        // Method to adjust control widths
+        private void AdjustChildControlWidths()
+        {
+            flpNotifications.SuspendLayout();
+            foreach (Control control in flpNotifications.Controls)
+            {
+                if (control is cntlNotificationItem item)
+                {
+                    item.Width = flpNotifications.ClientSize.Width - item.Margin.Left - item.Margin.Right;
+                }
+            }
+            flpNotifications.ResumeLayout(true);
+        }
+
         public async Task InitializeNotificationsAsync(int userId, int groupId)
         {
             try
@@ -79,6 +93,9 @@ namespace CollaboRate
                         {
                             AddNotificationControl(notif, appendToTop: false);
                         }
+
+                        // Recalculate widths once all items are rendered
+                        AdjustChildControlWidths();
 
                         // Mark all as read now that they are displayed
                         await MarkNotificationsAsReadAsync(userId, groupId);
@@ -130,7 +147,9 @@ namespace CollaboRate
         {
             var item = new cntlNotificationItem();
             item.SetNotificationData(notif);
-            item.Width = flpNotifications.Width - 25;
+
+            // ClientSize.Width excludes the vertical scrollbar width when visible
+            item.Width = flpNotifications.ClientSize.Width - item.Margin.Left - item.Margin.Right;
 
             flpNotifications.Controls.Add(item);
 

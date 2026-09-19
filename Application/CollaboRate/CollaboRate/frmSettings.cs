@@ -517,6 +517,9 @@ namespace CollaboRate
 
                     pbLoadingSpinnerNotificationPreferences.Visible = false;
 
+                    UserSettings.Enable_Push_Notifications = pushEnabled;
+                    UserSettings.Enable_Email_Notifications = emailEnabled;
+
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Preferences saved successfully.", Properties.Resources.Success_Icon);
                     return true;
                 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "juT977AyMUY=",
+  "dgSpecHash": "ydcalRM5YL4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\CollaboRateAPIServer.csproj",
+  "projectFilePath": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\CollaboRateAPIServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Baxolele Gudla\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Baxolele Gudla\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

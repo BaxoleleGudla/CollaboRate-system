@@ -307,6 +307,12 @@ namespace CollaboRateAPIServer.Controllers
                 var group = await _context.tblGroup.FirstOrDefaultAsync(g => g.Group_ID == groupId);
                 string groupName = group?.Group_Name ?? "Unknown Group";
 
+                // Fetch assigned user IDs
+                var assignedUserIds = await _context.tblTaskAssignment
+                    .Where(ta => ta.Task_ID == taskId)
+                    .Select(ta => ta.User_ID)
+                    .ToListAsync();
+
                 // Remove related task assignments
                 var assignments = _context.tblTaskAssignment.Where(ta => ta.Task_ID == taskId);
 
@@ -329,8 +335,42 @@ namespace CollaboRateAPIServer.Controllers
 
                 await _context.tblGroupNotification.AddAsync(notification);
 
-                // Save all changes and commit transaction
+                // Save changes so notification.Group_Notification_ID is populated by EF/Identity
                 await _context.SaveChangesAsync();
+
+                // Determine recipients and save records
+                List<int> recipientUserIds;
+
+                if (assignedUserIds.Any())
+                {
+                    recipientUserIds = assignedUserIds
+                        .Where(id => id != deletedByUserId)
+                        .Distinct()
+                        .ToList();
+                }
+                else
+                {
+                    recipientUserIds = await _context.tblGroupMember
+                        .Where(gm => gm.Group_ID == groupId && gm.Join_Status == "Accepted" && gm.User_ID != deletedByUserId)
+                        .Select(gm => gm.User_ID)
+                        .ToListAsync();
+                }
+
+                // Create NotificationRecipient rows for each intended user
+                if (recipientUserIds.Any())
+                {
+                    var notificationRecipients = recipientUserIds.Select(userId => new NotificationRecipient
+                    {
+                        Group_Notification_ID = notification.Group_Notification_ID,
+                        User_ID = userId,
+                        Is_Read = false
+                    });
+
+                    await _context.tblNotificationRecipient.AddRangeAsync(notificationRecipients);
+                    await _context.SaveChangesAsync();
+                }
+
+                // Commit transaction
                 await transaction.CommitAsync();
 
                 return Ok($"Task {taskId} deleted successfully and notification created.");

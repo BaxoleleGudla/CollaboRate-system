@@ -157,48 +157,99 @@ namespace CollaboRateAPIServer.Controllers
         [HttpPost("{groupId}/join-requests/{userId}")]
         public async Task<IActionResult> RequestToJoinGroup(int groupId, int userId)
         {
-            var groupExits = await _context.tblGroup.AnyAsync(g => g.Group_ID == groupId);
-
-            if (!groupExits)
+            using (var transaction = await _context.Database.BeginTransactionAsync())
             {
-                return NotFound("Group not found.");
-            }
+                try
+                {
+                    var group = await _context.tblGroup.FirstOrDefaultAsync(g => g.Group_ID == groupId);
 
-            bool alreadyMemberOrPending = await _context.tblGroupMember.AnyAsync(gm =>
-                gm.Group_ID == groupId &&
-                gm.User_ID == userId &&
-                (gm.Join_Status == "Accepted" || gm.Join_Status == "Pending"));
+                    if (group == null)
+                    {
+                        return NotFound("Group not found.");
+                    }
 
-            if (alreadyMemberOrPending)
-            {
-                return BadRequest("User is already a member or has a pending request.");
-            }
+                    // Fetch requesting user to construc notification message
+                    var requestingUser = await _context.tblUser.FirstOrDefaultAsync(u => u.User_ID == userId);
 
-            // Get current UTC time
-            DateTime utcNow = DateTime.UtcNow;
+                    if (requestingUser == null)
+                    {
+                        return NotFound("User requesting to join not found.");
+                    }
 
-            // Find the South Africa time zone (Africa/Johannesburg)
-            TimeZoneInfo southAfricaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("South Africa Standard Time");
+                    bool alreadyMemberOrPending = await _context.tblGroupMember.AnyAsync(gm =>
+                        gm.Group_ID == groupId &&
+                        gm.User_ID == userId &&
+                        (gm.Join_Status == "Accepted" || gm.Join_Status == "Pending"));
 
-            // Convert UTC to South Africa time
-            DateTime southAfricaTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, southAfricaTimeZone);
+                    if (alreadyMemberOrPending)
+                    {
+                        return BadRequest("User is already a member or has a pending request.");
+                    }
 
-            var membership = new GroupMember
-            {
-                Group_ID = groupId,
-                User_ID = userId,
-                Join_Status = "Pending",
-                User_Role = "Member",
-                Joined_At = southAfricaTime
-            };
+                    // Get current UTC time
+                    DateTime utcNow = DateTime.UtcNow;
 
-            _context.tblGroupMember.Add(membership);
-            await _context.SaveChangesAsync();
+                    // Find the South Africa time zone (Africa/Johannesburg)
+                    TimeZoneInfo southAfricaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("South Africa Standard Time");
 
-            // Trigger the real-time update
-            await NotifyAdminsOfPendingChange(groupId);
+                    // Convert UTC to South Africa time
+                    DateTime southAfricaTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, southAfricaTimeZone);
 
-            return NoContent();
+                    var membership = new GroupMember
+                    {
+                        Group_ID = groupId,
+                        User_ID = userId,
+                        Join_Status = "Pending",
+                        User_Role = "Member",
+                        Joined_At = southAfricaTime
+                    };
+
+                    _context.tblGroupMember.Add(membership);
+
+                    // Fetch all admin user IDs for this group
+                    var adminUserIds = await _context.tblGroupMember
+                        .Where(gm => gm.Group_ID == groupId && gm.Join_Status == "Accepted" && gm.User_Role == "Admin")
+                        .Select(gm => gm.User_ID)
+                        .ToListAsync();
+
+                    // If admins exists, create group notification
+                    if (adminUserIds.Any())
+                    {
+                        var notification = new GroupNotification
+                        {
+                            Group_ID = groupId,
+                            Notification_Type = "Join Request",
+                            Notification_Message = $"{requestingUser.Username} has requested to join {group.Group_Name}.",
+                            Created_At = utcNow
+                        };
+
+                        _context.tblGroupNotification.Add(notification);
+                        await _context.SaveChangesAsync();
+
+                        var recipients = adminUserIds.Select(adminId => new NotificationRecipient
+                        {
+                            Group_Notification_ID = notification.Group_Notification_ID,
+                            User_ID = adminId,
+                            Is_Read = false
+                        });
+
+                        await _context.tblNotificationRecipient.AddRangeAsync(recipients);
+                    }
+
+                    await _context.SaveChangesAsync();
+                    await transaction.CommitAsync();
+
+                    // Trigger the real-time update
+                    await NotifyAdminsOfPendingChange(groupId);
+
+                    return NoContent();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    return StatusCode(500, $"An error occurred while requesting to join.");
+                }
+            }                
         }
 
         // Method to cancel a join request

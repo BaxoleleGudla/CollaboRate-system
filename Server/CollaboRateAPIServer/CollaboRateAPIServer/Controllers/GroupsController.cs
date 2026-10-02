@@ -20,11 +20,13 @@ namespace CollaboRateAPIServer.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IHubContext<ChatHub> _hubContext;
+        private readonly IHubContext<ProjectGroupHub> _groupHubContext;
 
-        public GroupsController(AppDbContext context, IHubContext<ChatHub> hubContext)
+        public GroupsController(AppDbContext context, IHubContext<ChatHub> hubContext, IHubContext<ProjectGroupHub> groupHubContext)
         {
             _context = context;
             _hubContext = hubContext;
+            _groupHubContext = groupHubContext;
         }
 
         // GET: api/groups/user
@@ -445,6 +447,9 @@ namespace CollaboRateAPIServer.Controllers
 
                 await transaction.CommitAsync();
 
+                // Notify connected clients for real time updates
+                await _groupHubContext.Clients.All.SendAsync("RefreshAvaiableGroups");
+
                 return Ok(new CreateGroupResponse { Group_ID = group.Group_ID });
             }
             catch (Exception ex)
@@ -472,6 +477,7 @@ namespace CollaboRateAPIServer.Controllers
                 // Fetch the group entity including menbers
                 var group = await _context.tblGroup
                     .Include(g => g.GroupMembers)
+                    .ThenInclude(gm => gm.User)
                     .FirstOrDefaultAsync(g => g.Group_ID == request.Group_ID);
 
                 if (group == null)
@@ -505,6 +511,28 @@ namespace CollaboRateAPIServer.Controllers
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
+
+                // Map tracked EF entity to AcceptedGroupUserDto
+                var updatedDetails = new AcceptedGroupUsersDto
+                {
+                    Group_ID = group.Group_ID,
+                    Group_Name = group.Group_Name,
+                    Group_Description = group.Group_Description,
+                    Accepted_User_Count = group.GroupMembers.Count(m => m.Join_Status == "Accepted"),
+                    Accepted_Users = group.GroupMembers
+                        .Where(m => m.Join_Status == "Accepted")
+                        .Select(m => new GroupUserDto
+                        {
+                            User_ID = m.User_ID,
+                            Username = m.User != null ? m.User.Username : string.Empty,
+                            User_Role = m.User_Role
+                        }).ToList()
+                };
+
+                // Notify connected clients for real time updates
+                await _groupHubContext.Clients
+                    .Group($"Group_Admin_Room_{request.Group_ID}")
+                    .SendAsync("RefreshGroupDetails", updatedDetails);
 
                 return Ok(new { Message = "Group and member roles updated successfully." });
             }

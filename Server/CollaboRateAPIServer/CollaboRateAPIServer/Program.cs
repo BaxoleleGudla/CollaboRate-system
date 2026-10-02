@@ -45,5 +45,6 @@ app.MapControllers();
 // Map SignalR hubs route
 app.MapHub<ChatHub>("/chathub");
 app.MapHub<NotificationHub>("/notificationHub");
+app.MapHub<ProjectGroupHub>("/hubs/groups");
 
 app.Run();

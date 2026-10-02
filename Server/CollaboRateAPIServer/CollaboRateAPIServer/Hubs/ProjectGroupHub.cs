@@ -13,7 +13,7 @@ namespace CollaboRateAPIServer.Hubs
         public async Task UnsubscribeFromGroupUpdates(int groupId)
         {
             string groupName = $"Group_Admin_Room_{groupId}";
-            await Groups.RemoveFromGroupAsync(Context.ConnectionId, $"Group_{groupId}");
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
         }
     }
 }

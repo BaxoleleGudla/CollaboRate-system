@@ -28,6 +28,24 @@ namespace CollaboRateAPIServer.Controllers
             _hubContext = hubContext;
             _groupHubContext = groupHubContext;
         }
+		
+		private static string GroupRoom(int groupId) => $"Group_{groupId}";
+		
+		private async Task NotifyGroupChangedAsync(int groupId)
+		{
+			try
+			{
+				// Members inside the group room reload the group details and member count
+				await _groupHubContext.Clients.Group(GroupRoom(groupId)).SendAsync("RefreshGroupDetails");
+
+				// Everyone reloads the "available groups" list
+				await _groupHubContext.Clients.All.SendAsync("RefreshAvailableGroups");
+			}
+			catch (Exception)
+			{
+				// Ignore: real-time is best-effort
+			}
+		}
 
         // GET: api/groups/user
         // Gets all groups (Group ID and Name) that the user with the specified User_ID is in
@@ -448,7 +466,7 @@ namespace CollaboRateAPIServer.Controllers
                 await transaction.CommitAsync();
 
                 // Notify connected clients for real time updates
-                await _groupHubContext.Clients.All.SendAsync("RefreshAvaiableGroups");
+                await _groupHubContext.Clients.All.SendAsync("RefreshAvailableGroups");
 
                 return Ok(new CreateGroupResponse { Group_ID = group.Group_ID });
             }
@@ -530,9 +548,7 @@ namespace CollaboRateAPIServer.Controllers
                 };
 
                 // Notify connected clients for real time updates
-                await _groupHubContext.Clients
-                    .Group($"Group_Admin_Room_{request.Group_ID}")
-                    .SendAsync("RefreshGroupDetails", updatedDetails);
+				await NotifyGroupChangedAsync(group.Group_ID);
 
                 return Ok(new { Message = "Group and member roles updated successfully." });
             }
@@ -590,6 +606,9 @@ namespace CollaboRateAPIServer.Controllers
                 await _context.tblGroupMember.AddRangeAsync(newGroupMembers);
 
                 await _context.SaveChangesAsync();
+				
+				// Direct targeted update to members inside the group room to reload member list
+				await NotifyGroupChangedAsync(request.Group_ID);
 
                 return Ok(new { Message = newUserIds.Count + " user(s) added to the group successfully." });
             }
@@ -719,6 +738,8 @@ namespace CollaboRateAPIServer.Controllers
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
+				
+				await NotifyGroupChangedAsync(groupId);
 
                 return NoContent();
             }

@@ -47,5 +47,6 @@ app.MapHub<ChatHub>("/chathub");
 app.MapHub<NotificationHub>("/notificationHub");
 app.MapHub<ProjectGroupHub>("/hubs/groups");
 app.MapHub<EvaluationsHub>("/hubs/evaluations");
+app.MapHub<TasksHub>("/hubs/tasks");
 
 app.Run();

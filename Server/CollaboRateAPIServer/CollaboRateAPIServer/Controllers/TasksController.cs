@@ -8,6 +8,8 @@ using System.Runtime.Versioning;
 using CollaboRateAPIServer.Dtos;
 using CollaboRateAPIServer.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.AspNetCore.SignalR;
+using CollaboRateAPIServer.Hubs;
 
 namespace CollaboRateAPIServer.Controllers
 {
@@ -17,9 +19,28 @@ namespace CollaboRateAPIServer.Controllers
     {
         private readonly AppDbContext _context;
 
-        public TasksController(AppDbContext context)
+        private readonly IHubContext<TasksHub> _tasksHubContext;
+
+        public TasksController(AppDbContext context, IHubContext<TasksHub> tasksHubContext)
         {
             _context = context;
+            _tasksHubContext = tasksHubContext;
+        }
+
+        // Must match the room name
+        private static string TaskRoom(int groupId) => $"Tasks_{groupId}";
+
+        // Method to tell clients to reload
+        private async System.Threading.Tasks.Task NotifyTasksChangedAsync(int groupId)
+        {
+            try
+            {
+                await _tasksHubContext.Clients.Group(TaskRoom(groupId)).SendAsync("RefreshTasks");
+            }
+            catch (Exception)
+            {
+                // Ignore
+            }
         }
 
         // Method to get all tasks
@@ -156,6 +177,9 @@ namespace CollaboRateAPIServer.Controllers
 
                 await transaction.CommitAsync();
 
+                // Tell open task lists in this group to reload
+                await NotifyTasksChangedAsync(taskEntity.Group_ID);
+
                 return Ok(new { Message = "Task created successfully.", TaksId = taskEntity.Task_ID });
             }
             catch (Exception ex)
@@ -243,6 +267,9 @@ namespace CollaboRateAPIServer.Controllers
                         .SetProperty(ta => ta.Is_Completed, updateTaskDto.Is_Completed)
                         .SetProperty(ta => ta.Completed_At, updateTaskDto.Is_Completed ? (DateTime?)DateTime.UtcNow : null));
 
+                // Tell open task lists in this group to reload
+                await NotifyTasksChangedAsync(task.Group_ID);
+
                 return Ok("Task updated successfully.");
             }
             catch (Exception ex)
@@ -257,10 +284,13 @@ namespace CollaboRateAPIServer.Controllers
         {
             try
             {
-                // Check task exists
-                var taskExists = await _context.tblTask.AnyAsync(t => t.Task_ID == taskId);
+                // Check task exists and get the group ID
+                int? groupId = await _context.tblTask
+                    .Where(t => t.Task_ID == taskId)
+                    .Select(t => (int?)t.Group_ID)
+                    .FirstOrDefaultAsync();
 
-                if (taskExists == false)
+                if (groupId == null)
                 {
                     return NotFound($"Task with ID {taskId} not found.");
                 }
@@ -272,6 +302,9 @@ namespace CollaboRateAPIServer.Controllers
                         .SetProperty(ta => ta.Is_Completed, isCompleted)
                         .SetProperty(ta => ta.Completed_At, isCompleted ? (DateTime?)DateTime.UtcNow : null)
                     );
+
+                // Tell open task lists in this group to reload
+                await NotifyTasksChangedAsync(groupId.Value);
 
                 return Ok($"Task {taskId} marked as {(isCompleted ? "completed" : "not completed")}.");
             }
@@ -372,6 +405,9 @@ namespace CollaboRateAPIServer.Controllers
 
                 // Commit transaction
                 await transaction.CommitAsync();
+
+                // Tell open task lists in this group to reload
+                await NotifyTasksChangedAsync(groupId);
 
                 return Ok($"Task {taskId} deleted successfully and notification created.");
             }

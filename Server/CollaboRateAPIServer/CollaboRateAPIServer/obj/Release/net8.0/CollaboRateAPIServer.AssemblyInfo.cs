@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8da450303abcd8519e700d26f5f18d5e2fbc38b9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f02bcc526485b41dd127e3be05de07ff2d62c1f")]
 [assembly: System.Reflection.AssemblyProductAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

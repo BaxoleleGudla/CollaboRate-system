@@ -8,6 +8,8 @@ using System.Runtime.Versioning;
 using CollaboRateAPIServer.Dtos;
 using CollaboRateAPIServer.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.AspNetCore.SignalR;
+using CollaboRateAPIServer.Hubs;
 
 namespace CollaboRateAPIServer.Controllers
 {
@@ -17,9 +19,13 @@ namespace CollaboRateAPIServer.Controllers
     {
         private readonly AppDbContext _context;
 
-        public RatingsController(AppDbContext context)
+        public readonly IHubContext<EvaluationsHub> _evaluationsHubContext;
+        public static string EvaluationRoom(int groupId) => $"Evaluations_{groupId}";
+
+        public RatingsController(AppDbContext context, IHubContext<EvaluationsHub> evaluationsHubContext)
         {
             _context = context;
+            _evaluationsHubContext = evaluationsHubContext;
         }
 
         // Method to get ratings done by a specific member
@@ -57,6 +63,12 @@ namespace CollaboRateAPIServer.Controllers
         [HttpPost("batch-upsert")]
         public async Task<IActionResult> BatchUpsert([FromBody] List<RatingUpdateDto> updates)
         {
+            // ADDED: guard against an empty/null list (updates[0] below would crash)
+            if (updates == null || updates.Count == 0)
+            {
+                return BadRequest("No ratings supplied.");
+            }
+
             foreach (var dto in updates)
             {
                 var existing = await _context.tblRating.FirstOrDefaultAsync(r => r.Group_ID == dto.Group_ID && r.Rater_ID == dto.Rater_ID && r.Ratee_ID == dto.Ratee_ID);
@@ -64,6 +76,22 @@ namespace CollaboRateAPIServer.Controllers
                 else { _context.tblRating.Add(new Rating { Group_ID = dto.Group_ID, Rater_ID = dto.Rater_ID, Ratee_ID = dto.Ratee_ID, Score = dto.Score }); }
             }
             await _context.SaveChangesAsync();
+
+            // Real time updates
+            try
+            {
+                int raterId = updates[0].Rater_ID;
+
+                foreach (int groupId in updates.Select(u => u.Group_ID).Distinct())
+                {
+                    await _evaluationsHubContext.Clients.Group(EvaluationRoom(groupId)).SendAsync("RefreshEvaluations", raterId);
+                }
+            }
+            catch (Exception)
+            {
+                // Ignore
+            }
+
             return Ok();
         }
 

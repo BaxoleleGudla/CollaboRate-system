@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace CollaboRate
 {
@@ -24,6 +25,10 @@ namespace CollaboRate
         private BindingSource tasksBindingSource = new BindingSource();
         string lastSelectionScope = "";
         string lastSelectionStatus = "";
+
+        // SignalR connection
+        private HubConnection _tasksConnection;
+        private string _joinedTaskRoom;
 
         public frmGroupTasks()
         {
@@ -53,6 +58,84 @@ namespace CollaboRate
                 // Do nothing
                 ;
             }
+        }
+
+        // Method to initialize signalR connection
+        private async Task InitializeSignalRAsync()
+        {
+            try
+            {
+                _tasksConnection = new HubConnectionBuilder()
+                    .WithUrl("https://collaborateapi.runasp.net/hubs/tasks")
+                    .WithAutomaticReconnect()
+                    .Build();
+
+                _tasksConnection.On("RefreshTasks", () =>
+                {
+                    if (this.IsDisposed || !this.IsHandleCreated)
+                    {
+                        return;
+                    }
+
+                    // The callback runs on a background thread, so hop back to the UI thread
+                    this.BeginInvoke(new Action(async () => await RefreshFromRealTimeAsync()));
+                });
+
+                // Rejoin and catch anything missed while offline
+                _tasksConnection.Reconnected += async (connectionId) =>
+                {
+                    _joinedTaskRoom = null;
+                    await JoinCurrentGroupRoomAsync();
+
+                    if (!this.IsDisposed && this.IsHandleCreated)
+                    {
+                        this.BeginInvoke(new Action(async () => await RefreshFromRealTimeAsync()));
+                    }
+                };
+
+                await _tasksConnection.StartAsync();
+                await JoinCurrentGroupRoomAsync();
+            }
+            catch (Exception ex)
+            {
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Real-time connection error occurred.", Properties.Resources.Error_Icon);
+            }
+        }
+
+        // Joins the SignalR room
+        private async Task JoinCurrentGroupRoomAsync()
+        {
+            if (_tasksConnection == null || _tasksConnection.State != HubConnectionState.Connected)
+            {
+                return;
+            }
+
+            string newRoom = $"Tasks_{CurrentGroup.Group_ID}";
+
+            if (_joinedTaskRoom == newRoom)
+            {
+                return;
+            }
+
+            // Leave the previous group first (when the group was switched
+            if (_joinedTaskRoom != null)
+            {
+                await _tasksConnection.InvokeAsync("LeaveTaskRoom", _joinedTaskRoom);
+            }
+
+            await _tasksConnection.InvokeAsync("JoinTaskRoom", newRoom);
+            _joinedTaskRoom = newRoom;
+        }
+
+        // Reloads the grid because of real-time event
+        private async Task RefreshFromRealTimeAsync()
+        {
+            if (this.IsDisposed || CurrentGroup.Group_ID <= 0)
+            {
+                return;
+            }
+
+            await DisplayTasksAsync(CurrentGroup.Group_ID);
         }
 
         private void btnCreateNewTask_Click(object sender, EventArgs e)
@@ -166,6 +249,7 @@ namespace CollaboRate
         private async void frmGroupTasks_Load(object sender, EventArgs e)
         {
             await DisplayTasksAsync(CurrentGroup.Group_ID);
+            await InitializeSignalRAsync();
         }
 
         private async void txtSearchTask__TextChanged(object sender, EventArgs e)
@@ -353,6 +437,27 @@ namespace CollaboRate
             {
                 lastSelectionStatus = cboStatusFilter.SelectedItem.ToString();
                 await DisplayTasksAsync(CurrentGroup.Group_ID);
+            }
+        }
+
+        private async void frmGroupTasks_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_tasksConnection != null)
+            {
+                try
+                {
+                    if (_joinedTaskRoom != null && _tasksConnection.State == HubConnectionState.Connected)
+                    {
+                        await _tasksConnection.InvokeAsync("LeaveTaskRoom", _joinedTaskRoom);
+                    }
+
+                    await _tasksConnection.StopAsync();
+                    await _tasksConnection.DisposeAsync();
+                }
+                catch (Exception)
+                {
+                    // Ignore errors while closing
+                }
             }
         }
     }

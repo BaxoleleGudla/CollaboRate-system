@@ -31,6 +31,8 @@ namespace CollaboRate
 
         // SignalR fields
         private HubConnection _connection;
+        private HubConnection _groupHubConnection;
+		private string _joinedGroupRoom;
 
         public frmProjectGroups()
         {
@@ -73,6 +75,42 @@ namespace CollaboRate
                 }));
             });
 
+            // Configuration for ProjectGroupHub
+			_groupHubConnection = new HubConnectionBuilder()
+				.WithUrl("https://collaborateapi.runasp.net/hubs/groups")
+				.WithAutomaticReconnect()
+				.Build();
+
+			_groupHubConnection.On("RefreshGroupDetails", () =>
+			{
+				// BeginInvoke + try/catch so errors are not silently swallowed
+				this.BeginInvoke(new Action(async () =>
+				{
+					try { await LoadGroupDetailsAsync(); }
+					catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
+				}));
+			});
+
+			_groupHubConnection.On("RefreshAvailableGroups", () =>
+			{
+				this.BeginInvoke(new Action(async () =>
+				{
+					try { await LoadGroupsAsync(CurrentUser.User_ID, txtSearchGroup.Texts); }
+					catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
+				}));
+			});
+
+			// Re-join the room after an automatic reconnect (the server forgets
+			// group membership when the connection drops)
+			_groupHubConnection.Reconnected += async (connectionId) =>
+			{
+				if (CurrentGroup.Group_ID > 0)
+				{
+					_joinedGroupRoom = null;
+					await JoinCurrentGroupRoomAsync();
+				}
+			};
+
             try
             {
                 await _connection.StartAsync();
@@ -82,13 +120,53 @@ namespace CollaboRate
                 {
                     await _connection.InvokeAsync("SubscribeToGroupUpdates", CurrentGroup.Group_ID);
                 }
+
+                // Start ProjectGroupHub connection
+                await _groupHubConnection.StartAsync();
+
+                if (CurrentGroup.Group_ID > 0)
+                {
+                    await JoinCurrentGroupRoomAsync();
+                }
             }
             catch (Exception ex)
             {
                 // Fallback: If SignalR fails, the user still sees the initial data from the standard Load method
-                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Error occurred while establishing real-time connection.", Properties.Resources.Error_Icon);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Real-time connection error occurred.", Properties.Resources.Error_Icon);
             }
         }
+		
+		// Joins the SignalR room for CurrentGroup (name must match GroupRoom() in the controller)
+		private async Task JoinCurrentGroupRoomAsync()
+		{
+			if (_groupHubConnection == null || _groupHubConnection.State != HubConnectionState.Connected)
+			{
+				return;
+			}
+
+			string newRoom = $"Group_{CurrentGroup.Group_ID}";
+
+			if (_joinedGroupRoom == newRoom)
+			{
+				return;
+			}
+
+			// Leave the previous room first
+			if (_joinedGroupRoom != null)
+			{
+				await _groupHubConnection.InvokeAsync("LeaveGroupRoom", _joinedGroupRoom);
+			}
+
+			await _groupHubConnection.InvokeAsync("JoinGroupRoom", newRoom);
+			_joinedGroupRoom = newRoom;
+		}
+		
+		// Method to update connectoin when a group is changed
+		public async Task SwitchGroupRoomAsync()
+		{
+			await JoinCurrentGroupRoomAsync();
+			await LoadGroupDetailsAsync();
+		}
 
         // Method for the toast form
         public void AlertBox(Color backColor, Color color, string title, string text, Image icon)
@@ -656,6 +734,18 @@ namespace CollaboRate
             {
                 await _connection.StopAsync();
                 await _connection.DisposeAsync();
+            }
+
+            // Stop and dispose the ProjectGroupHub connection
+            if (_groupHubConnection != null)
+            {
+				if (_joinedGroupRoom != null && _groupHubConnection.State == HubConnectionState.Connected)
+				{
+					await _groupHubConnection.InvokeAsync("LeaveGroupRoom", _joinedGroupRoom);
+				}
+				
+                await _groupHubConnection.StopAsync();
+                await _groupHubConnection.DisposeAsync();
             }
         }
 

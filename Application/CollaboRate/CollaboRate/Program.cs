@@ -14,7 +14,7 @@ namespace CollaboRate
         private const string ApiBaseUrl = "https://collaborateapi.runasp.net";
 
         [STAThread]
-        static async Task Main()
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -23,7 +23,7 @@ namespace CollaboRate
 
             if (session != null && !string.IsNullOrEmpty(session.RefreshToken))
             {
-                bool isAuthenticated = await TryRefreshTokenAsync(session);
+                bool isAuthenticated = TryRefreshTokenAsync(session).GetAwaiter().GetResult();
 
                 if (isAuthenticated)
                 {
@@ -35,7 +35,7 @@ namespace CollaboRate
 
                     try
                     {
-                        await SignalRService.Instance.InitializeAsync(CurrentUser.User_ID);
+                        SignalRService.Instance.InitializeAsync(CurrentUser.User_ID).GetAwaiter().GetResult();
                     }
                     catch (Exception ex)
                     {

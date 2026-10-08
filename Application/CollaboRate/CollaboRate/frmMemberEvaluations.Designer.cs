@@ -34,8 +34,6 @@
             this.lblHeading = new System.Windows.Forms.Label();
             this.txtSearchMemberName = new SATATextBox();
             this.dgViewMemberEvaluations = new System.Windows.Forms.DataGridView();
-            this.btnSaveEvaluations = new FrameworkTest.SATAButton();
-            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Member_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MyCurrentScore = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -43,6 +41,8 @@
             this.ReceivedRatingsCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PotentialRatingsCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RatingStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSaveEvaluations = new FrameworkTest.SATAButton();
+            this.pbLoadingSpinner = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMemberEvaluations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoadingSpinner)).BeginInit();
             this.SuspendLayout();
@@ -128,58 +128,6 @@
             this.dgViewMemberEvaluations.Size = new System.Drawing.Size(772, 463);
             this.dgViewMemberEvaluations.TabIndex = 17;
             // 
-            // btnSaveEvaluations
-            // 
-            this.btnSaveEvaluations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveEvaluations.ButtonText = "Save Evaluations";
-            this.btnSaveEvaluations.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.btnSaveEvaluations.CheckedForeColor = System.Drawing.Color.White;
-            this.btnSaveEvaluations.CheckedImageTint = System.Drawing.Color.White;
-            this.btnSaveEvaluations.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnSaveEvaluations.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnSaveEvaluations.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveEvaluations.HoverBackground = System.Drawing.Color.RoyalBlue;
-            this.btnSaveEvaluations.HoverForeColor = System.Drawing.Color.White;
-            this.btnSaveEvaluations.HoverImage = null;
-            this.btnSaveEvaluations.HoverImageTint = System.Drawing.Color.White;
-            this.btnSaveEvaluations.HoverOutline = System.Drawing.Color.Empty;
-            this.btnSaveEvaluations.Image = global::CollaboRate.Properties.Resources.home;
-            this.btnSaveEvaluations.ImageAutoCenter = false;
-            this.btnSaveEvaluations.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnSaveEvaluations.ImageOffset = new System.Drawing.Point(17, 0);
-            this.btnSaveEvaluations.ImageTint = System.Drawing.Color.White;
-            this.btnSaveEvaluations.IsToggleButton = false;
-            this.btnSaveEvaluations.IsToggled = false;
-            this.btnSaveEvaluations.Location = new System.Drawing.Point(557, 27);
-            this.btnSaveEvaluations.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnSaveEvaluations.Name = "btnSaveEvaluations";
-            this.btnSaveEvaluations.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
-            this.btnSaveEvaluations.NormalForeColor = System.Drawing.Color.White;
-            this.btnSaveEvaluations.NormalOutline = System.Drawing.Color.Empty;
-            this.btnSaveEvaluations.OutlineThickness = 2F;
-            this.btnSaveEvaluations.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.btnSaveEvaluations.PressedForeColor = System.Drawing.Color.White;
-            this.btnSaveEvaluations.PressedImageTint = System.Drawing.Color.White;
-            this.btnSaveEvaluations.PressedOutline = System.Drawing.Color.Empty;
-            this.btnSaveEvaluations.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnSaveEvaluations.Size = new System.Drawing.Size(235, 35);
-            this.btnSaveEvaluations.TabIndex = 16;
-            this.btnSaveEvaluations.TextAutoCenter = false;
-            this.btnSaveEvaluations.TextOffset = new System.Drawing.Point(0, 0);
-            this.btnSaveEvaluations.Click += new System.EventHandler(this.btnEvaluateAllMembers_Click);
-            // 
-            // pbLoadingSpinner
-            // 
-            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
-            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
-            this.pbLoadingSpinner.Location = new System.Drawing.Point(389, 300);
-            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
-            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
-            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLoadingSpinner.TabIndex = 54;
-            this.pbLoadingSpinner.TabStop = false;
-            this.pbLoadingSpinner.Visible = false;
-            // 
             // User_ID
             // 
             this.User_ID.DataPropertyName = "User_ID";
@@ -248,6 +196,58 @@
             this.RatingStatus.ReadOnly = true;
             this.RatingStatus.Width = 80;
             // 
+            // btnSaveEvaluations
+            // 
+            this.btnSaveEvaluations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveEvaluations.ButtonText = "Save Evaluations";
+            this.btnSaveEvaluations.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnSaveEvaluations.CheckedForeColor = System.Drawing.Color.White;
+            this.btnSaveEvaluations.CheckedImageTint = System.Drawing.Color.White;
+            this.btnSaveEvaluations.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnSaveEvaluations.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSaveEvaluations.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveEvaluations.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnSaveEvaluations.HoverForeColor = System.Drawing.Color.White;
+            this.btnSaveEvaluations.HoverImage = null;
+            this.btnSaveEvaluations.HoverImageTint = System.Drawing.Color.White;
+            this.btnSaveEvaluations.HoverOutline = System.Drawing.Color.Empty;
+            this.btnSaveEvaluations.Image = global::CollaboRate.Properties.Resources.home;
+            this.btnSaveEvaluations.ImageAutoCenter = false;
+            this.btnSaveEvaluations.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnSaveEvaluations.ImageOffset = new System.Drawing.Point(17, 0);
+            this.btnSaveEvaluations.ImageTint = System.Drawing.Color.White;
+            this.btnSaveEvaluations.IsToggleButton = false;
+            this.btnSaveEvaluations.IsToggled = false;
+            this.btnSaveEvaluations.Location = new System.Drawing.Point(557, 27);
+            this.btnSaveEvaluations.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSaveEvaluations.Name = "btnSaveEvaluations";
+            this.btnSaveEvaluations.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(152)))), ((int)(((byte)(186)))));
+            this.btnSaveEvaluations.NormalForeColor = System.Drawing.Color.White;
+            this.btnSaveEvaluations.NormalOutline = System.Drawing.Color.Empty;
+            this.btnSaveEvaluations.OutlineThickness = 2F;
+            this.btnSaveEvaluations.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnSaveEvaluations.PressedForeColor = System.Drawing.Color.White;
+            this.btnSaveEvaluations.PressedImageTint = System.Drawing.Color.White;
+            this.btnSaveEvaluations.PressedOutline = System.Drawing.Color.Empty;
+            this.btnSaveEvaluations.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnSaveEvaluations.Size = new System.Drawing.Size(235, 35);
+            this.btnSaveEvaluations.TabIndex = 16;
+            this.btnSaveEvaluations.TextAutoCenter = false;
+            this.btnSaveEvaluations.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnSaveEvaluations.Click += new System.EventHandler(this.btnEvaluateAllMembers_Click);
+            // 
+            // pbLoadingSpinner
+            // 
+            this.pbLoadingSpinner.BackColor = System.Drawing.SystemColors.Control;
+            this.pbLoadingSpinner.Image = global::CollaboRate.Properties.Resources.Loading_Gif;
+            this.pbLoadingSpinner.Location = new System.Drawing.Point(389, 300);
+            this.pbLoadingSpinner.Name = "pbLoadingSpinner";
+            this.pbLoadingSpinner.Size = new System.Drawing.Size(32, 26);
+            this.pbLoadingSpinner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLoadingSpinner.TabIndex = 54;
+            this.pbLoadingSpinner.TabStop = false;
+            this.pbLoadingSpinner.Visible = false;
+            // 
             // frmMemberEvaluations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -263,6 +263,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMemberEvaluations";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMemberEvaluations_FormClosing);
             this.Load += new System.EventHandler(this.frmMemberEvaluations_Load);
             this.Resize += new System.EventHandler(this.frmMemberEvaluations_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMemberEvaluations)).EndInit();

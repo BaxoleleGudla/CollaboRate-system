@@ -30,6 +30,7 @@ using System.Reflection;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 =======
@@ -82,6 +83,9 @@ using System.Reflection;
 >>>>>>> Baxolele_Gudla
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+>>>>>>> Baxolele_Gudla
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71e47d027788d5f140ac02cf939892f608f3bbb3")]
 >>>>>>> Baxolele_Gudla
 [assembly: System.Reflection.AssemblyProductAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CollaboRateAPIServer")]

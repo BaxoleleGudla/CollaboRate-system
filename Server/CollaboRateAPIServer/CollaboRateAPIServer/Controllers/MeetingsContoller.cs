@@ -8,6 +8,8 @@ using System.Runtime.Versioning;
 using CollaboRateAPIServer.Dtos;
 using CollaboRateAPIServer.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.AspNetCore.SignalR;
+using CollaboRateAPIServer.Hubs;
 
 namespace CollaboRateAPIServer.Controllers
 {
@@ -16,10 +18,26 @@ namespace CollaboRateAPIServer.Controllers
     public class MeetingsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IHubContext<MeetingsHub> _meetingsHubContext;
+        private static string MeetingRoom(int groupId) => $"Meetings_{groupId}";
 
-        public MeetingsController(AppDbContext context)
+        public MeetingsController(AppDbContext context, IHubContext<MeetingsHub> meetingsHubContext)
         {
             _context = context;
+            _meetingsHubContext = meetingsHubContext;
+        }
+
+        // Method to alert clients of new data
+        public async System.Threading.Tasks.Task NotifyMeetingsChangedAsync(int groupId)
+        {
+            try
+            {
+                await _meetingsHubContext.Clients.Group(MeetingRoom(groupId)).SendAsync("RefreshMeetings");
+            }
+            catch (Exception)
+            {
+                // Ignore
+            }
         }
 
         // Method to get meetings for a group
@@ -132,6 +150,9 @@ namespace CollaboRateAPIServer.Controllers
                 // Commit transaction
                 await transaction.CommitAsync();
 
+                // Tell open meetings lists in this group to reload
+                await NotifyMeetingsChangedAsync(meeting.Group_ID);
+
                 return CreatedAtAction(nameof(GetMeetingById), new { id = meeting.Meeting_ID }, meeting);
             }
             catch (Exception ex)
@@ -221,6 +242,9 @@ namespace CollaboRateAPIServer.Controllers
 
                 await transaction.CommitAsync();
 
+                // Tell open meetings lists in this group to reload
+                await NotifyMeetingsChangedAsync(meeting.Group_ID);
+
                 return Ok(meeting);
             }
             catch (Exception ex)
@@ -297,6 +321,9 @@ namespace CollaboRateAPIServer.Controllers
                 await _context.SaveChangesAsync();
 
                 await transaction.CommitAsync();
+
+                // Tell open meetings lists in this group to reload
+                await NotifyMeetingsChangedAsync(meeting.Group_ID);
 
                 return Ok(new { message = "Meeting cancelled successfully." });
             }

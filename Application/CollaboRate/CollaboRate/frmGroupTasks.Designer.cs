@@ -342,6 +342,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmGroupTasks";
             this.Text = "frmGroupTasks";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGroupTasks_FormClosing);
             this.Load += new System.EventHandler(this.frmGroupTasks_Load);
             this.Resize += new System.EventHandler(this.frmGroupTasks_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewTasks)).EndInit();

@@ -1,4 +1,5 @@
 ﻿using CollaboRate.Dtos;
+using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,9 @@ namespace CollaboRate
             Timeout = TimeSpan.FromSeconds(30)
         };
         private BindingSource ratingsBindingSource = new BindingSource();
+
+        private HubConnection _evaluationsConnection;
+        private string _joinedEvaluationRoom;
 
         public frmMemberEvaluations()
         {
@@ -47,6 +51,96 @@ namespace CollaboRate
             {
                 AlertBox(Color.LightPink, Color.DarkRed, "Error", "An error occurred while initializing ratings.", Properties.Resources.Error_Icon); AlertBox(Color.LightPink, Color.DarkRed, "Error", "Network error occurred while updating group.", Properties.Resources.Error_Icon);
             }
+        }
+
+        private async Task InitializeSignalRAsync()
+        {
+            try
+            {
+                _evaluationsConnection = new HubConnectionBuilder()
+                    .WithUrl("https://collaborateapi.runasp.net/hubs/evaluations")
+                    .WithAutomaticReconnect()
+                    .Build();
+
+                // Sent by RatingsController.BatchUpsert
+                _evaluationsConnection.On<int>("RefreshEvaluations", (raterId) =>
+                {
+                    // The person who saved already reloads in SaveEvaluations, so skip our own event
+                    if (raterId == CurrentUser.User_ID)
+                    {
+                        return;
+                    }
+
+                    if (this.IsDisposed || !this.IsHandleCreated)
+                    {
+                        return;
+                    }
+
+                    this.BeginInvoke(new Action(async () => await RefreshFromRealTimeAsync()));
+                });
+
+                // Join again after serer has forgotten our room
+                _evaluationsConnection.Reconnected += async (connectionId) =>
+                {
+                    _joinedEvaluationRoom = null;
+                    await JoinCurrentGroupRoomAsync();
+
+                    if (!this.IsDisposed && this.IsHandleCreated)
+                    {
+                        this.BeginInvoke(new Action(async () => await RefreshFromRealTimeAsync()));
+                    }
+                };
+
+                await _evaluationsConnection.StartAsync();
+                await JoinCurrentGroupRoomAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Real-time connection error occurred.", Properties.Resources.Error_Icon);
+            }
+        }
+
+        // Reloads the grid because of a real-time event
+        private async Task RefreshFromRealTimeAsync()
+        {
+            if (this.IsDisposed)
+            {
+                return;
+            }
+
+            if (dgViewMemberEvaluations.IsCurrentCellInEditMode)
+            {
+                return;
+            }
+
+            // Keep the current search text so a filtered list stays filtered
+            await LoadDataAsync(txtSearchMemberName.Texts);
+        }
+
+        // Joins the SignalR room for CurrentGroup
+        private async Task JoinCurrentGroupRoomAsync()
+        {
+            if (_evaluationsConnection == null || _evaluationsConnection.State != HubConnectionState.Connected)
+            {
+                return;
+            }
+
+            string newRoom = $"Evaluations_{CurrentGroup.Group_ID}";
+
+            if (_joinedEvaluationRoom == newRoom)
+            {
+                return;
+            }
+
+            // Leave the previous room first (when the group was switched
+            if (_joinedEvaluationRoom != null)
+            {
+                await _evaluationsConnection.InvokeAsync("LeaveEvaluationRoom", _joinedEvaluationRoom);
+            }
+
+            await _evaluationsConnection.InvokeAsync("JoinEvaluationRoom", newRoom);
+            _joinedEvaluationRoom = newRoom;
         }
 
         // Method for the toast form
@@ -218,7 +312,9 @@ namespace CollaboRate
 
         private async void frmMemberEvaluations_Load(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("Apartment state: " + System.Threading.Thread.CurrentThread.GetApartmentState());
             await LoadDataAsync();
+            await InitializeSignalRAsync();
         }
 
         private async void txtSearchMemberName__TextChanged(object sender, EventArgs e)
@@ -235,6 +331,27 @@ namespace CollaboRate
                 int y = (this.ClientSize.Height - pbLoadingSpinner.Height) / 2;
 
                 pbLoadingSpinner.Location = new Point(x, y);
+            }
+        }
+
+        private async void frmMemberEvaluations_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_evaluationsConnection != null)
+            {
+                try
+                {
+                    if (_joinedEvaluationRoom != null && _evaluationsConnection.State == HubConnectionState.Connected)
+                    {
+                        await _evaluationsConnection.InvokeAsync("LeaveEvaluationRoom", _joinedEvaluationRoom);
+                    }
+
+                    await _evaluationsConnection.StopAsync();
+                    await _evaluationsConnection.DisposeAsync();
+                }
+                catch (Exception)
+                {
+                    // Ignore
+                }
             }
         }
     }

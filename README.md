@@ -103,9 +103,3 @@ Controllers use the `api/[controller]` route convention. See the controller sour
 
 The `Documentation` directory includes SQL scripts, a proposed schema, a data model, system documentation, and use-case documentation. No dedicated automated test project is present in the repository at this time.
 
-## Security and deployment notes
-
-- A database credential is present in tracked API configuration. **Rotate that credential** and remove secrets from source-controlled configuration/history as appropriate before deploying or sharing the repository. Supply replacement secrets through environment variables or a secret manager.
-- Review authentication and password-storage implementation before production use; the current API authentication code should not be treated as a production-ready security design.
-- Do not expose a production database or API without configuring appropriate authentication, authorization, HTTPS, and secret management.
-

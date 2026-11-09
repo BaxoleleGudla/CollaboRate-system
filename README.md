@@ -109,6 +109,3 @@ The `Documentation` directory includes SQL scripts, a proposed schema, a data mo
 - Review authentication and password-storage implementation before production use; the current API authentication code should not be treated as a production-ready security design.
 - Do not expose a production database or API without configuring appropriate authentication, authorization, HTTPS, and secret management.
 
-## License
-
-No license file is currently included. Add a license before reusing or distributing this project if you intend to grant permissions to others.

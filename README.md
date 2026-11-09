@@ -65,8 +65,6 @@ The desktop client is a .NET Framework 4.7.2 Windows Forms application. It calls
    $env:ConnectionStrings__DefaultConnection = "Server=YOUR_SERVER;Database=YOUR_DATABASE;User Id=YOUR_USER;Password=YOUR_PASSWORD;TrustServerCertificate=True;Encrypt=True"
    ```
 
-   The API reads the `ConnectionStrings:DefaultConnection` configuration value. Prefer a secret manager or deployment secret store over putting credentials in source-controlled configuration.
-
 ## Build and run
 
 ### Start the API

@@ -166,3 +166,4 @@ C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAP
 C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Release\net8.0\CollaboRateAPIServer.pdb
 C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Release\net8.0\CollaboRateAPIServer.genruntimeconfig.cache
 C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\obj\Release\net8.0\ref\CollaboRateAPIServer.dll
+C:\Users\Baxolele Gudla\Documents\GitHub\CollaboRate-system\Server\CollaboRateAPIServer\CollaboRateAPIServer\bin\Release\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

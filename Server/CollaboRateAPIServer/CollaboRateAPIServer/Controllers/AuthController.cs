@@ -3,8 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using CollaboRateAPIServer.Data;
 using CollaboRateAPIServer.Models;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.Data;
 using System.Security.Cryptography;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace CollaboRateAPIServer.Controllers
 {	
@@ -13,10 +16,12 @@ namespace CollaboRateAPIServer.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public AuthController(AppDbContext context)
+        public AuthController(AppDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         // POST: api/auth/login
@@ -44,6 +49,9 @@ namespace CollaboRateAPIServer.Controllers
 					return Unauthorized("Invalid username or password.");
 				}
 
+                // Generate JWT Token
+                string jwtToken = GenerateJwtToken(user);
+
 				// Generate a Refresh Token
 				string refreshToken = GenerateSecureToken();
 				user.RefreshToken = refreshToken;
@@ -55,12 +63,12 @@ namespace CollaboRateAPIServer.Controllers
                     User_ID = user.User_ID,
                     Username = user.Username,
                     Email = user.Email,
+                    Token = jwtToken,
                     RefreshToken = refreshToken
                 });
             }
 			catch (Exception ex)
             {
-                // Unhandled exception caught: returns details to help identify DbContext mapping issues
                 string innerMsg = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
                 return StatusCode(500, $"Database or EF error: {innerMsg}");
             }
@@ -84,6 +92,7 @@ namespace CollaboRateAPIServer.Controllers
             }
 
             // Rotate the Refresh Token
+            string newJwtToken = GenerateJwtToken(user);
             string newRefreshToken = GenerateSecureToken();
             user.RefreshToken = newRefreshToken;
             await _context.SaveChangesAsync();
@@ -93,8 +102,33 @@ namespace CollaboRateAPIServer.Controllers
                 User_ID = user.User_ID,
                 Username = user.Username,
                 Email = user.Email,
+                Token = newJwtToken,
                 RefreshToken = newRefreshToken
             });
+        }
+
+        private string GenerateJwtToken(User user)
+        {
+            var jwtKey = _configuration["Jwt:SecretKey"] ?? throw new InvalidOperationException("Jwt:SecretKey is missing.");
+            var keyBytes = Encoding.UTF8.GetBytes(jwtKey);
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.User_ID.ToString()),
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.Email, user.Email ?? string.Empty)
+                }),
+                Expires = DateTime.UtcNow.AddHours(2),
+                Issuer = _configuration["Jwt:Issuer"],
+                Audience = _configuration["Jwt:Audience"],
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
 
         public static string GenerateSecureToken()
@@ -125,6 +159,7 @@ namespace CollaboRateAPIServer.Controllers
             public int User_ID { get; set; }
             public string Username { get; set; }
             public string Email { get; set; }
+            public string Token { get; set; }
             public string RefreshToken { get; set; }
         }
     }

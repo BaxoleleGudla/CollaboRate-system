@@ -14,79 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e589e97a945f7a098fb2db26d73291fbbb383781")]
->>>>>>> Stashed changes
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22226d0a15e3bbc5916909cb92d7100eb1b6512e")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04c62988a5eeb047bcb747ff4463af5e423e53dc")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c032392f083928205a46d84992c1c8495b8d28fd")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edb63ed5d70087ae4e4595790582c3f68629cf04")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a3c4ef999f02d2baa433aaacd3347dbf440341c8")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77dcf697f4f38b0e324d96d7ff687e72e4bbe8a9")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6fe566c16bb8788c6da113300c3eddfc5114cbba")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8da450303abcd8519e700d26f5f18d5e2fbc38b9")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86ff999d16ecf15b2febabfc953fe6b9b88dff52")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
->>>>>>> Baxolele_Gudla
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71e47d027788d5f140ac02cf939892f608f3bbb3")]
->>>>>>> Baxolele_Gudla
 [assembly: System.Reflection.AssemblyProductAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CollaboRateAPIServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

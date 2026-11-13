@@ -6,7 +6,7 @@
         public string Username { get; set; }
         public string Email { get; set; }
         public DateTime Created_At { get; set; }
-        public String Token { get; set }
+        public string Token { get; set }
         public string? RefreshToken { get; set; }
     }
 }

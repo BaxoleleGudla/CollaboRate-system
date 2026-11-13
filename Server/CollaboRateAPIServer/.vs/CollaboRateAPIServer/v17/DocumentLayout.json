@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-13T20:57:21.228Z",
               "EditorCaption": ""
@@ -47,8 +47,7 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\UsersController.cs",
               "ViewState": "AgIAAKUAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-13T20:53:37.191Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-13T20:53:37.191Z"
             },
             {
               "$type": "Document",

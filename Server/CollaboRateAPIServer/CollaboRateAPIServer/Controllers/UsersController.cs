@@ -4,6 +4,10 @@ using CollaboRateAPIServer.Data;
 using CollaboRateAPIServer.Models;
 using CollaboRateAPIServer.Dtos;
 using System.Security.Cryptography;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace CollaboRateAPIServer.Controllers
 {
@@ -12,10 +16,12 @@ namespace CollaboRateAPIServer.Controllers
     public class UsersController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public UsersController(AppDbContext context)
+        public UsersController(AppDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         // GET: api/users
@@ -161,6 +167,9 @@ namespace CollaboRateAPIServer.Controllers
 
             try
             {
+                // Generate JWT Token
+                string jwtToken = GenerateJwtToken(user);
+
                 // Generate Refresh Token for the new user
                 string refreshToken = GenerateSecureToken();
                 user.RefreshToken = refreshToken;
@@ -174,6 +183,7 @@ namespace CollaboRateAPIServer.Controllers
                     Username = user.Username,
                     Email = user.Email,
                     Created_At = user.Created_At,
+                    Token = jwtToken,
                     RefreshToken = user.RefreshToken
                 };
 
@@ -194,6 +204,30 @@ namespace CollaboRateAPIServer.Controllers
                 rng.GetBytes(randomNumber);
                 return Convert.ToBase64String(randomNumber);
             }
+        }
+
+        private string GenerateJwtToken(User user)
+        {
+            var jwtKey = _configuration["Jwt:SecretKey"] ?? throw new InvalidOperationException("Jwt:SecretKey is missing.");
+            var keyBytes = Encoding.UTF8.GetBytes(jwtKey);
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.User_ID.ToString()),
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.Email, user.Email ?? string.Empty)
+                }),
+                Expires = DateTime.UtcNow.AddHours(2),
+                Issuer = _configuration["Jwt:Issuer"],
+                Audience = _configuration["Jwt:Audience"],
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
 
         // PUT: api/users/

@@ -11,9 +11,12 @@ using CollaboRateAPIServer.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.AspNetCore.SignalR;
 using CollaboRateAPIServer.Hubs;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CollaboRateAPIServer.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class GroupsController : ControllerBase
@@ -49,9 +52,16 @@ namespace CollaboRateAPIServer.Controllers
 
         // GET: api/groups/user
         // Gets all groups (Group ID and Name) that the user with the specified User_ID is in
-        [HttpGet("user/{userId}")]
-        public async Task<ActionResult<IEnumerable<GroupDto>>> GetGroupsForUser(int userId)
+        [HttpGet("user")]
+        public async Task<ActionResult<IEnumerable<GroupDto>>> GetGroupsForUser()
         {
+            // Extract User ID securley from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             var groups = await _context.tblGroupMember
                 .Where(gm => gm.User_ID == userId && gm.Join_Status == "Accepted")
                 .Include(gm => gm.Group)
@@ -128,8 +138,15 @@ namespace CollaboRateAPIServer.Controllers
 
         // Method to get groups
         [HttpGet("available-groups")]
-        public async Task<ActionResult<List<GroupWithRequestStatusDto>>> GetAvailableGroupsForUser([FromQuery] int userId, [FromQuery] string keyword = null)
+        public async Task<ActionResult<List<GroupWithRequestStatusDto>>> GetAvailableGroupsForUser([FromQuery] string keyword = null)
         {
+            // Extract User ID securely from JWT token claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             // Base query: groups where user is not acceted
             IQueryable<Group> query = _context.tblGroup
                 .Where(g => !_context.tblGroupMember
@@ -174,9 +191,16 @@ namespace CollaboRateAPIServer.Controllers
         }
 
         // Method to request to join a group
-        [HttpPost("{groupId}/join-requests/{userId}")]
-        public async Task<IActionResult> RequestToJoinGroup(int groupId, int userId)
+        [HttpPost("{groupId}/join-requests")]
+        public async Task<IActionResult> RequestToJoinGroup(int groupId)
         {
+            // Extract User ID securely from JWT token claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             using (var transaction = await _context.Database.BeginTransactionAsync())
             {
                 try
@@ -273,9 +297,16 @@ namespace CollaboRateAPIServer.Controllers
         }
 
         // Method to cancel a join request
-        [HttpDelete("{groupId}/join-requests/{userId}")]
-        public async Task<IActionResult> CancelJoinRequest(int groupId, int userId)
+        [HttpDelete("{groupId}/join-requests")]
+        public async Task<IActionResult> CancelJoinRequest(int groupId)
         {
+            // Extract User ID securely from JWT token claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             var membership = await _context.tblGroupMember.FirstOrDefaultAsync(gm =>
                 gm.Group_ID == groupId &&
                 gm.User_ID == userId &&
@@ -413,6 +444,17 @@ namespace CollaboRateAPIServer.Controllers
         [HttpPost("groups")]
         public async Task<ActionResult<CreateGroupResponse>> CreateGroup([FromBody] CreateGroupRequest request)
         {
+            // Optional validation to make sure the creator matches the authenticated JWT user
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!string.IsNullOrEmpty(userIdClaim) && int.TryParse(userIdClaim, out int tokenUserId))
+            {
+                if (request.Creator != tokenUserId)
+                {
+                    // Optional security check: prevent creating groups on behalf of other users
+                    request.Creator = tokenUserId;
+                }
+            }
+
             using var transaction = await _context.Database.BeginTransactionAsync();
 
             try
@@ -751,9 +793,16 @@ namespace CollaboRateAPIServer.Controllers
         }
 
         // Method to get a member role from a group
-        [HttpGet("users/{userId}/groups/{groupId}/role")]
-        public async Task<IActionResult> GetUserGroupRole(int userId, int groupId)
+        [HttpGet("groups/{groupId}/role")]
+        public async Task<IActionResult> GetUserGroupRole(int groupId)
         {
+            // Extract User ID securely from JWT token claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             if (userId <= 0 || groupId <= 0)
             {
                 return BadRequest("Invalid user ID or group ID.");

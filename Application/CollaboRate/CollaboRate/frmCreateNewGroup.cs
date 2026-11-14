@@ -143,9 +143,9 @@ namespace CollaboRate
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                     // API endpoint URL for adding users
-                    string apiUrl = ApiBaseUrl + "/api/Groups/groups";
+                    string apiUrl = "api/Groups/groups";
 
-                    HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+                    HttpResponseMessage response = await ApiClient.HttpClient.PostAsync(apiUrl, content);
 
                     response.EnsureSuccessStatusCode();
 
@@ -163,7 +163,7 @@ namespace CollaboRate
                         var mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
                         if (mainForm != null)
                         {
-                            await mainForm.LoadUserGroupsAsync(CurrentUser.User_ID);
+                            await mainForm.LoadUserGroupsAsync();
                         }
 
                         pbLoadingSpinner.Visible = false;

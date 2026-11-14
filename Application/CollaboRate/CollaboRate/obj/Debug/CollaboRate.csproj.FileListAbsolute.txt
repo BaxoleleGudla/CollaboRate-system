@@ -148,3 +148,4 @@ C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\App
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Toolkit.Uwp.Notifications.dll
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\Microsoft.Toolkit.Uwp.Notifications.pdb
 C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\obj\Debug\CollaboRate.csproj.SuggestedBindingRedirects.cache
+C:\Users\Baxolele Gudla\Documents\My Programming Projects\CollaboRate system\Application\CollaboRate\CollaboRate\bin\Debug\System.Configuration.ConfigurationManager.dll

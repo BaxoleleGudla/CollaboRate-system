@@ -246,6 +246,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmGroupMeetings";
             this.Text = "frmGroupMeetings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGroupMeetings_FormClosing);
             this.Load += new System.EventHandler(this.frmGroupMeetings_Load);
             this.Resize += new System.EventHandler(this.frmGroupMeetings_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMeetings)).EndInit();

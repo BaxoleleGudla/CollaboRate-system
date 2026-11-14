@@ -13,8 +13,11 @@ using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Windows.System;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace CollaboRate
 {
@@ -95,7 +98,7 @@ namespace CollaboRate
 			{
 				this.BeginInvoke(new Action(async () =>
 				{
-					try { await LoadGroupsAsync(CurrentUser.User_ID, txtSearchGroup.Texts); }
+					try { await LoadGroupsAsync(txtSearchGroup.Texts); }
 					catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
 				}));
 			});
@@ -204,11 +207,9 @@ namespace CollaboRate
         // Method to get group details
         public async Task<AcceptedGroupUsersDto> GetGroupDetailsAsync(int groupId)
         {
-            string apiUrl = $"https://collaborateapi.runasp.net/api/groups/{groupId}/details-with-accepted-users";
-
             try
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                HttpResponseMessage response = await ApiClient.HttpClient.GetAsync($"api/groups/{groupId}/details-with-accepted-users");
 
                 response.EnsureSuccessStatusCode();
 
@@ -258,11 +259,9 @@ namespace CollaboRate
         // Method to get users with a pending join request
         public async Task<List<PendingUserDto>> GetPendingUsersAsync(int groupId)
         {
-            string apiUrl = $"https://collaborateapi.runasp.net/api/groups/{groupId}/pending-users";
-
             try
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                HttpResponseMessage response = await ApiClient.HttpClient.GetAsync($"api/groups/{groupId}/pending-users");
 
                 response.EnsureSuccessStatusCode();
 
@@ -295,13 +294,15 @@ namespace CollaboRate
         }
 
         // Method to get groups
-        public async Task<List<GroupWithRequestStatusDto>> GetAvailableGroupsForUserAsync(int userId, string keyword = null)
+        public async Task<List<GroupWithRequestStatusDto>> GetAvailableGroupsForUserAsync(string keyword = null)
         {
-            string apiUrl = $"https://collaborateapi.runasp.net/api/groups/available-groups?userId={userId}&keyword={keyword}";
+            string apiUrl = string.IsNullOrEmpty(keyword)
+                ? "api/groups/available-groups"
+                : $"api/groups/available-groups?keyword={Uri.EscapeDataString(keyword)}";
 
             try
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                HttpResponseMessage response = await ApiClient.HttpClient.GetAsync(apiUrl);
                 response.EnsureSuccessStatusCode();
 
                 string jsonString = await response.Content.ReadAsStringAsync();
@@ -403,14 +404,14 @@ namespace CollaboRate
         }
 
         // Method to display groups in a datagridview
-        public async Task LoadGroupsAsync(int userId, string keyword = null)
+        public async Task LoadGroupsAsync(string keyword = null)
         {
             try
             {
                 pbLoadingSpinner.Visible = true;
                 dgViewProjectGroups.Enabled = false;
 
-                var groups = await GetAvailableGroupsForUserAsync(userId, keyword);
+                var groups = await GetAvailableGroupsForUserAsync(keyword);
 
                 if (groups != null)
                 {
@@ -445,7 +446,7 @@ namespace CollaboRate
             // Display data
             var groupDetailsTask = LoadGroupDetailsAsync();
             var joinRequestsTask = LoadJoinRequetsAsync();
-            var groupsTask = LoadGroupsAsync(CurrentUser.User_ID);
+            var groupsTask = LoadGroupsAsync();
 
             await Task.WhenAll(groupDetailsTask, joinRequestsTask, groupsTask);
 
@@ -479,17 +480,17 @@ namespace CollaboRate
         }
 
         // Method to send a join request
-        private async Task<bool> SendJoinRequestAsync(int groupId, int userId)
+        private async Task<bool> SendJoinRequestAsync(int groupId)
         {
             try
             {
                 pbLoadingSpinner.Visible = true;
                 dgViewProjectGroups.Enabled = false;
 
-                string url = $"https://collaborateapi.runasp.net/api/Groups/{groupId}/join-requests/{userId}";
+                string url = $"api/groups/{groupId}/join-requests";
 
                 // Send POST request
-                HttpResponseMessage response = await client.PostAsync(url, null);
+                HttpResponseMessage response = await ApiClient.HttpClient.PostAsync(url, null);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -518,17 +519,17 @@ namespace CollaboRate
         }
 
         // Method to cancel a join request
-        private async Task<bool> CancelJoinRequestAsync(int groupId, int userId)
+        private async Task<bool> CancelJoinRequestAsync(int groupId)
         {
             try
             {
                 pbLoadingSpinner.Visible = true;
                 dgViewProjectGroups.Enabled = false;
 
-                string url = $"https://collaborateapi.runasp.net/api/Groups/{groupId}/join-requests/{userId}";
+                string url = $"api/Groups/{groupId}/join-requests";
 
                 // Send DELETE request
-                HttpResponseMessage response = await client.DeleteAsync(url);
+                HttpResponseMessage response = await ApiClient.HttpClient.DeleteAsync(url);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -578,25 +579,25 @@ namespace CollaboRate
 
                 if (group.HasPendingRequest)
                 {
-                    bool success = await CancelJoinRequestAsync(group.Group_ID, CurrentUser.User_ID);
+                    bool success = await CancelJoinRequestAsync(group.Group_ID);
 
                     if (success)
                     {
                         //group.HasPendingRequest = false;
                         //dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
-                        await LoadGroupsAsync(CurrentUser.User_ID);
+                        await LoadGroupsAsync();
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Join request cancelled.", Properties.Resources.Success_Icon);
                     }
                 }
                 else
                 {
-                    bool success = await SendJoinRequestAsync(group.Group_ID, CurrentUser.User_ID);
+                    bool success = await SendJoinRequestAsync(group.Group_ID);
 
                     if (success)
                     {
                         //group.HasPendingRequest = true;
                         //dgViewProjectGroups.InvalidateCell(e.ColumnIndex, e.RowIndex);
-                        await LoadGroupsAsync(CurrentUser.User_ID);
+                        await LoadGroupsAsync();
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Join request sent.", Properties.Resources.Success_Icon);
                     }
                 }
@@ -608,8 +609,8 @@ namespace CollaboRate
         {
             try
             {
-                string url = $"https://collaborateapi.runasp.net/api/Groups/{groupId}/members/{userId}/accept";
-                var response = await client.PutAsync(url, null);
+                string url = $"api/groups/{groupId}/members/{userId}/accept";
+                var response = await ApiClient.HttpClient.PutAsync(url, null);
 
                 response.EnsureSuccessStatusCode();
 
@@ -636,8 +637,8 @@ namespace CollaboRate
         {
             try
             {
-                string url = $"https://collaborateapi.runasp.net/api/Groups/{groupId}/members/{userId}/reject";
-                var response = await client.DeleteAsync(url);
+                string url = $"api/groups/{groupId}/members/{userId}/reject";
+                var response = await ApiClient.HttpClient.DeleteAsync(url);
 
                 response.EnsureSuccessStatusCode();
 
@@ -725,7 +726,7 @@ namespace CollaboRate
 
         private async void txtSearchGroup__TextChanged(object sender, EventArgs e)
         {
-            await LoadGroupsAsync(CurrentUser.User_ID, txtSearchGroup.Texts);
+            await LoadGroupsAsync(txtSearchGroup.Texts);
         }
 
         private async void frmProjectGroups_FormClosing(object sender, FormClosingEventArgs e)

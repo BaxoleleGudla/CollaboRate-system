@@ -154,6 +154,12 @@ namespace CollaboRate
                         CurrentUser.Username = user.Username;
                         CurrentUser.Email = user.Email;
 
+                        // Pass the JWT token to ApiClient
+                        if (!string.IsNullOrEmpty(user.Token))
+                        {
+                            ApiClient.SetAUthToken(user.Token);
+                        }
+
                         // Save encrypted 
                         var session = new UserSessionData
                         {

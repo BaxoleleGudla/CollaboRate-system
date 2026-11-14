@@ -181,15 +181,19 @@ namespace CollaboRate
                     {
                         updates.Add(new RatingUpdateDto
                         {
-                            Group_ID = CurrentGroup.Group_ID,
-                            Rater_ID = CurrentUser.User_ID,
+                            Group_ID = CurrentGroup.Group_ID, 
+                            Rater_ID = 0, // will be handled by backend JWT token
                             Ratee_ID = (int)row.Cells["User_ID"].Value,
                             Score = (byte)row.Cells["MyCurrentScore"].Value
                         });
                     }
                 }
 
-                var response = await client.PostAsync("https://collaborateapi.runasp.net/api/Ratings/batch-upsert", new StringContent(JsonSerializer.Serialize(updates), Encoding.UTF8, "application/json"));
+                string url = "api/Ratings/batch-upsert";
+
+                var content = new StringContent(JsonSerializer.Serialize(updates), Encoding.UTF8, "application/json");
+                var response = await ApiClient.HttpClient.PostAsync(url, content);
+
                 if (response.IsSuccessStatusCode)
                 {
                     await LoadDataAsync();
@@ -228,14 +232,14 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = true;
 
                 // Construct the URL with an optional search keyword
-                string url = $"{ApiBaseUrl}/api/Ratings/group/{CurrentGroup.Group_ID}/status-for/{CurrentUser.User_ID}";
+                string url = $"api/Ratings/group/{CurrentGroup.Group_ID}/status";
 
                 if (!string.IsNullOrWhiteSpace(keyword))
                 {
                     url += $"?keyword={Uri.EscapeDataString(keyword)}";
                 }
 
-                var response = await client.GetAsync(url);
+                var response = await ApiClient.HttpClient.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)
                 {

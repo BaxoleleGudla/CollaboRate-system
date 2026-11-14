@@ -18,6 +18,9 @@ namespace CollaboRate.Dtos
         [JsonPropertyName("email")]
         public string Email { get; set; }
 
+        [JsonPropertyName("Token")]
+        public string Token { get; set; }
+
         [JsonPropertyName("refreshToken")]
         public string RefreshToken { get; set; }
     }

@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace CollaboRate
 {
@@ -24,6 +25,16 @@ namespace CollaboRate
         private BindingSource pendingUsersBindingSource = new BindingSource();
         private BindingSource groupsBindingSource = new BindingSource();
         private AcceptedGroupUsersDto _currentGroupDetails;
+
+        private HubConnection _groupsConnection;
+        private HubConnection _tasksConnection;
+        private HubConnection _meetingsConnection;
+        private HubConnection _evaluationsConnection;
+
+        private string _joinedGroupRoom;
+        private string _joinedTaskRoom;
+        private string _joinedMeetingRoom;
+        private string _joinedEvaluationRoom;
 
         // List to store all users
         private List<GroupUserDto> _allUsers;
@@ -66,14 +77,35 @@ namespace CollaboRate
             }
         }
 
+        // Method for real-time connection
+        private void RunOnUiThread(Func<Task> reload)
+        {
+            if (this.IsDisposed || !this.IsHandleCreated || CurrentGroup.Group_ID <= 0)
+            {
+                return;
+            }
+
+            this.BeginInvoke(new Action(async () =>
+            {
+                try
+                {
+                    await reload();
+                }
+                catch (Exception ex)
+                {
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "Real-time connection error occurred.", Properties.Resources.Error_Icon);
+                }
+            }));
+        }
+
         // Method to get group details
         public async Task<AcceptedGroupUsersDto> GetGroupDetailsAsync(int groupId)
         {
-            string apiUrl = $"https://collaborateapi.runasp.net/api/groups/{groupId}/details-with-accepted-users";
+            string apiUrl = $"api/groups/{groupId}/details-with-accepted-users";
 
             try
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                HttpResponseMessage response = await ApiClient.HttpClient.GetAsync(apiUrl);
 
                 response.EnsureSuccessStatusCode();
 
@@ -224,6 +256,10 @@ namespace CollaboRate
                     {
                         lblTotalUpcomingMeetings.Text = "0";
                         lblUpcomingMeetings.Visible = true;
+
+                        meetingsBindingSource.DataSource = new List<MeetingDto>();
+                        dgViewMeetings.AutoGenerateColumns = false;
+                        dgViewMeetings.DataSource = meetingsBindingSource;
                     }
                 }
                 else
@@ -312,6 +348,10 @@ namespace CollaboRate
                     {
                         lblTotalUpcomingTasks.Text = "0";
                         lblUpcomingTasks.Visible = true;
+
+                        tasksBindingSource.DataSource = new List<TaskWithUsersDto>();
+                        dgViewTasks.AutoGenerateColumns = false;
+                        dgViewTasks.DataSource = tasksBindingSource;
                     }
                 }
                 else
@@ -376,14 +416,14 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = true;
 
                 // Construct the URL with an optional search keyword
-                string url = $"{ApiBaseUrl}/api/Ratings/group/{CurrentGroup.Group_ID}/status-for/{CurrentUser.User_ID}/home";
+                string url = $"api/Ratings/group/{CurrentGroup.Group_ID}/status/home"; 
 
                 if (!string.IsNullOrWhiteSpace(keyword))
                 {
                     url += $"?keyword={Uri.EscapeDataString(keyword)}";
                 }
 
-                var response = await client.GetAsync(url);
+                var response = await ApiClient.HttpClient.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -565,6 +605,11 @@ namespace CollaboRate
 
                 pbLoadingSpinner.Location = new Point(x, y);
             }
+        }
+
+        private void frmHome_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

@@ -94,8 +94,9 @@ namespace CollaboRate
                 pbLoadingSpinner.Visible = true;
 
                 // Fetch fresh data from the API to get the new members
-                string apiUrl = $"{ApiBaseUrl}/api/groups/{_groupDetails.Group_ID}/details-with-accepted-users";
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                string apiUrl = $"api/groups/{_groupDetails.Group_ID}/details-with-accepted-users";
+
+                HttpResponseMessage response = await ApiClient.HttpClient.GetAsync(apiUrl);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -279,10 +280,10 @@ namespace CollaboRate
 
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    string url = ApiBaseUrl + "/api/Groups/update-group";
+                    string apiUrl = "/api/Groups/update-group";
 
                     // Send put request
-                    HttpResponseMessage response = await client.PutAsync(url, content);
+                    HttpResponseMessage response = await ApiClient.HttpClient.PutAsync(apiUrl, content);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -294,7 +295,7 @@ namespace CollaboRate
                         var mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
                         if (mainForm != null)
                         {
-                            _ = mainForm.LoadUserGroupsAsync(CurrentUser.User_ID);
+                            _ = mainForm.LoadUserGroupsAsync();
                         }
 
                         var projectGroupForm = Application.OpenForms.OfType<frmProjectGroups>().FirstOrDefault();

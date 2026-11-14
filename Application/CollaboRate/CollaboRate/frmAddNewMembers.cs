@@ -102,9 +102,9 @@ namespace CollaboRate
 
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                string url = ApiBaseUrl + "/api/Groups/add-users";
+                string url = "api/Groups/add-users";
 
-                HttpResponseMessage response = await client.PostAsync(url, content);
+                HttpResponseMessage response = await ApiClient.HttpClient.PostAsync(url, content);
 
                 if (response.IsSuccessStatusCode)
                 {

@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace CollaboRate
 {
@@ -22,6 +23,9 @@ namespace CollaboRate
             Timeout = TimeSpan.FromSeconds(30)
         };
         private BindingSource meetingsBindingSource = new BindingSource();
+
+        private HubConnection _meetingsConnection;
+        private string _joinedMeetingRoom;
 
         public frmGroupMeetings()
         {
@@ -55,6 +59,84 @@ namespace CollaboRate
                 // Do nothing
                 ;
             }
+        }
+
+        // Method to connect for real-time
+        private async Task InitializeSignalRAsync()
+        {
+            try
+            {
+                _meetingsConnection = new HubConnectionBuilder()
+                    .WithUrl("https://collaborateapi.runasp.net/hubs/meetings")
+                    .WithAutomaticReconnect()
+                    .Build();
+
+                _meetingsConnection.On("RefreshMeetings", () =>
+                {
+                    if (this.IsDisposed || !this.IsHandleCreated)
+                    {
+                        return;
+                    }
+
+                    // The callback runs on a background thread, so hop back to the UI thread
+                    this.BeginInvoke(new Action(async () => await RefreshFromRealTimeAsync()));
+                });
+
+                // Reconnect again after server forgotten our room
+                _meetingsConnection.Reconnected += async (connectionId) =>
+                {
+                    _joinedMeetingRoom = null;
+                    await JoinCurrentGroupRoomAsync();
+
+                    if (!this.IsDisposed && this.IsHandleCreated)
+                    {
+                        this.BeginInvoke(new Action(async () => await RefreshFromRealTimeAsync()));
+                    }
+                };
+
+                await _meetingsConnection.StartAsync();
+                await JoinCurrentGroupRoomAsync();
+            }
+            catch (Exception ex)
+            {
+                AlertBox(Color.LightPink, Color.DarkRed, "Error", "Real-time connection error occurred.", Properties.Resources.Error_Icon);
+            }
+        }
+
+        // Join SignalR room
+        private async Task JoinCurrentGroupRoomAsync()
+        {
+            if (_meetingsConnection == null || _meetingsConnection.State != HubConnectionState.Connected)
+            {
+                return;
+            }
+
+            string newRoom = $"Meetings_{CurrentGroup.Group_ID}";
+
+            if (_joinedMeetingRoom == newRoom)
+            {
+                return;
+            }
+
+            // Leave previous room first
+            if (_joinedMeetingRoom != null)
+            {
+                await _meetingsConnection.InvokeAsync("LeaveMeetingRoom", _joinedMeetingRoom);
+            }
+
+            await _meetingsConnection.InvokeAsync("JoinMeetingRoom", newRoom);
+            _joinedMeetingRoom = newRoom;
+        }
+
+        // Method to reload the grid because of real-time event
+        private async Task RefreshFromRealTimeAsync()
+        {
+            if (this.IsDisposed || CurrentGroup.Group_ID <= 0)
+            {
+                return;
+            }
+
+            await DisplayMeetingsAsync(CurrentGroup.Group_ID, txtSearchMeeting.Texts);
         }
 
         private void btnScheduleNewMeeting_Click(object sender, EventArgs e)
@@ -144,6 +226,7 @@ namespace CollaboRate
                 }
             }
             await DisplayMeetingsAsync(CurrentGroup.Group_ID);
+            await InitializeSignalRAsync();
         }
 
         private async void txtSearchMeeting__TextChanged(object sender, EventArgs e)
@@ -265,6 +348,27 @@ namespace CollaboRate
                 int y = (this.ClientSize.Height - pbLoadingSpinner.Height) / 2;
 
                 pbLoadingSpinner.Location = new Point(x, y);
+            }
+        }
+
+        private async void frmGroupMeetings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_meetingsConnection != null)
+            {
+                try
+                {
+                    if (_joinedMeetingRoom != null && _meetingsConnection.State == HubConnectionState.Connected)
+                    {
+                        await _meetingsConnection.InvokeAsync("LeaveMeetingRoom", _joinedMeetingRoom);
+                    }
+
+                    await _meetingsConnection.StopAsync();
+                    await _meetingsConnection.DisposeAsync();
+                }
+                catch (Exception)
+                {
+                    // Ignore
+                }
             }
         }
     }

@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace CollaboRate
 {
@@ -48,13 +49,11 @@ namespace CollaboRate
         }
 
         // Method to load groups
-        public async Task LoadUserGroupsAsync(int userId)
+        public async Task LoadUserGroupsAsync()
         {
             try
             {
-                string apiUrl = $"https://collaborateapi.runasp.net/api/Groups/user/{userId}";
-
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                HttpResponseMessage response = await ApiClient.HttpClient.GetAsync("api/groups/user");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -222,7 +221,7 @@ namespace CollaboRate
 
         private async void frmMain_Load(object sender, EventArgs e)
         {
-            await LoadUserGroupsAsync(CurrentUser.User_ID);
+            await LoadUserGroupsAsync();
             openChildForm(new frmHome());
 
             var session = SecureStorageService.LoadSession();
@@ -243,12 +242,13 @@ namespace CollaboRate
         }
 
         // Method to get the role of a user
-        public async Task<string> GetUserGroupRoleAsync(int userId, int groupId)
+        public async Task<string> GetUserGroupRoleAsync(int groupId)
         {
             try
             {
-                string url = $"{ApiBaseUrl}/api/Groups/users/{userId}/groups/{groupId}/role";
-                var response = await client.GetAsync(url);
+                string apiUrl = $"api/Groups/groups/{groupId}/role";
+
+                HttpResponseMessage response = await ApiClient.HttpClient.GetAsync(apiUrl);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -328,7 +328,7 @@ namespace CollaboRate
                 {
                     CurrentGroup.Group_ID = Convert.ToInt32(cmbxCurrentGroup.SelectedValue.ToString());
                     CurrentGroup.Group_Name = cmbxCurrentGroup.Text;
-                    CurrentUser.Group_Role = await GetUserGroupRoleAsync(CurrentUser.User_ID, CurrentGroup.Group_ID);
+                    CurrentUser.Group_Role = await GetUserGroupRoleAsync(CurrentGroup.Group_ID);
 
                     await RefreshDisplayedFormData();
 

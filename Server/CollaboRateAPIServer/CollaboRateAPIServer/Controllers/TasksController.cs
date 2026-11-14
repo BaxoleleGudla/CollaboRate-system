@@ -292,6 +292,13 @@ namespace CollaboRateAPIServer.Controllers
         [HttpPut("tasks/{taskId}/change-status")]
         public async Task<IActionResult> ChangeTaskStatusAsync(int taskId, [FromQuery] bool isCompleted)
         {
+            // Identify the caller from JWT
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int currentUserId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             try
             {
                 // Check task exists and get the group ID
@@ -303,6 +310,39 @@ namespace CollaboRateAPIServer.Controllers
                 if (groupId == null)
                 {
                     return NotFound($"Task with ID {taskId} not found.");
+                }
+
+                // Check if user is a member of this group
+                bool isGroupMember = await _context.tblGroupMember
+                    .AnyAsync(gm => gm.Group_ID == groupId.Value
+                                && gm.User_ID == currentUserId
+                                && gm.Join_Status == "Accepted");
+
+                if (!isGroupMember)
+                {
+                    return StatusCode(403, "You must be a member of this group to change a task's status.");
+                }
+
+                // Check if task has assigned users or not
+                bool hasAssignments = await _context.tblTaskAssignment
+                    .AnyAsync(ta => ta.Task_ID == taskId);
+
+                if (!hasAssignments && !isCompleted)
+                {
+                    return Ok($"Task {taskId} is already not completed.");
+                }
+
+                using var transaction = await _context.Database.BeginTransactionAsync();
+
+                if (!hasAssignments)
+                {
+                    _context.tblTaskAssignment.Add(new TaskAssignment
+                    {
+                        Task_ID = taskId,
+                        User_ID = currentUserId,
+                        Is_Completed = false
+                    });
+                    await _context.SaveChangesAsync();
                 }
 
                 // Buld update all assignments of this task

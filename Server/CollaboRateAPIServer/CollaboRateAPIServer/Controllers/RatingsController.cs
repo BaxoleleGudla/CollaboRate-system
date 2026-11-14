@@ -10,9 +10,12 @@ using CollaboRateAPIServer.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.AspNetCore.SignalR;
 using CollaboRateAPIServer.Hubs;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CollaboRateAPIServer.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class RatingsController : ControllerBase
@@ -29,9 +32,16 @@ namespace CollaboRateAPIServer.Controllers
         }
 
         // Method to get ratings done by a specific member
-        [HttpGet("group/{groupId}/status-for/{raterId}")]
-        public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetEvaluations(int groupId, int raterId, [FromQuery] string keyword = null)
+        [HttpGet("group/{groupId}/status")]
+        public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetEvaluations(int groupId, [FromQuery] string keyword = null)
         {
+            // Extarct User ID from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int raterId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             var totalInGroup = await _context.tblGroupMember.CountAsync(gm => gm.Group_ID == groupId && gm.Join_Status == "Accepted");
 
             var members = await _context.tblGroupMember
@@ -63,17 +73,32 @@ namespace CollaboRateAPIServer.Controllers
         [HttpPost("batch-upsert")]
         public async Task<IActionResult> BatchUpsert([FromBody] List<RatingUpdateDto> updates)
         {
-            // ADDED: guard against an empty/null list (updates[0] below would crash)
             if (updates == null || updates.Count == 0)
             {
                 return BadRequest("No ratings supplied.");
             }
 
+            // Extract User ID from token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             foreach (var dto in updates)
             {
+                dto.Rater_ID = userId;
+
                 var existing = await _context.tblRating.FirstOrDefaultAsync(r => r.Group_ID == dto.Group_ID && r.Rater_ID == dto.Rater_ID && r.Ratee_ID == dto.Ratee_ID);
-                if (existing != null) { existing.Score = dto.Score; existing.Rated_At = DateTime.UtcNow; }
-                else { _context.tblRating.Add(new Rating { Group_ID = dto.Group_ID, Rater_ID = dto.Rater_ID, Ratee_ID = dto.Ratee_ID, Score = dto.Score }); }
+                if (existing != null) 
+                { 
+                    existing.Score = dto.Score; 
+                    existing.Rated_At = DateTime.UtcNow;
+                }
+                else 
+                { 
+                    _context.tblRating.Add(new Rating { Group_ID = dto.Group_ID, Rater_ID = dto.Rater_ID, Ratee_ID = dto.Ratee_ID, Score = dto.Score }); 
+                }
             }
             await _context.SaveChangesAsync();
 
@@ -84,7 +109,7 @@ namespace CollaboRateAPIServer.Controllers
 
                 foreach (int groupId in updates.Select(u => u.Group_ID).Distinct())
                 {
-                    await _evaluationsHubContext.Clients.Group(EvaluationRoom(groupId)).SendAsync("RefreshEvaluations", raterId);
+                    await _evaluationsHubContext.Clients.Group(EvaluationRoom(groupId)).SendAsync("RefreshEvaluations", userId);
                 }
             }
             catch (Exception)
@@ -96,9 +121,16 @@ namespace CollaboRateAPIServer.Controllers
         }
 
         // Method to get ratings done for home form
-        [HttpGet("group/{groupId}/status-for/{raterId}/home")]
-        public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetEvaluationsHome(int groupId, int raterId, [FromQuery] string keyword = null)
+        [HttpGet("group/{groupId}/status/home")]
+        public async Task<ActionResult<IEnumerable<RatedMemberDto>>> GetEvaluationsHome(int groupId, [FromQuery] string keyword = null)
         {
+            // Extact User ID from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int raterId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             var totalInGroup = await _context.tblGroupMember.CountAsync(gm => gm.Group_ID == groupId && gm.Join_Status == "Accepted");
 
             var members = await _context.tblGroupMember

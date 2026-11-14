@@ -46,6 +46,7 @@
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
+<<<<<<< Updated upstream
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
 =======
               "Title": "RatingsController.cs",
@@ -55,6 +56,9 @@
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\RatingsController.cs",
               "ViewState": "AgIAAE4AAAAAAAAAAAAswIEAAAANAAAAAAAAAA==",
 >>>>>>> Baxolele_Gudla
+=======
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-14T11:50:14.699Z",
               "EditorCaption": ""

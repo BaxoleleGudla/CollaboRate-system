@@ -10,9 +10,12 @@ using CollaboRateAPIServer.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.AspNetCore.SignalR;
 using CollaboRateAPIServer.Hubs;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CollaboRateAPIServer.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class TasksController : ControllerBase
@@ -142,6 +145,13 @@ namespace CollaboRateAPIServer.Controllers
             if (string.IsNullOrEmpty(taskDto.Task_Title))
             {
                 return BadRequest("Task Title is required.");
+            }
+
+            // Extract authenticated User ID from JWT token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int currentUserId))
+            {
+                return Unauthorized("Invalid token claims.");
             }
 
             using var transaction = await _context.Database.BeginTransactionAsync();
@@ -316,8 +326,15 @@ namespace CollaboRateAPIServer.Controllers
 
         // Method to delete a task and send notification
         [HttpDelete("tasks/{taskId}/delete")]
-        public async Task<IActionResult> DeleteTaskAsync(int taskId, [FromQuery] int deletedByUserId)
+        public async Task<IActionResult> DeleteTaskAsync(int taskId)
         {
+            // Extract user ID from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int deletedByUserId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             using var transaction = await _context.Database.BeginTransactionAsync();
 
             try

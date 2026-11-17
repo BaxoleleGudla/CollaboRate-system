@@ -353,6 +353,8 @@ namespace CollaboRateAPIServer.Controllers
                         .SetProperty(ta => ta.Completed_At, isCompleted ? (DateTime?)DateTime.UtcNow : null)
                     );
 
+                await transaction.CommitAsync();
+
                 // Tell open task lists in this group to reload
                 await NotifyTasksChangedAsync(groupId.Value);
 

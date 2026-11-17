@@ -195,7 +195,6 @@ namespace CollaboRateAPIServer.Controllers
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                //return StatusCode(500, "An error occurred while adding the task." + ex.Message);
 
                 // Unwrap inner exceptions to get detailed error message
                 string errorMessage = ex.Message;

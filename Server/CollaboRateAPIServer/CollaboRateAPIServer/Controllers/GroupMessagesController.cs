@@ -10,9 +10,12 @@ using CollaboRateAPIServer.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.AspNetCore.SignalR;
 using CollaboRateAPIServer.Hubs;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CollaboRateAPIServer.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class GroupMessagesController : ControllerBase
@@ -30,6 +33,13 @@ namespace CollaboRateAPIServer.Controllers
         [HttpGet("messages")]
         public async Task<IActionResult> GetMessagesAsync([FromQuery] int groupId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 50, [FromQuery] string keyword = null)
         {
+            // Extarct authenticated user ID from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int currentUserId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             if (groupId <= 0)
             {
                 return BadRequest(new { error = "Invalid Group ID." });
@@ -93,6 +103,13 @@ namespace CollaboRateAPIServer.Controllers
         [HttpPost("messages")]
         public async Task<IActionResult> AddMessageAsync([FromBody] GroupMessage newMessage)
         {
+            // Extract authenticated user ID from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int sender_ID))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             if (newMessage == null || newMessage.Sender_ID <= 0 || newMessage.Group_ID <= 0 || string.IsNullOrWhiteSpace(newMessage.Message_Text))
             {
                 return BadRequest("Invalid message data.");
@@ -104,7 +121,7 @@ namespace CollaboRateAPIServer.Controllers
                 await _context.SaveChangesAsync();
 
                 // Load sender username for boradcast if not included in new message
-                var sender = await _context.tblUser.FirstOrDefaultAsync(u => u.User_ID == newMessage.Sender_ID);
+                var sender = await _context.tblUser.FirstOrDefaultAsync(u => u.User_ID == sender_ID);
                 var senderUsername = sender?.Username ?? "Unknown";
 
                 // Broadcast the new message to all clients via signal R

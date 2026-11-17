@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\",
+  "WorkspaceRootPath": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\github\\collaborate-system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\meetingscontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\meetingscontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\groupmessagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\groupmessagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\github\\collaborate-system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\github\\collaborate-system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\groupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\controllers\\groupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\controllers\\groupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\github\\collaborate-system\\server\\collaborateapiserver\\collaborateapiserver\\dtos\\userregisterresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|c:\\users\\baxolele gudla\\documents\\my programming projects\\collaborate system\\server\\collaborateapiserver\\collaborateapiserver\\dtos\\userregisterresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73620CBA-3A97-4D4E-B1F8-4CD7877585C2}|CollaboRateAPIServer\\CollaboRateAPIServer.csproj|solutionrelative:collaborateapiserver\\dtos\\userregisterresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -31,35 +31,36 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MeetingsContoller.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\MeetingsContoller.cs",
-              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\MeetingsContoller.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\MeetingsContoller.cs",
-              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\MeetingsContoller.cs",
-              "ViewState": "AgIAAB0BAAAAAAAAAAAAACoBAAA8AAAAAAAAAA==",
+              "Title": "GroupMessagesController.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\GroupMessagesController.cs",
+              "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\GroupMessagesController.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\GroupMessagesController.cs",
+              "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\GroupMessagesController.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAAHsAAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-17T18:22:28.125Z",
+              "WhenOpened": "2026-11-17T19:05:05.88Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "TasksController.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\TasksController.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\TasksController.cs",
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\TasksController.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\TasksController.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\TasksController.cs",
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\TasksController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABcBAAAAAAAAAAAAACoBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-14T13:36:52.429Z"
+              "WhenOpened": "2026-11-14T13:36:52.429Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "GroupsController.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\GroupsController.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\GroupsController.cs",
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Controllers\\GroupsController.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\GroupsController.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Controllers\\GroupsController.cs",
               "RelativeToolTip": "CollaboRateAPIServer\\Controllers\\GroupsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -69,9 +70,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "UserRegisterResponseDto.cs",
-              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "RelativeDocumentMoniker": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
-              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\GitHub\\CollaboRate-system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
+              "ToolTip": "C:\\Users\\Baxolele Gudla\\Documents\\My Programming Projects\\CollaboRate system\\Server\\CollaboRateAPIServer\\CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "RelativeToolTip": "CollaboRateAPIServer\\Dtos\\UserRegisterResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

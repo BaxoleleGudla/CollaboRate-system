@@ -4,9 +4,13 @@ using Microsoft.Extensions.Logging;
 using CollaboRateAPIServer.Data;
 using CollaboRateAPIServer.Models;
 using CollaboRateAPIServer.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+
 
 namespace CollaboRateAPIServer.Controllers
 {
+	[Authorize]
 	[ApiController]
 	[Route("api/[controller]")]
 	public class UserSettingsController : ControllerBase
@@ -19,10 +23,17 @@ namespace CollaboRateAPIServer.Controllers
 		}
 
 		// Method to get user settings
-		[HttpGet("{userId}")]
-		public async Task<IActionResult> GetSettings(int userId)
+		[HttpGet()]
+		public async Task<IActionResult> GetSettings()
 		{
-			if (userId <= 0)
+            // Extract authenticated User ID from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
+            if (userId <= 0)
 			{
 				return BadRequest(new { message = "Invalid User ID provided." });
 			}
@@ -54,10 +65,17 @@ namespace CollaboRateAPIServer.Controllers
 		}
 
 		// Method to update the user settings
-		[HttpPut("{userId}")]
-		public async Task<IActionResult> UpdateSettings(int userId, [FromBody] UserSettingsDto dto)
+		[HttpPut()]
+		public async Task<IActionResult> UpdateSettings([FromBody] UserSettingsDto dto)
 		{
-			if (userId <= 0)
+            // Extract authenticated User ID from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
+            if (userId <= 0)
 			{
 				return BadRequest(new { message = "Invalid User ID provided." });
 			}

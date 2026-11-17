@@ -10,9 +10,12 @@ using CollaboRateAPIServer.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.AspNetCore.SignalR;
 using CollaboRateAPIServer.Hubs;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CollaboRateAPIServer.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class MeetingsController : ControllerBase
@@ -87,6 +90,13 @@ namespace CollaboRateAPIServer.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateMeeting([FromBody] CreateMeetingDto meetingDto)
         {
+            // Extract authenticated user iD from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int currentUserID))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             // Use a transaction to ensure atomicity
             using var transaction = await _context.Database.BeginTransactionAsync();
 
@@ -166,7 +176,7 @@ namespace CollaboRateAPIServer.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Meeting>> GetMeetingById(int id)
         {
-            var meeting = await _context.tblMeeting.FindAsync();
+            var meeting = await _context.tblMeeting.FindAsync(id);
             if (meeting == null)
             {
                 return NotFound();
@@ -179,6 +189,13 @@ namespace CollaboRateAPIServer.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateMeeting(int id, [FromBody] UpdateMeetingDto meetingDto)
         {
+            // Extract authenticated user ID from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int currentUserId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             using var transaction = await _context.Database.BeginTransactionAsync();
 
             try
@@ -258,6 +275,13 @@ namespace CollaboRateAPIServer.Controllers
         [HttpDelete("cancel/{meetingId}")]
         public async Task<ActionResult> CancelMeeting(int meetingId)
         {
+            // Extract authenticated user ID from JWT claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int currentUserId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             using var transaction = await _context.Database.BeginTransactionAsync();
 
             try

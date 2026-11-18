@@ -8,9 +8,12 @@ using System.Runtime.Versioning;
 using CollaboRateAPIServer.Dtos;
 using CollaboRateAPIServer.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CollaboRateAPIServer.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
@@ -22,18 +25,20 @@ namespace CollaboRateAPIServer.Controllers
             _context = context;
         }
 
-        // Method to update the username and password
-        [HttpPut("users/{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUserDto updateDto)
+        // Method to update the username and email
+        [HttpPut("users")]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserDto updateDto)
         {
+            // Extract authenticated User ID from JWT token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int id))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             if (id <= 0 || updateDto == null)
             {
                 return BadRequest(new { error = "Invalid user ID or update data." });
-            }
-
-            if (id != updateDto.User_ID)
-            {
-                return BadRequest(new { error = "User ID mismatch." });
             }
 
             try
@@ -75,12 +80,7 @@ namespace CollaboRateAPIServer.Controllers
                 await _context.SaveChangesAsync();
 
                 return Ok(new {
-                    message = "User updated successfully.",
-                    user = new {
-                        id = user.User_ID,
-                        username = user.Username,
-                        email = user.Email
-                    }
+                    message = "User updated successfully."
                 });
             }
             catch (Exception ex)
@@ -90,17 +90,19 @@ namespace CollaboRateAPIServer.Controllers
         }
 
         // Method to update a password
-        [HttpPut("users/{id}/password")]
-        public async Task<IActionResult> UpdatePassword(int id, [FromBody] UpdatePasswordDto passwordDto)
+        [HttpPut("users/password")]
+        public async Task<IActionResult> UpdatePassword([FromBody] UpdatePasswordDto passwordDto)
         {
+            // Extract authenticated User ID from JWT token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int id))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             if (id <= 0 || passwordDto == null)
             {
                 return BadRequest("Invalid user ID or password data.");
-            }
-
-            if (id != passwordDto.User_ID)
-            {
-                return BadRequest("User ID mismatch.");
             }
 
             // Validate new password matches confirmation

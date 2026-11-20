@@ -2,9 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using CollaboRateAPIServer.Data;
 using CollaboRateAPIServer.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CollaboRateAPIServer.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class NotificationsController : ControllerBase
@@ -17,9 +20,16 @@ namespace CollaboRateAPIServer.Controllers
         }
 		
 		// Method to count unread notifications
-		[HttpGet("unread-count/user/{userId}/group/{groupId}")]
-		public async Task<IActionResult> GetUserCount(int userId, int groupId)
+		[HttpGet("unread-count/user/group/{groupId}")]
+		public async Task<IActionResult> GetUserCount(int groupId)
 		{
+            // Extract authenticated User ID from JWT token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             if (userId <= 0 || groupId <= 0)
             {
                 return BadRequest(new { message = "Invalid User ID or Group ID provided." });
@@ -50,10 +60,17 @@ namespace CollaboRateAPIServer.Controllers
             }
         }
 		
-        // GET: api/Notifications/user/5/group/2
-        [HttpGet("user/{userId}/group/{groupId}")]
-        public async Task<ActionResult<IEnumerable<NotificationDto>>> GetNotifications(int userId, int groupId)
+        // GET: api/Notifications/user/group/2
+        [HttpGet("user/group/{groupId}")]
+        public async Task<ActionResult<IEnumerable<NotificationDto>>> GetNotifications(int groupId)
         {
+            // Extract authenticated User ID from JWT token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             var notifications = await (from nr in _context.tblNotificationRecipient
                                        join gn in _context.tblGroupNotification on nr.Group_Notification_ID equals gn.Group_Notification_ID
                                        where nr.User_ID == userId && gn.Group_ID == groupId
@@ -70,10 +87,17 @@ namespace CollaboRateAPIServer.Controllers
             return Ok(notifications);
         }
 
-        // PUT: api/Notifications/mark-all-read/user/5/group/2
-        [HttpPut("mark-all-read/user/{userId}/group/{groupId}")]
-        public async Task<IActionResult> MarkAllAsRead(int userId, int groupId)
+        // PUT: api/Notifications/mark-all-read/user/group/2
+        [HttpPut("mark-all-read/user/group/{groupId}")]
+        public async Task<IActionResult> MarkAllAsRead(int groupId)
         {
+            // Extract authenticated User ID from JWT token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             // Find all unread records for this user in this specific group
             var unreadNotifications = await _context.tblNotificationRecipient
                 .Where(nr => nr.User_ID == userId && !nr.Is_Read &&

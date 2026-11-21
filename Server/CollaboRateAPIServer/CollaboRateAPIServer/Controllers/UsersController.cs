@@ -8,9 +8,12 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CollaboRateAPIServer.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
@@ -55,8 +58,15 @@ namespace CollaboRateAPIServer.Controllers
 
         // Get all users not in current group
         [HttpGet("not-in-group/{currentGroupId}")]
-        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsersNotInGroup(int currentGroupId, [FromQuery] int currentUserId, [FromQuery] string? keyword = null)
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsersNotInGroup(int currentGroupId, [FromQuery] string? keyword = null)
         {
+            // Extract authenticated User ID from JWT token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int currentUserId))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             if (currentUserId <= 0 || currentGroupId <= 0)
             {
                 return BadRequest("User ID and Group ID must be positive values.");
@@ -151,6 +161,7 @@ namespace CollaboRateAPIServer.Controllers
 
         // POST: api/users
         // Adds a new user to the database
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<User>> CreateUser(User user)
         {
@@ -232,12 +243,14 @@ namespace CollaboRateAPIServer.Controllers
 
         // PUT: api/users/
         // Updates an existing user by ID
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, User user)
+        [HttpPut()]
+        public async Task<IActionResult> UpdateUser(User user)
         {
-            if (id != user.User_ID)
+            // Extract authenticated User ID from JWT token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int id))
             {
-                return BadRequest("User ID mismatch");
+                return Unauthorized("Invalid token claims.");
             }
 
             _context.Entry(user).State = EntityState.Modified;
@@ -263,9 +276,16 @@ namespace CollaboRateAPIServer.Controllers
 
         // DELETE: api/users/
         // Delete a user by ID
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        [HttpDelete()]
+        public async Task<IActionResult> DeleteUser()
         {
+            // Extract authenticated User ID from JWT token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int id))
+            {
+                return Unauthorized("Invalid token claims.");
+            }
+
             var user = await _context.tblUser.FindAsync(id);
             if (user == null)
             {
